@@ -1,0 +1,29 @@
+{
+  "name": "bet-no-loss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bet-no-loss/bet-no-loss.git"
+  },
+  "keywords": [
+    "ethereum",
+    "smart-contract",
+    "blockchain",
+    "bet",
+    "DeFi"
+  ],
+  "author": "@Tantely, @ebouchut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bet-no-loss/bet-no-loss/issues"
+  },
+  "homepage": "https://github.com/bet-no-loss/bet-no-loss#readme"
+}
