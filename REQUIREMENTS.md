@@ -1,55 +1,56 @@
-# Spécifications du Projet Final Alyra
+# Alyra Final Project's Requirements
 
-## Interface utilisateur 
 
-Votre projet doit:
-- être un projet truffle.
-- utiliser la box react de truffle.
-- contenir un Readme qui 
-    - présente le projet et son concept
-    - détaille les fonctionnalités
-    - décrit la procédure d’installation et d’exécution 
-- avoir les fonctionnalités suivantes : 
-    - afficher le compte Ethereum courant
-    - signer des transactions 
-    - interagir avec le state de votre smart contract
-    - afficher le state de votre smart contract 
-- doit être déployé sur Heroku et vous devez être en mesure de visiter une URL et d'interagir avec l'application
+## User Interface 
 
-Vous devez nous fournir le lien vers votre **github** qui doit être **public**. 
+Your project must:
+- be a Truffle projet
+- use Truffle's `react` box
+- contain a Readme that:
+    - introduces the projet and its concept(s)
+    - details its features
+    - describe how to install and launch it
+- have the following features: 
+    - display the current Ethereum account
+    - sign transactions 
+    - interact with your contract's state
+    - display your contract's state
+- de deployed on *Heroku* and you must be able to open a URL to interact with the application
+
+You must provide us with a link to your **Github** repository that must be **public**. 
 
 
 ## Smart Contracts
 
-Vos smart contracts doivent :
-- utiliser la dernière version du compilateur
-- être commentés suivant la doc officiel de solidity
+Your smart-contracts must:
+- use the latest compiler version
+- contains comments in accordance to [Solidity's official documentation](https://solidity.readthedocs.io/en/v0.4.21/layout-of-source-files.html#comments)
+- generate a **README** per smart-contract using  **NatSpec**
+- be **secured** and **optimized**
 
-- A l’aide des **NatSpec**, vous devez générer un **Readme** pour chaque smart contract.
-- Vos smart contract doivent être **sécurisés** et **optimisés**.  
-- Votre projet doit contenir un document nommé `avoiding_common_attacks.md` qui explique quelles mesures ont été prises pour éviter les **failles de sécurité**.  
-- **Déployez** votre application sur un réseau **testnet Ethereum**.  
-- Inclure un document appelé `deployed_addresses.md` qui renseigne les **adresses de vos smart contrats sur le testnet** en question. 
-- PS: les smart contracts doivent être déployés à l’aide de Truffle 
-- Utilisation des packages `dotenv` et `@truffle/hdwallet-provider`
+Your project must:
+- contain a file named `avoiding_common_attacks.md` explaining the measures you took to prevent the **security breaches**
+- contain a file named `deployed_addresses.md` with the differents **addresses of your smart-contrats** on the aforementioned testnet
+- You application must be **deployed** on an **Ethereum testnet** (FYI: the smart-contracts must be déployed with Truffle) 
+- use the packages `dotenv` and `@truffle/hdwallet-provider`
 
 
 ## Tests
 
-Votre projet doit :
+You project must:
 
-- contenir des tests d’intégration pour chaque smart contract
-- contenir un document nommé `tests_explication.md` qui explique **pourquoi vous avez écrit ces tests**.
+- contain integration tests for each smart-contract
+- contain a file named `tests_explication.md` explaining  **why you wrote these thests**
 
 
 ## ⭐️ Bonus
 
-Un document appelé `design_pattern_desicions.md` qui explique les **modèles de conception choisis** et la **raison** du choix.
-Ce [lien](https://fravoll.github.io/solidity-patterns/) peut vous aider . 
+A file named `design_pattern_desicions.md` if present to list which **design patterns** you chose and why.
+This [link](https://fravoll.github.io/solidity-patterns/) may help. 
 
 
+## Example (Git Repository)
 
-## Git exemple (avec les éléments attendus)
+You can find [here](https://github.com/Alyra-school/projet-final) an example of the expected directory tree including the expected items. 
+You can then clone it to bootstrap your project.
 
-Vous trouverez [ici](https://github.com/Alyra-school/projet-final) un exemple de la structure attendue. 
-Vous pouvez alors effectuer un clone. 
