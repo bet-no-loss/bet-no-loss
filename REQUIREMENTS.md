@@ -5,6 +5,7 @@
 
 Your project must:
 
+- [ ] have a User Interface
 - [ ] be a Truffle projet
 - [ ] use Truffle's `react` box
 - [ ] contain a Readme that:
