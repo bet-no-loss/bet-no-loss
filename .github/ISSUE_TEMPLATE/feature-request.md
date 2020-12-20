@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## Description (What?)
+## Description 
 
 > Give a quick description of what the feature is about (what it brings to the project or what problem it solves)
 
@@ -15,7 +15,7 @@ assignees: ''
     - an **Epic?** *If so please provide the epic issue number here.*
     - **a Problem?** *If so, please please provide the issue number here. 
 
-## Action (How?)
+## Action 
 - [ ] Get a Web3 instance
   - [ ] tested
 - [ ] Use the `walletConnect` Web3 function to get ...
