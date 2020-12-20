@@ -17,7 +17,9 @@ assignees: ''
 
 ## Action (How?)
 - [ ] Get a Web3 instance
+  - [ ] tested
 - [ ] Use the `walletConnect` Web3 function to get ...
+  - [ ] tested
 
 ## Acceptance Criteria 
 - Method `xYZ` must:
