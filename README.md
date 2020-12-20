@@ -19,8 +19,34 @@ TODO
 
 # Install
 
-TODO
+```
+cd $DEV
 
+git clone git@github.com:bet-no-loss/bet-no-loss.git
+cd bet-no-loss
+
+npm install
+```
+
+# Configure
+
+In order to deploy to the test networks or the main network you need to:
+
+- Create a `.env` file in the project's home folder  
+- Edit `.env` and set the below `property = "value"` pairs (one per line):
+
+```
+MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
+INFURA_PROJECT_ID = "TODO_infura_project_id_here"
+```
+
+Keep in mind to surround each value with double quotes.
+
+# Compile
+
+```
+npx truffle compile
+```
 
 # Run
 
