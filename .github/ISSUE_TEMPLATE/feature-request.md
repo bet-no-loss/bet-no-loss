@@ -12,12 +12,12 @@ assignees: ''
 > Give a quick description of what the feature is about (what it brings to the project or what problem it solves)
 
 - Related to:
-    - [ ] an **Epic?** *If so please provide the epic issue number here.*
-    - [ ] **a Problem?** *If so, please please provide the issue number here. 
+    - an **Epic?** *If so please provide the epic issue number here.*
+    - **a Problem?** *If so, please please provide the issue number here. 
 
 ## Action (How?)
-- Get a Web3 instance
-- Use the `walletConnect` Web3 function to get ...
+- [ ] Get a Web3 instance
+- [ ] Use the `walletConnect` Web3 function to get ...
 
 ## Acceptance Criteria 
 - Method `xYZ` must:
