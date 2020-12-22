@@ -39,7 +39,7 @@ build/Release
 
 # Solidity compiled artifacts
 build/contracts/
-app/src/contracts/
+client/src/contracts/
 artifacts/
 
 # Dependency directories
