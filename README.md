@@ -7,7 +7,7 @@ TODO: Description + concepts
 
 ### Links
 
-* [Trello](https://trello.com/b/c6Xhe5hM/project-pari-no-loss)
+* [Trello](https://trello.com/b/c6Xhe5hM)
 * [Google Drive](https://drive.google.com/drive/folders/1Pr22-VTGNVREl7AUdPy1f77OxrgqNvgO)
 * [Github](https://github.com/bet-no-loss)
 * Discord: `#pari-no-loss` channel on the discord Server named *"La Boite a Idee pour un projet commun Alyra"*
