@@ -11,6 +11,7 @@ TODO: Description + concepts
 * [Google Drive](https://drive.google.com/drive/folders/1Pr22-VTGNVREl7AUdPy1f77OxrgqNvgO)
 * [Github](https://github.com/bet-no-loss)
 * Discord: `#pari-no-loss` channel on the discord Server named *"La Boite a Idee pour un projet commun Alyra"*
+* [YouTube Playlist](https://www.youtube.com/playlist?list=PLNwicjhsnUEooeRnNgrkV0TH6m21F3jpA)
 
 ## Features
 
