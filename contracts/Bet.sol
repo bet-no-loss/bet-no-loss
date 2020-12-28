@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
-// TODO: Use the latest compiler version
-pragma solidity 0.6.11;
+pragma solidity 0.7.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
