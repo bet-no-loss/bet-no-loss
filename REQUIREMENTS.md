@@ -6,12 +6,12 @@
 Your project must:
 
 - [ ] have a User Interface
-- [ ] be a Truffle projet
-- [ ] use Truffle's `react` box
+- [x] be a Truffle projet
+- [x] use Truffle's `react` box
 - [ ] contain a Readme that:
     - [ ] introduces the projet and its concept(s)
     - [ ] details its features
-    - [ ] describe how to install and launch it
+    - [x] describe how to install and launch it
 - have the following features: 
     - [ ] display the current Ethereum account
     - [ ] sign transactions 
@@ -19,14 +19,14 @@ Your project must:
     - [ ] display your contract's state
 - [ ] be deployed on *Heroku* and you must be able to open a URL to interact with the application
 
-- [ ] You must provide us with a link to your **Github** repository that must be **public**. 
+- [x] You must provide us with a link to your **Github** repository that must be **public**. 
 
 
 ## Smart Contracts
 
 Your smart-contracts must:
 
-- [ ] use the latest compiler version
+- [x] use the latest compiler version
 - [ ] contains comments in accordance to [Solidity's official documentation](https://solidity.readthedocs.io/en/v0.4.21/layout-of-source-files.html#comments)
 - [ ] generate a **README** per smart-contract using  **NatSpec**
 - [ ] be **secured** and **optimized**
