@@ -1,61 +1,121 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
-import DatePicker from 'react-datepicker';
-import Web3Context from '../Web3context';
+import DatePicker from "react-datepicker";
+import Web3Context from "../Web3context";
 
 function SportEventForm() {
+  const web3Context = useContext(Web3Context);
+  const { web3, accounts, contract } = web3Context;
+  //console.log("Contract", contract)
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedOutcomeDate, setSelectedOutcomeDate] = useState("");
+  const initialState = {name: "", eventDate: "", teamA: "", teamB: "", eventOutcomeDate: ""}
+  const [sportEvent, setSportEvent] = useState(initialState);
 
-    const web3Context = useContext(Web3Context);
-    const { web3, accounts, contract } = web3Context;
+  const selectEventDate = (date) => {
+    setSelectedDate(date);    
+    let evDate = date.toISOString().split("T")[0];
+    setSportEvent({...sportEvent, eventDate : evDate}); 
+    console.log(evDate);
+  };
 
-    const [selectedDate, setSelectedDate] = useState('')
+  const selectOutcomeDate = (date) => {
+    setSelectedOutcomeDate(date);
+    let outcomeDate = date.toISOString().split("T")[0];
+    setSportEvent({...sportEvent, eventOutcomeDate : outcomeDate});    
+    console.log(outcomeDate);
+  };
+  
 
-    const selectDate = (date) => {
-        setSelectedDate(date);
-        let print = date.toISOString().split('T')[0];  
-        console.log(print)
-    }
+  const style = {
+    paddingRight: "369px",
+  };
 
-    const style = {
-        paddingRight: "490px"
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(sportEvent)
+   // createSportEvent();   
+  };
+
+  const handleChange = (event) => {
+      const { name, value } = event.target;
+      setSportEvent({...sportEvent, [name] : value})      
+  }
+
+  const createSportEvent = async () => {
+      await contract.methods.createSportEvent(sportEvent).send({ from:accounts[0] });
+      const response = await contract.methods.sportEvents.get().call();
+      console.log(response);
+  }
+
+  const Web3 = async () => {
+    const method = await contract.methods;
+    console.log("methods", method)
+  }
+
+  useEffect(() => {
+    
+  }, [])
 
   return (
     <div>
-        <p>{accounts}</p>
-      <form>
+      <p>{accounts}</p>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="inputName" className="form-label" style={{marginRight:"530px"}}>
-            Name 
-          </label>
-          <input type="text" className="form-control" id="inputName" />
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            id="inputName"
+            value={sportEvent.name}
+            placeholder="Name"
+            onChange={handleChange}
+          />
         </div>
         <div className="mb-3" style={style}>
-          <label htmlFor="example-date-input" className="col-2 col-form-label" >
-            Event Date
-          </label>
-          <DatePicker 
-          selected={selectedDate}
-          onChange={selectDate}
-          dateFormat='dd/MM/yyyy'
-          minDate={new Date()}
-         
+          <DatePicker
+            name="eventDate"
+            selected={selectedDate}
+            onChange={selectEventDate}
+            dateFormat="dd/MM/yyyy"
+            minDate={new Date()}
+            placeholderText="Event Date"
+          />
+        </div>
+        <div className="mb-3" style={style}>
+          <DatePicker
+            name="eventOutcomeDate"
+            selected={selectedOutcomeDate}
+            onChange={selectOutcomeDate}
+            dateFormat="dd/MM/yyyy"
+            minDate={new Date()}
+            placeholderText="Event Outcome Date"
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="inputName" className="form-label" style={{marginRight:"530px"}}>
-            Team A
-          </label>
-          <input type="text" className="form-control" id="inputName" />
+          <input
+            type="text"
+            name="teamA"
+            className="form-control"
+            id="inputName"
+            placeholder="Team A"
+            value={sportEvent.teamA}
+            onChange={handleChange}
+          />
         </div>
         <div className="mb-3">
-          <label htmlFor="inputName" className="form-label" style={{marginRight:"530px"}}>
-            Team B
-          </label>
-          <input type="text" className="form-control" id="inputName" />
+          <input
+            type="text"
+            name="teamB"
+            className="form-control"
+            id="inputName"
+            placeholder="Team B"
+            value={sportEvent.teamB}
+            onChange={handleChange}
+          />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit 
+          Submit
         </button>
       </form>
     </div>

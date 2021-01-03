@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SimpleStorageContract from "../../contracts/SimpleStorage.json";
+import Bet from "../../contracts/Bet.json"
 import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
@@ -27,7 +28,7 @@ const App = () => {
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = SimpleStorageContract.networks[networkId];
       const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
+        Bet.abi,
         deployedNetwork && deployedNetwork.address
       );
 
