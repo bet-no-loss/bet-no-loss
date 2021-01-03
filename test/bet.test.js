@@ -3,6 +3,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const { expect }       = require('chai');
+const moment           = require('moment');
 
 const Bet = artifacts.require('Bet');
 
@@ -19,7 +20,6 @@ contract('Bet', function(accounts) {
         this.betInstance = await Bet.new( {from: ownerAddress});
     })
 
-    
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Sport Events
@@ -27,28 +27,16 @@ contract('Bet', function(accounts) {
     describe("Sport Events Handling", function() {
 
         it ("can create a sport event if owner", async function() {
-            const eventDate = new Date()
-            eventDate.setDate(new Date().getDate() + 7);
-            eventDate.setMinutes(eventDate.getMinutes() + 1);
-
-            const eventDateSeconds = Math.floor(eventDate.getTime() / 1000.0);
-            const eventDateBN = new BN(eventDateSeconds);
-            // console.debug("////////", eventDateSeconds);
-            
-            const eventOutcomeDate = new Date();
-            eventOutcomeDate.setDate(eventDate.getDate() + 1);
-            eventOutcomeDate.setMinutes(eventOutcomeDate.getMinutes() + 1);
-
-            const eventOutcomeDateSeconds = Math.floor(eventOutcomeDate.getTime() / 1000.0);
-            const eventOutcomeDateBN = new BN(eventDateSeconds);
-            // console.debug("///////", eventOutcomeDateSeconds);
-
-            const eventName = "PSG - Marseille, 2020-10-01 @Velodrome";
+            const eventDate        = moment().add(7, 'days').add(1, 'minute');
+            const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+            const eventName        = "PSG - Marseille, 2020-10-01 @Velodrome";
+            // console.debug("////////", eventDate.format());            
+            // console.debug("///////", eventOutcomeDate.format());
 
             const result = await this.betInstance.createSportEvent(
                 eventName,
-                eventDateBN,
-                eventOutcomeDateBN,
+                new BN(eventDate.unix()),
+                new BN(eventOutcomeDate.unix()),
                 { from: ownerAddress }       
             );
 
@@ -56,28 +44,17 @@ contract('Bet', function(accounts) {
         });
 
         it ("cannot create a sport event if NOT owner", async function() {
-            const eventDate = new Date()
-            eventDate.setDate(new Date().getDate() + 7);
-            eventDate.setMinutes(eventDate.getMinutes() + 1);
-
-            const eventDateSeconds = Math.floor(eventDate.getTime() / 1000.0);
-            const eventDateBN = new BN(eventDateSeconds);
+            const eventDate        = moment().add(7, 'days').add(1, 'minute');
+            const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
    
-            const eventOutcomeDate = new Date();
-            eventOutcomeDate.setDate(eventDate.getDate() + 1);
-            eventOutcomeDate.setMinutes(eventOutcomeDate.getMinutes() + 1);
-
-            const eventOutcomeDateSeconds = Math.floor(eventOutcomeDate.getTime() / 1000.0);
-            const eventOutcomeDateBN = new BN(eventDateSeconds);
-
-            const eventName = "PSG - Marseille, 2020-10-01 @Velodrome";
-            const notOwnerAddress = address2;
+            const eventName        = "PSG - Marseille, 2020-10-01 @Velodrome";
+            const notOwnerAddress  = address2;
 
             await expectRevert(
                 this.betInstance.createSportEvent(
                     eventName,
-                    eventDateBN,
-                    eventOutcomeDateBN,
+                    new BN(eventDate.unix()),
+                    new BN(eventOutcomeDate.unix()),
                     { from: notOwnerAddress }       
                 ),
                 "Ownable: caller is not the owner"
