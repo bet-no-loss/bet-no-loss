@@ -65,11 +65,11 @@ contract Bet is Ownable {
         );
         require(
             _eventDate >= block.timestamp + 1 weeks,
-            "_eventDate must be >= 1 week from now"
+            "Event date must be >= 1 week from now"
         );
         require(
             _outcomeAvailableDate > block.timestamp + 1 weeks,
-            "_outcomeAvailableDate must be > 1 week from now"
+            "Event Outcome available date must be > 1 week from now"
         );
 
         _eventId = _eventId.add(1);
