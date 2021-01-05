@@ -41,6 +41,12 @@ contract Bet is Ownable {
             uint256 _eventOutcomeDate
     );
 
+    string[] public names;
+    
+    function insertText(string memory _name) public {
+        names.push(_name);
+    }
+
     /**
      * @dev Add a new event, then notifies the Oracle in charge of monitoring its outcome.
      *
