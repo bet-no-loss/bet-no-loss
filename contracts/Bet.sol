@@ -41,9 +41,11 @@ contract Bet is Ownable {
             uint256 _eventOutcomeDate
     );
 
+
     // @dev TODO
     constructor(address _oracle_addr)  Ownable() {
-        _oracle_address = _oracle_addr;
+        _oracle_address = _oracle_addr;   
+
     }
 
     /**
