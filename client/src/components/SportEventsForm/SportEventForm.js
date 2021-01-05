@@ -5,27 +5,34 @@ import Web3Context from "../Web3context";
 
 function SportEventForm() {
   const web3Context = useContext(Web3Context);
-  const { web3, accounts, contract } = web3Context;
-  //console.log("Contract", contract)
+  const { web3, accounts, contract, currentAccount } = web3Context;
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedOutcomeDate, setSelectedOutcomeDate] = useState("");
-  const initialState = {name: "", eventDate: "", teamA: "", teamB: "", eventOutcomeDate: ""}
+  const initialState = {
+    eventName: "",
+    eventDate: "",
+    teamA: "",
+    teamB: "",
+    outcomeAvailableDate: "",
+  };
   const [sportEvent, setSportEvent] = useState(initialState);
 
+  console.log("WEB3", web3.eth.getAccounts());
+
   const selectEventDate = (date) => {
-    setSelectedDate(date);    
-    let evDate = date.toISOString().split("T")[0];
-    setSportEvent({...sportEvent, eventDate : evDate}); 
+    setSelectedDate(date);
+    //let evDate = date.toISOString().split("T")[0];
+    let evDate = date.getTime();
+    setSportEvent({ ...sportEvent, eventDate: evDate });
     console.log(evDate);
   };
 
   const selectOutcomeDate = (date) => {
     setSelectedOutcomeDate(date);
-    let outcomeDate = date.toISOString().split("T")[0];
-    setSportEvent({...sportEvent, eventOutcomeDate : outcomeDate});    
+    let outcomeDate = date.getTime();
+    setSportEvent({ ...sportEvent, outcomeAvailableDate: outcomeDate });
     console.log(outcomeDate);
   };
-  
 
   const style = {
     paddingRight: "369px",
@@ -33,42 +40,53 @@ function SportEventForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(sportEvent)
-   // createSportEvent();   
+    console.log(sportEvent);
+    createSportEvent();
   };
 
   const handleChange = (event) => {
-      const { name, value } = event.target;
-      setSportEvent({...sportEvent, [name] : value})      
-  }
+    const { name, value } = event.target;
+    setSportEvent({ ...sportEvent, [name]: value });
+  };
 
   const createSportEvent = async () => {
-      await contract.methods.createSportEvent(sportEvent).send({ from:accounts[0] });
-      const response = await contract.methods.sportEvents.get().call();
-      console.log(response);
-  }
+    const create = await contract.methods
+      .createSportEvent(
+        sportEvent.eventName,
+        sportEvent.eventDate,
+        sportEvent.outcomeAvailableDate
+      )
+      .send({ gas: 900000, from: accounts });
+    const response = await contract.methods.sportEvents.get().call();
+    console.log("CreateSportEvent Response", response);
+  };
 
   const Web3 = async () => {
     const method = await contract.methods;
-    console.log("methods", method)
-  }
+    console.log("methods", method);
+  };
 
-  useEffect(() => {
-    
-  }, [])
+  const testName = async () => {
+    const insert = await contract.methods
+      .insertText("name")
+      .send({ gas: 900000, from: accounts[0] });
+    const response = await contract.methods
+      .names(0)
+      .call({ from: accounts[0] });
+    console.log("Test insert text", response);
+  };
 
   return (
     <div>
-      <p>{accounts}</p>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
             type="text"
-            name="name"
+            name="eventName"
             className="form-control"
             id="inputName"
-            value={sportEvent.name}
-            placeholder="Name"
+            value={sportEvent.eventName}
+            placeholder="Event Name"
             onChange={handleChange}
           />
         </div>
@@ -84,7 +102,7 @@ function SportEventForm() {
         </div>
         <div className="mb-3" style={style}>
           <DatePicker
-            name="eventOutcomeDate"
+            name="outcomeAvailableDate"
             selected={selectedOutcomeDate}
             onChange={selectOutcomeDate}
             dateFormat="dd/MM/yyyy"
@@ -114,10 +132,13 @@ function SportEventForm() {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button onClick={handleSubmit} className="btn btn-primary">
           Submit
         </button>
       </form>
+      <button onClick={testName} className="btn btn">
+        Submit
+      </button>
     </div>
   );
 }
