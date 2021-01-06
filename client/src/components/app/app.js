@@ -1,16 +1,22 @@
-import React, {useState,useEffect} from "react";
-import SimpleStorageContract       from "../../contracts/SimpleStorage.json";
-import getWeb3                     from "../../getWeb3";
+import React, { useState, useEffect } from "react";
+import SimpleStorageContract from "../../contracts/SimpleStorage.json";
+import Bet from "../../contracts/Bet.json"
+import getWeb3 from "../../getWeb3";
+import SportEventForm from "../SportEventsForm/SportEventForm";
+import "react-datepicker/dist/react-datepicker.css";
+import Web3Context from "../Web3context";
 
-import "./app.css";
+//import "./app.css";
+import Navbar from "../Navbar/Navbar";
 
 const App = () => {
-  const [balance,setBalance] = useState(0);
+  const [balance, setBalance] = useState(0);
   const [ethToSend, setEthToSend] = useState("");
   const [storageValue, setStorageValue] = useState(0);
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
-  const [contract, setContract] = useState(null);
+  const [contract, setContract] = useState(null);  
+  const [currentAccount, setCurrentAccount] = useState("");
 
   async function init() {
     try {
@@ -22,10 +28,10 @@ const App = () => {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
+      const deployedNetwork = Bet.networks[networkId];
       const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
+        Bet.abi,
+        deployedNetwork && deployedNetwork.address
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
@@ -36,63 +42,44 @@ const App = () => {
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
+        `Failed to load web3, accounts, or contract. Check console for details.`
       );
       console.error(error);
     }
-  };
-  
-  const handleValue = (evt) => {
-    setEthToSend(evt.currentTarget.value);
   }
 
-  const handleSubmit = (evt) =>  {
-    evt.preventDefault();
-    sendEth()
+  const getAccount = async () => {
+    const accounts = await window.ethereum.enable();
+    setCurrentAccount(accounts[0]);
   };
 
-  const sendEth = async () => {
-    // Stores a given value, 5 by default.
-    await contract.methods.set(ethToSend).send({ from: accounts[0]});
+  window.ethereum.on("accountsChanged", function () {
+    getAccount();
+  });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-    console.log(response);
-    // Update state with the result.
-    setStorageValue(Number(response)+Number(balance));
-    setBalance(response);
-    
-  };
   useEffect(() => {
     init();
- },[]);
+  }, []);
+
+  useEffect(() => {
+    getAccount();
+  }, [currentAccount]);
 
   if (!web3) {
     return <div>Loading Web3, accounts, and contract...</div>;
   }
   return (
     <div className="App">
-      <main className="app-main">
-        <div>
-          <h1>Good to Go!</h1>
-          <p>Your Truffle Box is installed and ready.</p>
-          <h2>Smart Contract Example</h2>
-          <p>
-            Feel free to send eth!!!
-            You can see your stored balance below
-          </p>
-          <form onSubmit={handleSubmit}>
-            <input className="app-input" type="text" value={ethToSend} onChange={handleValue}/>
-            <button className="app-button" type="submit" value="Send" >Send</button>
-          </form>
-          <p>
-            What amazing is Truffle with react Box 
-          </p>
-          <div>The stored balance is: {storageValue}</div>
+      <Web3Context.Provider value={{ web3, accounts, contract, currentAccount }}>
+        <main className="app-main">
+          <div>
+            <Navbar />
+            <SportEventForm />
           </div>
         </main>
+      </Web3Context.Provider>
     </div>
   );
-}
+};
 
 export default App;
