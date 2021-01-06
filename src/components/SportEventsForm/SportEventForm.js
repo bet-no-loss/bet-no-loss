@@ -35,7 +35,7 @@ function SportEventForm() {
   };
 
   const style = {
-    paddingRight: "369px",
+    paddingRigth: "550px",
   };
 
   const handleSubmit = (event) => {
@@ -77,68 +77,71 @@ function SportEventForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <input
-            type="text"
-            name="eventName"
-            className="form-control"
-            id="inputName"
-            value={sportEvent.eventName}
-            placeholder="Event Name"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3" style={style}>
-          <DatePicker
-            name="eventDate"
-            selected={selectedDate}
-            onChange={selectEventDate}
-            dateFormat="dd/MM/yyyy"
-            minDate={new Date()}
-            placeholderText="Event Date"
-          />
-        </div>
-        <div className="mb-3" style={style}>
-          <DatePicker
-            name="outcomeAvailableDate"
-            selected={selectedOutcomeDate}
-            onChange={selectOutcomeDate}
-            dateFormat="dd/MM/yyyy"
-            minDate={new Date()}
-            placeholderText="Event Outcome Date"
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            name="teamA"
-            className="form-control"
-            id="inputName"
-            placeholder="Team A"
-            value={sportEvent.teamA}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="text"
-            name="teamB"
-            className="form-control"
-            id="inputName"
-            placeholder="Team B"
-            value={sportEvent.teamB}
-            onChange={handleChange}
-          />
-        </div>
-        <button onClick={handleSubmit} className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-      <button onClick={testName} className="btn btn">
+    <div className="card text-center">
+      <div class="card-header">Create Sport Event</div>
+      <div className="card-body">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="eventName"
+              className="form-control"
+              id="inputName"
+              value={sportEvent.eventName}
+              placeholder="Event Name"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3" style={style}>
+            <DatePicker
+              name="eventDate"
+              selected={selectedDate}
+              onChange={selectEventDate}
+              dateFormat="dd/MM/yyyy"
+              minDate={new Date()}
+              placeholderText="Event Date"
+            />
+          </div>
+          <div className="mb-3" style={style}>
+            <DatePicker
+              name="outcomeAvailableDate"
+              selected={selectedOutcomeDate}
+              onChange={selectOutcomeDate}
+              dateFormat="dd/MM/yyyy"
+              minDate={new Date()}
+              placeholderText="Event Outcome Date"
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="teamA"
+              className="form-control"
+              id="inputName"
+              placeholder="Team A"
+              value={sportEvent.teamA}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="teamB"
+              className="form-control"
+              id="inputName"
+              placeholder="Team B"
+              value={sportEvent.teamB}
+              onChange={handleChange}
+            />
+          </div>
+          <button onClick={handleSubmit} className="btn btn-primary" style={{marginLeft:"300px"}}>
+            Submit
+          </button>
+        </form>
+        {/* <button onClick={testName} className="btn btn">
         Submit
-      </button>
+      </button> */}
+      </div>
     </div>
   );
 }
