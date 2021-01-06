@@ -6,7 +6,7 @@ import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
 
-import "./app.css";
+//import "./app.css";
 import Navbar from "../Navbar/Navbar";
 
 const App = () => {
@@ -47,15 +47,6 @@ const App = () => {
       console.error(error);
     }
   }
-
-  const handleValue = (evt) => {
-    setEthToSend(evt.currentTarget.value);
-  };
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-  };
-
 
   const getAccount = async () => {
     const accounts = await window.ethereum.enable();
