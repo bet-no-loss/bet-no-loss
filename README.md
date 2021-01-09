@@ -4,19 +4,20 @@
 
 ## Description
 
-You bet on a sport event during week 1.  
-The total amount of bets (all players included) is then staked in DeFi during week 2.  
-Finally at the end of week 3, each winner has the opportunity to withdraw the accrued interests in DeFi proportionally to what he/she staked minus the bet-no-loss fee.
+- Players bet on a sport event during week 1.  
+- The total amount of bets (all players included) is then staked in DeFi during week 2.  
+- Finally at the end of week 3, 90% of accrued interests can be split between winners according to their share in the total deposit value. 
+Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
 
 
 ### Links
 
-* [DaPP Heroku](https://bet-no-loss.herokuapp.com/)
+* [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
+* [Wireframes and Interactions Diagrams](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/)
-* [Issues](https://github.com/bet-no-loss/bet-no-loss/issues)
+* [DaPP Heroku](https://bet-no-loss.herokuapp.com/)
 * [Trello](https://trello.com/b/c6Xhe5hM)
 * [Google Drive](https://drive.google.com/drive/folders/1Pr22-VTGNVREl7AUdPy1f77OxrgqNvgO)
-* [Github](https://github.com/bet-no-loss)
 * Discord: `#pari-no-loss` channel on the discord Server named *"La Boite a Idee pour un projet commun Alyra"*
 * [YouTube Playlist](https://www.youtube.com/playlist?list=PLNwicjhsnUEooeRnNgrkV0TH6m21F3jpA) 
 
