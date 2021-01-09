@@ -41,12 +41,17 @@ contract Bet is Ownable {
             uint256 _eventOutcomeDate
     );
 
+    // @dev TODO
+    constructor(address _oracle_addr)  Ownable() {
+        _oracle_address = _oracle_addr;
+    }
+
     /**
      * @dev Add a new event, then notifies the Oracle in charge of monitoring its outcome.
      *
      * @return the id of the new event
      * @param _eventName event name
-     * @param _eventDate when this event will take place (as an Epoch date ie. number of milliseconds since Unix Epoch)
+     * @param _eventDate when this event will take place (as an Epoch date ie. number of seconds since Unix Epoch)
      * @param _outcomeAvailableDate when the event outcome will be available (Epoch date)
      */
     function createSportEvent(
