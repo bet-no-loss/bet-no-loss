@@ -2,36 +2,43 @@ import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
 import DatePicker from "react-datepicker";
 import Web3Context from "../Web3context";
+import { BigNumber } from "bignumber.js";
 
 function SportEventForm() {
   const web3Context = useContext(Web3Context);
-  const { web3, accounts, contract, currentAccount } = web3Context;
+  const {
+    web3,
+    accounts,
+    contract,
+    currentAccount,
+    sportEvent,
+    setSportEvent,
+  } = web3Context;
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedOutcomeDate, setSelectedOutcomeDate] = useState("");
-  const initialState = {
-    eventName: "",
-    eventDate: "",
-    teamA: "",
-    teamB: "",
-    outcomeAvailableDate: "",
-  };
-  const [sportEvent, setSportEvent] = useState(initialState);
-
-  console.log("WEB3", web3.eth.getAccounts());
+  // const initialState = {
+  //   eventName: "",
+  //   eventDate: "",
+  //   teamA: "",
+  //   teamB: "",
+  //   outcomeAvailableDate: "",
+  // };
+  // const [sportEvent, setSportEvent] = useState(initialState);
 
   const selectEventDate = (date) => {
     setSelectedDate(date);
-    //let evDate = date.toISOString().split("T")[0];
     let evDate = date.getTime();
+    //const dateBN = new BigNumber(evDate);
     setSportEvent({ ...sportEvent, eventDate: evDate });
-    console.log(evDate);
+    console.log("Event Date", evDate);
   };
 
   const selectOutcomeDate = (date) => {
     setSelectedOutcomeDate(date);
     let outcomeDate = date.getTime();
+    //const dateBN = new BigNumber(outcomeDate);
     setSportEvent({ ...sportEvent, outcomeAvailableDate: outcomeDate });
-    console.log(outcomeDate);
+    console.log("Outcome Date",outcomeDate);
   };
 
   const style = {
@@ -41,7 +48,7 @@ function SportEventForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(sportEvent);
-    createSportEvent();
+    createEvent();
   };
 
   const handleChange = (event) => {
@@ -49,21 +56,24 @@ function SportEventForm() {
     setSportEvent({ ...sportEvent, [name]: value });
   };
 
-  const createSportEvent = async () => {
-    const create = await contract.methods
-      .createSportEvent(
-        sportEvent.eventName,
-        sportEvent.eventDate,
-        sportEvent.outcomeAvailableDate
-      )
-      .send({ gas: 900000, from: accounts });
-    const response = await contract.methods.sportEvents.get().call();
-    console.log("CreateSportEvent Response", response);
-  };
+  const createEvent = async () => {
+    try {
+      const create = await contract.methods
+        .createSportEvent(
+          sportEvent.eventName,
+          sportEvent.eventDate,
+          sportEvent.outcomeAvailableDate
+        )
+        .send({ gas: 2100000, from: accounts[0] });
+      console.log("CREATE", create);
 
-  const Web3 = async () => {
-    const method = await contract.methods;
-    console.log("methods", method);
+      const response = await contract.methods
+        .sportEvents(sportEvent.eventName)
+        .call({ from: accounts[0] });
+      console.log("CreatedSportEvent Response", response);
+    } catch (error) {
+      console.log("ERROR", error);
+    }
   };
 
   const testName = async () => {
@@ -76,9 +86,13 @@ function SportEventForm() {
     console.log("Test insert text", response);
   };
 
+  useEffect(() => {
+    console.log("CONTRACT", contract);
+  }, [contract]);
+
   return (
     <div className="card text-center">
-      <div class="card-header">Create Sport Event</div>
+      <div className="card-header">Create Sport Event</div>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -134,13 +148,17 @@ function SportEventForm() {
               onChange={handleChange}
             />
           </div>
-          <button onClick={handleSubmit} className="btn btn-primary" style={{marginLeft:"300px"}}>
+          <button
+            onClick={handleSubmit}
+            className="btn btn-primary"
+            style={{ marginLeft: "300px" }}
+          >
             Submit
           </button>
         </form>
         {/* <button onClick={testName} className="btn btn">
-        Submit
-      </button> */}
+          Submit
+        </button> */}
       </div>
     </div>
   );
