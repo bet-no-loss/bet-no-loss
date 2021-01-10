@@ -75,6 +75,15 @@ truffle deploy --reset --network ganache
 ```
 TODO
 
+# Documentation
+
+Each smart-contract is documented in a Markdown file in `client/src/contracts`.
+
+Should you need to update the documentation, simply run:
+```
+npx leafleth -s contracts
+```
+
 # Decisions
 
 - Crypto-currency used: DAI

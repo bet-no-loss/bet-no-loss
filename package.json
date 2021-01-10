@@ -28,8 +28,10 @@
   },
   "homepage": "https://github.com/bet-no-loss/bet-no-loss#readme",
   "devDependencies": {
+    "@digix/doxity": "^0.5.2",
     "@openzeppelin/test-helpers": "^0.5.9",
     "chai": "^4.2.0",
+    "leafleth": "^0.0.9",
     "moment": "^2.29.1",
     "redux-devtools-extension": "^2.13.8",
     "watch": "^1.0.2"
