@@ -34,6 +34,8 @@ contract Bet is Ownable {
     // @dev id incremented each time an event is created
     uint256 private _eventId;
 
+    address private _oracle_address;
+
     event SportEventCreated(
             uint256 _eventId, 
             string  _eventName,
