@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SimpleStorageContract from "../../contracts/SimpleStorage.json";
-import Bet from "../../contracts/Bet.json"
+import Bet from "../../contracts/Bet.json";
 import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
@@ -8,6 +8,7 @@ import Web3Context from "../Web3context";
 
 //import "./app.css";
 import Navbar from "../Navbar/Navbar";
+import SportEventList from "../SportEventList/SportEventList";
 
 const App = () => {
   const [balance, setBalance] = useState(0);
@@ -15,8 +16,17 @@ const App = () => {
   const [storageValue, setStorageValue] = useState(0);
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
-  const [contract, setContract] = useState(null);  
+  const [contract, setContract] = useState(null);
   const [currentAccount, setCurrentAccount] = useState("");
+  const [testName, setTestName] = useState("This is a test");
+  const initialState = {
+    eventName: "",
+    eventDate: "",
+    teamA: "",
+    teamB: "",
+    outcomeAvailableDate: "",
+  };
+  const [sportEvent, setSportEvent] = useState(initialState);
 
   async function init() {
     try {
@@ -70,11 +80,14 @@ const App = () => {
   }
   return (
     <div className="App">
-      <Web3Context.Provider value={{ web3, accounts, contract, currentAccount }}>
+      <Web3Context.Provider
+        value={{ web3, accounts, contract, currentAccount, sportEvent, setSportEvent, testName, setTestName }}
+      >
         <main className="app-main">
           <div>
             <Navbar />
             <SportEventForm />
+            <SportEventList />
           </div>
         </main>
       </Web3Context.Provider>
