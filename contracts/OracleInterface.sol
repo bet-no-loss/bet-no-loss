@@ -2,7 +2,7 @@
 pragma solidity 0.7.6;
 
 
-interface BetInterface {
+interface OracleInterface {
 
     enum EventOutcome {
         Pending,    //match has not been fought to decision

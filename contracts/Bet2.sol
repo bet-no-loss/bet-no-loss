@@ -2,127 +2,194 @@
 pragma solidity 0.7.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./BetInterface.sol";
+import "./OracleInterface.sol";
 
-/// @title BoxingBets
-/// @notice Takes bets and handles payouts for boxing matches 
+/** 
+ * @title An Ethereum smart-contract that takes bets placed on sport events, invests all bets deposits for an event in DeFi and share the accrued interests to the winners proportionnaly to their stake. Players do not loose their stake.
+ * @notice Takes bets and handles payouts for sport events
+ */
 contract Bet2 is Ownable {
     
-    //list of all bets that have been made by that user
+    /** 
+     * @dev list of all bets per user
+     */
     mapping(address => bytes32[]) private userToBets;
-    //for any given event, get a list of all bets that have been made for that event.
+
+    /**
+     *  @dev for any given event, get a list of all bets that have been made for that event.
+     */
     mapping(bytes32 => Bet[]) private eventToBets;
 
-    //event results oracle 
+    /** 
+     * @dev Address of the sport events Oracle
+     */
     address internal betOracleAddr = address(0);
-    BetInterface internal betOracle = BetInterface(betOracleAddr); 
 
-    //constants
-    uint internal minimumBet = 1000000000000;
+    /**
+     *  @dev Instance of the sport events Oracle (used to register sport events get their outcome).
+     */
+    OracleInterface internal betOracle = OracleInterface(betOracleAddr); 
 
+    /**
+     * @dev minimum bet amount 
+     */
+    uint internal minimumBet = 0.1 ether;
+
+    /**
+     * @dev payload of a bet on a sport event
+     */
     struct Bet {
-        address user;
-        bytes32 eventId;
-        uint amount; 
-        uint8 chosenWinner; 
+        address user;          // who placed it
+        bytes32 eventId;       // id of the sport event as registered in the Oracle
+        uint    amount;        // bet amount
+        uint8   chosenWinner;  // Index of the team that will win according to the player
     }
 
+    /**
+     * @dev Possible outcomes for a sport event
+     */
     enum BettableOutcome {
         Team1,
         Team2
     }
 
-    /// @notice determines whether or not the user has already bet on the given match
-    /// @param _user address of a user
-    /// @param _eventId id of a event 
-    /// @param _chosenWinner the index of the participant to bet on (to win)
+    /**
+     * @dev check that the passed in address is not 0. 
+     */
+    modifier notAddress0(address _address) {
+        require(_address != address(0), "Address 0 is not allowed");
+        _;
+    }
+
+    /**
+     * @notice determines whether or not the user has already bet on the given sport event
+     * @param _user address of a player
+     * @param _eventId id of a event 
+     * @param _chosenWinner the index of the participant to bet on (to win)
+     */
     function _betIsValid(address _user, bytes32 _eventId, uint8 _chosenWinner) private pure returns (bool) {
         return true;
     }
 
-    /// @notice determines whether or not bets may still be accepted for the given match
-    /// @param _eventId id of an event 
+    /**
+     * @notice determines whether or not bets may still be accepted for the given match
+     * @param _eventId id of an event 
+     */
     function _eventOpenForBetting(bytes32 _eventId) private pure returns (bool) {        
         return true;
     }
 
-
-    /// @notice sets the address of the sport bet oracle contract to use 
-    /// @dev setting a wrong address may result in false return value, or error 
-    /// @param _oracleAddress the address of the sport bet oracle 
+    /**
+     * @notice sets the address of the sport event bet oracle contract to use 
+     * @dev setting a wrong address may result in false return value, or error 
+     * @param _oracleAddress the address of the sport event bet oracle 
+     */
     function setOracleAddress(address _oracleAddress) external onlyOwner returns (bool) {
         betOracleAddr = _oracleAddress;
-        betOracle = BetInterface(betOracleAddr); 
+        betOracle = OracleInterface(betOracleAddr); 
         return betOracle.testConnection();
     }
 
-    /// @notice gets the address of the boxing oracle being used 
+    /**
+     * @notice gets the address of the sport events oracle being used
+     */
     function getOracleAddress() external view returns (address) {
         return betOracleAddr;
     }
  
-    /// @notice gets a list ids of all currently bettable events
-    function getBettableEvents() public view returns (bytes32[] memory) {
+    /**
+     * @notice gets a list ids of all currently bettable events
+     * @return pendingEvents the list of pending sport events 
+     */
+    function getBettableEvents() public view returns (bytes32[] memory pendingEvents) {
         return betOracle.getPendingEvents(); 
     }
 
-    /// @notice returns the full data of the specified event 
-    /// @param _eventId the id of the desired event
+    /**
+     * @notice returns the full data of the specified event 
+     * @param _eventId the id of the desired event
+     * @return id   the id of the event
+     * @return name the name of the event 
+     * @return participants a string with the name of the event's participants separated with a pipe symbol ('|')
+     * @return participantCount the number of the event's participants
+     * @return date when the event takes place
+     * @return outcome an integer that represents the event outcome
+     * @return winner the index of the winner
+     */
     function getEvent(bytes32 _eventId) public view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint8 participantCount,
-        uint date, 
-        BetInterface.EventOutcome outcome, 
-        int8 winner) { 
-
+        bytes32                   id,
+        string memory             name, 
+        string memory             participants,
+        uint8                     participantCount,
+        uint                      date, 
+        OracleInterface.EventOutcome outcome, 
+        int8                      winner
+    ) { 
         return betOracle.getEvent(_eventId); 
     }
 
-    /// @notice returns the full data of the most recent bettable event 
-    function getMostRecentEvent() public view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint participantCount, 
-        uint date, 
-        BetInterface.EventOutcome outcome, 
-        int8 winner) { 
-
+    /**
+     * @notice returns the full data of the latest bettable sport event 
+     * @return id   the id of the event
+     * @return name the name of the event 
+     * @return participants the name of the event's participants separated with a pipe symbol ('|')
+     * @return participantCount the number of the event's participants
+     * @return date when the event takes place
+     * @return outcome an integer that represents the event outcome
+     * @return winner the index of the winner (0 = TeamA, 1 = TeamB)
+     */
+    function getMostRecentEvent() 
+        public view returns (
+            bytes32                      id,
+            string memory                name, 
+            string memory                participants,
+            uint                         participantCount, 
+            uint                         date, 
+            OracleInterface.EventOutcome outcome, 
+            int8                         winner
+        )
+    { 
         return betOracle.getMostRecentEvent(true); 
     }
 
-    /// @notice places a non-rescindable bet on the given event 
-    /// @param _eventId the id of the event on which to bet 
-    /// @param _chosenWinner the index of the participant chosen as winner
-    function placeBet(bytes32 _eventId, uint8 _chosenWinner) public payable {
-
-        //bet must be above a certain minimum 
+    /**
+     * @notice places a bet on the given event 
+     * @param _eventId      id of the sport event on which to bet 
+     * @param _chosenWinner index of the supposed winner team
+     */
+    function placeBet(bytes32 _eventId, uint8 _chosenWinner) 
+        public payable 
+        notAddress0(msg.sender)
+    {
+        // At least a minimum amout is required to bet
         require(msg.value >= minimumBet, "Bet amount must be >= minimum bet");
 
-        //make sure that event exists 
+        // Make sure this is sport event exists (ie. already registered in the Oracle)
         require(betOracle.eventExists(_eventId), "Specified event not found"); 
 
-        //require that chosen winner falls within the defined number of participants for event
+        // The chosen winner must fall within the defined number of participants for this event
         require(_betIsValid(msg.sender, _eventId, _chosenWinner), "Bet is not valid");
 
-        //event must still be open for betting
+        // Event must still be open for betting
         require(_eventOpenForBetting(_eventId), "Event not open for betting"); 
 
-        //transfer the money into the account 
+
+        // transfer the player's money into the contract's account 
         payable(address(this)).transfer(msg.value);
 
-        //add the new bet 
+        // add the new bet 
         Bet[] storage bets = eventToBets[_eventId]; 
-        bets.push(Bet(msg.sender, _eventId, msg.value, _chosenWinner)); 
+        bets.push( Bet(msg.sender, _eventId, msg.value, _chosenWinner)); 
 
-        //add the mapping
+        // add the mapping
         bytes32[] storage userBets = userToBets[msg.sender]; 
         userBets.push(_eventId); 
     }
 
-    /// @notice for testing; tests that the boxing oracle is callable 
+    /**
+     * @notice for testing purposes: make sure that the sport event oracle is callable 
+     * TODO: Remove me
+     */
     function testOracleConnection() public view returns (bool) {
         return betOracle.testConnection(); 
     }

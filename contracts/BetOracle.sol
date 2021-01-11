@@ -4,110 +4,112 @@ pragma solidity 0.7.6;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./DateLib.sol";
 
-/*
-TEST: 
-- testConnection 
-- getAddress
-- eventExists(0) 
-- eventExists(1)
-- declareOutcome(0, 2)
-- getPendingEvents()
-- getAllSportEvents()
-- getMatch(0)
-- getMostRecentEvent(true)
-- addTestData()
-- eventExists(0) 
-- eventExists(1)
-- declareOutcome(0, 2)
-- getPendingEvents()               
-- getAllSportEvents()                   
-- getMatch(0)
-- getMostRecentEvent(true)
-- getMostRecentEvent(false) 
-- getMatch(0x...)                   
-- declareOutcome(0x..., 2)              
-- getMostRecentEvent(true)
-- getMostRecentEvent(false)
-- getMatch(0x...)              
-- add duplicate match      
-*/
 
-/// @title BetOracle
-/// @notice Collects and provides information on sport events and their outcomes 
+/** 
+ * @title An smart-contract Oracle that register sport events, retrieve their outcomes and communicate their results when asked for.
+ * @notice Collects and provides information on sport events and their outcomes 
+ */
 contract BetOracle is Ownable {
-    SportEvent[] events; 
-    mapping(bytes32 => uint) eventIdToIndex; 
 
     using DateLib for DateLib.DateTime;
 
+    /**
+     * @dev all the sport events
+     */
+    SportEvent[] events; 
 
-    //defines a match along with its outcome
+    /*
+     * @dev map of composed {eventId (SHA3 of event key infos) => eventIndex (in events)} pairs
+     */
+    mapping(bytes32 => uint) eventIdToIndex; 
+
+    /***
+      * @dev defines a sport event along with its outcome
+      */
     struct SportEvent {
-        bytes32 id;
-        string name;
-        string participants;
-        uint8 participantCount;
-        uint date; 
+        bytes32      id;
+        string       name;
+        string       participants;
+        uint8        participantCount;
+        uint         date; 
         EventOutcome outcome;
-        int8 winner;
+        int8         winner;
     }
 
-    //possible even outcomes 
+    /**
+     * @dev the possible outcomes for an event
+     */
     enum EventOutcome {
-        Pending,    //match has not been fought to decision
-        Underway,   //match has started & is underway
-        Draw,       //anything other than a clear winner (e.g. cancelled)
-        Decided     //index of participant who is the winner 
+        Pending,    // event has not been fought to decision
+        Underway,   // event has started & is underway
+        Draw,       // anything other than a clear winner (e.g. cancelled)
+        Decided     // index of participant who is the winner 
     }
 
-
-    /// @notice returns the array index of the match with the given id 
-    /// @dev if the event id is invalid, then the return value will be incorrect and may cause error; you must call eventExists(_eventId) first!
-    /// @param _eventId the match id to get
-    // @return an array index 
-    function _getMatchIndex(bytes32 _eventId) private view returns (uint) {
+    /**
+     * @notice returns the array index of the sport event with the given id 
+     * @dev if the event id is invalid, then the return value will be incorrect and may cause error; you must call eventExists(_eventId) first!
+     * @param _eventId the sport event id to get
+     * @return an array index 
+     */
+    function _getMatchIndex(bytes32 _eventId)
+        private view returns (uint)
+    {
         return eventIdToIndex[_eventId]-1; 
     }
 
 
-    /// @notice determines whether a sport event exists with the given id 
-    /// @param _eventId the sport event id to test
-    // @return true if sport event exists and id is valid
-    function eventExists(bytes32 _eventId) public view returns (bool) {
-        if (events.length == 0)
+    /**
+     * @notice determines whether a sport event exists with the given id 
+     * @param _eventId the sport event id to test
+     * @return true if sport event exists and its id is valid
+     */
+    function eventExists(bytes32 _eventId) 
+        public view returns (bool)
+    {
+        if (events.length == 0) {
             return false;
+        }
         uint index = eventIdToIndex[_eventId]; 
         return (index > 0); 
     }
 
-    /// @notice puts a new pending sport event into the blockchain 
-    /// @param _name descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)
-    /// @param _participants |-delimited string of participants names (e.g. "Manny Pac|Floyd May")
-    /// @param _participantCount number of participants 
-    /// @param _date date set for the sport event 
-    // @return the unique id of the newly created sport event 
-    function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date) onlyOwner public returns (bytes32) {
+    /**
+     * @notice Add a new pending sport event into the blockchain 
+     * @param _name descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)
+     * @param _participants |-delimited string of participants names (e.g. "Montpellier|Monaco")
+     * @param _participantCount number of participants 
+     * @param _date date set for the sport event 
+     * @return the unique id of the newly created sport event 
+     */
+    function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date)
+        onlyOwner public returns (bytes32)
+    {
 
-        //hash the crucial info to get a unique id 
+        // Hash key fields of the sport event to get a unique id 
         bytes32 id = keccak256(abi.encodePacked(_name, _participantCount, _date)); 
 
-        //require that the match be unique (not already added) 
+        // Make sure that the sport event is unique and does not exist yet
         require(!eventExists(id));
         
-        //add the sport event 
+        // Add the sport event 
         events.push(SportEvent(id, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
         uint newIndex      = events.length - 1;
         eventIdToIndex[id] = newIndex + 1;
         
-        //return the unique id of the new sport event
+        // Return the unique id of the new sport event
         return id;
     }
 
-    /// @notice sets the outcome of a predefined match, permanently on the blockchain
-    /// @param _eventId unique id of the match to modify
-    /// @param _outcome outcome of the match 
-    /// @param _winner 0-based id of the winnner
-    function declareOutcome(bytes32 _eventId, EventOutcome _outcome, int8 _winner) onlyOwner external {
+    /**
+     * @notice sets the outcome of a predefined match, permanently on the blockchain
+     * @param _eventId unique id of the match to modify
+     * @param _outcome outcome of the match 
+     * @param _winner 0-based id of the winnner
+     */
+    function declareOutcome(bytes32 _eventId, EventOutcome _outcome, int8 _winner) 
+        onlyOwner external
+    {
 
         //require that it exists
         require(eventExists(_eventId)); 
@@ -127,18 +129,22 @@ contract BetOracle is Ownable {
             theMatch.winner = _winner;
     }
 
-    /// @notice gets the unique ids of all pending events, in reverse chronological order
-    // @return an array of unique event ids
-    function getPendingEvents() public view returns (bytes32[] memory) {
+    /**
+     * @notice gets the unique ids of all pending events, in reverse chronological order
+     * @return an array of unique event ids
+     */
+    function getPendingEvents()
+        public view returns (bytes32[] memory)
+    {
         uint count = 0; 
 
-        //get count of pending events 
+        // Get the count of pending events 
         for (uint i = 0; i < events.length; i++) {
             if (events[i].outcome == EventOutcome.Pending) 
                 count++; 
         }
 
-        //collect up all the pending events
+        // Collect up all the pending events
         bytes32[] memory output = new bytes32[](count); 
 
         if (count > 0) {
@@ -152,9 +158,13 @@ contract BetOracle is Ownable {
         return output; 
     }
 
-    /// @notice gets the unique ids of events, pending and decided, in reverse chronological order
-    // @return an array of unique match ids
-    function getAllSportEvents() public view returns (bytes32[] memory) {
+    /**
+     * @notice gets the unique ids of events, pending and decided, in reverse chronological order
+     * @return an array of unique match ids
+     */
+    function getAllSportEvents() 
+        public view returns (bytes32[] memory)
+    {
         bytes32[] memory output = new bytes32[](events.length); 
 
         //get all ids 
@@ -168,19 +178,30 @@ contract BetOracle is Ownable {
         return output; 
     }
 
-    /// @notice gets the specified match 
-    /// @param _eventId the unique id of the desired match 
-    // @return match data of the specified match 
-    function getEvent(bytes32 _eventId) public view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint8 participantCount,
-        uint date, 
-        EventOutcome outcome, 
-        int8 winner) {
+    /**
+     * @notice gets the specified sport event and return its data
+     * @param _eventId the unique id of the desired event
+     * @return id   the id of the event
+     * @return name the name of the event 
+     * @return participants a string with the name of the event's participants separated with a pipe symbol ('|')
+     * @return participantCount the number of the event's participants
+     * @return date when the event takes place
+     * @return outcome an integer that represents the event outcome
+     * @return winner the index of the winner
+     */
+    function getEvent(bytes32 _eventId) 
+        public view returns (
+            bytes32       id,
+            string memory name, 
+            string memory participants,
+            uint8         participantCount,
+            uint          date, 
+            EventOutcome  outcome, 
+            int8          winner
+        )
+    {
         
-        //get the sport event 
+        // Get the sport event 
         if (eventExists(_eventId)) {
             SportEvent storage theMatch = events[_getMatchIndex(_eventId)];
             return (theMatch.id, theMatch.name, theMatch.participants, theMatch.participantCount, theMatch.date, theMatch.outcome, theMatch.winner); 
@@ -190,18 +211,29 @@ contract BetOracle is Ownable {
         }
     }
 
-    /// @notice gets the most recent sport event or pending match 
-    /// @param _pending if true, will return only the most recent pending sport event; 
-    /// otherwise, returns the most recent sport event either pending or completed
-    // @return sport event data 
-    function getMostRecentEvent(bool _pending) public view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint8 participantCount,
-        uint date, 
-        EventOutcome outcome, 
-        int8 winner) {
+    /**
+     * @notice return the data of the most recent sport event or pending event
+     * @param _pending if true, returns only the most recent pending sport event;   
+     *   otherwise, returns the most recent sport event either pending or completed
+     * @return id   the id of the event
+     * @return name the name of the event 
+     * @return participants a string with the name of the event's participants separated with a pipe symbol ('|')
+     * @return participantCount the number of the event's participants
+     * @return date when the event takes place
+     * @return outcome an integer that represents the event outcome
+     * @return winner the index of the winner
+     */
+    function getMostRecentEvent(bool _pending)
+        public view returns (
+            bytes32         id,
+            string memory   name, 
+            string memory   participants,
+            uint8           participantCount,
+            uint            date, 
+            EventOutcome    outcome, 
+            int8            winner
+        )
+    {
 
         bytes32 eventId = 0; 
         bytes32[] memory ids;
@@ -215,26 +247,38 @@ contract BetOracle is Ownable {
             eventId = ids[0]; 
         }
         
-        //by default, return a null match
+        // Return a null sport event by default
         return getEvent(eventId); 
     }
 
-    /// @notice can be used by a client contract to ensure that they've connected to this contract interface successfully
-    // @return true, unconditionally 
-    function testConnection() public pure returns (bool) {
+    /**
+     * @notice can be used by a client contract to ensure that they've connected to this contract interface successfully
+     * @return true, unconditionally 
+     */
+    function testConnection() 
+        public pure returns (bool)
+    {
         return true; 
     }
 
-    /// @notice gets the address of this contract 
-    // @return address 
-    function getAddress() public view returns (address) {
+    /**
+     * @notice gets the address of this contract 
+     * @return address 
+     */
+    function getAddress() 
+        public view returns (address)
+    {
         return address(this);
     }
 
-    /// @notice for testing 
-    function addTestData() public onlyOwner {
+    /**
+     * @notice for testing purposes only
+     * TODO: Remove me before going live
+     */
+    function addTestData()
+        public onlyOwner
+    {
         addSportEvent("Paris vs. Marseille", "PSG|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
         addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
-    
     }
 }
