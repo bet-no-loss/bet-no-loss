@@ -34,8 +34,6 @@ contract Bet is Ownable {
     // @dev id incremented each time an event is created
     uint256 private _eventId;
 
-    address private _oracle_address;
-
     event SportEventCreated(
             uint256 _eventId, 
             string  _eventName,
@@ -43,12 +41,6 @@ contract Bet is Ownable {
             uint256 _eventOutcomeDate
     );
 
-
-    // @dev TODO
-    constructor(address _oracle_addr)  Ownable() {
-        _oracle_address = _oracle_addr;   
-
-    }
 
     /**
      * @dev Add a new event, then notifies the Oracle in charge of monitoring its outcome.
