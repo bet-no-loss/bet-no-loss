@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import SimpleStorageContract from "../../contracts/SimpleStorage.json";
 import Bet from "../../contracts/Bet.json";
 import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
