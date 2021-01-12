@@ -26,7 +26,7 @@ interface OracleInterface {
         EventOutcome outcome, 
         int8 winner);
 
-    function getMostRecentEvent(bool _pending) external view returns (
+    function getLatestEvent(bool _pending) external view returns (
         bytes32 id,
         string memory name, 
         string memory participants,

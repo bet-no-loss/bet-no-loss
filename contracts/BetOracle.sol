@@ -47,6 +47,33 @@ contract BetOracle is Ownable {
     }
 
     /**
+     * @notice Add a new pending sport event into the blockchain 
+     * @param _name descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)
+     * @param _participants |-delimited string of participants names (e.g. "Montpellier|Monaco")
+     * @param _participantCount number of participants 
+     * @param _date date set for the sport event 
+     * @return the unique id of the newly created sport event 
+     */
+    function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date)
+        onlyOwner public returns (bytes32)
+    {
+
+        // Hash key fields of the sport event to get a unique id 
+        bytes32 id = keccak256(abi.encodePacked(_name, _participantCount, _date)); 
+
+        // Make sure that the sport event is unique and does not exist yet
+        require(!eventExists(id));
+        
+        // Add the sport event 
+        events.push(SportEvent(id, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
+        uint newIndex      = events.length - 1;
+        eventIdToIndex[id] = newIndex + 1;
+        
+        // Return the unique id of the new sport event
+        return id;
+    }
+
+    /**
      * @notice returns the array index of the sport event with the given id 
      * @dev if the event id is invalid, then the return value will be incorrect and may cause error; you must call eventExists(_eventId) first!
      * @param _eventId the sport event id to get
@@ -72,33 +99,6 @@ contract BetOracle is Ownable {
         }
         uint index = eventIdToIndex[_eventId]; 
         return (index > 0); 
-    }
-
-    /**
-     * @notice Add a new pending sport event into the blockchain 
-     * @param _name descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)
-     * @param _participants |-delimited string of participants names (e.g. "Montpellier|Monaco")
-     * @param _participantCount number of participants 
-     * @param _date date set for the sport event 
-     * @return the unique id of the newly created sport event 
-     */
-    function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date)
-        onlyOwner public returns (bytes32)
-    {
-
-        // Hash key fields of the sport event to get a unique id 
-        bytes32 id = keccak256(abi.encodePacked(_name, _participantCount, _date)); 
-
-        // Make sure that the sport event is unique and does not exist yet
-        require(!eventExists(id));
-        
-        // Add the sport event 
-        events.push(SportEvent(id, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
-        uint newIndex      = events.length - 1;
-        eventIdToIndex[id] = newIndex + 1;
-        
-        // Return the unique id of the new sport event
-        return id;
     }
 
     /**
@@ -223,7 +223,7 @@ contract BetOracle is Ownable {
      * @return outcome an integer that represents the event outcome
      * @return winner the index of the winner
      */
-    function getMostRecentEvent(bool _pending)
+    function getLatestEvent(bool _pending)
         public view returns (
             bytes32         id,
             string memory   name, 
@@ -234,7 +234,6 @@ contract BetOracle is Ownable {
             int8            winner
         )
     {
-
         bytes32 eventId = 0; 
         bytes32[] memory ids;
 
@@ -251,19 +250,10 @@ contract BetOracle is Ownable {
         return getEvent(eventId); 
     }
 
-    /**
-     * @notice can be used by a client contract to ensure that they've connected to this contract interface successfully
-     * @return true, unconditionally 
-     */
-    function testConnection() 
-        public pure returns (bool)
-    {
-        return true; 
-    }
 
     /**
      * @notice gets the address of this contract 
-     * @return address 
+     * @return the address of the BetOracle smart-contract
      */
     function getAddress() 
         public view returns (address)

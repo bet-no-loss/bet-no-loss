@@ -11,12 +11,13 @@ import "./OracleInterface.sol";
 contract Bet2 is Ownable {
     
     /** 
-     * @dev list of all bets per user
+     * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
     mapping(address => bytes32[]) private userToBets;
 
     /**
-     *  @dev for any given event, get a list of all bets that have been made for that event.
+     *  @dev for any given event, get a list of all bets that have been made for that event
+     *    map composed of (event id => array of bets) pairs
      */
     mapping(bytes32 => Bet[]) private eventToBets;
 
@@ -62,12 +63,45 @@ contract Bet2 is Ownable {
     }
 
     /**
+     * @notice sets the address of the sport event bet oracle contract to use 
+     * @dev setting a wrong address may result in false return value, or error 
+     * @param _oracleAddress the address of the sport event bet oracle 
+     */
+    function setOracleAddress(address _oracleAddress)
+        external onlyOwner returns (bool)
+    {
+        betOracleAddr = _oracleAddress;
+        betOracle = OracleInterface(betOracleAddr); 
+        return betOracle.testConnection();
+    }
+
+    /**
+     * @notice for testing purposes: make sure that the sport event oracle is callable 
+     */
+    function testOracleConnection() 
+        public view returns (bool)
+    {
+        return betOracle.testConnection(); 
+    }
+
+   /**
+     * @return the address of the oracle we use to get the sport events and their outcomes
+     */
+    function getOracleAddress() 
+        external view returns (address)
+    {
+        return betOracleAddr;
+    }
+ 
+    /**
      * @notice determines whether or not the user has already bet on the given sport event
      * @param _user address of a player
      * @param _eventId id of a event 
      * @param _chosenWinner the index of the participant to bet on (to win)
      */
-    function _betIsValid(address _user, bytes32 _eventId, uint8 _chosenWinner) private pure returns (bool) {
+    function _betIsValid(address _user, bytes32 _eventId, uint8 _chosenWinner)
+        private pure returns (bool)
+    {
         return true;
     }
 
@@ -75,33 +109,19 @@ contract Bet2 is Ownable {
      * @notice determines whether or not bets may still be accepted for the given match
      * @param _eventId id of an event 
      */
-    function _eventOpenForBetting(bytes32 _eventId) private pure returns (bool) {        
+    function _eventOpenForBetting(bytes32 _eventId)
+        private pure returns (bool)
+    {
         return true;
     }
 
     /**
-     * @notice sets the address of the sport event bet oracle contract to use 
-     * @dev setting a wrong address may result in false return value, or error 
-     * @param _oracleAddress the address of the sport event bet oracle 
-     */
-    function setOracleAddress(address _oracleAddress) external onlyOwner returns (bool) {
-        betOracleAddr = _oracleAddress;
-        betOracle = OracleInterface(betOracleAddr); 
-        return betOracle.testConnection();
-    }
-
-    /**
-     * @notice gets the address of the sport events oracle being used
-     */
-    function getOracleAddress() external view returns (address) {
-        return betOracleAddr;
-    }
- 
-    /**
      * @notice gets a list ids of all currently bettable events
      * @return pendingEvents the list of pending sport events 
      */
-    function getBettableEvents() public view returns (bytes32[] memory pendingEvents) {
+    function getBettableEvents()
+        public view returns (bytes32[] memory pendingEvents)
+    {
         return betOracle.getPendingEvents(); 
     }
 
@@ -116,20 +136,22 @@ contract Bet2 is Ownable {
      * @return outcome an integer that represents the event outcome
      * @return winner the index of the winner
      */
-    function getEvent(bytes32 _eventId) public view returns (
-        bytes32                   id,
-        string memory             name, 
-        string memory             participants,
-        uint8                     participantCount,
-        uint                      date, 
-        OracleInterface.EventOutcome outcome, 
-        int8                      winner
-    ) { 
+    function getEvent(bytes32 _eventId)
+        public view returns (
+            bytes32                   id,
+            string memory             name, 
+            string memory             participants,
+            uint8                     participantCount,
+            uint                      date, 
+            OracleInterface.EventOutcome outcome, 
+            int8                      winner
+        )
+    { 
         return betOracle.getEvent(_eventId); 
     }
 
     /**
-     * @notice returns the full data of the latest bettable sport event 
+     * @notice returns the full data of the most recent bettable sport event 
      * @return id   the id of the event
      * @return name the name of the event 
      * @return participants the name of the event's participants separated with a pipe symbol ('|')
@@ -138,7 +160,7 @@ contract Bet2 is Ownable {
      * @return outcome an integer that represents the event outcome
      * @return winner the index of the winner (0 = TeamA, 1 = TeamB)
      */
-    function getMostRecentEvent() 
+    function getLatestEvent() 
         public view returns (
             bytes32                      id,
             string memory                name, 
@@ -149,7 +171,7 @@ contract Bet2 is Ownable {
             int8                         winner
         )
     { 
-        return betOracle.getMostRecentEvent(true); 
+        return betOracle.getLatestEvent(true); 
     }
 
     /**
@@ -184,13 +206,5 @@ contract Bet2 is Ownable {
         // add the mapping
         bytes32[] storage userBets = userToBets[msg.sender]; 
         userBets.push(_eventId); 
-    }
-
-    /**
-     * @notice for testing purposes: make sure that the sport event oracle is callable 
-     * TODO: Remove me
-     */
-    function testOracleConnection() public view returns (bool) {
-        return betOracle.testConnection(); 
     }
 }
