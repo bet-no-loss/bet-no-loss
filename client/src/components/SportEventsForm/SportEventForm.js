@@ -14,31 +14,12 @@ function SportEventForm() {
     sportEvent,
     setSportEvent,
   } = web3Context;
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedOutcomeDate, setSelectedOutcomeDate] = useState("");
-  // const initialState = {
-  //   eventName: "",
-  //   eventDate: "",
-  //   teamA: "",
-  //   teamB: "",
-  //   outcomeAvailableDate: "",
-  // };
-  // const [sportEvent, setSportEvent] = useState(initialState);
 
   const selectEventDate = (date) => {
-    setSelectedDate(date);
     let evDate = date.getTime();
     //const dateBN = new BigNumber(evDate);
     setSportEvent({ ...sportEvent, eventDate: evDate });
     console.log("Event Date", evDate);
-  };
-
-  const selectOutcomeDate = (date) => {
-    setSelectedOutcomeDate(date);
-    let outcomeDate = date.getTime();
-    //const dateBN = new BigNumber(outcomeDate);
-    setSportEvent({ ...sportEvent, outcomeAvailableDate: outcomeDate });
-    console.log("Outcome Date",outcomeDate);
   };
 
   const style = {
@@ -94,68 +75,29 @@ function SportEventForm() {
     <div className="card text-center">
       <div className="card-header">Create Sport Event</div>
       <div className="card-body">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-3">
+            <label htmlFor="oracleAddress" className="form-label">
+              Oracle Address
+            </label>
             <input
               type="text"
-              name="eventName"
               className="form-control"
-              id="inputName"
-              value={sportEvent.eventName}
-              placeholder="Event Name"
-              onChange={handleChange}
+              id="oracleAddress"
             />
           </div>
-          <div className="mb-3" style={style}>
-            <DatePicker
-              name="eventDate"
-              selected={selectedDate}
-              onChange={selectEventDate}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
-              placeholderText="Event Date"
-            />
-          </div>
-          <div className="mb-3" style={style}>
-            <DatePicker
-              name="outcomeAvailableDate"
-              selected={selectedOutcomeDate}
-              onChange={selectOutcomeDate}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
-              placeholderText="Event Outcome Date"
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              name="teamA"
-              className="form-control"
-              id="inputName"
-              placeholder="Team A"
-              value={sportEvent.teamA}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              name="teamB"
-              className="form-control"
-              id="inputName"
-              placeholder="Team B"
-              value={sportEvent.teamB}
-              onChange={handleChange}
-            />
-          </div>
-          <button
-            onClick={handleSubmit}
-            className="btn btn-primary"
-            style={{ marginLeft: "300px" }}
-          >
-            Submit
+          <button type="submit" className="btn btn-primary">
+            Get
           </button>
         </form>
+        <br />
+        <button
+          onClick={handleSubmit}
+          className="btn btn-primary"
+          onSubmit={handleSubmit}
+        >
+          Add Test Data
+        </button>
         {/* <button onClick={testName} className="btn btn">
           Submit
         </button> */}
