@@ -1,25 +1,25 @@
  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Test Bet2 smart-contract
+// Test Bet smart-contract
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants = require('@openzeppelin/test-helpers/src/constants');
 const { expect }       = require('chai');
 // const moment           = require('moment');
 
-const Bet2      = artifacts.require('Bet2');
+const Bet      = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
 
 
-contract('Bet2', function(accounts) {
+contract('Bet', function(accounts) {
 
     const ownerAddress = accounts[0];
     const address1     = accounts[1];
     const address2     = accounts[2];
     const address3     = accounts[3];
 
-    // Instantiate a new Bet2 contract before running each test in this suite
+    // Instantiate a new Bet contract before running each test in this suite
     beforeEach(async function () {
-        this.betInstance = await Bet2.new( {from: ownerAddress});
+        this.betInstance = await Bet.new( {from: ownerAddress});
     })
 
 
