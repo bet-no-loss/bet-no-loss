@@ -7,8 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "watch": "watch 'npm run test' contracts test ",
-    "test": "truffle test"
+    "compile":       "truffle compile",
+    "test":          "truffle test",
+    "watch":         "npm run watch-test",
+    "watch-test":    "watch 'npm run test' contracts test",
+    "watch-compile": "watch 'npm run compile' contracts"
   },
   "repository": {
     "type": "git",
@@ -19,7 +22,9 @@
     "smart-contract",
     "blockchain",
     "bet",
-    "DeFi"
+    "DeFi",
+    "DApp",
+    "solidity"
   ],
   "author": "@Tantely, @ebouchut",
   "license": "MIT",
