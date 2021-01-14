@@ -2,6 +2,8 @@
 pragma solidity 0.7.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
+
 import "./DateLib.sol";
 
 
@@ -11,7 +13,8 @@ import "./DateLib.sol";
  */
 contract BetOracle is Ownable {
 
-    using DateLib for DateLib.DateTime;
+    using SafeMath for uint;
+    using DateLib  for DateLib.DateTime;
 
     /**
      * @dev all the sport events
@@ -57,20 +60,26 @@ contract BetOracle is Ownable {
     function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date)
         onlyOwner public returns (bytes32)
     {
+        bytes memory bytesName = bytes(_name);
+        require(bytesName.length > 0, "_name cannot be empty");
+        require(
+            _date >= block.timestamp + 1 week,
+            "_date must be >= 1 week from now"
+        );
 
         // Hash key fields of the sport event to get a unique id 
-        bytes32 id = keccak256(abi.encodePacked(_name, _participantCount, _date)); 
+        bytes32 eventId = keccak256(abi.encodePacked(_name, _participantCount, _date));
 
         // Make sure that the sport event is unique and does not exist yet
-        require(!eventExists(id));
+        require( !eventExists(eventId), "Event already exists");
         
         // Add the sport event 
-        events.push(SportEvent(id, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
-        uint newIndex      = events.length - 1;
-        eventIdToIndex[id] = newIndex + 1;
+        events.push( SportEvent(eventId, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
+        uint newIndex           = events.length.sub(1);
+        eventIdToIndex[eventId] = newIndex.add(1);
         
         // Return the unique id of the new sport event
-        return id;
+        return eventId;
     }
 
     /**
@@ -82,9 +91,8 @@ contract BetOracle is Ownable {
     function _getMatchIndex(bytes32 _eventId)
         private view returns (uint)
     {
-        return eventIdToIndex[_eventId]-1; 
+        return eventIdToIndex[_eventId].sub(1); 
     }
-
 
     /**
      * @notice determines whether a sport event exists with the given id 
@@ -110,28 +118,27 @@ contract BetOracle is Ownable {
     function declareOutcome(bytes32 _eventId, EventOutcome _outcome, int8 _winner) 
         onlyOwner external
     {
-
-        //require that it exists
+        // Require that it exists
         require(eventExists(_eventId)); 
 
-        //get the match 
+        // Get the event 
         uint index = _getMatchIndex(_eventId);
         SportEvent storage theMatch = events[index]; 
 
         if (_outcome == EventOutcome.Decided) 
             require(_winner >= 0 && theMatch.participantCount > uint8(_winner)); 
 
-        //set the outcome 
+        // Set the outcome 
         theMatch.outcome = _outcome;
         
-        //set the winner (if there is one)
+        // Set the winner (if there is one)
         if (_outcome == EventOutcome.Decided) 
             theMatch.winner = _winner;
     }
 
     /**
      * @notice gets the unique ids of all pending events, in reverse chronological order
-     * @return an array of unique event ids
+     * @return an array of unique pending events ids
      */
     function getPendingEvents()
         public view returns (bytes32[] memory)
@@ -139,9 +146,9 @@ contract BetOracle is Ownable {
         uint count = 0; 
 
         // Get the count of pending events 
-        for (uint i = 0; i < events.length; i++) {
+        for (uint i = 0; i < events.length; i = i.add(1)) {
             if (events[i].outcome == EventOutcome.Pending) 
-                count++; 
+                count = count.add(1); 
         }
 
         // Collect up all the pending events
@@ -149,9 +156,11 @@ contract BetOracle is Ownable {
 
         if (count > 0) {
             uint index = 0;
-            for (uint n = events.length; n > 0; n--) {
-                if (events[n-1].outcome == EventOutcome.Pending) 
-                    output[index++] = events[n-1].id;
+            for (uint n = events.length;  n > 0;  n = n.sub(1)) {
+                if (events[n.sub(1)].outcome == EventOutcome.Pending) {
+                    output[index] = events[n.sub(1)].id;
+                    index = index.add(1);
+                }
             }
         } 
 
@@ -165,17 +174,17 @@ contract BetOracle is Ownable {
     function getAllSportEvents() 
         public view returns (bytes32[] memory)
     {
-        bytes32[] memory output = new bytes32[](events.length); 
+        bytes32[] memory event_ids = new bytes32[](events.length); 
 
-        //get all ids 
+        // Collect all event ids
         if (events.length > 0) {
             uint index = 0;
-            for (uint n = events.length; n > 0; n--) {
-                output[index++] = events[n-1].id;
+            for (uint n = events.length; n > 0; n = n.sub(1)) {
+                event_ids[index = index.add(1)] = events[n.sub(1)].id;
             }
         }
         
-        return output; 
+        return event_ids; 
     }
 
     /**
@@ -200,7 +209,6 @@ contract BetOracle is Ownable {
             int8          winner
         )
     {
-        
         // Get the sport event 
         if (eventExists(_eventId)) {
             SportEvent storage theMatch = events[_getMatchIndex(_eventId)];
@@ -234,7 +242,7 @@ contract BetOracle is Ownable {
             int8            winner
         )
     {
-        bytes32 eventId = 0; 
+        bytes32          eventId = 0; 
         bytes32[] memory ids;
 
         if (_pending) {
@@ -268,7 +276,7 @@ contract BetOracle is Ownable {
     function addTestData()
         public onlyOwner
     {
-        addSportEvent("Paris vs. Marseille", "PSG|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
+        addSportEvent("Paris vs. Marseille",  "PSG|OM",   2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
         addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
     }
 }

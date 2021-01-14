@@ -9,7 +9,7 @@ import "./OracleInterface.sol";
  * @notice Takes bets and handles payouts for sport events
  */
 contract Bet2 is Ownable {
-    
+
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
