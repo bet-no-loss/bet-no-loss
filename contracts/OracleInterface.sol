@@ -11,31 +11,40 @@ interface OracleInterface {
         Decided     //index of participant who is the winner 
     }
 
-    function getPendingEvents() external view returns (bytes32[] memory);
+    function getPendingEvents() 
+        external view returns (bytes32[] memory);
 
-    function getAllSportEvents() external view returns (bytes32[] memory);
+    function getAllSportEvents() 
+        external view returns (bytes32[] memory);
 
-    function eventExists(bytes32 _matchId) external view returns (bool); 
+    function eventExists(bytes32 _matchId) 
+        external view returns (bool); 
 
-    function getEvent(bytes32 _matchId) external view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint8 participantCount,
-        uint date, 
-        EventOutcome outcome, 
-        int8 winner);
+    function getEvent(bytes32 _matchId) 
+        external view returns (
+            bytes32       id,
+            string memory name, 
+            string memory participants,
+            uint8         participantCount,
+            uint          date, 
+            EventOutcome  outcome, 
+            int8          winner
+        );
 
-    function getLatestEvent(bool _pending) external view returns (
-        bytes32 id,
-        string memory name, 
-        string memory participants,
-        uint participantCount,
-        uint date, 
-        EventOutcome outcome, 
-        int8 winner);
+    function getLatestEvent(bool _pending) 
+        external view returns (
+            bytes32       id,
+            string memory name, 
+            string memory participants,
+            uint          participantCount,
+            uint          date, 
+            EventOutcome  outcome, 
+            int8          winner
+        );
 
-    function testConnection() external pure returns (bool);
+    function testConnection() 
+        external pure returns (bool);
 
-    function addTestData() external; 
+    function addTestData() 
+        external; 
 }

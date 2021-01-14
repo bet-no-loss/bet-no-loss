@@ -5,8 +5,16 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./OracleInterface.sol";
 
 /** 
- * @title An Ethereum smart-contract that takes bets placed on sport events, invests all bets deposits for an event in DeFi and share the accrued interests to the winners proportionnaly to their stake. Players do not loose their stake.
+ * This Ethereum smart-contract takes bets placed on sport events.  
+ * It then invests all bets deposits for a given event (pot) in DeFi.  
+ * Then once the event outcome is confirmed,
+ * it makes the accrued interests ready for the winners 
+ * to withdraw proportionnaly to their initial stake.  
+ * Players do not loose their stake.
+ *
  * @notice Takes bets and handles payouts for sport events
+ * @title  a Smart-Contract in charge of handling bets on a sport event outcome where players do not loose their stake and winners earn the interests accrued on the stakes.
+ * @author Tanteli, block74 
  */
 contract Bet2 is Ownable {
 
@@ -24,12 +32,12 @@ contract Bet2 is Ownable {
     /** 
      * @dev Address of the sport events Oracle
      */
-    address internal betOracleAddr = address(0);
+    address internal oracleAddress = address(0);
 
     /**
      *  @dev Instance of the sport events Oracle (used to register sport events get their outcome).
      */
-    OracleInterface internal betOracle = OracleInterface(betOracleAddr); 
+    OracleInterface internal betOracle = OracleInterface(oracleAddress); 
 
     /**
      * @dev minimum bet amount 
@@ -62,16 +70,21 @@ contract Bet2 is Ownable {
         _;
     }
 
+    event OracleAddressSet( address _address);
+
     /**
      * @notice sets the address of the sport event bet oracle contract to use 
      * @dev setting a wrong address may result in false return value, or error 
      * @param _oracleAddress the address of the sport event bet oracle 
      */
     function setOracleAddress(address _oracleAddress)
-        external onlyOwner returns (bool)
+        external onlyOwner notAddress0(_oracleAddress)
+        returns (bool)
     {
-        betOracleAddr = _oracleAddress;
-        betOracle = OracleInterface(betOracleAddr); 
+        oracleAddress = _oracleAddress;
+        betOracle = OracleInterface(oracleAddress);
+        emit OracleAddressSet(oracleAddress);
+        
         return betOracle.testConnection();
     }
 
@@ -90,7 +103,7 @@ contract Bet2 is Ownable {
     function getOracleAddress() 
         external view returns (address)
     {
-        return betOracleAddr;
+        return oracleAddress;
     }
  
     /**

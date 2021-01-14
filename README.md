@@ -10,7 +10,7 @@
 Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
 
 
-### Links
+## Links
 
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes and Interactions Diagrams](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
