@@ -63,7 +63,7 @@ contract BetOracle is Ownable {
         bytes memory bytesName = bytes(_name);
         require(bytesName.length > 0, "_name cannot be empty");
         require(
-            _date >= block.timestamp + 1 week,
+            _date >= block.timestamp + 1 weeks,
             "_date must be >= 1 week from now"
         );
 
@@ -269,6 +269,16 @@ contract BetOracle is Ownable {
         return address(this);
     }
 
+    /**
+     * @notice can be used by a client contract to ensure that they've connected to this contract interface successfully
+     * @return true, unconditionally 
+     */
+    function testConnection() 
+        public pure returns (bool)
+    {
+        return true; 
+    }
+    
     /**
      * @notice for testing purposes only
      * TODO: Remove me before going live
