@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
-import DatePicker from "react-datepicker";
 import Web3Context from "../Web3context";
 import { BigNumber } from "bignumber.js";
 
@@ -10,10 +9,14 @@ function SportEventForm() {
     web3,
     accounts,
     contract,
+    oracleContract,
     currentAccount,
     sportEvent,
     setSportEvent,
   } = web3Context;
+
+  const [oracleAddr, setOracleAddr] = useState('');
+  const [addr, setAddr] = useState('');
 
   const selectEventDate = (date) => {
     let evDate = date.getTime();
@@ -26,10 +29,10 @@ function SportEventForm() {
     paddingRigth: "550px",
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(sportEvent);
-    createEvent();
+    await createEvent();
   };
 
   const handleChange = (event) => {
@@ -57,6 +60,35 @@ function SportEventForm() {
     }
   };
 
+  const getOracleAddress = async(e) => {
+    e.preventDefault();
+    try {
+      let Addr = await oracleContract.methods
+      .getAddress().call({ from: accounts[0] });
+      console.log("Oracle Address", Addr);
+      setOracleAddr(Addr);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const insertAddress = async(address) => {
+    try {
+      const insert = await contract.methods
+      .setOracleAddress(address)
+      .send({ gas: 2100000, from: accounts[0] });      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleInsert = (ev) => {
+    ev.preventDefault();
+    console.log("Address inserted", addr);
+    insertAddress(addr);
+  }
+
   const testName = async () => {
     const insert = await contract.methods
       .insertText("name")
@@ -67,34 +99,55 @@ function SportEventForm() {
     console.log("Test insert text", response);
   };
 
+  
+  console.log("BET2 CONTRACT", contract);
+  console.log("ORACLE CONTRACT", oracleContract);
+
   useEffect(() => {
-    console.log("CONTRACT", contract);
-  }, [contract]);
+  }, []);
 
   return (
     <div className="card text-center">
       <div className="card-header">Create Sport Event</div>
       <div className="card-body">
-        <form>
-          <div className="mb-3">
+        <form onSubmit={getOracleAddress}>
+          <div className="mb-3" >
             <label htmlFor="oracleAddress" className="form-label">
               Oracle Address
             </label>
             <input
               type="text"
               className="form-control"
-              id="oracleAddress"
-            />
+              id="oracleAddress" 
+              value={oracleAddr}            
+            /> 
           </div>
           <button type="submit" className="btn btn-primary">
             Get
+          </button>
+        </form>
+        <form onSubmit={handleInsert}>
+          <div className="mb-3" >
+            <label htmlFor="oracleAddress" className="form-label">
+              Insert Oracle Address
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="oracleAddressInput"  
+              value={addr}   
+              onChange={(e) => setAddr(e.target.value)}                   
+            /> 
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Insert
           </button>
         </form>
         <br />
         <button
           onClick={handleSubmit}
           className="btn btn-primary"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit}          
         >
           Add Test Data
         </button>

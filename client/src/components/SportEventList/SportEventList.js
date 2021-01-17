@@ -9,24 +9,33 @@ function SportEventList() {
     contract,
     currentAccount,
     sportEvent,
-    setSportEvent
+    setSportEvent,
   } = web3Context;
 
-  console.log("Sport Events", sportEvent)
+  const [sportEvents, setSportEvents] = useState([
+    { teamA: "PSG", teamB: "OM", date: "23/06/2021", outComedate: "23/05/2021", id: 1 },
+    { teamA: "BARCA", teamB: "LYON", date: "29/10/2021", outComedate: "29/09/2021", id: 2 },
+    { teamA: "LILLE", teamB: "TOULON", date: "12/09/2021", outComedate: "12/08/2021",  id: 3 },
+  ]);
+
+  console.log("Sport Events", sportEvent);
 
   return (
     <div className="card text-center">
       <div className="card-header">Events List</div>
-      <div className="card-body">
-        <h5 className="card-title">{sportEvent.teamA} VS {sportEvent.teamB}</h5>
-        <p className="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <p>Prize: $500</p>
-        <button className="btn btn-primary">
-            Bet
-        </button>
-        
+      <div className="card-body" >
+        {sportEvents.map((sportev) => (
+          <div key={sportev.key} style={{margin: "50px"}}>
+            <h3 className="card-title">
+              {sportev.teamA} VS {sportev.teamB}
+            </h3>
+            <p className="card-text">
+              This event will take place on {sportev.date} and you can bet from {sportev.outComedate}
+            </p>
+            <p>Prize: $500</p>
+            <button className="btn btn-primary">Bet</button>
+          </div>
+        ))}
       </div>
     </div>
   );

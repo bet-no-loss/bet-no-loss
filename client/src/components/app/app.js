@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Bet from "../../contracts/Bet.json";
-import Bet2 from "../../contracts/Bet.json";
+import Bet2 from "../../contracts/Bet2.json";
+import BetOracle from "../../contracts/BetOracle.json";
 import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,12 +11,10 @@ import Navbar from "../Navbar/Navbar";
 import SportEventList from "../SportEventList/SportEventList";
 
 const App = () => {
-  const [balance, setBalance] = useState(0);
-  const [ethToSend, setEthToSend] = useState("");
-  const [storageValue, setStorageValue] = useState(0);
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
   const [contract, setContract] = useState(null);
+  const [oracleContract, setoracleContract] = useState(null);
   const [currentAccount, setCurrentAccount] = useState("");
   const [testName, setTestName] = useState("This is a test");
   const initialState = {
@@ -39,16 +37,23 @@ const App = () => {
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = Bet2.networks[networkId];
+      const deployedNetworkOracle = BetOracle.networks[networkId];
       const instance = new web3.eth.Contract(
         Bet2.abi,
         deployedNetwork && deployedNetwork.address
       );
+      const oracleInstance = new web3.eth.Contract(
+        BetOracle.abi,
+        deployedNetworkOracle && deployedNetworkOracle.address
+      );
+
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       setWeb3(web3);
       setAccounts(accounts);
       setContract(instance);
+      setoracleContract(oracleInstance);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -81,7 +86,7 @@ const App = () => {
   return (
     <div className="App">
       <Web3Context.Provider
-        value={{ web3, accounts, contract, currentAccount, sportEvent, setSportEvent, testName, setTestName }}
+        value={{ web3, accounts, contract, oracleContract, currentAccount, sportEvent, setSportEvent, testName, setTestName }}
       >
         <main className="app-main">
           <div>
