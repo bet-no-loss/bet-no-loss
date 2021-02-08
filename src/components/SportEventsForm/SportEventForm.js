@@ -115,7 +115,7 @@ function SportEventForm() {
     console.log("Test insert text", response);
   };
 
-  console.log("BET2 CONTRACT", contract);
+  console.log("BET CONTRACT", contract);
   console.log("ORACLE CONTRACT", oracleContract);
 
   useEffect(() => {

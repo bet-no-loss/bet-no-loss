@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Bet2 from "../../contracts/Bet2.json";
+import Bet from "../../contracts/Bet.json";
 import BetOracle from "../../contracts/BetOracle.json";
 import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
@@ -39,10 +39,10 @@ const App = () => {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = Bet2.networks[networkId];
+      const deployedNetwork = Bet.networks[networkId];
       const deployedNetworkOracle = BetOracle.networks[networkId];
       const instance = new web3.eth.Contract(
-        Bet2.abi,
+        Bet.abi,
         deployedNetwork && deployedNetwork.address
       );
       const oracleInstance = new web3.eth.Contract(
