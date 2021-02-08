@@ -5,10 +5,12 @@ import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
+import { Switch, Route } from 'react-router-dom';
 
-//import "./app.css";
+import "./app.css";
 import Navbar from "../Navbar/Navbar";
 import SportEventList from "../SportEventList/SportEventList";
+import BetEvent from "../BetEvent/BetEvent";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -33,6 +35,7 @@ const App = () => {
       const web3 = await getWeb3();
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
+      console.log("ACCOUNTS in TRY", accounts)
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
@@ -73,11 +76,12 @@ const App = () => {
   });
 
   useEffect(() => {
-    init();
+    init();    
   }, []);
 
   useEffect(() => {
     getAccount();
+    console.log("ACCOUNTS", accounts)
   }, [currentAccount]);
 
   if (!web3) {
@@ -93,6 +97,8 @@ const App = () => {
             <Navbar />
             <SportEventForm />
             <SportEventList />
+            <BetEvent />
+            
           </div>
         </main>
       </Web3Context.Provider>
