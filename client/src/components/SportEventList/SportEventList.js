@@ -18,7 +18,10 @@ function SportEventList() {
     { teamA: "LILLE", teamB: "TOULON", date: "12/09/2021", outComedate: "12/08/2021",  id: 3 },
   ]);
 
-  console.log("Sport Events", sportEvent);
+const betEvent = (ev) => {
+  ev.preventDefault();
+  console.log("test")
+}
 
   return (
     <div className="card text-center">
@@ -27,13 +30,13 @@ function SportEventList() {
         {sportEvents.map((sportev) => (
           <div key={sportev.key} style={{margin: "50px"}}>
             <h3 className="card-title">
-              {sportev.teamA} VS {sportev.teamB}
+              {sportev.teamA} <i class="far fa-futbol"></i> {sportev.teamB}
             </h3>
             <p className="card-text">
               This event will take place on {sportev.date} and you can bet from {sportev.outComedate}
             </p>
             <p>Prize: $500</p>
-            <button className="btn btn-primary">Bet</button>
+            <button className="btn btn-primary" onClick={betEvent}>Bet</button>
           </div>
         ))}
       </div>

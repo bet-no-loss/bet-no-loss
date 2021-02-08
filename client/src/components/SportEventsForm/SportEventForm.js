@@ -15,8 +15,8 @@ function SportEventForm() {
     setSportEvent,
   } = web3Context;
 
-  const [oracleAddr, setOracleAddr] = useState('');
-  const [addr, setAddr] = useState('');
+  const [oracleAddr, setOracleAddr] = useState("");
+  const [addr, setAddr] = useState("");
 
   const selectEventDate = (date) => {
     let evDate = date.getTime();
@@ -60,33 +60,49 @@ function SportEventForm() {
     }
   };
 
-  const getOracleAddress = async(e) => {
+  const getOracleAddress = async (e) => {
     e.preventDefault();
     try {
       let Addr = await oracleContract.methods
-      .getAddress().call({ from: accounts[0] });
+        .getAddress()
+        .call({ from: accounts[0] });
       console.log("Oracle Address", Addr);
       setOracleAddr(Addr);
-      
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-  const insertAddress = async(address) => {
-    try {
+  const insertAddress = async (address) => {
+    try {      
       const insert = await contract.methods
-      .setOracleAddress(address)
-      .send({ gas: 2100000, from: accounts[0] });      
+        .setOracleAddress(address)
+        .send({ gas: 2100000, from: currentAccount });
+        
     } catch (error) {
-      console.log(error);
+      console.log("Insert Address Error", error);
     }
-  }
+  };
 
   const handleInsert = (ev) => {
     ev.preventDefault();
-    console.log("Address inserted", addr);
-    insertAddress(addr);
+    const add = "0xbADA447d9ECaA3F37ab7A24f6287193AFf2E586f";
+    const res = add.toLowerCase();
+    insertAddress(res); 
+    console.log(res);
+  };
+
+  const testConnection = async () => {
+    const test = await contract.methods
+      .testOracleConnection()
+      .call({ from: accounts[0] });
+    console.log("Test Connection", test);
+  };
+
+  const addData = async () => {
+    const add = await oracleContract.methods
+    .addTestData()
+    .call({ from: accounts[0]});
   }
 
   const testName = async () => {
@@ -99,7 +115,6 @@ function SportEventForm() {
     console.log("Test insert text", response);
   };
 
-  
   console.log("BET2 CONTRACT", contract);
   console.log("ORACLE CONTRACT", oracleContract);
 
@@ -111,43 +126,47 @@ function SportEventForm() {
       <div className="card-header">Create Sport Event</div>
       <div className="card-body">
         <form onSubmit={getOracleAddress}>
-          <div className="mb-3" >
+          <div className="mb-3">
             <label htmlFor="oracleAddress" className="form-label">
               Oracle Address
             </label>
             <input
               type="text"
               className="form-control"
-              id="oracleAddress" 
-              value={oracleAddr}            
-            /> 
+              id="oracleAddress"
+              value={oracleAddr}
+            />
           </div>
           <button type="submit" className="btn btn-primary">
             Get
           </button>
         </form>
         <form onSubmit={handleInsert}>
-          <div className="mb-3" >
+          <div className="mb-3">
             <label htmlFor="oracleAddress" className="form-label">
               Insert Oracle Address
             </label>
             <input
               type="text"
               className="form-control"
-              id="oracleAddressInput"  
-              value={addr}   
-              onChange={(e) => setAddr(e.target.value)}                   
-            /> 
+              id="oracleAddressInput"
+              value={addr}
+              onChange={(e) => setAddr(e.target.value)}
+            />
           </div>
           <button type="submit" className="btn btn-primary">
             Insert
           </button>
         </form>
         <br />
+        <button type="submit" className="btn btn-primary" onClick={testConnection}>
+          Test Connection
+        </button>
+        <br />
+        <br />
         <button
-          onClick={handleSubmit}
+          onClick={addData}
           className="btn btn-primary"
-          onSubmit={handleSubmit}          
         >
           Add Test Data
         </button>
