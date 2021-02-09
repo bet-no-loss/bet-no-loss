@@ -26,8 +26,8 @@ Your project must:
 
 Your smart-contracts must:
 
-- [x] use the latest compiler version
-- [ ] contains comments in accordance to [Solidity's official documentation](https://solidity.readthedocs.io/en/v0.4.21/layout-of-source-files.html#comments)
+- [ ] use the latest compiler version
+- [x] contains comments in accordance to [Solidity's official documentation](https://solidity.readthedocs.io/en/v0.4.21/layout-of-source-files.html#comments)
 - [ ] generate a **README** per smart-contract using  **NatSpec**
 - [ ] be **secured** and **optimized**
 
@@ -35,7 +35,7 @@ Your project must:
 - [ ] contain a file named `avoiding_common_attacks.md` explaining the measures you took to prevent the **security breaches**
 - [ ] contain a file named `deployed_addresses.md` with the differents **addresses of your smart-contrats** on the aforementioned testnet
 - [ ] Your application must be **deployed** on an **Ethereum testnet** (FYI: the smart-contracts must be deployed with Truffle) 
-- [ ] use the packages `dotenv` and `@truffle/hdwallet-provider`
+- [x] use the packages `dotenv` and `@truffle/hdwallet-provider`
 
 
 ## Tests
