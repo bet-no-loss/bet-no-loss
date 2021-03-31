@@ -127,6 +127,6 @@ sequenceDiagram autonumber
     Player->>Bet: Request Earnings
     Bet->>Player: Accept Retrieval if allowed
     
-    Bet->>Bet: Close this event
+    Bet->>Bet: Close this event 
 ```
 
