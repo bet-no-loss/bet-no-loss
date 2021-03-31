@@ -5,12 +5,15 @@ import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route } from "react-router-dom";
 
 import "./app.css";
 import Navbar from "../Navbar/Navbar";
 import SportEventList from "../SportEventList/SportEventList";
 import BetEvent from "../BetEvent/BetEvent";
+import Layout from "../Layout/Layout";
+import Card from "../Card/Card";
+import BetList from "../pages/Bets/BetList";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -35,7 +38,7 @@ const App = () => {
       const web3 = await getWeb3();
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-      console.log("ACCOUNTS in TRY", accounts)
+      console.log("ACCOUNTS in TRY", accounts);
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
@@ -49,7 +52,6 @@ const App = () => {
         BetOracle.abi,
         deployedNetworkOracle && deployedNetworkOracle.address
       );
-
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -76,12 +78,12 @@ const App = () => {
   });
 
   useEffect(() => {
-    init();    
+    init();
   }, []);
 
   useEffect(() => {
     getAccount();
-    console.log("ACCOUNTS", accounts)
+    console.log("ACCOUNTS", accounts);
   }, [currentAccount]);
 
   if (!web3) {
@@ -90,16 +92,25 @@ const App = () => {
   return (
     <div className="App">
       <Web3Context.Provider
-        value={{ web3, accounts, contract, oracleContract, currentAccount, sportEvent, setSportEvent, testName, setTestName }}
+        value={{
+          web3,
+          accounts,
+          contract,
+          oracleContract,
+          currentAccount,
+          sportEvent,
+          setSportEvent,
+          testName,
+          setTestName,
+        }}
       >
         <main className="app-main">
-          <div>
-            <Navbar />
-            <SportEventForm />
+          <Layout>
+            {/* <SportEventForm />
             <SportEventList />
-            <BetEvent />
-            
-          </div>
+            <BetEvent />             */}
+            <BetList />
+          </Layout>
         </main>
       </Web3Context.Provider>
     </div>
