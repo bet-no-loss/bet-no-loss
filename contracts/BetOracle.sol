@@ -2,6 +2,7 @@
 pragma solidity 0.7.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 
 import "./DateLib.sol";
@@ -11,10 +12,10 @@ import "./DateLib.sol";
  * @title An smart-contract Oracle that register sport events, retrieve their outcomes and communicate their results when asked for.
  * @notice Collects and provides information on sport events and their outcomes 
  */
-contract BetOracle is Ownable {
+contract BetOracle is Ownable, ReentrancyGuard {
 
     using SafeMath for uint;
-    using DateLib  for DateLib.DateTime;
+    using DateLib  for DateLib.DateTime; 
 
     /**
      * @dev all the sport events
@@ -40,7 +41,7 @@ contract BetOracle is Ownable {
     }
 
     /**
-     * @dev the possible outcomes for an event
+     * @dev The possible outcomes for an event
      */
     enum EventOutcome {
         Pending,    // event has not been fought to decision
@@ -50,6 +51,19 @@ contract BetOracle is Ownable {
     }
 
     /**
+     * @dev Triggered once an event has been added
+     */
+    event SportEventAdded(
+        bytes32      _eventId,
+        string       _name, 
+        string       _participants, 
+        uint8        _participantCount,
+        uint         _date,
+        EventOutcome _eventOutcome,
+        int8         _winner
+    );
+
+    /**
      * @notice Add a new pending sport event into the blockchain 
      * @param _name descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)
      * @param _participants |-delimited string of participants names (e.g. "Montpellier|Monaco")
@@ -57,8 +71,14 @@ contract BetOracle is Ownable {
      * @param _date date set for the sport event 
      * @return the unique id of the newly created sport event 
      */
-    function addSportEvent(string memory _name, string memory _participants, uint8 _participantCount, uint _date)
-        onlyOwner public returns (bytes32)
+    function addSportEvent(
+        string memory _name, 
+        string memory _participants, 
+        uint8         _participantCount, 
+        uint          _date
+    )
+        public onlyOwner nonReentrant
+        returns (bytes32)
     {
         bytes memory bytesName = bytes(_name);
         require(bytesName.length > 0, "_name cannot be empty");
@@ -78,15 +98,25 @@ contract BetOracle is Ownable {
         uint newIndex           = events.length.sub(1);
         eventIdToIndex[eventId] = newIndex.add(1);
         
+        emit SportEventAdded(
+            eventId, 
+            _name,
+            _participants,
+            _participantCount, 
+            _date, 
+            EventOutcome.Pending,   
+            -1                      // no winner yet
+        );
+
         // Return the unique id of the new sport event
         return eventId;
     }
 
     /**
-     * @notice returns the array index of the sport event with the given id 
+     * @notice Returns the array index of the sport event with the given id 
      * @dev if the event id is invalid, then the return value will be incorrect and may cause error; you must call eventExists(_eventId) first!
      * @param _eventId the sport event id to get
-     * @return an array index 
+     * @return the array index of this event if it exists or else -1
      */
     function _getMatchIndex(bytes32 _eventId)
         private view returns (uint)
@@ -95,8 +125,8 @@ contract BetOracle is Ownable {
     }
 
     /**
-     * @notice determines whether a sport event exists with the given id 
-     * @param _eventId the sport event id to test
+     * @notice Determines whether a sport event exists with the given id 
+     * @param _eventId the id of a sport event id 
      * @return true if sport event exists and its id is valid
      */
     function eventExists(bytes32 _eventId) 
@@ -110,7 +140,7 @@ contract BetOracle is Ownable {
     }
 
     /**
-     * @notice sets the outcome of a predefined match, permanently on the blockchain
+     * @notice Sets the outcome of a predefined match, permanently on the blockchain
      * @param _eventId unique id of the match to modify
      * @param _outcome outcome of the match 
      * @param _winner 0-based id of the winnner
@@ -174,17 +204,17 @@ contract BetOracle is Ownable {
     function getAllSportEvents() 
         public view returns (bytes32[] memory)
     {
-        bytes32[] memory event_ids = new bytes32[](events.length); 
+        bytes32[] memory eventIds = new bytes32[](events.length); 
 
         // Collect all event ids
         if (events.length > 0) {
             uint index = 0;
             for (uint n = events.length; n > 0; n = n.sub(1)) {
-                event_ids[index = index.add(1)] = events[n.sub(1)].id;
+                eventIds[index = index.add(1)] = events[n.sub(1)].id;
             }
         }
         
-        return event_ids; 
+        return eventIds; 
     }
 
     /**

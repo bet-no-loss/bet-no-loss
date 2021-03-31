@@ -1,36 +1,88 @@
- //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Test Bet smart-contract
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
-const constants = require('@openzeppelin/test-helpers/src/constants');
-const { expect }       = require('chai');
-// const moment           = require('moment');
+const constants   = require('@openzeppelin/test-helpers/src/constants');
+const { expect }  = require('chai');
+const moment      = require('moment');
 
-const Bet      = artifacts.require('Bet');
+const Bet       = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
 
 
 contract('Bet', function(accounts) {
 
-    const ownerAddress = accounts[0];
-    const address1     = accounts[1];
-    const address2     = accounts[2];
-    const address3     = accounts[3];
+    const [ownerAddress, address1, address2, address3] = accounts;
 
     // Instantiate a new Bet contract before running each test in this suite
-    beforeEach(async function () {
-        this.betInstance = await Bet.new( {from: ownerAddress});
+    beforeEach("Create our Smart-Contracts", async function () {
+        this.betInstance       = await Bet.new( {from: ownerAddress});
+        this.betOracleInstance = await BetOracle.new( {from: ownerAddress});
     })
-
+    
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Set and Get Oracle Address
+    // Contract Ownership
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    describe("Set and Get OracleAddress", function() {
+    describe("Contract Ownership", function() {
 
-        beforeEach(async function () {
-            this.betOracleInstance = await BetOracle.new( {from: ownerAddress});
-        })
+        it ("has an owner", async function() {
+            expect(await this.betInstance.owner())
+                .to.equal(ownerAddress)
+            ;
+        });
+
+        it("can transfer ownership", async function() {
+            const newOwner = address3;
+            
+            const tx = await this.betInstance.transferOwnership(
+                newOwner,
+                {from: ownerAddress}
+            );
+            
+            expectEvent(tx, "OwnershipTransferred",
+                {
+                    previousOwner: ownerAddress,
+                    newOwner:      newOwner
+                }
+            );
+
+            expect(await this.betInstance.owner())
+                .to.equal(newOwner)
+            ;
+        });
+
+        it("can renounce ownership if owner", async function() {
+            const tx = await this.betInstance.renounceOwnership(
+                {from: ownerAddress}
+            );
+            
+            expectEvent(tx, "OwnershipTransferred",
+                {
+                    previousOwner: ownerAddress,
+                    newOwner:      constants.ZERO_ADDRESS
+                }
+            );
+
+            expect(await this.betInstance.owner())
+                .to.equal(constants.ZERO_ADDRESS)
+            ;
+        });
+
+        it("cannot renounce ownership if NOT owner", async function() {
+            const notOwner = address2;
+
+            await expectRevert(this.betInstance.renounceOwnership(
+                    {from: notOwner}
+                ),
+                "Ownable: caller is not the owner");            
+        });
+    });
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    // Oracle Handling (Set and Get)
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    describe("Sport Event Oracle Handling", function() {
 
         it ("can setOracleAddress if owner", async function () {
             const expectedOracleAddress = await this.betOracleInstance.getAddress();
@@ -106,49 +158,183 @@ contract('Bet', function(accounts) {
         });
     })
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Sport Events
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    describe("Sport Events", function() {
 
-        it ("can retrieve the bettable sport events");
-        it ("can test if a bet is valid");
-        it ("can get a specific sport event");
-        it ("can get the latest sport event");
-        it ("");
-    })
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Bets
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    it ("can place a bet");
+    describe("Bet on Sport Events", function() {
 
-})
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Populate the Oracle with 2 default sport events
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        beforeEach("Add Sport Events", async function() {
+            this.dateEvent1 = moment().add(7, 'days').add(1, 'minute').unix();
+            this.idEvent1   = await this.betOracleInstance.addSportEvent(
+                "Paris vs. Marseille",  
+                "PSG|OM",   
+                1, 
+                new BN(this.dateEvent1),
+                { from: ownerAddress } 
+            );
+
+            this.dateEvent2 = moment().add(14, 'days').add(1, 'minute').unix();
+            this.idEvent2   = await this.betOracleInstance.addSportEvent(
+                "Spain vs. Portugal",  
+                "ES|PT",   
+                2, 
+                new BN(this.dateEvent2),
+                { from: ownerAddress }
+            );
+
+        })
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Sport Events
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        describe("Sport Events", function() {
+            
+            it ("can getEvent", async function() {
+// console.log("===>", this.idEvent1);
+// console.log("===>", typeof this.idEvent1.receipt.logs[0]);
+console.log("===>", this.idEvent1.logs[0].args[0]);
+console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
+// console.log(Object.getOwnPropertyNames(this.idEvent1.logs[0].args[0])
+//         .filter(function(property) {
+//             return typeof object[property] == 'function';
+//         })
+// );
+                const result = await this.betInstance.getEvent(
+                    web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]),
+                    { from: address1 } 
+                );
+                expect(result)
+                    .be.an('array')
+                    .with.lengthOf(2)
+
+                expect(result[0])
+                    .to.be.a('string')
+                    .equal(this.idEvent1, "Unexpected event id")
+                ;
+                expect(proposal1[1])
+                    .to.be.a('string')
+                    .equal("Paris vs. Marseille", "Unexpected event name")
+                ;
+                expect(proposal1[2])
+                    .to.be.a('string')
+                    .equal("PSG|OM", "Unexpected event participants")
+                ;
+                expect(proposal1[3])
+                    .to.be.a.bignumber
+                    .equal(new BN(1), "Unexpected event participantCount")
+                ;
+                expect(proposal1[4])
+                    .to.be.a.bignumber
+                    .equal(new BN(this.dateEvent1), "Unexpected event date")
+                ;
+                expect(proposal1[5])
+                    .to.be.a.bignumber
+                    .equal(new BN(0), "Unexpected event outcome to be pending")
+                ;
+                expect(proposal1[6])
+                    .to.be.a.bignumber
+                    .equal(new BN(1), "Unexpected event winner")
+                ;
+            });
+
+            it ("can getLatestEvent");
+            it ("can getBettableEvents");
+            it ("can test if a bet is valid");
+            it ("can check if _eventOpenForBetting");
+        })
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Bets
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        describe ("Bets", function() {
+
+            it ("cannot placeBet when amount < minimumBet", async function() {
+                const lessThanMinimumBet = web3.utils.toWei("0.01", "ether");
+
+                // For whatever reason I receive "sender account is not recognized" in the test environment
+                // whereas I expected "Bet amount must be >= minimum bet"
+                // TODO: Remove the corresponding require in the contract if it is useless and this is an expected behavior
+                await expectRevert( 
+                    this.betInstance.placeBet(
+                        this.idEvent1,
+                        new BN(1),
+                        { 
+                            from:  ownerAddress,
+                            value: new BN(lessThanMinimumBet)
+                        }
+                    ),
+                    "Bet amount must be >= minimum bet"
+                );
+            });
+
+            it("cannot placeBet if event does not exist", async function() {
+                const nonExistentEventId = web3.utils.soliditySha3({});
+                const betAmount          = web3.utils.toWei("0.25", "ether");
+
+                // TODO: 
+                await expectRevert.unspecified( 
+                    this.betInstance.placeBet(
+                        nonExistentEventId,
+                        new BN(1),
+                        { 
+                            from:  ownerAddress,
+                            value: new BN(betAmount)
+                        }
+                    )
+                );
+            });
+
+            it ("cannot placeBet if event not open for betting");
+
+            it ("can placeBet", async function() {
+                const betAmount = web3.utils.toWei("0.25", "ether");
+
+                const result = await this.betInstance.placeBet(
+                    this.idEvent1,
+                    new BN(1),
+                    { 
+                        from:  ownerAddress,
+                        value: new BN(betAmount)
+                    }
+                );
+
+                expectEvent(result, "BetPlaced", {
+                    _eventId:      idEvent1,
+                    _player:       ownerAddress,
+                    _chosenWinner: new BN(1),
+                    _amount:       new BN(betAmount)
+                });
+            });
+
+            // TODO:  This one passes but messes up the next BetOracle contract test
+            //   Do not understand why so far!
+            //   What's more the expected require is never reached as the code reverts prematurely
+            //   (with a different error message)
+            // it.skip ("cannot placeBet from address 0", async function() {
+            //     const betAmount = web3.utils.toWei("0.01", "ether");
+
+            //     await expectRevert( 
+            //         this.betInstance.placeBet(
+            //             this.idEvent1,
+            //             new BN(1),
+            //             { 
+            //                 from:  constants.ZERO_ADDRESS,
+            //                 value: new BN(betAmount)
+            //             }
+            //         ),
+            //         "Returned error: sender account not recognized"
+            //     );
+            // });
+
+        });
+    });
+
+});
 
 
 
 
-// TODO Remove me once the above is ok.
-// //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// // Test Bet smart-contract
-// //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
-// const { expect }       = require('chai');
-// const moment           = require('moment');
-
-// const Bet = artifacts.require('Bet');
-
-
-// contract('Bet', function(accounts) {
-
-//     const ownerAddress = accounts[0];
-//     const address1     = accounts[1];
-//     const address2     = accounts[2];
-//     const address3     = accounts[3];
-
-//     // Instantiate a new Bet contract before running each test in this suite
-//     beforeEach(async function () {
-//         this.betInstance = await Bet.new( {from: ownerAddress});
-//     })
 
 
 //     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

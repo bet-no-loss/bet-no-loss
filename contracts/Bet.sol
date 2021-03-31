@@ -2,6 +2,7 @@
 pragma solidity 0.7.6;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
 
 /** 
@@ -16,7 +17,7 @@ import "./OracleInterface.sol";
  * @title  a Smart-Contract in charge of handling bets on a sport event outcome where players do not loose their stake and winners earn the interests accrued on the stakes.
  * @author Tanteli, block74 
  */
-contract Bet is Ownable {
+contract Bet is Ownable, ReentrancyGuard {
 
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
@@ -70,7 +71,21 @@ contract Bet is Ownable {
         _;
     }
 
+    /**
+     * @dev Sent once the Sport Event Oracle is set
+     */
     event OracleAddressSet( address _address);
+
+    /**
+     * @dev Sent when once a bet is placed
+     */
+    event BetPlaced(
+            bytes32 _eventId,
+            address _player,
+            uint8   _chosenWinner, 
+            uint    _amount
+    );
+
 
     /**
      * @notice sets the address of the sport event bet oracle contract to use 
@@ -78,7 +93,8 @@ contract Bet is Ownable {
      * @param _oracleAddress the address of the sport event bet oracle 
      */
     function setOracleAddress(address _oracleAddress)
-        external onlyOwner notAddress0(_oracleAddress)
+        external 
+        onlyOwner notAddress0(_oracleAddress)
         returns (bool)
     {
         oracleAddress = _oracleAddress;
@@ -115,6 +131,9 @@ contract Bet is Ownable {
     function _betIsValid(address _user, bytes32 _eventId, uint8 _chosenWinner)
         private pure returns (bool)
     {
+        // if (userToBets[_user].length == 0) {
+        //     userToBets[_user]
+        // }
         return true;
     }
 
@@ -193,13 +212,14 @@ contract Bet is Ownable {
      * @param _chosenWinner index of the supposed winner team
      */
     function placeBet(bytes32 _eventId, uint8 _chosenWinner) 
-        public payable 
-        notAddress0(msg.sender)
+        public payable
+        notAddress0(msg.sender) 
+        nonReentrant
     {
         // At least a minimum amout is required to bet
         require(msg.value >= minimumBet, "Bet amount must be >= minimum bet");
 
-        // Make sure this is sport event exists (ie. already registered in the Oracle)
+        // // Make sure this is sport event exists (ie. already registered in the Oracle)
         require(betOracle.eventExists(_eventId), "Specified event not found"); 
 
         // The chosen winner must fall within the defined number of participants for this event
@@ -218,6 +238,20 @@ contract Bet is Ownable {
 
         // add the mapping
         bytes32[] storage userBets = userToBets[msg.sender]; 
-        userBets.push(_eventId); 
+        userBets.push(_eventId);
+
+        emit BetPlaced(
+            _eventId,
+            msg.sender,      // player
+            _chosenWinner, 
+            msg.value        // bet amount
+        );
+    }
+
+    /**
+     *  @notice A fallback function that allows this smart-contract to accept ETH
+     */
+    receive() external payable {
+        require(msg.data.length == 0);
     }
 }

@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./index.css";
-import DatePicker from "react-datepicker";
 import Web3Context from "../Web3context";
 import { BigNumber } from "bignumber.js";
 
@@ -10,45 +9,30 @@ function SportEventForm() {
     web3,
     accounts,
     contract,
+    oracleContract,
     currentAccount,
     sportEvent,
     setSportEvent,
   } = web3Context;
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedOutcomeDate, setSelectedOutcomeDate] = useState("");
-  // const initialState = {
-  //   eventName: "",
-  //   eventDate: "",
-  //   teamA: "",
-  //   teamB: "",
-  //   outcomeAvailableDate: "",
-  // };
-  // const [sportEvent, setSportEvent] = useState(initialState);
+
+  const [oracleAddr, setOracleAddr] = useState("");
+  const [addr, setAddr] = useState("");
 
   const selectEventDate = (date) => {
-    setSelectedDate(date);
     let evDate = date.getTime();
     //const dateBN = new BigNumber(evDate);
     setSportEvent({ ...sportEvent, eventDate: evDate });
     console.log("Event Date", evDate);
   };
 
-  const selectOutcomeDate = (date) => {
-    setSelectedOutcomeDate(date);
-    let outcomeDate = date.getTime();
-    //const dateBN = new BigNumber(outcomeDate);
-    setSportEvent({ ...sportEvent, outcomeAvailableDate: outcomeDate });
-    console.log("Outcome Date",outcomeDate);
-  };
-
   const style = {
     paddingRigth: "550px",
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(sportEvent);
-    createEvent();
+    await createEvent();
   };
 
   const handleChange = (event) => {
@@ -76,6 +60,51 @@ function SportEventForm() {
     }
   };
 
+  const getOracleAddress = async (e) => {
+    e.preventDefault();
+    try {
+      let Addr = await oracleContract.methods
+        .getAddress()
+        .call({ from: accounts[0] });
+      console.log("Oracle Address", Addr);
+      setOracleAddr(Addr);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const insertAddress = async (address) => {
+    try {      
+      const insert = await contract.methods
+        .setOracleAddress(address)
+        .send({ gas: 2100000, from: currentAccount });
+        
+    } catch (error) {
+      console.log("Insert Address Error", error);
+    }
+  };
+
+  const handleInsert = (ev) => {
+    ev.preventDefault();
+    const add = "0xbADA447d9ECaA3F37ab7A24f6287193AFf2E586f";
+    const res = add.toLowerCase();
+    insertAddress(res); 
+    console.log(res);
+  };
+
+  const testConnection = async () => {
+    const test = await contract.methods
+      .testOracleConnection()
+      .call({ from: accounts[0] });
+    console.log("Test Connection", test);
+  };
+
+  const addData = async () => {
+    const add = await oracleContract.methods
+    .addTestData()
+    .call({ from: accounts[0]});
+  }
+
   const testName = async () => {
     const insert = await contract.methods
       .insertText("name")
@@ -86,76 +115,61 @@ function SportEventForm() {
     console.log("Test insert text", response);
   };
 
+  console.log("BET CONTRACT", contract);
+  console.log("ORACLE CONTRACT", oracleContract);
+
   useEffect(() => {
-    console.log("CONTRACT", contract);
-  }, [contract]);
+  }, []);
 
   return (
     <div className="card text-center">
       <div className="card-header">Create Sport Event</div>
       <div className="card-body">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={getOracleAddress}>
           <div className="mb-3">
+            <label htmlFor="oracleAddress" className="form-label">
+              Oracle Address
+            </label>
             <input
               type="text"
-              name="eventName"
               className="form-control"
-              id="inputName"
-              value={sportEvent.eventName}
-              placeholder="Event Name"
-              onChange={handleChange}
+              id="oracleAddress"
+              value={oracleAddr}
             />
           </div>
-          <div className="mb-3" style={style}>
-            <DatePicker
-              name="eventDate"
-              selected={selectedDate}
-              onChange={selectEventDate}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
-              placeholderText="Event Date"
-            />
-          </div>
-          <div className="mb-3" style={style}>
-            <DatePicker
-              name="outcomeAvailableDate"
-              selected={selectedOutcomeDate}
-              onChange={selectOutcomeDate}
-              dateFormat="dd/MM/yyyy"
-              minDate={new Date()}
-              placeholderText="Event Outcome Date"
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              name="teamA"
-              className="form-control"
-              id="inputName"
-              placeholder="Team A"
-              value={sportEvent.teamA}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <input
-              type="text"
-              name="teamB"
-              className="form-control"
-              id="inputName"
-              placeholder="Team B"
-              value={sportEvent.teamB}
-              onChange={handleChange}
-            />
-          </div>
-          <button
-            onClick={handleSubmit}
-            className="btn btn-primary"
-            style={{ marginLeft: "300px" }}
-          >
-            Submit
+          <button type="submit" className="btn btn-primary">
+            Get
           </button>
         </form>
+        <form onSubmit={handleInsert}>
+          <div className="mb-3">
+            <label htmlFor="oracleAddress" className="form-label">
+              Insert Oracle Address
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="oracleAddressInput"
+              value={addr}
+              onChange={(e) => setAddr(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Insert
+          </button>
+        </form>
+        <br />
+        <button type="submit" className="btn btn-primary" onClick={testConnection}>
+          Test Connection
+        </button>
+        <br />
+        <br />
+        <button
+          onClick={addData}
+          className="btn btn-primary"
+        >
+          Add Test Data
+        </button>
         {/* <button onClick={testName} className="btn btn">
           Submit
         </button> */}
