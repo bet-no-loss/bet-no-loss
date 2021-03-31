@@ -111,7 +111,7 @@ sequenceDiagram autonumber
     Player->>DApp: Browse Events
     Player->>DApp: Select an Event
     Player->>DApp: Connect Wallet
-    e
+    
     Player->>DApp: Deposit Funds
     activate DApp
     DApp->>Bet: Deposit Funds
