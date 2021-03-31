@@ -42,6 +42,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Add SVG diagrams" -a
+          git commit --amend --no-edit -A doc/img
 
       - name: Push changes
         uses: ad-m/github-push-action@master
