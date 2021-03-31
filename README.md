@@ -3,7 +3,7 @@
 # Bet-no-loss
 
 > Tagline: Bet on a sport event without loosing your stake and get rewarded if you win.
-
+ 
 ## Description
 
 - Players bet on a sport event during week 1.  
@@ -107,7 +107,7 @@ sequenceDiagram autonumber
     Admin->>DeFi: Create Contract
     Admin->>Bet: Create Contract
     
-    Bet->>Oracle: getEventsList
+    Bet->>Oracle:  Get Events List
     Player->>DApp: Browse Events
     Player->>DApp: Select an Event
     Player->>DApp: Connect Wallet
