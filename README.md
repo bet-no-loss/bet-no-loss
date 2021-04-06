@@ -41,7 +41,6 @@ cd bet-no-loss
 # Configure
 
 ```
-npm install -g truffle
 npm install
 ```
 
