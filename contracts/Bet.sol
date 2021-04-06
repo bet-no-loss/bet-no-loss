@@ -5,6 +5,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
 
+import "./DAI.sol";
+
 /** 
  * This Ethereum smart-contract takes bets placed on sport events.  
  * It then invests all bets deposits for a given event (pot) in DeFi.  
@@ -18,6 +20,11 @@ import "./OracleInterface.sol";
  * @author Tanteli, block74 
  */
 contract Bet is Ownable, ReentrancyGuard {
+
+    /**
+     * @dev New instance of ERC20 DAI Token
+     */
+     DAI public Dai;
 
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
@@ -85,6 +92,20 @@ contract Bet is Ownable, ReentrancyGuard {
             uint8   _chosenWinner, 
             uint    _amount
     );
+
+    /**
+     * @param _tokenAddress the address of the deployed ERC20 DAI token 
+     */
+    constructor(DAI _tokenAddress) {
+        Dai = DAI(_tokenAddress);
+    }
+
+     /**
+      * @return the DAI balance of the contract
+      */
+      function getContractDAIBalance() public view returns (uint) {
+          return Dai.balanceOf(address(this));
+      }
 
 
     /**
@@ -249,7 +270,7 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
-     *  @notice Allows this smart-contract to accept ETH
+     *  @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
      */
     receive() external payable {
     }
