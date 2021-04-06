@@ -42,7 +42,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add doc/img
-          git commit -a -m "Convert mermaid diagrams in Markdown files to SVG images"
+          [ -n "$(git status --porcelain)" ] && git commit -a -m "Convert Mermaid Markdown diagrams into SVG images"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
