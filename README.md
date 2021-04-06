@@ -1,5 +1,7 @@
 [![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
  
+ [![built-with openzeppelin](https://img.shields.io/badge/built%20with-OpenZeppelin-3677FF)](https://docs.openzeppelin.com/)
+ 
 # Bet-no-loss
 
 > Tagline: Bet on a sport event without loosing your stake and get rewarded if you win.
