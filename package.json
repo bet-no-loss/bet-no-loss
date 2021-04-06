@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  },
   "directories": {
     "test": "test"
   },
