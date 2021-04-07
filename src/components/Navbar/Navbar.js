@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import "../../assets/style/globalstyle.scss";
+import { Link } from "react-router-dom";
+import logo from "../../bnl.svg";
 
 import Web3Context from "../Web3context";
 
@@ -14,38 +16,34 @@ const Navbar = () => {
   const formatedAddress = `${first}...${second}`;
 
   return (
-    <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <img
-            src="https://bulma.io/images/bulma-logo.png"
-            alt="Bulma: Free, open source, and modern CSS framework based on Flexbox"
-            width="112"
-            height="28"
-          />
-        </a>
+    <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
+      <div className="container">
+        <Link className="navbar-brand p-0" to="/">
+          <img src={logo} alt="logo" width="80" className="logo" />
+        </Link>
 
-        <a
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div className="navbar-end">
-        <div className="navbar-item">
-          <p className="control">
-            {currentAccount ?
-            <button className="button is-rounded">{formatedAddress}</button> :
-            <button className="button is-rounded">Connect Wallet</button>
-            }
-            
-          </p>
+        <div className="collapse navbar-collapse" id="navbarResponsive">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <a className="nav-link" href="/">
+                Dashboard
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/">
+                Customers
+              </a>
+            </li>
+            <li className="nav-item">
+              {currentAccount ? (
+                <button className="badge badge-warning">
+                  {formatedAddress}
+                </button>
+              ) : (
+                <button className="badge badge-warning">Connect Wallet</button>
+              )}
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
