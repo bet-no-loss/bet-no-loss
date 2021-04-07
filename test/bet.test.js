@@ -8,6 +8,7 @@ const moment      = require('moment');
 
 const Bet       = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
+const Dai       = artifacts.require('DAI');
 
 
 contract('Bet', function(accounts) {
@@ -18,6 +19,7 @@ contract('Bet', function(accounts) {
     beforeEach("Create our Smart-Contracts", async function () {
         this.betInstance       = await Bet.new( {from: ownerAddress});
         this.betOracleInstance = await BetOracle.new( {from: ownerAddress});
+        this.daiInstance       = await Dai.new( {from: ownerAddress});
     })
     
 

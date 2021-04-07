@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.7.6;
+pragma solidity 0.8.3;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
+
+import "./DAI.sol";
 
 /** 
  * This Ethereum smart-contract takes bets placed on sport events.  
@@ -18,6 +20,11 @@ import "./OracleInterface.sol";
  * @author Tanteli, block74 
  */
 contract Bet is Ownable, ReentrancyGuard {
+
+    /**
+     * @dev New instance of ERC20 DAI Token
+     */
+     DAI public Dai;
 
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
@@ -85,6 +92,20 @@ contract Bet is Ownable, ReentrancyGuard {
             uint8   _chosenWinner, 
             uint    _amount
     );
+
+    /**
+     * @param _tokenAddress the address of the deployed ERC20 DAI token 
+     */
+    constructor(DAI _tokenAddress) {
+        Dai = DAI(_tokenAddress);
+    }
+
+     /**
+      * @return the DAI balance of the contract
+      */
+      function getContractDAIBalance() public view returns (uint) {
+          return Dai.balanceOf(address(this));
+      }
 
 
     /**
@@ -249,9 +270,12 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
-     *  @notice A fallback function that allows this smart-contract to accept ETH
+<<<<<<< HEAD
+     *  @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
+=======
+     *  @notice A fallback function that allows this smart-contract to accept DAI
+>>>>>>> bd147761fec4b95779d945085b8cd74949517458
      */
     receive() external payable {
-        require(msg.data.length == 0);
     }
 }
