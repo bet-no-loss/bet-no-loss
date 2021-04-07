@@ -1,4 +1,5 @@
 [![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
+[![built-with openzeppelin](https://img.shields.io/badge/built%20with-OpenZeppelin-3677FF)](https://docs.openzeppelin.com/)
  
 # Bet-no-loss
 
@@ -39,13 +40,15 @@ cd bet-no-loss
 # Configure
 
 ```
-npm install -g truffle
+npm install
+
+cd client
 npm install
 ```
 
 In order to deploy to the test networks or the main network you need to:
 
-- Create a `.env` file in the project's home folder  
+- Create a `.env` file in the project's root folder  
 - Edit `.env` and set the below `property = "value"` pairs (one per line):
 
 ```

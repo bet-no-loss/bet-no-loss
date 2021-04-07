@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.7.6;
+pragma solidity 0.8.3;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
 
 /** 
@@ -249,9 +249,8 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
-     *  @notice A fallback function that allows this smart-contract to accept ETH
+     *  @notice Allows this smart-contract to accept ETH
      */
     receive() external payable {
-        require(msg.data.length == 0);
     }
 }
