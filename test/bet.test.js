@@ -17,9 +17,11 @@ contract('Bet', function(accounts) {
 
     // Instantiate a new Bet contract before running each test in this suite
     beforeEach("Create our Smart-Contracts", async function () {
-        this.betInstance       = await Bet.new( {from: ownerAddress});
+        this.daiInstance       = await Dai.new("Dai Stablecoin", "DAI", {from: ownerAddress});
+        const daiAddress       = await this.daiInstance.address;
+
+        this.betInstance       = await Bet.new(daiAddress, {from: ownerAddress});
         this.betOracleInstance = await BetOracle.new( {from: ownerAddress});
-        this.daiInstance       = await Dai.new( {from: ownerAddress});
     })
     
 
