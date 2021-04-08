@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "../../assets/style/globalstyle.scss";
 import { Link } from "react-router-dom";
-import logo from "../../bnl.svg";
+import logo from "../../logo.svg";
 
 import Web3Context from "../Web3context";
 
