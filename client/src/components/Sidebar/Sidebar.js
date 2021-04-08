@@ -5,7 +5,7 @@ function Sidebar() {
     <>
       <div className="m-5">
         <div
-          class="card bg-dark text-white container"
+          class="card bglogo text-white container"
           style={{ height: "160px" }}
         >
           <p class="card-text pt-5">
