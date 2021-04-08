@@ -5,7 +5,7 @@ import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
-import { Switch, Route } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import "./app.css";
 import Navbar from "../Navbar/Navbar";
@@ -14,6 +14,8 @@ import BetEvent from "../BetEvent/BetEvent";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import BetList from "../pages/Bets/BetList";
+import Admin from "../Admin/Admin";
+import Account from "../Account/Account";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -104,14 +106,35 @@ const App = () => {
           setTestName,
         }}
       >
-        <main className="app-main">
-          <Layout>
-            {/* <SportEventForm />
-            <SportEventList />
-            <BetEvent />             */}
-            <BetList />
-          </Layout>
-        </main>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route path='/admin'>
+                <Layout>
+                  <Admin/>
+                </Layout>
+              </Route>
+              <Route path='/account'>
+                <Layout>
+                  <Account/>
+                </Layout>
+              </Route>
+              <Route path='/'>
+                <main className="app-main">
+                  <Layout>
+                    {/*<SportEventForm />
+                    <SportEventList />
+                    <BetEvent />*/}
+                    <BetList />
+                  </Layout>
+                </main>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+
+
+
       </Web3Context.Provider>
     </div>
   );
