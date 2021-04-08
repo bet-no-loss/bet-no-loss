@@ -27,19 +27,22 @@ const Navbar = () => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <a className="nav-link" href="/">
-                Bets
+                <p className="primaryColor"><strong>Bets</strong></p>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item pr-4">
               <a className="nav-link" href="/account">
-                Compte
+                <p className="primaryColor"><strong>Compte</strong></p>
               </a>
             </li>
             <li className="nav-item">
               {currentAccount ? (
-                <button className="badge badge-warning">
-                  {formatedAddress}
-                </button>
+                  <div className="nav-link">
+                    <button className="badge badge-warning">
+                      {formatedAddress}
+                    </button>
+                  </div>
+
               ) : (
                 <button className="badge badge-warning">Connect Wallet</button>
               )}

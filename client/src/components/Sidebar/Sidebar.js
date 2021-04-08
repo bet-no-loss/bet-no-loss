@@ -8,10 +8,10 @@ function Sidebar() {
           className="bglogo text-white container "
           style={{ height: "160px" }}
         >
-          <p className="card-text pt-5">
+          <h3 className="card-text pt-5 display-5"><strong>
             Il y a actuellement $162.05 million déposé et $217,896 de
-            récompenses hebdomadaire !
-          </p>
+            récompenses hebdomadaire !</strong>
+          </h3>
           <p className="card-text">Last updated 3 mins ago</p>
         </div>
       </div>
