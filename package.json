@@ -39,6 +39,7 @@
     "leafleth": "^0.0.9",
     "moment": "^2.29.1",
     "redux-devtools-extension": "^2.13.8",
+    "truffle": "^5.3.0",
     "watch": "^1.0.2"
   },
   "dependencies": {
