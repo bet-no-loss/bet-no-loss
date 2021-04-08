@@ -5,10 +5,10 @@ var DeFiPool = artifacts.require("./DeFiPool.sol");
 var DAI = artifacts.require("./DAI.sol");
 
 
-module.exports = function(deployer) {
-  deployer.deploy(Bet);
-  deployer.deploy(BetOracle);
-  deployer.deploy(DateLib);
-  deployer.deploy(DeFiPool);
-  deployer.deploy(DAI);
+module.exports = async function(deployer) {
+  await deployer.deploy(DAI);
+  await deployer.deploy(Bet);
+  await deployer.deploy(BetOracle);
+  await deployer.deploy(DateLib);
+  await deployer.deploy(DeFiPool);
 };
