@@ -1,12 +1,13 @@
 import React from "react";
 
+
 function Card(bet) {
   /* const {hometeam, awayteam, date, type, img} = props; */
   return (
     <div className="container">
-      <div className="card mb-3">
+      <div className="card mb-3 hovv">
         <div class="row no-gutters">
-          <div className="col-md-6">
+          <div className="col-md-6 text-center">
             <div className="d-flex flex-column">
               <a className="card-footer-item">{bet.hometeam}</a>
               <div className="card-footer-item">
@@ -15,7 +16,7 @@ function Card(bet) {
               <p className="card-footer-item">{bet.awayteam}</p>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 text-center">
             <div className="d-flex flex-column">
               <a href="#" className="card-footer-item">
                 <time>{bet.date}</time>

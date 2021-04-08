@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
 import { Switch, Route } from "react-router-dom";
 
-//import "./app.css";
+import "./app.css";
 import Navbar from "../Navbar/Navbar";
 import SportEventList from "../SportEventList/SportEventList";
 import BetEvent from "../BetEvent/BetEvent";
