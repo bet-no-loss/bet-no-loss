@@ -1,14 +1,12 @@
-pragma solidity 0.7.6;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.3;
 
-import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract DefiPool {
     /**
     @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn
     interests
     */
-
-    using SafeMath for uint256;
 
     /**
      * @dev Balance of each user address
@@ -43,11 +41,9 @@ contract DefiPool {
     function deposit() public payable {
         require(msg.value >= 1e16, "Error, deposit must be >= 0.01 ETH");
 
-        userBalance[msg.sender] = userBalance[msg.sender].add(msg.value);
+        userBalance[msg.sender] = userBalance[msg.sender] + msg.value;
 
-        depositStart[msg.sender] = depositStart[msg.sender].add(
-            block.timestamp
-        );
+        depositStart[msg.sender] = depositStart[msg.sender] + block.timestamp;
 
         emit Deposit(msg.sender, msg.value, block.timestamp);
     }
@@ -59,7 +55,7 @@ contract DefiPool {
         // 31577600 = seconds in 365.25 days
 
         // time spent for user's deposit
-        depositTime[msg.sender] = block.timestamp.sub(depositStart[msg.sender]);
+        depositTime[msg.sender] = block.timestamp - depositStart[msg.sender];
 
         //interests gains per second
         uint256 interestPerSecond =
@@ -67,13 +63,9 @@ contract DefiPool {
 
         interests[msg.sender] = interestPerSecond * depositTime[msg.sender];
 
-        userBalance[msg.sender] = userBalance[msg.sender].add(
-            interests[msg.sender]
-        );
-        msg.sender.transfer(userBalance[msg.sender]);
-        userBalance[msg.sender] = userBalance[msg.sender].sub(
-            userBalance[msg.sender]
-        );
+        userBalance[msg.sender] = userBalance[msg.sender] + interests[msg.sender];
+        payable(msg.sender).transfer(userBalance[msg.sender]);
+        userBalance[msg.sender] = userBalance[msg.sender] - userBalance[msg.sender];
     }
 
     /**

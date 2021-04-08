@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.7.6;
+pragma solidity 0.8.3;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 import "./DateLib.sol";
 
@@ -14,7 +13,6 @@ import "./DateLib.sol";
  */
 contract BetOracle is Ownable, ReentrancyGuard {
 
-    using SafeMath for uint;
     using DateLib  for DateLib.DateTime; 
 
     /**
@@ -95,8 +93,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
         
         // Add the sport event 
         events.push( SportEvent(eventId, _name, _participants, _participantCount, _date, EventOutcome.Pending, -1)); 
-        uint newIndex           = events.length.sub(1);
-        eventIdToIndex[eventId] = newIndex.add(1);
+        uint newIndex           = events.length - 1;
+        eventIdToIndex[eventId] = newIndex + 1;
         
         emit SportEventAdded(
             eventId, 
@@ -121,7 +119,7 @@ contract BetOracle is Ownable, ReentrancyGuard {
     function _getMatchIndex(bytes32 _eventId)
         private view returns (uint)
     {
-        return eventIdToIndex[_eventId].sub(1); 
+        return eventIdToIndex[_eventId] - 1; 
     }
 
     /**
@@ -176,9 +174,9 @@ contract BetOracle is Ownable, ReentrancyGuard {
         uint count = 0; 
 
         // Get the count of pending events 
-        for (uint i = 0; i < events.length; i = i.add(1)) {
+        for (uint i = 0; i < events.length; i = i + 1) {
             if (events[i].outcome == EventOutcome.Pending) 
-                count = count.add(1); 
+                count = count + 1; 
         }
 
         // Collect up all the pending events
@@ -186,10 +184,10 @@ contract BetOracle is Ownable, ReentrancyGuard {
 
         if (count > 0) {
             uint index = 0;
-            for (uint n = events.length;  n > 0;  n = n.sub(1)) {
-                if (events[n.sub(1)].outcome == EventOutcome.Pending) {
-                    output[index] = events[n.sub(1)].id;
-                    index = index.add(1);
+            for (uint n = events.length;  n > 0;  n = n - 1) {
+                if (events[n - 1].outcome == EventOutcome.Pending) {
+                    output[index] = events[n - 1].id;
+                    index = index + 1;
                 }
             }
         } 
@@ -209,8 +207,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
         // Collect all event ids
         if (events.length > 0) {
             uint index = 0;
-            for (uint n = events.length; n > 0; n = n.sub(1)) {
-                eventIds[index = index.add(1)] = events[n.sub(1)].id;
+            for (uint n = events.length; n > 0; n = n - 1) {
+                eventIds[index = index + 1] = events[n - 1].id;
             }
         }
         
