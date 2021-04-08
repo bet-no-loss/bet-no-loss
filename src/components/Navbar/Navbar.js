@@ -7,9 +7,10 @@ import Web3Context from "../Web3context";
 
 const Navbar = () => {
   const web3Context = useContext(Web3Context);
-  const { web3, accounts, contract, currentAccount } = web3Context;
+  const { web3, accounts, contract, currentAccount, owner } = web3Context;
 
   const address = currentAccount;
+  const ownerAddress = owner;
 
   const first = address.slice(0, 5);
   const second = address.slice(38, 42);
@@ -42,6 +43,13 @@ const Navbar = () => {
               ) : (
                 <button className="badge badge-warning">Connect Wallet</button>
               )}
+            </li>
+            <li className="nav-item">
+              {ownerAddress ? (
+                  <a className="nav-link" href="/admin">
+                    Admin
+                  </a>
+              ) : ''}
             </li>
           </ul>
         </div>
