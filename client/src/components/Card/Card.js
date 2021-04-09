@@ -9,7 +9,7 @@ function Card(bet) {
         <div class="row no-gutters">
           <div className="col-md-6 text-center">
             <div className="d-flex flex-column">
-              <a>{bet.hometeam}</a>
+              <a >{bet.hometeam}</a>
               <div>
                 <img src={bet.img} width={100} />
               </div>

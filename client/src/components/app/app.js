@@ -16,6 +16,7 @@ import Card from "../Card/Card";
 import BetList from "../pages/Bets/BetList";
 import Admin from "../Admin/Admin";
 import Account from "../Account/Account";
+import Sidebar from "../Sidebar/Sidebar";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -122,6 +123,7 @@ const App = () => {
               <Route path='/'>
                 <main className="app-main">
                   <Layout>
+                    <Sidebar/>
                     {/*<SportEventForm />
                     <SportEventList />
                     <BetEvent />*/}
