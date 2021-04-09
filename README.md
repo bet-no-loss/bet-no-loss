@@ -18,7 +18,7 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
-* [Github](https://github.com/bet-no-loss/bet-no-loss/)
+* [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository)
 * [DaPP Heroku](https://bet-no-loss.herokuapp.com/)
 * [Trello](https://trello.com/b/c6Xhe5hM)
 * [Google Drive](https://drive.google.com/drive/folders/1Pr22-VTGNVREl7AUdPy1f77OxrgqNvgO)
@@ -40,45 +40,50 @@ cd bet-no-loss
 
 # Configure
 
+- Install the `npm` packages.
 ```
 npm install
 
 cd client
 npm install
 ```
-
+- Create a file with the environment parameters  
 In order to deploy to the test networks or the main network you need to:
-
-- Create a `.env` file in the project's root folder  
-- Edit `.env` and set the below `property = "value"` pairs (one per line):
-
-```
-MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
-INFURA_PROJECT_ID = "TODO_infura_project_id_here"
-```
+    - Create a `.env` file in the project's root folder  
+    - Edit `.env` and set the below `property = "value"` pairs (one per line):
+    ```
+    MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
+    INFURA_PROJECT_ID = "TODO_infura_project_id_here"
+    ```
 
 Keep in mind to surround each value with double quotes.
 
 # Compile
 
 ```
-truffle compile
+npx truffle compile # --all
 ```
-
-# Run
-
-TODO
-
 
 # Test
 
 Run ganache on port 7545.
 
 ```
-truffle compile
-truffle deploy --reset --network ganache
+npx truffle test # Run the unit and integration tests
+
+npx truffle deploy --reset --network ganache
 ```
-TODO
+
+# Run
+
+```
+npx truffle migrate 
+npx truffle deploy
+
+# Client
+cd client 
+npm start
+```
 
 # Documentation
 
