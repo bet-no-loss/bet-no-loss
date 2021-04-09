@@ -1,0 +1,3 @@
+# Ask Heroku to ignore the following while building the slug (archive)
+#
+/yarn.lock
