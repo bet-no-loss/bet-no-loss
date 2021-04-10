@@ -1,12 +1,18 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.3;
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract DefiPool {
-    /**
+/**
     @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn
     interests
     */
+contract DefiPool {
+
+    /**
+     * @dev Instance of an ERC20 token
+     */    
+     IERC20 Dai;
 
     /**
      * @dev Balance of each user address
@@ -33,13 +39,18 @@ contract DefiPool {
      */
     event Deposit(address indexed user, uint256 amount, uint256 timeStart);
 
-    constructor() payable {}
+    /**
+     * @param _daiAddress address of the DAI ERC20 token
+     */
+    constructor( address _daiAddress) {
+        Dai = ERC20(_daiAddress);
+    }
 
     /**
      * @notice deposit ether to the contract
      */
     function deposit() public payable {
-        require(msg.value >= 1e16, "Error, deposit must be >= 0.01 ETH");
+        require(msg.value >= 0, "Error, deposit must be >= 0 DAI");
 
         userBalance[msg.sender] = userBalance[msg.sender] + msg.value;
 
@@ -69,14 +80,14 @@ contract DefiPool {
     }
 
     /**
-     * @return return the contract balance
+     * @return the contract balance
      */
     function getContractBalance() public view returns (uint256) {
         return address(this).balance;
     }
 
     /**
-     * @return return msg.sender balance
+     * @return msg.sender balance
      */
     function getUserBalance() public view returns (uint256) {
         return msg.sender.balance;

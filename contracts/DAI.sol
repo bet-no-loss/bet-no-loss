@@ -2,10 +2,7 @@
 
 pragma solidity 0.8.3;
 
-
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v3.3/contracts/token/ERC20/ERC20.sol";
 
 contract DAI is ERC20 {
     
