@@ -18,7 +18,7 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
-* [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository)
+* [Github](https://github.com/bet-no-loss/bet-no-loss/) (Source coded, issues, wiki)
 * [DaPP Heroku](https://bet-no-loss.herokuapp.com/)
 * [Trello](https://trello.com/b/c6Xhe5hM)
 * [Google Drive](https://drive.google.com/drive/folders/1Pr22-VTGNVREl7AUdPy1f77OxrgqNvgO)
@@ -31,32 +31,37 @@ TODO
 
 # Install
 
+Installing locally consists in a 2 steps process:
+- Clone the repository:
+- Install the `npm` packages for the back-end and the front-end
+
 ```
 cd $DEV
 
+# ~~~ Clone the repository
 git clone git@github.com:bet-no-loss/bet-no-loss.git
 cd bet-no-loss
+
+# ~~~ Install the npm packages for the back-end
+npm install
+
+# ~~~ Install the npm packages for the front-end
+npm --prefix client/ install
 ```
 
 # Configure
 
-- Install the `npm` packages.
-```
-npm install
+In order to use the project locally as a dev you need to create a **`.env`** file in the project' root.
+It contains the environment specific parameters for the test and main networks.
 
-cd client
-npm install
+- Create a `.env` file in the project's root folder  
+- Edit `.env` and set the below `property = "value"` pairs (one per line):
 ```
-- Create a file with the environment parameters  
-In order to deploy to the test networks or the main network you need to:
-    - Create a `.env` file in the project's root folder  
-    - Edit `.env` and set the below `property = "value"` pairs (one per line):
-    ```
-    MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
-    INFURA_PROJECT_ID = "TODO_infura_project_id_here"
-    ```
+MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
+INFURA_PROJECT_ID = "TODO_infura_project_id_here"
+```
 
-Keep in mind to surround each value with double quotes.
+ℹ️ Keep in mind to surround each value with double quotes.
 
 # Compile
 
@@ -74,13 +79,25 @@ npx truffle test # Run the unit and integration tests
 npx truffle deploy --reset --network ganache
 ```
 
-# Run
+# Deploy 
+
+## Deploy the Smart-Contracts
 
 ```
-npx truffle migrate 
 npx truffle deploy
+```
 
-# Client
+## Deploy the DApp
+
+We deploy the Front-End application on **[Heroku](https://heroku.com)**.  
+Each time a push is made on the `master` branch of the `bet-no-loss` Github repository this notifies Heroku which pulls this branch and deploys it there. 
+This is what Heroku calls a [github-integration](https://devcenter.heroku.com/articles/github-integration).
+
+
+# Run the DApp
+
+In order to run the Front-End application, simply:
+```
 cd client 
 npm start
 ```
