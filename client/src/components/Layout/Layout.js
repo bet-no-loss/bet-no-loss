@@ -1,5 +1,4 @@
 import React from "react";
-import "../../assets/style/globalstyle.scss";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 

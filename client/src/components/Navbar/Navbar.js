@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "../../assets/style/globalstyle.scss";
 
 import Web3Context from "../Web3context";
 
