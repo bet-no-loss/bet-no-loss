@@ -16,7 +16,7 @@
     "watch": "npm run watch-test",
     "watch-test": "watch 'npm run test' contracts test",
     "watch-compile": "watch 'npm run compile' contracts",
-    "start": "(cd client && npm install && npm start)"
+    "start": "(cd client && npm install --only=prod && npm start)"
   },
   "repository": {
     "type": "git",
