@@ -37,7 +37,7 @@
   "bugs": {
     "url": "https://github.com/bet-no-loss/bet-no-loss/issues"
   },
-  "homepage": "https://bet-no-loss.herokuapp.com/client",
+  "homepage": "https://github.com/bet-no-loss/bet-no-loss#readme",
   "devDependencies": {
     "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
