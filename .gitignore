@@ -42,7 +42,6 @@ client/build/
 
 # Solidity compiled artifacts
 build/contracts/
-client/src/contracts/
 artifacts/
 
 # Dependency directories
