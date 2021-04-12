@@ -1,7 +1,8 @@
 [![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
-![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
 [![built-with openzeppelin](https://img.shields.io/badge/built%20with-OpenZeppelin-3677FF)](https://docs.openzeppelin.com/)
- 
+ ![built-with Solidity and ReactJS](https://img.shields.io/badge/Buit%20with-Solidity%20and%20ReactJS-blue)
+
 # Bet-no-loss
 
 > Tagline: Bet on a sport event without loosing your stake and get rewarded if you win.
