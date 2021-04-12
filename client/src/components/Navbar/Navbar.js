@@ -48,6 +48,8 @@ const Navbar = () => {
                 <button className="badge badge-warning">Connect Wallet</button>
               )}
             </li>
+
+            {/*A compléter avec Web3 pour l'admin*/}
             <li className="nav-item">
               {ownerAddress ? (
                   <a className="nav-link" href="/admin">

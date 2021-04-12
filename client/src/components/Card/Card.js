@@ -1,68 +1,91 @@
-import React from "react";
-
+import React, {useState} from "react";
 
 function Card(bet) {
+    const [isOpen, setOpen] = useState(false);
+    const toggle = () => setOpen(!isOpen);
 
-  /* const {hometeam, awayteam, date, type, img} = props; */
-  return (
-    <div className="container">
-      <div className="card mb-3">
-        <div class="row no-gutters">
-          <div className="col-md-6 text-center">
-            <div className="d-flex flex-column">
-              <a >{bet.hometeam}</a>
-              <div>
-                <img src={bet.img} width={100} />
-              </div>
-              <p>{bet.awayteam}</p>
-            </div>
-          </div>
-          <div className="col-md-6 text-center">
-            <div className="d-flex flex-column">
-              <div>
-                <time>{bet.date}</time>
-              </div>
-              <div>
-                <button type="button" class="btn btn-default">
-                  Compte à rebours
-                </button>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-lg"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                  style={{ width: "170px" }}
-                >
-                  Bet
-                </button>
+    /* const {hometeam, awayteam, date, type, img} = props; */
+    return (
+        <>
+            <div className="container">
+                <div className="cardy mb-3">
+                    <div className="row no-gutters">
+                        <div className="col-md-6 text-center">
+                            <div className="d-flex flex-column">
+                                <a>{bet.hometeam}</a>
+                                <div>
+                                    <img src={bet.img} width={100}/>
+                                </div>
+                                <p>{bet.awayteam}</p>
+                            </div>
+                        </div>
+                        <div className="col-md-6 text-center">
+                            <div className="d-flex flex-column">
+                                <div>
+                                    <time>{bet.date}</time>
+                                </div>
+                                <div>
+                                    <button type="button" className="btn btn-default">
+                                        Compte à rebours
+                                    </button>
+                                </div>
+                                <div>
+                                    <div
+                                        className="btn btn-primary btn-lg"
+                                        style={{width: "170px"}}
+                                        onClick={() => toggle(!isOpen)}
+                                    >
+                                        Bet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {isOpen &&
+                <div
+                    className="position-absolute zmodal position-fixed">
+                    <div className="card taille">
+                        <div className="card-header">
+                            BET
+                        </div>
+                        <div className="card-body mt-5">
+                            <h5 className="card-title">3,500 <span>$</span></h5>
+                            <div className="card-text">
+                                <div className="d-flex flex-column mt-5">
+                                    <a>{bet.hometeam}</a>
+                                    <div>
+                                        <img src={bet.img} width={100}/>
+                                    </div>
+                                    <p>{bet.awayteam}</p>
+                                </div>
+                            </div>
+                            <div className="card-body">
+                                <label htmlFor="basic-url" className="form-label labelAmount">Amount:</label>
+                                <div className="mb-3">
+                                    <input
+                                        type="text"
+                                        className="form-control text-right"
+                                        id="basic-url"
+                                        aria-describedby="basic-addon3"
+                                        placeholder="0,00 $"
+                                    />
+                                </div>
+                            </div>
+                            <div className="mt-5">
+                                <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
+                                <button type='button' className="btn btn-lg btn-outline-danger" onClick={() => toggle(isOpen)}>Cancel
+                                </button>
+                            </div>
 
-                  {/*Modal*/}
-                  <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div className="modal-dialog">
-                          <div className="modal-content">
-                              <div className="modal-header">
-                                  <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                  <button typeName="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
-                              </div>
-                              <div className="modal-body">
-                                  ...
-                              </div>
-                              <div className="modal-footer">
-                                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                  <button type="button" className="btn btn-primary">Save changes</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                        </div>
+                    </div>
+                </div>
+                }
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+        </>
+
+    );
 }
 
 export default Card;
