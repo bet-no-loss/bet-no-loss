@@ -7,14 +7,15 @@ import Web3Context from "../Web3context";
 
 const Navbar = () => {
   const web3Context = useContext(Web3Context);
-  const { web3, accounts, contract, currentAccount, owner } = web3Context;
+  const { web3, accounts, contract, currentAccount } = web3Context;
 
   const address = currentAccount;
-  const ownerAddress = owner;
+  const ownerAddress = "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d";
 
   const first = address.slice(0, 5);
   const second = address.slice(38, 42);
   const formatedAddress = `${first}...${second}`;
+
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
