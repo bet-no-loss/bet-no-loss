@@ -1,4 +1,5 @@
 import React from 'react';
+import BetList from "../pages/Bets/BetList";
 
 const Account = () => {
     return (
@@ -32,6 +33,10 @@ const Account = () => {
 
                 <button type="submit" className="btn btn-primary btn-block mb-4">Confirm</button>
             </form>
+            <div className="myBets">
+                <h2 className="text-left pt-5">Ma liste:</h2>
+                <BetList />
+            </div>
         </div>
     );
 };
