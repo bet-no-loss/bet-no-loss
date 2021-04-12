@@ -64,7 +64,7 @@ jobs:
             # ~~ Create it with the replay of all the commits related to the client/ folder
             git subtree split --prefix=client -b client
           fi
-          git filter-branch --subdirectory-filter client
+          git checkout client && git filter-branch --subdirectory-filter client
 
       - name: 'Force push the `client` branch'
         uses: ad-m/github-push-action@master
