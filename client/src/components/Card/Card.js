@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Card(bet) {
+export default function Card(bet) {
     const [isOpen, setOpen] = useState(false);
     const toggle = () => setOpen(!isOpen);
 
@@ -88,4 +88,3 @@ function Card(bet) {
     );
 }
 
-export default Card;
