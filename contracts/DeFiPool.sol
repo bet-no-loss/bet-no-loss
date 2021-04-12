@@ -47,12 +47,12 @@ contract DefiPool {
     }
 
     /**
-     * @notice deposit ether to the contract
+     * @notice deposit DAI to the contract
      */
-    function deposit() public payable {
+    function deposit(uint _amount) public payable {
         require(msg.value >= 0, "Error, deposit must be >= 0 DAI");
 
-        userBalance[msg.sender] = userBalance[msg.sender] + msg.value;
+        Dai.transferFrom(msg.sender, address(this), _amount);
 
         depositStart[msg.sender] = depositStart[msg.sender] + block.timestamp;
 
