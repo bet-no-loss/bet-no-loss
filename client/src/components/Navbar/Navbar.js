@@ -37,15 +37,21 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
+              <div className="nav-link pool">
+                <a href=""><span className="textPool">0 POOL </span></a>
+              </div>
+
+            </li>
+            <li className="nav-item">
               {currentAccount ? (
                   <div className="nav-link">
-                    <button className="badge badge-warning">
-                      {formatedAddress}
-                    </button>
+                    <div className="buttonAddress">
+                      <span className="textAddress">{formatedAddress} </span>
+                    </div>
                   </div>
 
               ) : (
-                <button className="badge badge-warning">Connect Wallet</button>
+                <button className="badge badge-warning wallet">Connect Wallet</button>
               )}
             </li>
 

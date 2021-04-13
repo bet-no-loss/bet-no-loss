@@ -40,12 +40,38 @@
   box-shadow: 0 10px 20px rgba(0,0,0,.24), 0 4px 8px rgba(0,0,0,.12);
 }
 
+/*Navbar*/
 .bglogo{
   background: rgb(32,36,0);
   background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
   border-radius: 10px;
 }
 
+.pool {
+  position: relative;
+  top: 5px;
+  border: 0 solid;
+  border-radius: 9999px;
+  width: auto;
+  background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
+  line-height: 1;
+}
+
+.buttonAddress{
+  position: relative;
+  top: -3px;
+  border: 1px solid #088C12;
+  border-radius: 9999px;
+  line-height: 1;
+  width: auto;
+  padding: 7px;
+}
+
+.textPool {
+  color: white;
+}
+
+/*Modal*/
 .zmodal {
   z-index: 99;
   top: 94px;
@@ -63,3 +89,4 @@
   top: 350px;
   left: 505px;
 }
+
