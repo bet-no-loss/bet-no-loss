@@ -58,13 +58,13 @@ jobs:
           if git ls-remote --exit-code --quiet --heads origin client; then
             # ~~ Remote branch `client` already exists.
             # ~~ Make refs/heads/client points to the latest commit of the client/ folder
-            git checkout client -- && git reset --hard -- $(git subtree split --prefix=client/)
+            git checkout client -- && git reset --hard -- $(git subtree split --prefix=client)
           else
             # ~~ Remote branch `client` does not exist.
             # ~~ Create it with the replay of all the commits related to the client/ folder
             git subtree split --prefix=client -b client
           fi
-          git checkout client -- && [ -n "$(git status --porcelain)" ]  && git filter-branch --subdirectory-filter client
+          git checkout client -- && [ -z "$(git status --porcelain)" ] || git filter-branch --subdirectory-filter client
 
       - name: 'Force push the `client` branch'
         if: ${{ success() }}
