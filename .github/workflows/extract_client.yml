@@ -64,10 +64,9 @@ jobs:
             # ~~ Create it with the replay of all the commits related to the client/ folder
             git subtree split --prefix=client -b client
           fi
-          git checkout client -- && [ -z "$(git status --porcelain)" ] || git filter-branch --subdirectory-filter client
+          git checkout client -- && git filter-branch --subdirectory-filter client && :
 
       - name: 'Force push the `client` branch'
-        if: ${{ success() }}
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
