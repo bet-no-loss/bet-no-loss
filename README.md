@@ -1,8 +1,7 @@
 [![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
 [![Extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
- ![built-with-♥︎ Solidity and ReactJS](https://img.shields.io/badge/Buit%20with%20♥︎¨-Solidity%20and%20ReactJS-3677FF)
-[![Open DApp](https://img.shields.io/badge/Open-DApp-orange)](https://bet-no-loss.herokuapp.com/)
+ [![Application-with-♥︎ Solidity and ReactJS](https://img.shields.io/badge/Application%20buit%20with%20♥︎¨-Solidity%20and%20ReactJS-3677FF)](https://bet-no-loss.herokuapp.com/)
 
 # Bet-no-loss
 
@@ -18,7 +17,7 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 
 ## Links
 
-* [DaPP hosted on Heroku](https://bet-no-loss.herokuapp.com/)
+* [Open Application](https://bet-no-loss.herokuapp.com/)
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
 * [Trello](https://trello.com/b/c6Xhe5hM)
@@ -170,29 +169,26 @@ npx truffle deploy --network=XXX
 
 ## Deploy the DApp
 
-### Local Deploy
-TODO
-
-### Remote Deploy 
-
 Our **DApp** is **Front-End** application written in **ReactJS**.  
-It is **deployed automatically on [Heroku](https://heroku.com)**.
+There is no need to deploy it locally.
+It is **deployed automatically on [Heroku](https://heroku.com)** each time there is a push to the `master` branch.
 
-To achieve Continuous Deployment of the this we developped and configured a 2 steps process involving both a Github workflow and a Heroku deploy.
+To achieve Continuous Deployment to Heroku we developped and configured a 2 steps process involving both a Github workflow and a Heroku deploy.
 
 **Github Workflow**  
 First off, we built a **[Github Workflow Action](https://github.com/bet-no-loss/bet-no-loss/blob/master/.github/workflows/extract_client.yml)** triggered each time the `master` branch is pushed.  
 It extracts **only the commits that touched the `client/`** folder  (RectJS section of the project) and store them in a dedicated and custom built branch named `client`.
 This way we end up with a branch that exclusively contains the client code located in the root folder instead of the `client/ folder as usual.
 
-**Why** do we need this ~~sledge hammer~~ Workflow Action?  
-This is due to a deployment constraint of the Heroku[mars/create-react-app-buildpack](https://github.com/mars/create-react-app-buildpack/blob/master/README.md) that we use for deployment.
-This buildpacks requires our ReactJS app to reside in the project's root folder. However, this is not the case on `master` as the client code lives in the `/client/` folder.  
+**Why**?    
+This is due to a deployment constraint of the Heroku[mars/create-react-app-buildpack](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack) that we use for deployment.
+This [buildpack](https://github.com/mars/create-react-app-buildpack/blob/master/README.md) **requires our ReactJS app** to reside **in the** project's **root folder**. However, this is not the case on `master` as the client code lives in the `/client/` folder.  
 We created a workflow action to do this magic.
 It creates a `client` branch out of `master` with exclusively the **client code** and makes sure it is **located in the project's root folder** but only for this branch of course.
 
 **Heroku**  
-We then configured **Heroku** to listen for changes on Github repository so that each **push to the `client` branch on Github triggers a Heroku deploy**.
+We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a Heroku deploy**.  
+Please do note that this is `client` not `master`.  
 Heroku then pulls this branch, deploys and start the ReactJS app. 
 
 # Run the DApp
