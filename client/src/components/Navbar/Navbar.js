@@ -46,7 +46,7 @@ const Navbar = () => {
               {currentAccount ? (
                   <div className="nav-link">
                     <div className="buttonAddress">
-                      <span className="textAddress">{formatedAddress} </span>
+                      <span className="textAddress"><strong>{formatedAddress}</strong> </span>
                     </div>
                   </div>
 
