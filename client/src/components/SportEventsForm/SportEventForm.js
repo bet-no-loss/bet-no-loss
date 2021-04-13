@@ -26,14 +26,14 @@ function SportEventForm() {
   };
 
   const style = {
-    paddingRigth: "550px",
+    paddingRight: "550px",
   };
 
-  const handleSubmit = async (event) => {
+ /* const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(sportEvent);
     await createEvent();
-  };
+  };*/
 
   const handleChange = (event) => {
     const { name, value } = event.target;
