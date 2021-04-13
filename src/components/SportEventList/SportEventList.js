@@ -30,7 +30,7 @@ const betEvent = (ev) => {
         {sportEvents.map((sportev) => (
           <div key={sportev.key} style={{margin: "50px"}}>
             <h3 className="card-title">
-              {sportev.teamA} <i class="far fa-futbol"></i> {sportev.teamB}
+              {sportev.teamA} <i className="far fa-futbol"/> {sportev.teamB}
             </h3>
             <p className="card-text">
               This event will take place on {sportev.date} and you can bet from {sportev.outComedate}
