@@ -38,7 +38,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <div className="nav-link pool">
-                <a href=""><span className="textPool">0 POOL </span></a>
+                <a href=""><span className="textPool">0 <span>ETH</span></span></a>
               </div>
 
             </li>

@@ -86,7 +86,7 @@ function SportEventForm() {
 
   const handleInsert = (ev) => {
     ev.preventDefault();
-    const add = "0xbADA447d9ECaA3F37ab7A24f6287193AFf2E586f";
+    const add = oracleAddr;
     const res = add.toLowerCase();
     insertAddress(res); 
     console.log(res);
