@@ -26,16 +26,16 @@ const Navbar = () => {
           <img src={logo} alt="logo" width="80" className="logo" />
         </Link>
 
-        <div className="d-flex align-items-center">
-          <ul className="navbar-nav ml-auto">
+        <div>
+          <ul className="navbar-nav ml-auto d-flex align-items-center">
             <li className="nav-item">
               <a className="nav-link" href="/">
-                <p className="primaryColor"><strong>Bets</strong></p>
+                <span className="primaryColor"><strong>Bets</strong></span>
               </a>
             </li>
             <li className="nav-item pr-4">
               <a className="nav-link" href="/account">
-                <p className="primaryColor"><strong>Compte</strong></p>
+                <span className="primaryColor"><strong>Compte</strong></span>
               </a>
             </li>
             <li className="nav-item">
@@ -64,7 +64,7 @@ const Navbar = () => {
             <li className="nav-item">
               {ownerAddress ? (
                   <a className="nav-link" href="/admin">
-                    Admin
+                    <span>Admin</span>
                   </a>
               ) : ''}
             </li>
