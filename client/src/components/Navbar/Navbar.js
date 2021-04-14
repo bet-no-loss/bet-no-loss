@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "../../assets/style/globalstyle.scss";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
+import { Jazzicon } from "@ukstv/jazzicon-react";
 
 import Web3Context from "../Web3context";
 
@@ -17,6 +18,7 @@ const Navbar = () => {
   const formatedAddress = `${first}...${second}`;
 
 
+
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
@@ -24,7 +26,7 @@ const Navbar = () => {
           <img src={logo} alt="logo" width="80" className="logo" />
         </Link>
 
-        <div className="collapse navbar-collapse" id="navbarResponsive">
+        <div className="d-flex align-items-center">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
               <a className="nav-link" href="/">
@@ -46,6 +48,9 @@ const Navbar = () => {
               {currentAccount ? (
                   <div className="nav-link">
                     <div className="buttonAddress">
+                      <span className="jazzicon">
+                        <Jazzicon address={currentAccount}/>
+                      </span>
                       <span className="textAddress"><strong>{formatedAddress}</strong> </span>
                     </div>
                   </div>
