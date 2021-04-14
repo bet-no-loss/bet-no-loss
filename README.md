@@ -27,8 +27,11 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 ### Architecture
 
 Bet-no-loss software is composed of 2 parts:
-- **Back-End**:  The **Ethereum smart-contracts** deployed on the testnets. They are written in Solidity.
-- **Front-End**: A **ReactJS client** deployed on Heroku. It  provides the User Interface to interact with the contracts.
+- **Back-End**:  
+The **Ethereum smart-contracts** deployed on the testnets. They are written in Solidity.
+- **Front-End**:  
+A **ReactJS client app** written in ReactJS and deployed on Heroku. 
+It  provides the User Interface to interact with the contracts.
 
 This Github **repository** is a **monorepo** that entails **both** the **back-end and** the **front-end** code.
 
@@ -63,7 +66,7 @@ The below diagram outlines the interactions occurring between the smart-contract
 sequenceDiagram autonumber
     Admin->>Oracle: Create Contract
     Admin->>Oracle: Declare Event
-    Admin->>DeFi: Create Contract
+    Admin->>DeFiPool: Create Contract
     Admin->>Bet:  Create Contract
     
     Bet->>Oracle:  Get Events List
@@ -77,18 +80,18 @@ sequenceDiagram autonumber
     deactivate DApp
     
     Note left of Bet: ⏰ Close Betting period
-    Bet->>DeFi: Send deposits to DeFi Earn
-    activate DeFi
-    DeFi-->>DeFi: Accruing    Interests    
+    Bet->>DeFiPool: Send deposits to DeFi to earn
+    activate DeFiPool
+    DeFiPool-->>DeFiPool: Accruing    Interests    
 
     Admin-->>Oracle: Simulate Event Outcome
     Note left of Oracle: ⏰ Event is over and its outcome is known
     Oracle->>Bet: Report    Event Outcome 
     
     Note left of Bet: ⏰ Earning period is over
-    deactivate DeFi
-    Bet->>DeFi: Retrieve Interests
-    DeFi->>Bet: Accept Retrieval
+    deactivate DeFiPool
+    Bet->>DeFiPool: Retrieve Interests
+    DeFiPool->>Bet: Accept Retrieval
 
     Player->>Bet: Request Earnings
     Bet->>Player: Accept Withdrawal if allowed
@@ -102,34 +105,30 @@ sequenceDiagram autonumber
 
 # Installation
 
-Installing **locally** is a 2 steps process:
-- Install `nodejs` and`npm`
-- Clone the repository:
-```
-cd $DEV
-
-# ~~~ Clone the repository
-git clone git@github.com:bet-no-loss/bet-no-loss.git
-cd bet-no-loss
-```
+- Install [`nodejs` and `npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+- Install the [Solidity Compiler version `0.8.3`](https://docs.soliditylang.org/en/v0.8.3/installing-solidity.html)
+- Clone the Github repository
+    ```
+    cd $DEV
+    
+    # ~~~ Clone the repository
+    git clone git@github.com:bet-no-loss/bet-no-loss.git
+    cd bet-no-loss
+    ```
 - Install the `npm` packages for the back-end and the front-end
-```
-// ~~ Update npm to its latest version
-npm install -g npm
-
-# ~~~ Install the npm packages for the back-end
-npm install
-
-# ~~~ Install the npm packages for the front-end
-npm --prefix client/ install
-```
+    ```
+    // ~~ Update npm to its latest version
+    npm install -g npm
+    
+    # ~~~ Install the npm packages for the back-end
+    npm install
+    
+    # ~~~ Install the npm packages for the front-end
+    npm --prefix client/ install
+    ```
 
 # Configuration
 
-# Install Solidity Compiler
-
-Install Solidity Compiler version `0.8.3`.
- 
 ## Define Environment Parameters
 
 As a dev, in order to use the project locally and deploy the smart contracts you need to **create a `.env` file** in the project' root folder.
@@ -137,10 +136,10 @@ It contains the environment specific parameters for the test and main networks.
 
 - Create a `.env` file in the project's root folder  
 - Edit `.env` and set the below `property = "value"` pairs (one per line):
-```
-MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
-INFURA_PROJECT_ID = "TODO_infura_project_id_here"
-```
+    ```
+    MNEMONIC          = "TODO_enter_your_own_12_words_seed_here"
+    INFURA_PROJECT_ID = "TODO_infura_project_id_here"
+    ```
 
 ℹ️ Keep in mind to surround each value with double quotes.
 
@@ -151,10 +150,10 @@ INFURA_PROJECT_ID = "TODO_infura_project_id_here"
   Once configured, the deployment occurs all by itself without manual intervention.
 - **Configure Heroku CLI**  
 You need to do this once only for the Heroku app owner only (as you use the free plan).
-```
-heroku login
-heroku add:keys
-```
+    ```
+    heroku login
+    heroku add:keys
+    ```
 - **Create** your **App** on Heroku  
     - **App Name**: To keep things simple give your Heroku app the same name as your Github project.
     - **Github**: When asked enter the Github user and repository names of your project
@@ -169,24 +168,24 @@ heroku add:keys
         If this branch does not exist yet, you  need to install this [Github Workflow Action](https://github.com/bet-no-loss/bet-no-loss/blob/master/.github/workflows/extract_client.yml) (handcrafted with 💙) in your local repository beforehand.  
         Then push to `master` and this action will do its magic.
 - Configure Heroku in the **local git repository**
-```
-cd $DEV
-# git clone git@github.com:bet-no-loss/bet-no-loss.git
-cd bet-no-loss
+    ```
+    cd $DEV
+    # git clone git@github.com:bet-no-loss/bet-no-loss.git
+    cd bet-no-loss
 
-# Declare the heroku git remote repository
-heroku git:remote --ssh-git -a bet-no-loss
+    # Declare the heroku git remote repository
+    heroku git:remote --ssh-git -a bet-no-loss
 
-# Use the `mars/create-react-app`buikdpack to deploy and start the ReactJS app
-#   Not needed as we have already done that via the Web UI before. 
-#   This how to do the same thing using the command line interface.
-#heroku buildpacks:clear
-#heroku buildpacks:set mars/create-react-app
+    # Use the `mars/create-react-app`buikdpack to deploy and start the ReactJS app
+    #   Not needed as we have already done that via the Web UI before. 
+    #   This how to do the same thing using the command line interface.
+    #heroku buildpacks:clear
+    #heroku buildpacks:set mars/create-react-app
 
-# Set config variables
-#heroku config:set USE_NPM_INSTALL=true
-heroku config:set NPM_CONFIG_PRODUCTION=true 
-```
+    # Set config variables
+    #heroku config:set USE_NPM_INSTALL=true
+    heroku config:set NPM_CONFIG_PRODUCTION=true 
+    ```
 
 # Compile
 
@@ -206,10 +205,11 @@ npx truffle deploy --reset --network ganache
 
 # Deploy 
 
-You need to deploy both the smart-contracts and the ReactJS client (DApp).
+You need to deploy both the smart-contracts (back-end) and the ReactJS app - DApp (front-end).
 
-## Deploy the Smart-Contracts
+## Deploy Back-End
 
+Deploy the Smart-Contracts:
 ```
 # Local Deploy
 npx truffle deploy --reset --network=ganache
@@ -218,14 +218,17 @@ npx truffle deploy --reset --network=ganache
 npx truffle deploy --reset --network=XXX
 ```
 
-## Deploy the DApp
+## Deploy Front-End
 
 Our **DApp** is **Front-End** application written in **ReactJS**.  
-There is no need to deploy it **locally.
+No need to deploy it **locally**.
 
 It is also **deployed automatically on [Heroku](https://heroku.com)** each time there is a push to the `master` branch.
+You can [open the application here]().
 
 To achieve Continuous Deployment to Heroku we developed and configured a 2 steps process involving both a Github workflow and a Heroku deploy.
+
+First-off, make sure you have [configured Heroku](README.md#configure-heroku) beforehand.
 
 **Github Workflow**  
 First off, we built a **[Github Workflow Action](https://github.com/bet-no-loss/bet-no-loss/blob/master/.github/workflows/extract_client.yml)** triggered each time the `master` branch is pushed.  
@@ -233,30 +236,25 @@ It extracts **only the commits that touched the `client/`** folder  (RectJS sect
 This way we end up with a branch that exclusively contains the client code located in the root folder instead of the `client/ folder as usual.
 
 **Why**?    
-This is due to a deployment constraint of the Heroku[mars/create-react-app-buildpack](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack) that we use for deployment.
-This [buildpack](https://github.com/mars/create-react-app-buildpack/blob/master/README.md) **requires our ReactJS app** to reside **in the** project's **root folder**. However, this is not the case on `master` as the client code lives in the `/client/` folder.  
+This is due to a constraint of the Heroku [mars/create-react-app-buildpack](https://elements.heroku.com/buildpacks/mars/create-react-app-buildpack) that we use for deployment.
+This [buildpack](https://github.com/mars/create-react-app-buildpack/blob/master/README.md) **requires our ReactJS app** to reside **in the** project's **root folder**. However, this is not the case as on `master` the client code lives in the `/client/` folder.  
 We created a workflow action to do this magic.
-It creates a `client` branch out of `master` with exclusively the **client code** and makes sure it is **located in the project's root folder** but only for this branch of course.
+It creates a `client` branch out of `master` with exclusively the **client code** and makes sure all the client code is **located in the project's root folder** but for this branch only of course.
 
 **Heroku**  
-We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a Heroku deploy**.  
-Please do note that this is `client` not `master`.  
-Heroku then pulls this branch, deploys and start the ReactJS app. 
+We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a deploy to Heroku**.  
+Heroku then pulls the `client` branch (not `master`) then deploys and starts the ReactJS app. 
 
 # Run the DApp
 
-## Run Locally
-
+- Run the **local** DApp:  
 In order to run the Front-End application on you local machine:
-```
-cd client 
-npm start
-```
-
-## Run on Heroku
-
+    ```
+    cd client 
+    npm start
+    ```
+- Run the DApp deployed on **Heroku (remote)**:  
 [Click this link to open the DApp on Heroku](https://bet-no-loss.herokuapp.com/).
-
 
 # Documentation
 
