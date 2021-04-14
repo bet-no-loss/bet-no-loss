@@ -1,5 +1,6 @@
 import React from 'react';
 import BetList from "../pages/Bets/BetList";
+import SportEventList from "../SportEventList/SportEventList";
 
 const Account = () => {
     return (
@@ -35,7 +36,7 @@ const Account = () => {
             </form>
             <div className="myBets">
                 <h2 className="text-left pt-5">Ma liste:</h2>
-                <BetList />
+                <SportEventList/>
             </div>
         </div>
     );
