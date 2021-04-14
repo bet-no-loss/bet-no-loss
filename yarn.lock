@@ -1478,6 +1478,14 @@
     "semver" "^6.3.0"
     "tsutils" "^3.17.1"
 
+"@ukstv/jazzicon-react@^1.0.0":
+  "integrity" "sha512-V0klHdrO8Mk+faTGhQRd4t2vR+1IUHJa9sLaP/vhed0klPrOblhEU/Mc+Utgxep6oUuyhcGigjvkEJUOVE1/sg=="
+  "resolved" "https://registry.npmjs.org/@ukstv/jazzicon-react/-/jazzicon-react-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "color" "^3.1.2"
+    "mersenne-twister" "^1.1.0"
+
 "@webassemblyjs/ast@1.8.5":
   "integrity" "sha512-aJMfngIZ65+t71C3y2nBBg5FFG0Okt9m0XEgWZ7Ywgn1oMAT8cNwx00Uv1cQyHtidq0Xn94R4TAywO+LCQ+ZAQ=="
   "resolved" "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.8.5.tgz"
@@ -3012,7 +3020,7 @@
     "color-name" "^1.0.0"
     "simple-swizzle" "^0.2.2"
 
-"color@^3.0.0":
+"color@^3.0.0", "color@^3.1.2":
   "integrity" "sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg=="
   "resolved" "https://registry.npmjs.org/color/-/color-3.1.2.tgz"
   "version" "3.1.2"
@@ -7640,6 +7648,11 @@
     "rlp" "^2.0.0"
     "semaphore" ">=1.0.1"
 
+"mersenne-twister@^1.1.0":
+  "integrity" "sha1-+RZhjuQ9cXnvz2Qb7EUx65Zwl4o="
+  "resolved" "https://registry.npmjs.org/mersenne-twister/-/mersenne-twister-1.1.0.tgz"
+  "version" "1.1.0"
+
 "methods@~1.1.2":
   "integrity" "sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4="
   "resolved" "https://registry.npmjs.org/methods/-/methods-1.1.2.tgz"
@@ -9968,7 +9981,7 @@
   optionalDependencies:
     "fsevents" "2.0.7"
 
-"react@16.11.0":
+"react@>=16", "react@16.11.0":
   "integrity" "sha512-M5Y8yITaLmU0ynd0r1Yvfq98Rmll6q8AxaEe88c8e7LxO8fZ2cNgmFt0aGAS9wzf1Ao32NKXtCl+/tVVtkxq6g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.11.0.tgz"
   "version" "16.11.0"

@@ -47,6 +47,11 @@
   border-radius: 10px;
 }
 
+.jazzicon{
+  width: 20px !important;
+  height: 20px !important;
+}
+
 .pool {
   position: relative;
   top: 5px;
@@ -55,10 +60,12 @@
   width: auto;
   background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
   line-height: 1;
+  padding: 10px;
 }
 
 .buttonAddress{
   position: relative;
+  display: flex;
   top: -3px;
   border: 1px solid #088C12;
   border-radius: 9999px;
@@ -66,6 +73,13 @@
   width: auto;
   padding: 7px;
   color: #088C12;
+}
+
+.textAddress {
+  display: flex;
+  align-items: center;
+  padding-inline: 5px;
+  line-height: 1;
 }
 
 .textPool {
