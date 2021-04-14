@@ -55,7 +55,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
           git checkout master
-#          git branch -D client || :
+          # git branch -D client || :
 
           # Create the client branch with the replay of all the commits related to the client/ folder
           # as if client/ would now be in the root folder
