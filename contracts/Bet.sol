@@ -270,11 +270,7 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
-<<<<<<< HEAD
-     *  @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
-=======
-     *  @notice A fallback function that allows this smart-contract to accept DAI
->>>>>>> bd147761fec4b95779d945085b8cd74949517458
+     *  @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
      */
     receive() external payable {
     }
