@@ -53,8 +53,6 @@
 }
 
 .pool {
-  position: relative;
-  top: 5px;
   border: 0 solid;
   border-radius: 9999px;
   width: auto;
@@ -64,9 +62,7 @@
 }
 
 .buttonAddress{
-  position: relative;
   display: flex;
-  top: -3px;
   border: 1px solid #088C12;
   border-radius: 9999px;
   line-height: 1;
