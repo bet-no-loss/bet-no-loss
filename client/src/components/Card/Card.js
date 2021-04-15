@@ -31,7 +31,7 @@ export default function Card(bet) {
                                 </div>
                                 <div>
                                     <div
-                                        className="btn btn-primary btn-lg"
+                                        className="btn btn-primary btn-lg rounded-pill"
                                         style={{width: "170px"}}
                                         onClick={() => toggle(!isOpen)}
                                     >
@@ -74,7 +74,8 @@ export default function Card(bet) {
                             </div>
                             <div className="mt-5">
                                 <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
-                                <button type='button' className="btn btn-lg btn-outline-danger" onClick={() => toggle(isOpen)}>Cancel
+                                <button type='button' className="btn btn-lg btn-outline-danger"
+                                        onClick={() => toggle(isOpen)}>Cancel
                                 </button>
                             </div>
 
