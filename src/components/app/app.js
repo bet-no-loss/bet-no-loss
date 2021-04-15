@@ -135,8 +135,6 @@ const App = () => {
           </div>
         </Router>
 
-
-
       </Web3Context.Provider>
     </div>
   );

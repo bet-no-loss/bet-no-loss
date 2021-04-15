@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "../../assets/style/globalstyle.scss";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
 import { Jazzicon } from "@ukstv/jazzicon-react";
@@ -19,13 +18,10 @@ const Navbar = () => {
   console.log('accounts', accounts);
   console.log('contract', contract);
   console.log('current', currentAccount);
-  console.log('owner', ownerAddress);
 
   const first = address.slice(0, 5);
   const second = address.slice(38, 42);
   const formatedAddress = `${first}...${second}`;
-
-
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
@@ -72,7 +68,7 @@ const Navbar = () => {
             <li className="nav-item">
               {ownerAddress === currentAccount && (
                   <a className="nav-link" href="/admin">
-                    <strong style={{color: 'red', border: '1px solid red', padding: '5px'}}>Admin</strong>
+                    <span className="btn btn-outline-danger"><strong>Admin</strong></span>
                   </a>
               )}
             </li>
