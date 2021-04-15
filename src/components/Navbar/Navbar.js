@@ -72,7 +72,7 @@ const Navbar = () => {
             <li className="nav-item">
               {ownerAddress === currentAccount && (
                   <a className="nav-link" href="/admin">
-                    <span>Admin</span>
+                    <strong style={{color: 'red', border: '1px solid red', padding: '5px'}}>Admin</strong>
                   </a>
               )}
             </li>
