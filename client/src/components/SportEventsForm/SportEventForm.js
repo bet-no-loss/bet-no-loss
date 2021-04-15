@@ -35,8 +35,8 @@ function SportEventForm() {
     await createEvent();
   };*/
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setSportEvent({ ...sportEvent, [name]: value });
   };
 
@@ -102,9 +102,13 @@ function SportEventForm() {
   const addData = async () => {
     const add = await oracleContract.methods
     .addTestData()
-    .call({ from: accounts[0]});
+    .send({gas: 900000, from: accounts[0]});
     console.log('add', add)
   }
+
+  /*const addProposal = async (content) => {
+    await instance.methods.addProposal(content).send({ from: admin });
+  };*/
 
   const testName = async () => {
     const insert = await contract.methods

@@ -10,7 +10,6 @@ function SportEventList() {
     currentAccount,
     sportEvent,
     setSportEvent,
-      addTestData,
   } = web3Context;
 
   const [sportEvents, setSportEvents] = useState([
