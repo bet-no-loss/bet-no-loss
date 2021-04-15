@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../logo.svg";
+import { Jazzicon } from "@ukstv/jazzicon-react";
 
 import Web3Context from "../Web3context";
 
@@ -9,11 +10,18 @@ const Navbar = () => {
   const { web3, accounts, contract, currentAccount } = web3Context;
 
   const address = currentAccount;
-  const ownerAddress = "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d";
+
+  /*const ownerAddress = "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d";*/
+
+  console.log('web3',web3);
+  console.log('accounts', accounts);
+  console.log('contract', contract);
+  console.log('current', currentAccount);
 
   const first = address.slice(0, 5);
   const second = address.slice(38, 42);
   const formatedAddress = `${first}...${second}`;
+
 
 
   return (
@@ -23,21 +31,21 @@ const Navbar = () => {
           <img src={logo} alt="logo" width="80" className="logo" />
         </Link>
 
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav ml-auto">
+        <div>
+          <ul className="navbar-nav ml-auto d-flex align-items-center">
             <li className="nav-item">
               <a className="nav-link" href="/">
-                <p className="primaryColor"><strong>Bets</strong></p>
+                <span className="primaryColor"><strong>Bets</strong></span>
               </a>
             </li>
             <li className="nav-item pr-4">
               <a className="nav-link" href="/account">
-                <p className="primaryColor"><strong>Compte</strong></p>
+                <span className="primaryColor"><strong>Compte</strong></span>
               </a>
             </li>
             <li className="nav-item">
               <div className="nav-link pool">
-                <a href=""><span className="textPool">0 POOL </span></a>
+                <a href=""><span className="textPool">0 <span>ETH</span></span></a>
               </div>
 
             </li>
@@ -45,6 +53,9 @@ const Navbar = () => {
               {currentAccount ? (
                   <div className="nav-link">
                     <div className="buttonAddress">
+                      <span className="jazzicon">
+                        <Jazzicon address={currentAccount}/>
+                      </span>
                       <span className="textAddress"><strong>{formatedAddress}</strong> </span>
                     </div>
                   </div>
@@ -56,11 +67,11 @@ const Navbar = () => {
 
             {/*A compléter avec Web3 pour l'admin*/}
             <li className="nav-item">
-              {ownerAddress ? (
+              {(
                   <a className="nav-link" href="/admin">
-                    Admin
+                    <span>Admin</span>
                   </a>
-              ) : ''}
+              )}
             </li>
           </ul>
         </div>
