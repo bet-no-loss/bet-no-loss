@@ -11,13 +11,15 @@ const Navbar = () => {
   const { web3, accounts, contract, currentAccount } = web3Context;
 
   const address = currentAccount;
+  const wallet = web3.eth.getAccounts();
 
-  /*const ownerAddress = "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d";*/
+  const ownerAddress = '0xe087aa17adb5385ef7a0c9a7409689b14b4f911d';
 
   console.log('web3',web3);
   console.log('accounts', accounts);
   console.log('contract', contract);
   console.log('current', currentAccount);
+  console.log('owner', ownerAddress);
 
   const first = address.slice(0, 5);
   const second = address.slice(38, 42);
@@ -62,13 +64,13 @@ const Navbar = () => {
                   </div>
 
               ) : (
-                <button className="badge badge-warning wallet">Connect Wallet</button>
+                <button className="badge badge-warning wallet" onClick={()=> wallet}>Connect Wallet</button>
               )}
             </li>
 
             {/*A compléter avec Web3 pour l'admin*/}
             <li className="nav-item">
-              {(
+              {ownerAddress === currentAccount && (
                   <a className="nav-link" href="/admin">
                     <span>Admin</span>
                   </a>
