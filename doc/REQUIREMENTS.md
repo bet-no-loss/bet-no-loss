@@ -9,7 +9,7 @@ Your project must:
 - [x] be a Truffle projet
 - [x] use Truffle's `react` box
 - [x] contain a README that:
-    - [ ] introduces the projet and its concept(s)
+    - [x] introduces the projet and its concept(s)
     - [ ] details its features
     - [x] describe how to install and launch it
 - have the following features: 
@@ -41,13 +41,13 @@ Your project must:
 
 You project must:
 
-- [ ] contain integration tests for each smart-contract
+- [x] contain integration tests for each smart-contract
 - [x] contain a file named `tests_explication.md` explaining  **why you wrote these thests**
 
 
 ## ⭐️ Bonus
 
-- [ ] A file named `design_pattern_desicions.md` if present to list which **design patterns** you chose and why.
+- [x] A file named `design_pattern_decisions.md` if present to list which **design patterns** you chose and why.
 This [link](https://fravoll.github.io/solidity-patterns/) may help. 
 
 
