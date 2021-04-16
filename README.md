@@ -224,10 +224,10 @@ You need to deploy both the smart-contracts (back-end) and the ReactJS app - DAp
 Deploy the Smart-Contracts:
 ```
 # Local Deploy
-npx truffle deploy --reset --network=ganache
+npx truffle deploy --network=ganache
 
 # Remote Deploy on XXX test network
-npx truffle deploy --reset --network=XXX
+npx truffle deploy --network=XXX
 ```
 
 The smart-contracts are deployed in the following order:  
@@ -251,7 +251,7 @@ The DApp is **deployed automatically on [Heroku](https://heroku.com)** each time
 > 
 > **Github Workflow**  
 > First off, we built a **[Github Workflow Action](https://github.com/bet-no-loss/bet-no-loss/blob/master/.github/workflows/extract_client.yml)** triggered each time the `master` branch is pushed.  
-> It extracts **only the commits that touched the `client/`** folder  (RectJS section of the project) and store them in a dedicated and custom built branch named `client`.
+> It extracts **only the commits that touched the `client/`** folder  (ReactJS section of the project) and store them in a dedicated and custom built branch named `client`.
 > This way we end up with a branch that exclusively contains the client code located in the root folder instead of the `client/ folder as usual.
 > 
 > **Why**?    
