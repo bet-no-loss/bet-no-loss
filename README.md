@@ -14,6 +14,9 @@
 - Finally at the end of week 3, 90% of accrued interests can be split between winners according to their share in the total deposit value. 
 Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
 
+## License
+
+*Bet-no-loss* is released under the terms of the MIT license. See COPYING for more information or see https://opensource.org/licenses/MIT.
 
 ## Links
 
@@ -27,7 +30,7 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 Bet-no-loss software is composed of 2 parts:
 - **Back-End**:  
 The **Ethereum smart-contracts** deployed on the testnets. They are written in Solidity.
-- **Front-End**:  
+- **Front-End** (DApp):  
 A **ReactJS client app** written in ReactJS and deployed on Heroku. 
 It  provides the User Interface to interact with the contracts.
 
@@ -55,8 +58,7 @@ The Ethereum smart-contracts:
 
 ### Front-End
 
-Our **DApp** is **Front-End** application written in **ReactJS**.  
-Utltimately is deployed on Heroku.
+Our **DApp** is **Front-End** application written in **ReactJS** and deployed on Heroku.
 
 ## Features
 
@@ -75,40 +77,61 @@ The below diagram outlines the interactions occurring between the smart-contract
 
 ```mermaid
 sequenceDiagram autonumber
-    Admin->>Oracle: Create Contract
-    Admin->>Oracle: Declare Event
-    Admin->>DeFiPool: Create Contract
-    Admin->>Bet:  Create Contract
+    participant admin  as Admin 🔧 👱‍♂️
+    participant oracle as BetOracle ❓ ⚙️ 
+    participant bet    as Bet 🎲 ⚙️
+    participant defi   as DefiPool 💰 ⚙️
+    participant player as Player 🎲 👱‍♂️
+    participant dapp   as DApp 🖥 _ ☁️
     
-    Bet->>Oracle:  Get Events List
-    Oracle->>Bet: Send Events List
-    Player->>DApp: Browse Events
-    Player->>DApp: Select an Event
-    Player->>DApp: Connect Wallet
-    
-    Player->>DApp: Deposit Funds
-    activate DApp
-    DApp->>Bet: Deposit Funds
-    deactivate DApp
-    
-    Note left of Bet: ⏰ Close Betting period
-    Bet->>DeFiPool: Send deposits to DeFi to earn
-    activate DeFiPool
-    DeFiPool-->>DeFiPool: Accruing    Interests    
+    rect rgb(238, 238, 238)
+        Note over admin,oracle: ℹ️_Initialization Phase
+        admin->>oracle: Create Contract
+        admin->>oracle: Declare Event
+        admin->>defi: Create Contract
+        admin->>bet:  Create Contract
+    end
 
-    Admin-->>Oracle: Simulate Event Outcome
-    Note left of Oracle: ⏰ Event is over and its outcome is known
-    Oracle->>Bet: Report    Event Outcome 
-    
-    Note left of Bet: ⏰ Earning period is over
-    deactivate DeFiPool
-    Bet->>DeFiPool: Retrieve Interests
-    DeFiPool->>Bet: Accept Retrieval
+    rect rgb(238, 238, 238)
+        Note over bet,oracle: ℹ️_Betting Phase
+        bet->>oracle:  Get Events List
+        oracle->>bet: Send Events List
+        player->>dapp: Browse Events
+        player->>dapp: Select an Event
+        player->>dapp: Connect Wallet
 
-    Player->>Bet: Request Earnings
-    Bet->>Player: Accept Withdrawal if allowed
-    
-    Bet->>Bet: Close this event 
+        player->>dapp: Deposit Funds
+        activate dapp
+        dapp->>bet: Deposit Funds
+        deactivate dapp
+
+        Note left of bet: ⏰_Close Betting period
+    end
+
+    rect rgb(238, 238, 238)
+        bet->>defi: Send deposits to DeFi to earn
+        Note over admin,bet: ℹ️_Earning Phase
+        activate defi
+        defi-->>defi: Accruing    Interests    
+
+        admin-->>oracle: Simulate Event Outcome
+        Note left of oracle: ⏰_Event is over and its outcome is known
+        oracle->>bet: Report    Event Outcome 
+
+        Note left of bet: ⏰_Earning period is over
+        deactivate defi
+    end
+
+    rect rgb(238, 238, 238)
+        Note over bet,defi: Distribution Phase
+        bet->>defi: Retrieve Interests
+        defi->>bet: Accept Retrieval
+
+        player->>bet: Request Earnings
+        bet->>player: Accept Withdrawal if allowed
+    end
+
+    bet->>bet: Close this event 
 ```
 
 </details>
