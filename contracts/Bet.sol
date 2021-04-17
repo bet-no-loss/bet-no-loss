@@ -109,6 +109,13 @@ contract Bet is Ownable, ReentrancyGuard {
           return Dai.balanceOf(address(this));
       }
 
+      /**
+      * @notice allows users or contracts to deposit DAI in this contract
+      * @param _amount the amount to be deposited
+      */
+      function deposit(uint256 _amount) external {
+        Dai.transferFrom(_owner, address(this), _amount);
+    }
 
     /**
      * @notice sets the address of the sport event bet oracle contract to use 
