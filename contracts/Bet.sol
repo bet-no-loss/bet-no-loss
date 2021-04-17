@@ -98,6 +98,7 @@ contract Bet is Ownable, ReentrancyGuard {
      * @param _tokenAddress the address of the deployed ERC20 DAI token 
      */
      constructor(address _tokenAddress) {
+        require(_tokenAddress != address(0), "Address 0 is not allowed");
         Dai = IERC20(_tokenAddress);
         _owner = msg.sender;
     }
@@ -110,11 +111,29 @@ contract Bet is Ownable, ReentrancyGuard {
       }
 
       /**
-      * @notice allows users or contracts to deposit DAI in this contract
+      * @notice Moves `_amount` tokens from `_sender` to this contract
+      * @param _sender the address who get the tokens
       * @param _amount the amount to be deposited
       */
-      function deposit(uint256 _amount) external {
-        Dai.transferFrom(_owner, address(this), _amount);
+      function deposit(address _sender, uint _amount)
+            external 
+            notAddress0(_sender) 
+    {
+        // At least a minimum amount is required to be deposited
+        require(_amount >= 10, "Amount deposited must be >= 10");
+        Dai.transferFrom(_sender, address(this), _amount);
+    }
+
+    /**
+      * @notice Sets `_amount` as the allowance of `_spender` over the caller's tokens.
+      * @param _spender an address allowed to spend user's DAI
+      * @param _amount the amount approved to be used by _spender
+      */
+      function approve(address _spender, uint _amount)
+         external 
+         notAddress0(_spender) 
+    {
+        Dai.approve(_spender, _amount);
     }
 
     /**
