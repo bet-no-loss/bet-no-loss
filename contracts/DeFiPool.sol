@@ -90,11 +90,4 @@ contract DefiPool {
     function getContractBalance() public view returns (uint256) {
         return Dai.balanceOf(address(this));
     }
-
-    /**
-     * @return msg.sender balance
-     */
-    function getUserBalance() public view returns (uint256) {
-        return msg.sender.balance;
-    }
 }
