@@ -10,8 +10,4 @@ contract DAI is ERC20 {
         _mint(msg.sender, 100 * 10 ** uint(decimals()));
     }
     
-    // function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
-    //     _transfer(_msgSender(), recipient, amount);
-    //     return true;
-    // }
 }
