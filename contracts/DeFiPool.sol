@@ -85,10 +85,10 @@ contract DefiPool {
     }
 
     /**
-     * @return the contract balance
+     * @return return the contract balance
      */
     function getContractBalance() public view returns (uint256) {
-        return address(this).balance;
+        return Dai.balanceOf(address(this));
     }
 
     /**
