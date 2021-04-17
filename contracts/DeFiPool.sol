@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.3;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 /**
     @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn
@@ -10,8 +10,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract DefiPool {
 
     /**
-     * @dev Instance of an ERC20 token
-     */    
+     * @dev An instance of ERC20 DAI Token
+     */
      IERC20 Dai;
 
     /**
@@ -40,19 +40,23 @@ contract DefiPool {
     event Deposit(address indexed user, uint256 amount, uint256 timeStart);
 
     /**
-     * @param _daiAddress address of the DAI ERC20 token
+     * @param _tokenAddress address of the DAI ERC20 token
      */
-    constructor( address _daiAddress) {
-        Dai = ERC20(_daiAddress);
+    constructor(address _tokenAddress) {
+        Dai = IERC20(_tokenAddress);
     }
 
     /**
-     * @notice deposit DAI to the contract
-     */
-    function deposit(uint _amount) public payable {
-        require(msg.value >= 0, "Error, deposit must be >= 0 DAI");
+      * @notice Moves `_amount` tokens from `_sender` to this contract
+      * @param _sender the address who owns the tokens
+      * @param _amount the amount to be deposited
+      */
+    function deposit(uint _amount, address _sender) public payable {
+        require(_amount >= 10, "Error, deposit must be >= 10 DAI");
 
-        Dai.transferFrom(msg.sender, address(this), _amount);
+        Dai.transferFrom(_sender, address(this), _amount);
+
+        userBalance[_sender] = userBalance[_sender] + _amount;
 
         depositStart[msg.sender] = depositStart[msg.sender] + block.timestamp;
 

@@ -21,7 +21,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract Bet is Ownable, ReentrancyGuard {
 
     /**
-     * @dev New instance of ERC20 DAI Token
+     * @dev An instance of ERC20 DAI Token
      */
      IERC20 Dai;
 
@@ -112,7 +112,7 @@ contract Bet is Ownable, ReentrancyGuard {
 
       /**
       * @notice Moves `_amount` tokens from `_sender` to this contract
-      * @param _sender the address who get the tokens
+      * @param _sender the address that owns  the tokens
       * @param _amount the amount to be deposited
       */
       function deposit(address _sender, uint _amount)
