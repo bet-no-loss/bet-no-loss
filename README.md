@@ -398,11 +398,11 @@ npx truffle deploy --network=ganache
 npx truffle deploy --network=ropsten
 ```
 
-Update the contract addresses in the file `doc/deployed_addresses.md`.
+Update the contract addresses in the file [`doc/deployed_addresses.md`](doc/deployed_addresses.md).
 
 ### Contract Addresses
 
-The file **`[doc/deployed_addresses.md](./doc/deployed_addresses.md)`** contains the addresses where each smart-contracts is deployed on Ropsten.  
+The file **[`doc/deployed_addresses.md`](doc/deployed_addresses.md)** contains the addresses where each smart-contracts is deployed on Ropsten.  
 
 ## Deploy Front-End
 
