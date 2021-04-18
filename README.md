@@ -30,6 +30,10 @@ See COPYING for more information or https://opensource.org/licenses/MIT .
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
 
+## Features
+
+TODO
+
 ## Architecture
 
 Bet-no-loss software is composed of 2 parts:
@@ -63,20 +67,17 @@ The back-end is compoosed of the following Ethereum **smart-contracts**:
 
 ### Front-End
 
-Our **DApp** is **Front-End** application written in **ReactJS** and deployed on Heroku.
+Our **DApp** is a **Front-End** application written in **ReactJS** and deployed on Heroku.
 
-## Features
-
-TODO
 
 ## Interactions
-The below diagrams outlines the interactions occurring between the smart-contracts and other satakeholders involved.
+The below diagrams outline the interactions occurring between the smart-contracts and other stakeholders involved.
 - The first diagram provides a **high level** overview of the interactions.  
 - The second one is more **detailed** and goes down to the **function calls**.
 
 ### Interactions - Overview
 
-The below diagrams gives a bird's eye view of the interactions between the smart-contracts.
+The below diagram gives a bird's eye view of the interactions between the smart-contracts.
 
 `Admin` is not a contract but denotes the user that deploys the smart-contracts (owner).
 
@@ -400,7 +401,7 @@ npx truffle deploy --network=ropsten
 
 Update the contract addresses in the file [`doc/deployed_addresses.md`](doc/deployed_addresses.md).
 
-### Contract Addresses
+### Contracts Addresses
 
 The file **[`doc/deployed_addresses.md`](doc/deployed_addresses.md)** contains the addresses where each smart-contracts is deployed on Ropsten.  
 
