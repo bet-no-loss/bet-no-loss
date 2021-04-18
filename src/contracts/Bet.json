@@ -23461,6 +23461,12 @@
     "version": "0.8.3+commit.8d00100c.Emscripten.clang"
   },
   "networks": {
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "0x996075152Cb98399095788F98392cbc00e371d64",
+      "transactionHash": "0xe4a914e2aeb6ac6680633302400c085055e20535ca4d6860874a7f52d1c8caa3"
+    },
     "5777": {
       "events": {},
       "links": {},
@@ -23469,7 +23475,7 @@
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-18T15:48:05.723Z",
+  "updatedAt": "2021-04-18T17:20:50.446Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Tanteli, block74 ",
