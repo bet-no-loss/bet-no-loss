@@ -86,7 +86,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -99,7 +100,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -123,7 +125,8 @@
     },
     {
       "stateMutability": "payable",
-      "type": "receive"
+      "type": "receive",
+      "payable": true
     },
     {
       "inputs": [],
@@ -136,7 +139,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -168,7 +172,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -181,7 +186,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -194,7 +200,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -243,7 +250,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -286,7 +294,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -304,7 +313,8 @@
       "name": "placeBet",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract DAI\",\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_player\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"_chosenWinner\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"BetPlaced\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"OracleAddressSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"Dai\",\"outputs\":[{\"internalType\":\"contract DAI\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getBettableEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"pendingEvents\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractDAIBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"getEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLatestEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"participantCount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOracleAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"},{\"internalType\":\"uint8\",\"name\":\"_chosenWinner\",\"type\":\"uint8\"}],\"name\":\"placeBet\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_oracleAddress\",\"type\":\"address\"}],\"name\":\"setOracleAddress\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"testOracleConnection\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"author\":\"Tanteli, block74 \",\"events\":{\"BetPlaced(bytes32,address,uint8,uint256)\":{\"details\":\"Sent when once a bet is placed\"},\"OracleAddressSet(address)\":{\"details\":\"Sent once the Sport Event Oracle is set\"}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_tokenAddress\":\"the address of the deployed ERC20 DAI token \"}},\"getBettableEvents()\":{\"returns\":{\"pendingEvents\":\"the list of pending sport events \"}},\"getContractDAIBalance()\":{\"returns\":{\"_0\":\"the DAI balance of the contract\"}},\"getEvent(bytes32)\":{\"params\":{\"_eventId\":\"the id of the desired event\"},\"returns\":{\"date\":\"when the event takes place\",\"id\":\"  the id of the event\",\"name\":\"the name of the event \",\"outcome\":\"an integer that represents the event outcome\",\"participantCount\":\"the number of the event's participants\",\"participants\":\"a string with the name of the event's participants separated with a pipe symbol ('|')\",\"winner\":\"the index of the winner\"}},\"getLatestEvent()\":{\"returns\":{\"date\":\"when the event takes place\",\"id\":\"  the id of the event\",\"name\":\"the name of the event \",\"outcome\":\"an integer that represents the event outcome\",\"participantCount\":\"the number of the event's participants\",\"participants\":\"the name of the event's participants separated with a pipe symbol ('|')\",\"winner\":\"the index of the winner (0 = TeamA, 1 = TeamB)\"}},\"getOracleAddress()\":{\"returns\":{\"_0\":\"the address of the oracle we use to get the sport events and their outcomes\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"placeBet(bytes32,uint8)\":{\"params\":{\"_chosenWinner\":\"index of the supposed winner team\",\"_eventId\":\"id of the sport event on which to bet \"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"setOracleAddress(address)\":{\"details\":\"setting a wrong address may result in false return value, or error \",\"params\":{\"_oracleAddress\":\"the address of the sport event bet oracle \"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"stateVariables\":{\"Dai\":{\"details\":\"New instance of ERC20 DAI Token\"},\"betOracle\":{\"details\":\"Instance of the sport events Oracle (used to register sport events get their outcome).\"},\"eventToBets\":{\"details\":\"for any given event, get a list of all bets that have been made for that event    map composed of (event id => array of bets) pairs\"},\"minimumBet\":{\"details\":\"minimum bet amount \"},\"oracleAddress\":{\"details\":\"Address of the sport events Oracle\"},\"userToBets\":{\"details\":\"list of all bets per player, ie. a map composed (player address => bet id) pairs\"}},\"title\":\"a Smart-Contract in charge of handling bets on a sport event outcome where players do not loose their stake and winners earn the interests accrued on the stakes.\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"getBettableEvents()\":{\"notice\":\"gets a list ids of all currently bettable events\"},\"getEvent(bytes32)\":{\"notice\":\"returns the full data of the specified event \"},\"getLatestEvent()\":{\"notice\":\"returns the full data of the most recent bettable sport event \"},\"placeBet(bytes32,uint8)\":{\"notice\":\"places a bet on the given event \"},\"setOracleAddress(address)\":{\"notice\":\"sets the address of the sport event bet oracle contract to use \"},\"testOracleConnection()\":{\"notice\":\"for testing purposes: make sure that the sport event oracle is callable \"}},\"notice\":\"This Ethereum smart-contract takes bets placed on sport events.   It then invests all bets deposits for a given event (pot) in DeFi.   Then once the event outcome is confirmed, it makes the accrued interests ready for the winners  to withdraw proportionnaly to their initial stake.   Players do not loose their stake.Takes bets and handles payouts for sport events\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/Bet.sol\":\"Bet\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/Bet.sol\":{\"keccak256\":\"0xd09c3bef40ad71866c7e2b5326f0ae83e5826257dbed062c0d9136ed1fb10a0e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e00d5b99bcf6e4223d07831d1c45c7e7cd63e1cbff3edb88b14175285da51264\",\"dweb:/ipfs/QmckahiNKrxv2XviqyXJX95haLS5aLmPZBoYWigs14h2dB\"]},\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/DAI.sol\":{\"keccak256\":\"0x2bb52b1c5634f8ef2a8865b71208fed15458675599ba8f7fbf462b4f4839cb66\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c68c7d75dff1214899930d8165f575b243bfe98805f07e5be289e5b5bfacd76a\",\"dweb:/ipfs/QmTUzuhrwN25f2DWhafsP2PPrHhWwgBskoFeycmHyUFJYD\"]},\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":{\"keccak256\":\"0x9a8d670204fb9b05be2935866c6e09ec619e6f92edafbd88b6d49da67206541e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1ca77df7a3de3ca210bda0a13d89157e1535d6696b77e9bf80d9c3ca9509884b\",\"dweb:/ipfs/Qmf5GvxzdH1eYZkyUj9TJd3d5qnhgAKzGqgsqbJcxVEusZ\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/security/ReentrancyGuard.sol\":{\"keccak256\":\"0x1278c76b840063ff5e14a2d7c5707812c1eabc2342ed040bf862c2d7552102fe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b9989233808b8f475395f71ea757e277fa167cdac8a24d10f9784783defd313c\",\"dweb:/ipfs/Qmdg6rbPsShpnzvqKmPVuFk7eYU53oXTPxqUJXd9WLD4vg\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0x21d8a5dd396bee41e4a039d150af08b66b6d09eef416daf8e5edf13ef219084e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://682f1e9c20780070df3c8b52bf3b48d2aa6debcdff5a924e212d78bbaedb945f\",\"dweb:/ipfs/QmXGhsAPeemtVQ8ip5CsParvX3sgpMm4Lq8EccS3YaTtwA\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]}},\"version\":1}",
@@ -23450,9 +23460,17 @@
     "name": "solc",
     "version": "0.8.3+commit.8d00100c.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x96905FdCb1F70Ba4bBD3c1849FF76c186989106F",
+      "transactionHash": "0x20dfb9c159c99db4991e696f021e2f5de968559e1063e4e67b3e3bdf6b542a10"
+    }
+  },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-18T15:37:41.253Z",
+  "updatedAt": "2021-04-18T15:48:05.723Z",
+  "networkType": "ethereum",
   "devdoc": {
     "author": "Tanteli, block74 ",
     "events": {
