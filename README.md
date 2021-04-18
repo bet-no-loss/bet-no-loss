@@ -1,8 +1,10 @@
-[![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
-[![Extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
+[![compile_mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
+[![extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
 [![Test](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
- [![Application-with-♥︎ Solidity and ReactJS](https://img.shields.io/badge/Application%20buit%20with%20♥︎¨-Solidity%20and%20ReactJS-3677FF)](https://bet-no-loss.herokuapp.com/)
+[![Heroku Deployment Status](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
+ [![Read doc](https://img.shields.io/badge/read-doc-blue)](#documentation)
+[![Open DApp](https://img.shields.io/badge/open-DApp-blue)](https://bet-no-loss.herokuapp.com/)
+![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)
 
 # Bet-no-loss
 
@@ -422,12 +424,14 @@ In order to run the Front-End application on you local machine:
 
 # Documentation
 
-Each smart-contract is documented in a Markdown file in `client/src/contracts`.
+[Read the smart-contracts' documentation ](doc/contracts).
 
 Should you need to update the documentation, simply run:
 ```
-npx leafleth -s contracts
+npx run build-doc
 ```
+This generates a markdown file for each smart-contract in the `doc/contracts` folder.
+
 
 ## Decisions
 
