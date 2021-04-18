@@ -368,21 +368,29 @@ You need to deploy both the smart-contracts (back-end) and the ReactJS app - DAp
 
 ## Deploy Back-End
 
-Deploy the Smart-Contracts:
-```
-# Local Deploy
-npx truffle deploy --network=ganache
-
-# Remote Deploy on XXX test network
-npx truffle deploy --network=XXX
-```
-
 The smart-contracts are deployed in the following order:  
 1. `DAI`
 2. `Bet`
 3. `BetOracle`
 4. `DateLib`
 5. `DeFiPool`
+
+The file **`[doc/deployed_addresses.md](./doc/deployed_addresses.md)`** contains the addresses where each smart-contracts is deployed to.  
+Keep in mind to update this file each time you deploy the contracts on a testnet.
+
+### Deploy Dev
+```
+# Local Deploy
+npx truffle deploy --network=ganache
+```
+
+### Deploy on a Test Network
+```
+# Remote Deploy on ropsten test network
+npx truffle deploy --network=ropsten
+
+  # ==> Update the file `doc/deployed_addresses.md`
+```
 
 ## Deploy Front-End
 
@@ -411,16 +419,19 @@ The DApp is **deployed automatically on [Heroku](https://heroku.com)** each time
 > We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a deploy to Heroku**.  
 > Heroku then pulls the `client` branch (not `master`) then deploys and starts the ReactJS app. 
 
-# Run the Front-End
+# Run
 
 - Run the **local** DApp:  
-In order to run the Front-End application on you local machine:
+In order to run the Front-End application on your local machine:
     ```
     cd client 
     npm start
     ```
-- Run the DApp deployed on **Heroku (remote)**:  
-[Click this link to open the DApp on Heroku](https://bet-no-loss.herokuapp.com/).
+
+# Open the App
+
+- Open the **local** DApp: https://localhost:3000/ (to interact with a contracts deployed on a **local** Ethereum node)
+- Open the DApp deployed on **Heroku (remote)**:  https://bet-no-loss.herokuapp.com/ (to interact with the contracts deployed on a TestNet)
 
 # Documentation
 
@@ -433,7 +444,7 @@ npx run build-doc
 This generates a markdown file for each smart-contract in the `doc/contracts` folder.
 
 
-## Decisions
+# Decisions
 
 - Crypto-currency used: DAI
 - DeFi Service used: For now none, due to time constraints we will stub them. Later on: Compound or AAVE ?
