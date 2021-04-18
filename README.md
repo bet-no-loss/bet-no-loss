@@ -1,7 +1,10 @@
-[![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
-[![Extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
- [![Application-with-♥︎ Solidity and ReactJS](https://img.shields.io/badge/Application%20buit%20with%20♥︎¨-Solidity%20and%20ReactJS-3677FF)](https://bet-no-loss.herokuapp.com/)
+[![compile_mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
+[![extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
+[![Test](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
+[![Heroku Deployment Status](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
+ [![Read doc](https://img.shields.io/badge/read-doc-blue)](#documentation)
+[![Open DApp](https://img.shields.io/badge/open-DApp-blue)](https://bet-no-loss.herokuapp.com/)
+![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)
 
 # Bet-no-loss
 
@@ -365,21 +368,29 @@ You need to deploy both the smart-contracts (back-end) and the ReactJS app - DAp
 
 ## Deploy Back-End
 
-Deploy the Smart-Contracts:
-```
-# Local Deploy
-npx truffle deploy --network=ganache
-
-# Remote Deploy on XXX test network
-npx truffle deploy --network=XXX
-```
-
 The smart-contracts are deployed in the following order:  
 1. `DAI`
 2. `Bet`
 3. `BetOracle`
 4. `DateLib`
 5. `DeFiPool`
+
+The file **`[doc/deployed_addresses.md](./doc/deployed_addresses.md)`** contains the addresses where each smart-contracts is deployed to.  
+Keep in mind to update this file each time you deploy the contracts on a testnet.
+
+### Deploy Dev
+```
+# Local Deploy
+npx truffle deploy --network=ganache
+```
+
+### Deploy on a Test Network
+```
+# Remote Deploy on ropsten test network
+npx truffle deploy --network=ropsten
+
+  # ==> Update the file `doc/deployed_addresses.md`
+```
 
 ## Deploy Front-End
 
@@ -408,27 +419,32 @@ The DApp is **deployed automatically on [Heroku](https://heroku.com)** each time
 > We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a deploy to Heroku**.  
 > Heroku then pulls the `client` branch (not `master`) then deploys and starts the ReactJS app. 
 
-# Run the Front-End
+# Run
 
 - Run the **local** DApp:  
-In order to run the Front-End application on you local machine:
+In order to run the Front-End application on your local machine:
     ```
     cd client 
     npm start
     ```
-- Run the DApp deployed on **Heroku (remote)**:  
-[Click this link to open the DApp on Heroku](https://bet-no-loss.herokuapp.com/).
+
+# Open the App
+
+- Open the **local** DApp: https://localhost:3000/ (to interact with a contracts deployed on a **local** Ethereum node)
+- Open the DApp deployed on **Heroku (remote)**:  https://bet-no-loss.herokuapp.com/ (to interact with the contracts deployed on a TestNet)
 
 # Documentation
 
-Each smart-contract is documented in a Markdown file in `client/src/contracts`.
+[Read the smart-contracts' documentation ](doc/contracts).
 
 Should you need to update the documentation, simply run:
 ```
-npx leafleth -s contracts
+npx run build-doc
 ```
+This generates a markdown file for each smart-contract in the `doc/contracts` folder.
 
-## Decisions
+
+# Decisions
 
 - Crypto-currency used: DAI
 - DeFi Service used: For now none, due to time constraints we will stub them. Later on: Compound or AAVE ?
