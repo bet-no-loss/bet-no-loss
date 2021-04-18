@@ -1,5 +1,6 @@
 [![Compile Mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
 [![Extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
+[![Test](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
  [![Application-with-♥︎ Solidity and ReactJS](https://img.shields.io/badge/Application%20buit%20with%20♥︎¨-Solidity%20and%20ReactJS-3677FF)](https://bet-no-loss.herokuapp.com/)
 
