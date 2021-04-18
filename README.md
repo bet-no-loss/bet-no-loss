@@ -368,7 +368,7 @@ npx truffle compile # --all
 
 # Test
 
-[This page](doc/test_explications.md) explains **what we test and how**.
+[This page](doc/tests_explication.md) explains **what we test and how**.
 
 ```
 # Run ganache on port 9545 beforehand
