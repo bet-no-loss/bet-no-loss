@@ -378,15 +378,13 @@ You need to deploy both the smart-contracts (back-end) and the ReactJS app - DAp
 
 ## Deploy Back-End
 
-The smart-contracts are deployed in the following order:  
+The **smart-contracts** are deployed in the following order:  
 1. `DAI`
 2. `Bet`
 3. `BetOracle`
 4. `DateLib`
 5. `DeFiPool`
 
-The file **`[doc/deployed_addresses.md](./doc/deployed_addresses.md)`** contains the addresses where each smart-contracts is deployed to.  
-Keep in mind to update this file each time you deploy the contracts on a testnet.
 
 ### Deploy Dev
 ```
@@ -396,11 +394,15 @@ npx truffle deploy --network=ganache
 
 ### Deploy on a Test Network
 ```
-# Remote Deploy on ropsten test network
+# Deploy the contracts on the ropsten test network
 npx truffle deploy --network=ropsten
-
-  # ==> Update the file `doc/deployed_addresses.md`
 ```
+
+Update the contract addresses in the file `doc/deployed_addresses.md`.
+
+### Contract Addresses
+
+The file **`[doc/deployed_addresses.md](./doc/deployed_addresses.md)`** contains the addresses where each smart-contracts is deployed on Ropsten.  
 
 ## Deploy Front-End
 
