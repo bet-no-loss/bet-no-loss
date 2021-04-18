@@ -19,7 +19,8 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 
 ## License
 
-*Bet-no-loss* is released under the terms of the MIT license. See COPYING for more information or see https://opensource.org/licenses/MIT.
+*Bet-no-loss* is released under the terms of the MIT license.  
+See COPYING for more information or https://opensource.org/licenses/MIT .
 
 ## Links
 
@@ -291,8 +292,8 @@ sequenceDiagram autonumber
 
 ## Environment Parameters
 
-As a dev, in order to deploy the smart contracts and use the project locally, you need to create a **`.env`** file in the project's root folder.  
-It contains the environment specific parameters for the test network and your project identifier on [Infura](https://infura.io/).
+As a **dev**, in order to deploy the smart contracts and use the project, you need to create a **`.env`** file in the project's root folder.  
+It contains the environment specific parameters for the (test) network to deploy to and your project identifier on [Infura](https://infura.io/).
 
 - Create a `.env` file in the project's root folder  
 - Edit `.env` and set the below `property = "value"` pairs (one per line):
@@ -305,10 +306,18 @@ It contains the environment specific parameters for the test network and your pr
 
 ## Heroku Configuration
 
+**This app is already configured Heroku and Github to deploy the front-end (ReactJS) each time someone pushes the `master` branch to Github.
+**Therefore you don't have to read this section**, lucky you are.
+
+The following steps explains the steps I took to the configure Heroku and Github.  
+This may prove useful for some of you with a smilar configuration that is a monorepo (**single** git **repository**) **containing both the back-end (smart-contracts) and the front-end application (DApp)**.  
+Conversely, if you have 2 distinct repositories, ie. one for the back-end and one for the front-ent, then things will be way easier for you, simply skip this section and follow the regular [Heroku documentation](https://devcenter.heroku.com) to deploy your front-end. 
+
 - [Download and install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).  
   We use the Heroku Command Line Interface to change the Heroku configuration of our app or tune things up.  
   Once configured, the deployment occurs all by itself without manual intervention.
 - **Configure Heroku CLI**  
+
 You need to do this once only for the Heroku app owner only (as you use the free plan).
     ```
     heroku login
