@@ -29117,7 +29117,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-04-13T17:51:18.271Z",
+  "updatedAt": "2021-04-18T15:37:41.274Z",
   "devdoc": {
     "events": {
       "SportEventAdded(bytes32,string,string,uint8,uint256,uint8,int8)": {
