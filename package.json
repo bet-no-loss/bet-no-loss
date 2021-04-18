@@ -34,7 +34,18 @@
     "DApp",
     "solidity"
   ],
-  "author": "@Tantely, @ebouchut",
+  "contributors": [
+    {
+      "name": "Eric Bouchut",
+      "url": "http://EricBoucuht.com"
+    },
+    {
+      "name": "Tantely"
+    },
+    {
+      "name": "Liedel Lam"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bet-no-loss/bet-no-loss/issues"
