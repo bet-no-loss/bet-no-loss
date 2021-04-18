@@ -368,12 +368,13 @@ npx truffle compile # --all
 
 # Test
 
-Run ganache on port 9545.
+[This page](doc/test_explications.md) explains **what we test and how**.
 
 ```
-npx truffle test # Run the unit and integration tests
-
+# Run ganache on port 9545 beforehand
 npx truffle deploy --reset --network ganache
+
+npx truffle test # Run the unit and integration tests
 ```
 
 # Deploy 
@@ -418,7 +419,7 @@ The DApp is **deployed automatically on [Heroku](https://heroku.com)** each time
 
 > To achieve Continuous Deployment to Heroku we developed and configured a 2 steps process involving both a Github workflow and a Heroku deploy.
 > 
-> First-off, make sure you have [configured Heroku](README.md#configure-heroku) beforehand.
+> First-off, make sure you have [configured Heroku](README.md#heroku-configuration) beforehand.
 > 
 > **Github Workflow**  
 > First off, we built a **[Github Workflow Action](https://github.com/bet-no-loss/bet-no-loss/blob/master/.github/workflows/extract_client.yml)** triggered each time the `master` branch is pushed.  
@@ -446,7 +447,7 @@ In order to run the Front-End application on your local machine:
 
 # Open the App
 
-- Open the **local** DApp: https://localhost:3000/ (to interact with a contracts deployed on a **local** Ethereum node)
+- Open the **local** DApp: https://localhost:3000/ 
 - Open the DApp deployed on **Heroku (remote)**:  https://bet-no-loss.herokuapp.com/ (to interact with the contracts deployed on a TestNet)
 
 # Documentation
