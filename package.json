@@ -11,14 +11,13 @@
     "test": "test"
   },
   "scripts": {
-    "compile": "npx truffle compile",
+    "build": "npx truffle compile",
     "test": "npx truffle test",
-    "watch": "npm run watch-test",
-    "watch-test": "watch 'npm run test' contracts test",
-    "watch-compile": "watch 'npm run compile' contracts",
-    "build": "cd client/ && npm install && npm run build",
+    "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/",
+    "deploy": "npx truffle deploy --network=ropsten",
     "start": "cd client/ && npm start",
-    "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/"
+    "watch": "npm run watch-test",
+    "watch-test": "watch 'npm run test' contracts test"
   },
   "repository": {
     "type": "git",
