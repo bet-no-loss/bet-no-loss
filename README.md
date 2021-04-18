@@ -306,7 +306,7 @@ It contains the environment specific parameters for the (test) network to deploy
 
 ## Heroku Configuration
 
-**This app is already configured Heroku and Github to deploy the front-end (ReactJS) each time someone pushes the `master` branch to Github.
+**This app is already configured on Heroku and Github to deploy the front-end (ReactJS)** each time someone pushes the `master` branch to Github.
 **Therefore you don't have to read this section**, lucky you are.
 
 The following steps explains the steps I took to the configure Heroku and Github.  
