@@ -44,21 +44,21 @@ This Github **repository** is a **monorepo** that entails **both** the **back-en
 
 The back-end is compoosed of the following Ethereum **smart-contracts**:
 
-- `[DAI](contracts/DAI.sol)` TODO 
-- `[Bet](contracts/Bet.sol)` The betting contract in charge of:
+- [`DAI`](contracts/DAI.sol) TODO 
+- [`Bet`](contracts/Bet.sol) The betting contract in charge of:
     - handling the bets: deposit/withdrawal
     - getting the list of events from *Oracle*
     - sending all deposits for a given bet to *DeFi* to earn
     - withdraw and get accrued interests from `DeFiPool`
     - Allow winners to withdraw their prizes
     - Allow all players to withdraw their stake
-- `[BetOracle](contracts/BetOracle.sol)` A *simulated* smart-contract that:
+- [`BetOracle`](contracts/BetOracle.sol) A *simulated* smart-contract that:
     - registers events
     - provides the events list
     - Get the outcome of registered events
     - provides the outcome of an event when asked for
-- `[DefiPool](contracts/DefiPool.sol)` A smart-contract in charge of simulating a DeFi protocol that accepts deposits and allow withdrawal with accrued interests.
-- `[DateUtil](contracts/DateUtil.sol)` denotes a contract providing helper date handling functions
+- [`DefiPool`](contracts/DefiPool.sol) A smart-contract in charge of simulating a DeFi protocol that accepts deposits and allow withdrawal with accrued interests.
+- [`DateUtil`](contracts/DateUtil.sol) denotes a contract providing helper date handling functions
 
 ### Front-End
 
