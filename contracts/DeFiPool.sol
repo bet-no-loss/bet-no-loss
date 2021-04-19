@@ -71,13 +71,15 @@ contract DefiPool {
         // 31577600 = seconds in 365.25 days
 
         // time spent for user's deposit
+        uint time;
         depositTime[_user] = block.timestamp - depositStart[_user];
+        time = depositTime[_user];
 
         //interests gains per second
         uint256 interestPerSecond =
             31577600 * uint256(userBalance[_user] / 1e8);
 
-        interests[_user] = interestPerSecond * depositTime[_user];
+        interests[_user] = interestPerSecond * time;
 
         userBalance[_user] = userBalance[_user] + interests[msg.sender];
         Dai.transfer(_user, userBalance[_user]);
