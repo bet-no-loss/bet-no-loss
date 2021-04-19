@@ -23,13 +23,23 @@ const Admin = () => {
 
 
                         <form>
-                            <div className="form-group">
-                                <label htmlFor="inputAddress">Titre</label>
-                                <input
-                                    type="text"
-                                    className="form-control mx-auto w-100"
-                                    id="inputAddress"
-                                    placeholder="nom des équipes"/>
+                            <div className="form-row">
+                                <div className="form-group col-md-6">
+                                    <label htmlFor="inputEmail4">Titre</label>
+                                    <input
+                                        type="email"
+                                        className="form-control mx-auto w-100"
+                                        id="inputEmail4"
+                                    />
+                                </div>
+                                <div className="form-group col-md-6">
+                                    <label htmlFor="inputPassword4">Date</label>
+                                    <input
+                                        type="password"
+                                        className="form-control mx-auto w-100"
+                                        id="inputPassword4"
+                                    />
+                                </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-group col-md-6">
@@ -49,24 +59,6 @@ const Admin = () => {
                                     />
                                 </div>
                             </div>
-                            <div className="form-row">
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="inputEmail4">Date du match</label>
-                                    <input
-                                        type="email"
-                                        className="form-control mx-auto w-100"
-                                        id="inputEmail4"
-                                    />
-                                </div>
-                                <div className="form-group col-md-6">
-                                    <label htmlFor="inputPassword4">Nombre</label>
-                                    <input
-                                        type="password"
-                                        className="form-control mx-auto w-100"
-                                        id="inputPassword4"
-                                    />
-                                </div>
-                            </div>
                             <button className="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Send</button>
 
                         </form>
@@ -76,6 +68,7 @@ const Admin = () => {
 
                 </div>
             </div>
+
         </div>
     );
 };
