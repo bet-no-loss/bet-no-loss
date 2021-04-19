@@ -3,7 +3,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const { expect }       = require('chai');
-const moment           = require('moment');
+const { DateTime }     = require('luxon');
 
 const BetOracle = artifacts.require('BetOracle');
 

@@ -4,11 +4,11 @@
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants   = require('@openzeppelin/test-helpers/src/constants');
 const { expect }  = require('chai');
-const moment      = require('moment');
+const { DateTime } = require('luxon');
 
+const Dai       = artifacts.require('DAI');
 const Bet       = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
-const Dai       = artifacts.require('DAI');
 
 
 contract('Bet', function(accounts) {
@@ -169,7 +169,7 @@ contract('Bet', function(accounts) {
         // Populate the Oracle with 2 default sport events
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         beforeEach("Add Sport Events", async function() {
-            this.dateEvent1 = moment().add(7, 'days').add(1, 'minute').unix();
+            this.dateEvent1 = DateTime.now().plus({ days: 7, minutes: 1 }).toSeconds();
             this.idEvent1   = await this.betOracleInstance.addSportEvent(
                 "Paris vs. Marseille",  
                 "PSG|OM",   
@@ -178,7 +178,7 @@ contract('Bet', function(accounts) {
                 { from: ownerAddress } 
             );
 
-            this.dateEvent2 = moment().add(14, 'days').add(1, 'minute').unix();
+            this.dateEvent2 = DateTime.now().plus({ days: 14, minutes: 1 }).toSeconds();
             this.idEvent2   = await this.betOracleInstance.addSportEvent(
                 "Spain vs. Portugal",  
                 "ES|PT",   
@@ -347,69 +347,69 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 //     xdescribe("Sport Events Creation", function() {
 
 //         it ("can create a sport event if owner", async function() {
-//             const eventDate        = moment().add(7, 'days').add(1, 'minute');
-//             const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+//             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });
 //             const eventName        = "PSG - Marseille, 2020-10-01 @Velodrome";
 
 //             const result = await this.betInstance.createSportEvent(
 //                 eventName,
-//                 new BN(eventDate.unix()),
-//                 new BN(eventOutcomeDate.unix()),
+//                 new BN(eventDate.toSeconds()),
+//                 new BN(eventOutcomeDate.toSeconds()),
 //                 { from: ownerAddress }       
 //             );
 
 //             expectEvent(result, "SportEventCreated", {
 //                 _eventId:          new BN(1),
 //                 _eventName:        eventName,
-//                 _eventDate:        new BN(eventDate.unix()),
-//                 _eventOutcomeDate: new BN(eventOutcomeDate.unix())
+//                 _eventDate:        new BN(eventDate.toSeconds()),
+//                 _eventOutcomeDate: new BN(eventOutcomeDate.toSeconds())
 //             });
 //         });
 
 //         it ("can create several sport events", async function() {
 //             // Create event #1
-//             const eventDate        = moment().add(7, 'days').add(1, 'minute');
-//             const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+//             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });
 //             const eventName        = "PSG - Marseille, 2022-10-01 @Velodrome";
 
 //             const result = await this.betInstance.createSportEvent(
 //                 eventName,
-//                 new BN(eventDate.unix()),
-//                 new BN(eventOutcomeDate.unix()),
+//                 new BN(eventDate.toSeconds()),
+//                 new BN(eventOutcomeDate.toSeconds()),
 //                 { from: ownerAddress }       
 //             );
 
 //             // Create event #2
-//             const event2Date        = moment().add(7, 'days').add(1, 'minute');
-//             const event2OutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+//             const event2Date        = DateTime.now().plus({ days: 1, minutes: 1 });
+//             const event2OutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });
 //             const event2Name        = "Marseille - PSG, 2023-05-01 @Parc des Princes";
 
 //             const result2 = await this.betInstance.createSportEvent(
 //                 event2Name,
-//                 new BN(event2Date.unix()),
-//                 new BN(event2OutcomeDate.unix()),
+//                 new BN(event2Date.toSeconds()),
+//                 new BN(event2OutcomeDate.toSeconds()),
 //                 { from: ownerAddress }       
 //             );
 
 //             expectEvent(result2, "SportEventCreated", {
 //                 _eventId:          new BN(2),
 //                 _eventName:        event2Name,
-//                 _eventDate:        new BN(event2Date.unix()),
-//                 _eventOutcomeDate: new BN(event2OutcomeDate.unix())
+//                 _eventDate:        new BN(event2Date.toSeconds()),
+//                 _eventOutcomeDate: new BN(event2OutcomeDate.toSeconds())
 //             });
 //         });
 
 //         it ("cannot create a sport event if NOT owner", async function() {
-//             const eventDate        = moment().add(7, 'days').add(1, 'minute');
-//             const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+//             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });
    
 //             const notOwnerAddress  = address2;
 
 //             await expectRevert(
 //                 this.betInstance.createSportEvent(
 //                     "Event name",
-//                     new BN(eventDate.unix()),
-//                     new BN(eventOutcomeDate.unix()),
+//                     new BN(eventDate.toSeconds()),
+//                     new BN(eventOutcomeDate.toSeconds()),
 //                     { from: notOwnerAddress }       
 //                 ),
 //                 "Ownable: caller is not the owner"
@@ -417,14 +417,14 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 //         });
 
 //         it ("cannot create a sport event occuring in less than 7 days", async function() {
-//             const eventDate        = moment().add(7, 'days').subtract(1, 'minute');
-//             const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');   
+//             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });   
 
 //             await expectRevert(
 //                 this.betInstance.createSportEvent(
 //                     "Event name",
-//                     new BN(eventDate.unix()),
-//                     new BN(eventOutcomeDate.unix()),
+//                     new BN(eventDate.toSeconds()),
+//                     new BN(eventOutcomeDate.toSeconds()),
 //                     { from: ownerAddress }       
 //                 ),
 //                 "Event date must be >= 1 week from now"
@@ -432,14 +432,14 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 //         });
 
 //         it ("cannot create a sport event whose date is in the past", async function() {
-//             const eventDateBeforeNow = moment().subtract(7, 'day');
-//             const eventOutcomeDate   = moment().add(7, 'days').add(1, 'minute');   
+//             const eventDateBeforeNow = DateTime.now().minus({ days: 7 });
+//             const eventOutcomeDate   = DateTime.now().plus( { days: 1, minutes: 1 });
 
 //             await expectRevert(
 //                 this.betInstance.createSportEvent(
 //                     "Event name",
-//                     new BN(eventDateBeforeNow.unix()),
-//                     new BN(eventOutcomeDate.unix()),
+//                     new BN(eventDateBeforeNow.toSeconds()),
+//                     new BN(eventOutcomeDate.toSeconds()),
 //                     { from: ownerAddress }       
 //                 ),
 //                 "Event date must be >= 1 week from now"
@@ -447,14 +447,14 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 //         });
 
 //         it ("cannot create a sport event whose outcome date is less than 7 days from now", async function() {
-//             const eventDateBeforeNow = moment().add(7, 'day').add(1, 'minute');
-//             const eventOutcomeDate   = moment(eventDateBeforeNow).subtract(2, 'minutes');   
+//             const eventDateBeforeNow = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate   = eventDateBeforeNow.minus({ minutes: 2 });   
 
 //             await expectRevert(
 //                 this.betInstance.createSportEvent(
 //                     "Event name",
-//                     new BN(eventDateBeforeNow.unix()),
-//                     new BN(eventOutcomeDate.unix()),
+//                     new BN(eventDateBeforeNow.toSeconds()),
+//                     new BN(eventOutcomeDate.toSeconds()),
 //                     { from: ownerAddress }       
 //                 ),
 //                 "Event Outcome available date must be > 1 week from now"
@@ -462,22 +462,22 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 //         });
 
 //         it ("cannot create a sport event that has already been registered with the same name", async function () {
-//             const eventDate        = moment().add(7, 'days').add(1, 'minute');
-//             const eventOutcomeDate = moment(eventDate).add(1, 'day').add(1, 'minute');
+//             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
+//             const eventOutcomeDate = eventDate.plus(     { days: 1, minutes: 1 });
 //             const eventName        = "Event Name";
 
 //             const result = await this.betInstance.createSportEvent(
 //                 eventName,
-//                 new BN(eventDate.unix()),
-//                 new BN(eventOutcomeDate.unix()),
+//                 new BN(eventDate.toSeconds()),
+//                 new BN(eventOutcomeDate.toSeconds()),
 //                 { from: ownerAddress }       
 //             );
 
 //             await expectRevert(
 //                 this.betInstance.createSportEvent(
 //                     eventName,
-//                     new BN(eventDate.unix()),
-//                     new BN(eventOutcomeDate.unix()),
+//                     new BN(eventDate.toSeconds()),
+//                     new BN(eventOutcomeDate.toSeconds()),
 //                     { from: ownerAddress }       
 //                 ),
 //                 "This event name already exists, choose another one"
