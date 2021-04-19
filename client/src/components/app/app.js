@@ -25,12 +25,13 @@ const App = () => {
   const [oracleContract, setoracleContract] = useState(null);
   const [currentAccount, setCurrentAccount] = useState("");
   const [testName, setTestName] = useState("This is a test");
+
   const initialState = {
     eventName: "",
-    eventDate: "",
+    /*eventDate: "",*/
     teamA: "",
     teamB: "",
-    outcomeAvailableDate: "",
+    /*outcomeAvailableDate: "",*/
   };
   const [sportEvent, setSportEvent] = useState(initialState);
 
@@ -62,6 +63,8 @@ const App = () => {
       setAccounts(accounts);
       setContract(instance);
       setoracleContract(oracleInstance);
+
+      console.log('sport',sportEvent)
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -88,6 +91,8 @@ const App = () => {
     getAccount();
     console.log("ACCOUNTS", accounts);
   }, [currentAccount]);
+
+
 
   if (!web3) {
     return <div>Loading Web3, accounts, and contract...</div>;
@@ -128,6 +133,7 @@ const App = () => {
                     <SportEventList />
                     <BetEvent />*/}
                     <BetList />
+
                   </Layout>
                 </main>
               </Route>
