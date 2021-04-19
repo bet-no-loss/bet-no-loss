@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.3;
 
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
@@ -298,7 +299,11 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
+<<<<<<< HEAD
      *  @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
+=======
+     *  @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
+>>>>>>> master
      */
     receive() external payable {
     }

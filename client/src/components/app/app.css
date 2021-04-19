@@ -18,5 +18,91 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #006D17;
 }
+
+.primaryColor {
+  color: #088C12;
+}
+
+/*Cards*/
+.cardy{
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
+}
+
+.cardy:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.24), 0 4px 8px rgba(0,0,0,.12);
+}
+
+/*Navbar*/
+.bglogo{
+  background: rgb(32,36,0);
+  background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
+  border-radius: 10px;
+}
+
+.jazzicon{
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.pool {
+  border: 0 solid;
+  border-radius: 9999px;
+  width: auto;
+  background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
+  line-height: 1;
+  padding: 10px;
+}
+
+
+.buttonAddress{
+  display: flex;
+  border: 1px solid #088C12;
+  border-radius: 9999px;
+  line-height: 1;
+  width: auto;
+  padding: 7px;
+  color: #088C12;
+}
+
+.textAddress {
+  display: flex;
+  align-items: center;
+  padding-inline: 5px;
+  line-height: 1;
+}
+
+.textPool {
+  color: white;
+}
+
+.textPool:hover{
+  text-decoration: none;
+}
+
+/*Modal*/
+.zmodal {
+  z-index: 99;
+  top: 94px;
+  left: 0;
+}
+
+.taille {
+  width: 100vw;
+  height: 100vh;
+  padding:0;
+}
+
+.labelAmount {
+  position: absolute;
+  top: 350px;
+  left: 505px;
+}
+

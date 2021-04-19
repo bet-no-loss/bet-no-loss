@@ -26,17 +26,17 @@ function SportEventForm() {
   };
 
   const style = {
-    paddingRigth: "550px",
+    paddingRight: "550px",
   };
 
-  const handleSubmit = async (event) => {
+ /* const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(sportEvent);
     await createEvent();
-  };
+  };*/
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setSportEvent({ ...sportEvent, [name]: value });
   };
 
@@ -73,10 +73,10 @@ function SportEventForm() {
     }
   };
 
-  const insertAddress = async (address) => {
+  const insertAddress = async () => {
     try {      
       const insert = await contract.methods
-        .setOracleAddress(address)
+        .setOracleAddress(oracleAddr)
         .send({ gas: 2100000, from: currentAccount });
         
     } catch (error) {
@@ -86,7 +86,7 @@ function SportEventForm() {
 
   const handleInsert = (ev) => {
     ev.preventDefault();
-    const add = "0xbADA447d9ECaA3F37ab7A24f6287193AFf2E586f";
+    const add = oracleAddr;
     const res = add.toLowerCase();
     insertAddress(res); 
     console.log(res);
@@ -102,8 +102,13 @@ function SportEventForm() {
   const addData = async () => {
     const add = await oracleContract.methods
     .addTestData()
-    .call({ from: accounts[0]});
+    .send({gas: 900000, from: accounts[0]});
+    console.log('add', add)
   }
+
+  /*const addProposal = async (content) => {
+    await instance.methods.addProposal(content).send({ from: admin });
+  };*/
 
   const testName = async () => {
     const insert = await contract.methods
@@ -146,13 +151,13 @@ function SportEventForm() {
             <label htmlFor="oracleAddress" className="form-label">
               Insert Oracle Address
             </label>
-            <input
+            {/*<input
               type="text"
               className="form-control"
               id="oracleAddressInput"
               value={addr}
               onChange={(e) => setAddr(e.target.value)}
-            />
+            />*/}
           </div>
           <button type="submit" className="btn btn-primary">
             Insert

@@ -194,7 +194,7 @@ contract('Bet', function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it ("can getEvent", async function() {
+            it.skip ("can getEvent", async function() {
 // console.log("===>", this.idEvent1);
 // console.log("===>", typeof this.idEvent1.receipt.logs[0]);
 console.log("===>", this.idEvent1.logs[0].args[0]);
@@ -253,7 +253,7 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe ("Bets", function() {
 
-            it ("cannot placeBet when amount < minimumBet", async function() {
+            it.skip ("cannot placeBet when amount < minimumBet", async function() {
                 const lessThanMinimumBet = web3.utils.toWei("0.01", "ether");
 
                 // For whatever reason I receive "sender account is not recognized" in the test environment
@@ -291,7 +291,7 @@ console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
 
             it ("cannot placeBet if event not open for betting");
 
-            it ("can placeBet", async function() {
+            it.skip ("can placeBet", async function() {
                 const betAmount = web3.utils.toWei("0.25", "ether");
 
                 const result = await this.betInstance.placeBet(

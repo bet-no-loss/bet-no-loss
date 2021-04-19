@@ -5,7 +5,7 @@ import getWeb3 from "../../getWeb3";
 import SportEventForm from "../SportEventsForm/SportEventForm";
 import "react-datepicker/dist/react-datepicker.css";
 import Web3Context from "../Web3context";
-import { Switch, Route } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 import "./app.css";
 import Navbar from "../Navbar/Navbar";
@@ -14,6 +14,9 @@ import BetEvent from "../BetEvent/BetEvent";
 import Layout from "../Layout/Layout";
 import Card from "../Card/Card";
 import BetList from "../pages/Bets/BetList";
+import Admin from "../Admin/Admin";
+import Account from "../Account/Account";
+import Sidebar from "../Sidebar/Sidebar";
 
 const App = () => {
   const [web3, setWeb3] = useState(null);
@@ -22,12 +25,13 @@ const App = () => {
   const [oracleContract, setoracleContract] = useState(null);
   const [currentAccount, setCurrentAccount] = useState("");
   const [testName, setTestName] = useState("This is a test");
+
   const initialState = {
     eventName: "",
-    eventDate: "",
+    /*eventDate: "",*/
     teamA: "",
     teamB: "",
-    outcomeAvailableDate: "",
+    /*outcomeAvailableDate: "",*/
   };
   const [sportEvent, setSportEvent] = useState(initialState);
 
@@ -59,6 +63,8 @@ const App = () => {
       setAccounts(accounts);
       setContract(instance);
       setoracleContract(oracleInstance);
+
+      console.log('sport',sportEvent)
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -86,6 +92,8 @@ const App = () => {
     console.log("ACCOUNTS", accounts);
   }, [currentAccount]);
 
+
+
   if (!web3) {
     return <div>Loading Web3, accounts, and contract...</div>;
   }
@@ -104,14 +112,35 @@ const App = () => {
           setTestName,
         }}
       >
-        <main className="app-main">
-          <Layout>
-            {/* <SportEventForm />
-            <SportEventList />
-            <BetEvent />             */}
-            <BetList />
-          </Layout>
-        </main>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route path='/admin'>
+                <Layout>
+                  <Admin/>
+                </Layout>
+              </Route>
+              <Route path='/account'>
+                <Layout>
+                  <Account/>
+                </Layout>
+              </Route>
+              <Route path='/'>
+                <main className="app-main">
+                  <Layout>
+                    <Sidebar/>
+                    {/*<SportEventForm />
+                    <SportEventList />
+                    <BetEvent />*/}
+                    <BetList />
+
+                  </Layout>
+                </main>
+              </Route>
+            </Switch>
+          </div>
+        </Router>
+
       </Web3Context.Provider>
     </div>
   );

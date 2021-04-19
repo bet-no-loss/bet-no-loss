@@ -1,0 +1,21 @@
+# A Github Workflow Action to test the project
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+jobs:
+  test-contracts:
+    # Run the back-end tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 15.x
+    - run: npm i
+    - run: npm run test
