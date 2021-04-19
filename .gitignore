@@ -42,7 +42,6 @@ client/build/
 
 # Solidity compiled artifacts
 build/contracts/
-client/src/contracts/
 artifacts/
 
 # Dependency directories
@@ -117,6 +116,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+# VSCode Settings
+.vscode/
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test

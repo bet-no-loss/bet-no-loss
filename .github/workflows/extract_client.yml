@@ -1,0 +1,71 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# What?
+#
+# This Github Workflow Action is triggered  
+#   each time the master branch is pushed.
+# It runs on Github servers and extracts all the commits 
+#   related to the folder client/ into the client branch 
+#   then pushes the client branch upstream.
+# 
+# # Why?
+#
+# We use Heroku to deploy the client (front-end) code.  
+# The Heroku buildpack (mars/create-react-app) we use to deploy
+# our React-JS application requires the client code 
+# to be located in the root folder. 
+# However this does not work out of the box as our folder 
+# structure is different.  
+# Our repository is a monorepo  (ie. it is a single repository 
+# containing 2 projects 
+#   - back-end (smart-contracts) located in the root folder
+#   - front-end (React-JS) located beneath the `/client` folder
+# 
+# This is why we split the client code in a dedicated branch
+# `client` that only contains the client commits/code (front-end)
+# without all the smart-contract stuff (back-end).  
+# Heroku is configured to deploy each time the `client` branch 
+# is pushed, it then takes it from there and does its magic.
+#
+# Sources:
+# - https://github.com/mars/create-react-app-buildpack/blob/master/README.md
+# - https://kauri.io/#collections/Full%20Stack%20dApp%20Tutorial%20Series/deploying-your-dapp-frontend-to-heroku/
+# - https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl/comments
+# - https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+name: 'Extract client'
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Extract client code into the client branch'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git checkout master
+          # git branch -D client || :
+
+          # Create the client branch with the replay of all the commits related to the client/ folder
+          # as if client/ would now be in the root folder
+          git subtree split --prefix client --branch client
+          git checkout client -- 
+
+      - name: 'Force push the client branch'
+        if: ${{ success() }}
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: refs/heads/client
+          force: true
