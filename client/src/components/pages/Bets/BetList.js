@@ -6,6 +6,7 @@ import soccer from "../../../assets/image/football.svg";
 
 function BetList() {
   console.log(rugby);
+
   const bets = [
     {
       id: 1,

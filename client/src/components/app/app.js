@@ -65,6 +65,7 @@ const App = () => {
       setoracleContract(oracleInstance);
 
       console.log('sport',sportEvent)
+
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
