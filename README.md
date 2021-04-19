@@ -407,7 +407,7 @@ Update the contract addresses in the file [`doc/deployed_addresses.md`](doc/depl
 
 ### Contracts Addresses
 
-The file **[`doc/deployed_addresses.md`](doc/deployed_addresses.md)** contains the addresses where each smart-contracts is deployed on Ropsten.  
+The file **[`doc/deployed_addresses.md`](doc/deployed_addresses.md)** contains the address of each smart-contract deployed on the Ropsten testnet.
 
 ## Deploy Front-End
 
