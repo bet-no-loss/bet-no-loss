@@ -130,3 +130,4 @@ dist
 /.pnp
 /client/.pnp
 
+.idea/
