@@ -6,8 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "./OracleInterface.sol";
 
-import "./DAI.sol";
-
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 /** 
  * This Ethereum smart-contract takes bets placed on sport events.  
  * It then invests all bets deposits for a given event (pot) in DeFi.  
@@ -23,9 +22,11 @@ import "./DAI.sol";
 contract Bet is Ownable, ReentrancyGuard {
 
     /**
-     * @dev New instance of ERC20 DAI Token
+     * @dev An instance of ERC20 DAI Token
      */
-     DAI public Dai;
+     IERC20 Dai;
+
+     address private _owner;
 
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
@@ -97,8 +98,10 @@ contract Bet is Ownable, ReentrancyGuard {
     /**
      * @param _tokenAddress the address of the deployed ERC20 DAI token 
      */
-    constructor(DAI _tokenAddress) {
-        Dai = DAI(_tokenAddress);
+     constructor(address _tokenAddress) {
+        require(_tokenAddress != address(0), "Address 0 is not allowed");
+        Dai = IERC20(_tokenAddress);
+        _owner = msg.sender;
     }
 
      /**
@@ -108,6 +111,31 @@ contract Bet is Ownable, ReentrancyGuard {
           return Dai.balanceOf(address(this));
       }
 
+      /**
+      * @notice Moves `_amount` tokens from `_sender` to this contract
+      * @param _sender the address that owns  the tokens
+      * @param _amount the amount to be deposited
+      */
+      function deposit(address _sender, uint _amount)
+            external 
+            notAddress0(_sender) 
+    {
+        // At least a minimum amount is required to be deposited
+        require(_amount >= 10, "Amount deposited must be >= 10");
+        Dai.transferFrom(_sender, address(this), _amount);
+    }
+
+    /**
+      * @notice Sets `_amount` as the allowance of `_spender` over the caller's tokens.
+      * @param _spender an address allowed to spend user's DAI
+      * @param _amount the amount approved to be used by _spender
+      */
+      function approve(address _spender, uint _amount)
+         external 
+         notAddress0(_spender) 
+    {
+        Dai.approve(_spender, _amount);
+    }
 
     /**
      * @notice sets the address of the sport event bet oracle contract to use 
@@ -271,7 +299,11 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
+<<<<<<< HEAD
+     *  @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
+=======
      *  @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
+>>>>>>> master
      */
     receive() external payable {
     }

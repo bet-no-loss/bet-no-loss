@@ -1,12 +1,18 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.3;
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract DefiPool {
-    /**
+/**
     @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn
     interests
     */
+contract DefiPool {
+
+    /**
+     * @dev An instance of ERC20 DAI Token
+     */
+     IERC20 Dai;
 
     /**
      * @dev Balance of each user address
@@ -33,15 +39,24 @@ contract DefiPool {
      */
     event Deposit(address indexed user, uint256 amount, uint256 timeStart);
 
-    constructor() payable {}
+    /**
+     * @param _tokenAddress address of the DAI ERC20 token
+     */
+    constructor(address _tokenAddress) {
+        Dai = IERC20(_tokenAddress);
+    }
 
     /**
-     * @notice deposit ether to the contract
-     */
-    function deposit() public payable {
-        require(msg.value >= 1e16, "Error, deposit must be >= 0.01 ETH");
+      * @notice Moves `_amount` tokens from `_sender` to this contract
+      * @param _sender the address who owns the tokens
+      * @param _amount the amount to be deposited
+      */
+    function deposit(uint _amount, address _sender) public payable {
+        require(_amount >= 10, "Error, deposit must be >= 10 DAI");
 
-        userBalance[msg.sender] = userBalance[msg.sender] + msg.value;
+        Dai.transferFrom(_sender, address(this), _amount);
+
+        userBalance[_sender] = userBalance[_sender] + _amount;
 
         depositStart[msg.sender] = depositStart[msg.sender] + block.timestamp;
 
@@ -50,35 +65,31 @@ contract DefiPool {
 
     /**
      * @notice Withdraw all amount deposited by a user
+     * @param _user address of the user
      */
-    function withdraw() public payable {
+    function withdraw(address _user) public payable {
         // 31577600 = seconds in 365.25 days
 
         // time spent for user's deposit
-        depositTime[msg.sender] = block.timestamp - depositStart[msg.sender];
+        uint time;
+        depositTime[_user] = block.timestamp - depositStart[_user];
+        time = depositTime[_user];
 
         //interests gains per second
         uint256 interestPerSecond =
-            31577600 * (uint256(userBalance[msg.sender]) / 1e16);
+            31577600 * uint256(userBalance[_user] / 1e8);
 
-        interests[msg.sender] = interestPerSecond * depositTime[msg.sender];
+        interests[_user] = interestPerSecond * time;
 
-        userBalance[msg.sender] = userBalance[msg.sender] + interests[msg.sender];
-        payable(msg.sender).transfer(userBalance[msg.sender]);
-        userBalance[msg.sender] = userBalance[msg.sender] - userBalance[msg.sender];
+        userBalance[_user] = userBalance[_user] + interests[msg.sender];
+        Dai.transfer(_user, userBalance[_user]);
+        userBalance[_user] = userBalance[_user] - userBalance[_user];
     }
 
     /**
      * @return return the contract balance
      */
     function getContractBalance() public view returns (uint256) {
-        return address(this).balance;
-    }
-
-    /**
-     * @return return msg.sender balance
-     */
-    function getUserBalance() public view returns (uint256) {
-        return msg.sender.balance;
+        return Dai.balanceOf(address(this));
     }
 }

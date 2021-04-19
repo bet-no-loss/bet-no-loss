@@ -13,5 +13,5 @@ module.exports = async function(deployer) {
 
   await deployer.deploy(BetOracle);
   await deployer.deploy(DateLib);
-  await deployer.deploy(DefiPool);
+  await deployer.deploy(DefiPool, daiContractAddress);
 };
