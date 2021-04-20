@@ -53,6 +53,7 @@
   "devDependencies": {
     "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
+    "js-object-pretty-print": "^0.3.0",
     "luxon": "^1.26.0",
     "solc-0.8": "npm:solc@^0.8.3",
     "solidity-docgen": "^0.5.11",

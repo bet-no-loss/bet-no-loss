@@ -5,6 +5,7 @@ const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants   = require('@openzeppelin/test-helpers/src/constants');
 const { expect }  = require('chai');
 const { DateTime } = require('luxon');
+const pretty       = require('js-object-pretty-print').pretty;
 
 const Dai       = artifacts.require('DAI');
 const Bet       = artifacts.require('Bet');
@@ -194,23 +195,23 @@ contract('Bet', function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it.skip ("can getEvent", async function() {
-// console.log("===>", this.idEvent1);
+            it ("can getEvent", async function() {
+console.log(pretty(this.idEvent1));
 // console.log("===>", typeof this.idEvent1.receipt.logs[0]);
-console.log("===>", this.idEvent1.logs[0].args[0]);
-console.log("====>", web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]));
+// console.log("===>", this.idEvent1);
+// console.log("====>", web3.utils.hexToBytes(this.idEvent1));
 // console.log(Object.getOwnPropertyNames(this.idEvent1.logs[0].args[0])
 //         .filter(function(property) {
 //             return typeof object[property] == 'function';
 //         })
 // );
                 const result = await this.betInstance.getEvent(
-                    web3.utils.hexToBytes(this.idEvent1.logs[0].args[0]),
+                    web3.utils.hexToBytes(this.idEvent1),
                     { from: address1 } 
                 );
-                expect(result)
-                    .be.an('array')
-                    .with.lengthOf(2)
+                // expect(result)
+                //     .be.an('array')
+                //     .with.lengthOf(2)
 
                 expect(result[0])
                     .to.be.a('string')
