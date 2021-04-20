@@ -6,6 +6,11 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract Play {
     
     IERC20 Dai;
+
+    /**
+     * @dev Balance of each user address
+     */
+    mapping(address => uint256) public userBalance;
     
     SportEvent[] public events;
     
@@ -46,12 +51,20 @@ contract Play {
         return events[0].winner;
     }
     
-    function play(string memory _winner, uint _amount) public returns (bool) {
+    // TO DO: use DAI
+    function bet(string memory _winner, uint _amount) public returns (bool) {
         if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(events[0].winner))) {
             return true;
         } else {
             return false;
         }
+    }
+
+    function withdraw(address _user) public payable {        
+        uint memory initialUserBalance = userBalance[_user];
+        userBalance[_user] = userBalance[_user] + 10;
+        Dai.transfer(_user, userBalance[_user]);
+        userBalance[_user] = userBalance[_user] - initialUserBalance;
     }
       
     

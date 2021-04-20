@@ -80,10 +80,10 @@ contract DefiPool {
             31577600 * uint256(userBalance[_user] / 1e8);
 
         interests[_user] = interestPerSecond * time;
-
+        uint memory initialUserBalance = userBalance[_user];
         userBalance[_user] = userBalance[_user] + interests[msg.sender];
         Dai.transfer(_user, userBalance[_user]);
-        userBalance[_user] = userBalance[_user] - userBalance[_user];
+        userBalance[_user] = userBalance[_user] - initialUserBalance;
     }
 
     /**
