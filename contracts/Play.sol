@@ -41,6 +41,18 @@ contract Play {
         // Add the sport event
         events.push(SportEvent(_name, _teamA, _teamB, _date, _teamA));
     }
+
+    function getWinner() public returns (string memory) {
+        return events[0].winner;
+    }
+    
+    function play(string memory _winner, uint _amount) public returns (bool) {
+        if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(events[0].winner))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
       
     
 }
