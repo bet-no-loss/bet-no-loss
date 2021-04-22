@@ -12,12 +12,11 @@
   },
   "scripts": {
     "build": "npx truffle compile",
-    "test": "npx truffle test",
     "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/",
+    "test": "npx truffle compile && mocha --exit --recursive",
     "deploy": "npx truffle deploy --network=ropsten",
     "start": "cd client/ && npm start",
-    "watch": "npm run watch-test",
-    "watch-test": "watch 'npm run test' contracts test"
+    "watch": "npx watch 'npm run test' contracts test"
   },
   "repository": {
     "type": "git",
@@ -36,7 +35,7 @@
   "contributors": [
     {
       "name": "Eric Bouchut",
-      "url": "http://EricBoucuht.com"
+      "url": "http://EricBouchut.com"
     },
     {
       "name": "Tantely"
@@ -51,9 +50,12 @@
   },
   "homepage": "https://github.com/bet-no-loss/bet-no-loss#readme",
   "devDependencies": {
+    "@openzeppelin/test-environment": "^0.1.9",
     "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
-    "moment": "^2.29.1",
+    "js-object-pretty-print": "^0.3.0",
+    "luxon": "^1.26.0",
+    "mocha": "^8.1.2",
     "solc-0.8": "npm:solc@^0.8.3",
     "solidity-docgen": "^0.5.11",
     "truffle": "^5.3.2",

@@ -1,5 +1,6 @@
 [![compile_mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/compile_mermaid.yml)
 [![extract client](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/extract_client.yml)
+[![Build](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml)
 [![Test](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
 [![Heroku Deployment Status](https://heroku-badge.herokuapp.com/?app=bet-no-loss&style=flat&svg=1)](https://dashboard.heroku.com/apps/bet-no-loss)
  [![Read doc](https://img.shields.io/badge/read-doc-blue)](#documentation)
@@ -368,14 +369,11 @@ npx truffle compile # --all
 
 # Test
 
-[This page](doc/tests_explication.md) explains **what we test and how**.
-
 ```
-# Run ganache on port 9545 beforehand
-npx truffle deploy --reset --network ganache
-
-npx truffle test # Run the unit and integration tests
+npm run test
 ```
+
+ℹ️ Read the **[tests_explication.md page](doc/tests_explication.md)** for more details about **what we test and how**.
 
 # Deploy 
 
