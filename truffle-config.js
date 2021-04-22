@@ -1,4 +1,4 @@
-// Load config variables from .env file
+npmp// Load config variables from .env file
 require('dotenv').config()
 
 const path             = require("path");
@@ -76,9 +76,12 @@ module.exports = {
     etherscan: `${process.env.ETHERSCAN_API_KEY}`
   },
   mocha: {
-    // timeout: 100000
+    reporter: 'eth-gas-reporter',
+    reporterOptions : {
+      currency: "USD",
+      coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`
+    }
   },
-
   // Configure your compilers
   compilers: {
     solc: {

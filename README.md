@@ -302,7 +302,17 @@ It contains the environment specific parameters for the (test) network to deploy
     INFURA_PROJECT_ID = "TODO_infura_project_id_here"
     ```
 
-ℹ️ Keep in mind to surround each value with double quotes.
+ℹ️ Keep in mind to surround each value with double quotes.  
+
+In order to generate per function **gas consumption reports** (optional), simply append the following line to `.env`.
+```
+    COINMARKETCAP_API_KEY= "TODO_CMC_API_KEY_HERE"
+```
+You will need a **CoinMarketCap API Key**.  
+You can get one [here](https://coinmarketcap.com/api/pricing/).  
+Read more about the [eth-gas-reporter](https://github.com/cgewecke/eth-gas-reporter) package we use to generate gas reports.
+
+
 
 ## Heroku Configuration
 

@@ -53,6 +53,7 @@
     "@openzeppelin/test-environment": "^0.1.9",
     "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
+    "eth-gas-reporter": "^0.2.22",
     "js-object-pretty-print": "^0.3.0",
     "luxon": "^1.26.0",
     "mocha": "^8.1.2",
