@@ -61,7 +61,7 @@ contract Play {
     }
 
     function withdraw(address _user) public payable {        
-        uint memory initialUserBalance = userBalance[_user];
+        uint initialUserBalance = userBalance[_user];
         userBalance[_user] = userBalance[_user] + 10;
         Dai.transfer(_user, userBalance[_user]);
         userBalance[_user] = userBalance[_user] - initialUserBalance;
