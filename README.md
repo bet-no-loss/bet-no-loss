@@ -18,11 +18,6 @@
 - Finally at the end of week 3, 90% of accrued interests can be split between winners according to their share in the total deposit value. 
 Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
 
-## License
-
-*Bet-no-loss* is released under the terms of the MIT license.  
-See COPYING for more information or https://opensource.org/licenses/MIT .
-
 ## Links
 
 * [Open Application](https://bet-no-loss.herokuapp.com/)
@@ -467,3 +462,7 @@ This generates a markdown file for each smart-contract in the `doc/contracts` fo
   As we focus only on having a running project with smart contract + front-office.
   This means in order to add events the owner calls the ad-hoc smart-contract's functions.
 
+## License
+
+*[Bet-no-loss](https://github.com/bet-no-loss/bet-no-loss)* is released under the terms of the MIT license.  
+See COPYING for more information or https://opensource.org/licenses/MIT .
