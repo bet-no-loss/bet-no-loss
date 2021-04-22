@@ -2,6 +2,14 @@
 
 > This document explains for each test why we wrote it and  what it is aimed at.
 
+## Test Environment
+
+We are using:
+- [OpenZeppelin tet-helpers](https://docs.openzeppelin.com/test-helpers)
+- [OpenZeppelin test environment](https://docs.openzeppelin.com/test-environment/) instead of *truffle test*, because we were tired of waiting for the test suite to run and it is more configurable. Now it is way faster, the next step will be to replace *Mocha* with *Jest*.
+- [mocha](https://www.npmjs.com/package/mocha) as a test runner
+- [chai](https://www.npmjs.com/package/chai) for our TDD assertions
+
 
 ## Test Struture
 
