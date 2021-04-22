@@ -380,6 +380,20 @@ npm run test
 
 ℹ️ Read the **[tests_explication.md page](doc/tests_explication.md)** for more details about **what we test and how**.
 
+# Gas Report
+
+To get a report of the gas consumed by the tests.
+```
+npm run gas
+```
+
+# Gas Report
+
+To get a report of the gas consumed by the smart-contracts while running the tests.
+```
+npm run gas
+```
+
 # Deploy 
 
 You need to deploy both the smart-contracts (back-end) and the ReactJS app - DApp (front-end).

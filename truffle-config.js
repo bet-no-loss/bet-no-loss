@@ -78,8 +78,15 @@ module.exports = {
   mocha: {
     reporter: 'eth-gas-reporter',
     reporterOptions : {
-      currency: "USD",
-      coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`
+      currency: 'USD',
+      enabled: process.env.GAS_REPORT ? true: false,
+      coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`,
+      excludeContracts: [
+        'DateLib', 
+        'Migrations', 
+        'Play'
+      ],
+      src: "contracts"
     }
   },
   // Configure your compilers

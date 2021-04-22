@@ -132,4 +132,8 @@ dist
 /.pnp
 /client/.pnp
 
+# IntelliJ IDE (WebStorm...) configuration folder
 .idea/
+
+# eth-gas-reporter output file
+gasReporterOutput.json

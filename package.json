@@ -13,6 +13,7 @@
   "scripts": {
     "build": "npx truffle compile",
     "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/",
+    "gas": "REPORT_GAS=true CI=true npm run test",
     "test": "npx truffle compile && mocha --exit --recursive",
     "deploy": "npx truffle deploy --network=ropsten",
     "start": "cd client/ && npm start",
@@ -54,6 +55,7 @@
     "@openzeppelin/test-helpers": "^0.5.10",
     "chai": "^4.3.4",
     "eth-gas-reporter": "^0.2.22",
+    "ganache-cli": "^6.12.2",
     "js-object-pretty-print": "^0.3.0",
     "luxon": "^1.26.0",
     "mocha": "^8.1.2",
