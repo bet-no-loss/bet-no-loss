@@ -1,150 +1,128 @@
-import React, { useState, useEffect } from "react";
-import Bet from "../../contracts/Bet.json";
-import BetOracle from "../../contracts/BetOracle.json";
-import getWeb3 from "../../getWeb3";
-import SportEventForm from "../SportEventsForm/SportEventForm";
-import "react-datepicker/dist/react-datepicker.css";
-import Web3Context from "../Web3context";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Play from '../../contracts/Play.json'
+import React, { Component } from 'react';
+import Navbar from '../Navbar/Navbar'
+import Main from './main'
+import Web3 from 'web3';
+import './app.css';
 
-import "./app.css";
-import Navbar from "../Navbar/Navbar";
-import SportEventList from "../SportEventList/SportEventList";
-import BetEvent from "../BetEvent/BetEvent";
-import Layout from "../Layout/Layout";
-import Card from "../Card/Card";
-import BetList from "../pages/Bets/BetList";
-import Admin from "../Admin/Admin";
-import Account from "../Account/Account";
-import Sidebar from "../Sidebar/Sidebar";
+const ipfsClient = require('ipfs-http-client')
+const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
 
-const App = () => {
-  const [web3, setWeb3] = useState(null);
-  const [accounts, setAccounts] = useState(null);
-  const [contract, setContract] = useState(null);
-  const [oracleContract, setoracleContract] = useState(null);
-  const [currentAccount, setCurrentAccount] = useState("");
-  const [testName, setTestName] = useState("This is a test");
+class App extends Component {
 
-  const initialState = {
-    eventName: "",
-    /*eventDate: "",*/
-    teamA: "",
-    teamB: "",
-    /*outcomeAvailableDate: "",*/
-  };
-  const [sportEvent, setSportEvent] = useState(initialState);
-
-  async function init() {
-    try {
-      console.log("init try");
-      // Get network provider and web3 instance.
-      const web3 = await getWeb3();
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
-      console.log("ACCOUNTS in TRY", accounts);
-
-      // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = Bet.networks[networkId];
-      const deployedNetworkOracle = BetOracle.networks[networkId];
-      const instance = new web3.eth.Contract(
-        Bet.abi,
-        deployedNetwork && deployedNetwork.address
-      );
-      const oracleInstance = new web3.eth.Contract(
-        BetOracle.abi,
-        deployedNetworkOracle && deployedNetworkOracle.address
-      );
-
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      setWeb3(web3);
-      setAccounts(accounts);
-      setContract(instance);
-      setoracleContract(oracleInstance);
-
-      console.log('sport',sportEvent)
-
-    } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`
-      );
-      console.error(error);
+    async componentWillMount() {
+        await this.loadWeb3()
+        await this.loadBlockchainData()
     }
-  }
 
-  const getAccount = async () => {
-    const accounts = await window.ethereum.enable();
-    setCurrentAccount(accounts[0]);
-  };
+    async loadWeb3() {
+        if (window.ethereum) {
+            window.web3 = new Web3(window.ethereum)
+            await window.ethereum.enable()
+        }
+        else if (window.web3) {
+            window.web3 = new Web3(window.web3.currentProvider)
+        }
+        else {
+            window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+        }
+    }
 
-  window.ethereum.on("accountsChanged", function () {
-    getAccount();
-  });
+    async loadBlockchainData() {
+        const web3 = window.web3
+        // Load account
+        const accounts = await web3.eth.getAccounts()
+        this.setState({ account: accounts[0] })
+        // Network ID
+        const networkId = await web3.eth.net.getId()
+        const networkData = Play.networks[networkId]
+        if(networkData) {
+            // Assign contract
+            const play = new web3.eth.Contract(Play.abi, networkData.address)
+            this.setState({ play })
+            // Get files amount
+            const eventsCount = await play.methods.eventCount().call()
+            this.setState({ eventsCount })
+            // Load files&sort by the newest
+            for (let i = eventsCount; i >= 1; i--) {
+                const event = await play.methods.sportEvents(i).call()
+                this.setState({
+                    sportEvents: [...this.state.sportEvents, event]
+                })
+            }
+        } else {
+            window.alert('DStorage contract not deployed to detected network.')
+        }
+    }
 
-  useEffect(() => {
-    init();
-  }, []);
+    // Get file from user
+    captureFile = event => {
+        event.preventDefault()
 
-  useEffect(() => {
-    getAccount();
-    console.log("ACCOUNTS", accounts);
-  }, [currentAccount]);
+        const file = event.target.files[0]
+        const reader = new window.FileReader()
 
+        reader.readAsArrayBuffer(file)
+        reader.onloadend = () => {
+            this.setState({
+                buffer: Buffer(reader.result),
+            })
+            console.log('buffer', this.state.buffer)
+        }
+    }
 
+    addSportEvent = (description, teamA, teamB, date) => {
+        console.log("Submitting file to IPFS...")
 
-  if (!web3) {
-    return <div>Loading Web3, accounts, and contract...</div>;
-  }
-  return (
-    <div className="App">
-      <Web3Context.Provider
-        value={{
-          web3,
-          accounts,
-          contract,
-          oracleContract,
-          currentAccount,
-          sportEvent,
-          setSportEvent,
-          testName,
-          setTestName,
-        }}
-      >
-        <Router>
-          <div className="App">
-            <Switch>
-              <Route path='/admin'>
-                <Layout>
-                  <Admin/>
-                </Layout>
-              </Route>
-              <Route path='/account'>
-                <Layout>
-                  <Account/>
-                </Layout>
-              </Route>
-              <Route path='/'>
-                <main className="app-main">
-                  <Layout>
-                    <Sidebar/>
-                    {/*<SportEventForm />
-                    <SportEventList />
-                    <BetEvent />*/}
-                    <BetList />
+        // Add file to the IPFS
+        ipfs.add(this.state.buffer, (error, result) => {
+            console.log('IPFS result', result.size)
+            if(error) {
+                console.error(error)
+                return
+            }
 
-                  </Layout>
-                </main>
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+            this.setState({ loading: true })
 
-      </Web3Context.Provider>
-    </div>
-  );
-};
+            this.state.play.methods.addSportEvent(result[0].hash, teamA, teamB, description, date).send({ from: this.state.account }).on('transactionHash', (hash) => {
+                this.setState({
+                    loading: false,
+                })
+                window.location.reload()
+            }).on('error', (e) =>{
+                window.alert('Error')
+                this.setState({loading: false})
+            })
+        })
+    }
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            account: '',
+            play: null,
+            sportEvents: [],
+            loading: false,
+        }
+        this.addSportEvent = this.addSportEvent.bind(this)
+        this.captureFile = this.captureFile.bind(this)
+    }
+
+    render() {
+        return (
+            <div>
+                <Navbar account={this.state.account} />
+                { this.state.loading
+                    ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+                    : <Main
+                        sportEvents={this.state.sportEvents}
+                        captureFile={this.captureFile}
+                        addSportEvent={this.addSportEvent}
+                    />
+                }
+            </div>
+        );
+    }
+}
 
 export default App;

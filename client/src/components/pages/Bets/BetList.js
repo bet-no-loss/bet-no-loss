@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from "../../Card/Card";
 import basket from "../../../assets/image/basketball-ball.svg";
 import rugby from "../../../assets/image/rugby.svg";
 import soccer from "../../../assets/image/football.svg";
 
+import Web3Context from "../../Web3context";
+
 function BetList() {
   console.log(rugby);
+  const web3Context = useContext(Web3Context);
+  const { web3, accounts, contract, currentAccount } = web3Context;
 
   const bets = [
     {

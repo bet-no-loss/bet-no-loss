@@ -106,3 +106,47 @@
   left: 505px;
 }
 
+/*Admin page*/
+.adminPage {
+  border: 1px solid red;
+  border-radius: 10px;
+  background-color: lightpink;
+}
+
+/*
+Footer*/
+@import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+
+.container-fluid {
+  overflow: hidden;
+  margin-top: 250px;
+  background: #262626;
+  color: #627482 !important;
+  margin-bottom: 0;
+  padding-bottom: 0
+}
+
+small {
+  font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.bold-text {
+  color: #989c9e !important
+}
+
+.mt-55 {
+  margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+h3 {
+  font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.social {
+  font-size: 21px !important
+}
+
+.rights {
+  font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+}

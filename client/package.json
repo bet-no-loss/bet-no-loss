@@ -8,6 +8,7 @@
     "bignumber.js": "^9.0.1",
     "bootstrap": "^4.5.0",
     "dotenv": "^8.2.0",
+    "ipfs-http-client": "^33.1.1",
     "react": "16.11.0",
     "react-datepicker": "^3.3.0",
     "react-dom": "16.11.0",
