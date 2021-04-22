@@ -39,15 +39,14 @@ class Navbar extends Component {
                         <Jazzicon address={this.props.account}/>
                       </span>
                           <span className="textAddress">
-                            <small id="account">
+                            <strong id="account">
                               <a target="_blank"
-                                 alt=""
-                                 className="text-white"
+                                 className="texta"
                                  rel="noopener noreferrer"
                                  href={"https://etherscan.io/address/" + this.props.account}>
                                 {this.props.account.substring(0,6)}...{this.props.account.substring(38,42)}
                               </a>
-                            </small>
+                            </strong>
                           </span>
                         </div>
                       </div>

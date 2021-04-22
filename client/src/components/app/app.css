@@ -77,6 +77,11 @@
   align-items: center;
   padding-inline: 5px;
   line-height: 1;
+  color: #088C12;
+}
+
+.texta {
+  color: #088C12;
 }
 
 .textPool {

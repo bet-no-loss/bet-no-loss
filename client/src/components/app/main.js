@@ -6,7 +6,7 @@ class Main extends Component {
     render() {
         return (
             <div className="container-fluid mt-5 text-center">
-                <div className="row">
+                <div className="row" style={{backgroundColor: 'white'}}>
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
