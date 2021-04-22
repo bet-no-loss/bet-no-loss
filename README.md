@@ -462,6 +462,18 @@ This generates a markdown file for each smart-contract in the `doc/contracts` fo
   As we focus only on having a running project with smart contract + front-office.
   This means in order to add events the owner calls the ad-hoc smart-contract's functions.
 
+[This document](doc/design_pattern_decisions.md) list other design decisions we made.
+
+# Credits
+
+Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
+
+# Contributors
+
+- [@Tantely](https://github.com/Tanteli)
+- [@Lebeil](https://github.com/Lebeil)
+- [@ebouchut](https://github.com/ebouchut)
+
 ## License
 
 *[Bet-no-loss](https://github.com/bet-no-loss/bet-no-loss)* is released under the terms of the MIT license.  
