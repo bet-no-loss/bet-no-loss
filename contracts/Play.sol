@@ -22,9 +22,9 @@ contract Play {
     struct SportEvent {
         uint         eventId;
         string       fileHash;
+        string       description;
         string       teamA;
         string       teamB;
-        string       description;
         uint         date;
         /*uint         uploadTime;*/
         string       winner;
@@ -65,7 +65,7 @@ contract Play {
 
         // Add the sport event
         /* sportEvents.push(SportEvent(_name, _teamA, _teamB, _date, _teamA));*/
-        sportEvents[eventCount] = SportEvent(eventCount, _fileHash, _teamA, _teamB, _description,_date, _teamA);
+        sportEvents[eventCount] = SportEvent(eventCount, _fileHash, _description, _teamA, _teamB, _date, _teamA);
     }
 
     function getWinner() public view returns (string memory) {
