@@ -69,8 +69,6 @@ module.exports = {
     }
   },
   plugins: [
-    // https://kalis.me/verify-truffle-smart-contracts-etherscan/
-    'truffle-plugin-verify',
     'solidity-coverage'
   ],
   api_keys: {
