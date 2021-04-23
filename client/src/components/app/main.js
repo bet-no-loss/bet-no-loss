@@ -3,67 +3,74 @@ import moment from 'moment'
 
 class Main extends Component {
 
+
     render() {
+        const {addSportEvent, currentAccount, adminAddress} = this.props;
+        console.log('admin',this.props.adminAddress)
+        console.log('current', this.props.currentAccount)
         return (
             <div className="container-fluid mt-5 text-center">
                 <div className="row" style={{backgroundColor: 'white'}}>
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
-                            <div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
+                                {currentAccount === adminAddress &&
+                                (<div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
                                 <h2 className="text-white text-monospace bg-dark"><b><ins>Admin</ins></b></h2>
-                                <form onSubmit={(e) => {
-                                    e.preventDefault()
-                                    const description = this.fileDescription.value
-                                    const teamA = this.fileTeamA.value
-                                    const teamB = this.fileTeamB.value
-                                    const date = this.date.value
-                                    this.props.addSportEvent(description, teamA, teamB, date)
-                                }} >
-                                    <div className="form-group">
-                                        <br></br>
-                                        <input
-                                            id="fileDescription"
-                                            type="text"
-                                            ref={(input) => { this.fileDescription = input }}
-                                            className="form-control text-monospace"
-                                            placeholder="description..."
-                                            required />
-                                    </div>
-                                    <div className="form-group">
-                                        <br></br>
-                                        <input
-                                            id="fileTeamA"
-                                            type="text"
-                                            ref={(input) => { this.fileTeamA = input }}
-                                            className="form-control text-monospace"
-                                            placeholder="team A..."
-                                            required />
-                                    </div>
-                                    <div className="form-group">
-                                        <br></br>
-                                        <input
-                                            id="fileTeamB"
-                                            type="text"
-                                            ref={(input) => { this.fileTeamB = input }}
-                                            className="form-control text-monospace"
-                                            placeholder="team B..."
-                                            required />
-                                    </div>
-                                    <div className="form-group">
-                                        <br></br>
-                                        <input
-                                            id="fileTeamB"
-                                            type="text"
-                                            ref={(input) => { this.date = input }}
-                                            className="form-control text-monospace"
-                                            placeholder="date du match"
-                                            required />
-                                    </div>
-                                    <input type="file" onChange={this.props.captureFile} className="text-white text-monospace"/>
-                                    <button type="submit" className="btn-primary btn-block"><b>Enjoy!</b></button>
-                                </form>
-                            </div>
+                                    <form onSubmit={(e) => {
+                                        e.preventDefault()
+                                        const description = this.fileDescription.value
+                                        const teamA = this.fileTeamA.value
+                                        const teamB = this.fileTeamB.value
+                                        const date = this.date.value
+                                        addSportEvent(description, teamA, teamB, date)
+                                    }} >
+                                        <div className="form-group">
+                                            <br></br>
+                                            <input
+                                                id="fileDescription"
+                                                type="text"
+                                                ref={(input) => { this.fileDescription = input }}
+                                                className="form-control text-monospace"
+                                                placeholder="description..."
+                                                required />
+                                        </div>
+                                        <div className="form-group">
+                                            <br></br>
+                                            <input
+                                                id="fileTeamA"
+                                                type="text"
+                                                ref={(input) => { this.fileTeamA = input }}
+                                                className="form-control text-monospace"
+                                                placeholder="team A..."
+                                                required />
+                                        </div>
+                                        <div className="form-group">
+                                            <br></br>
+                                            <input
+                                                id="fileTeamB"
+                                                type="text"
+                                                ref={(input) => { this.fileTeamB = input }}
+                                                className="form-control text-monospace"
+                                                placeholder="team B..."
+                                                required />
+                                        </div>
+                                        <div className="form-group">
+                                            <br></br>
+                                            <input
+                                                id="fileTeamB"
+                                                type="text"
+                                                ref={(input) => { this.date = input }}
+                                                className="form-control text-monospace"
+                                                placeholder="date du match"
+                                                required />
+                                        </div>
+                                        <input type="file" onChange={this.props.captureFile} className="text-white text-monospace"/>
+                                        <button type="submit" className="btn-primary btn-block"><b>Enjoy!</b></button>
+                                    </form>
+
+                            </div>)
+                                }
                             <p>&nbsp;</p>
                             <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px'}}>
                                 <thead style={{ 'fontSize': '15px' }}>

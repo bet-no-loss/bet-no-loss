@@ -115,6 +115,7 @@ class App extends Component {
         this.state = {
             account: undefined,
             currentAccount: undefined,
+            adminAddress: '0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d',
             play: null,
             sportEvents: [],
             loading: false,
@@ -140,6 +141,8 @@ class App extends Component {
                         sportEvents={this.state.sportEvents}
                         captureFile={this.captureFile}
                         addSportEvent={this.addSportEvent}
+                        adminAddress={this.state.adminAddress}
+                        currentAccount={this.state.currentAccount}
                     />
                 }
                 <Footer/>
