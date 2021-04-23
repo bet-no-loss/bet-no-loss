@@ -4,7 +4,7 @@
   "description": "",
   "main": "truffle-config.js",
   "engines": {
-    "node": "15.x",
+    "node": "16.x",
     "npm": "7.x"
   },
   "directories": {
