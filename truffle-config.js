@@ -69,16 +69,25 @@ module.exports = {
     }
   },
   plugins: [
-    // https://kalis.me/verify-truffle-smart-contracts-etherscan/
-    'truffle-plugin-verify'
+    'solidity-coverage'
   ],
   api_keys: {
     etherscan: `${process.env.ETHERSCAN_API_KEY}`
   },
   mocha: {
-    // timeout: 100000
+    reporter: 'eth-gas-reporter',
+    reporterOptions : {
+      currency: 'USD',
+      enabled: process.env.GAS_REPORT ? true: false,
+      coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`,
+      excludeContracts: [
+        'DateLib', 
+        'Migrations', 
+        'Play'
+      ],
+      src: "contracts"
+    }
   },
-
   // Configure your compilers
   compilers: {
     solc: {

@@ -1,19 +1,18 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Test Bet smart-contract
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const { accounts, contract, web3 } = require('@openzeppelin/test-environment');
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants   = require('@openzeppelin/test-helpers/src/constants');
 const { expect }  = require('chai');
 const { DateTime } = require('luxon');
 const pretty       = require('js-object-pretty-print').pretty;
 
-const Dai       = contract.fromArtifact('DAI');
-const Bet       = contract.fromArtifact('Bet');
-const BetOracle = contract.fromArtifact('BetOracle');
+const Dai       = artifacts.require('DAI');
+const Bet       = artifacts.require('Bet');
+const BetOracle = artifacts.require('BetOracle');
 
 
-describe('Bet', function() {
+contract('Bet', function(accounts) {
 
     const [ownerAddress, address1, address2, address3] = accounts;
 
@@ -196,18 +195,23 @@ describe('Bet', function() {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it.only ("can getEvent", async function() {
-console.log(this.idEvent1.valueOf());
-// console.log(web3.utils.asciiToHex(this.idEvent1[0]));
-// console.log(web3.utils.asciiToHex(this.idEvent1[1]));
-
+            it ("can getEvent", async function() {
+console.log(pretty(this.idEvent1));
+// console.log("===>", typeof this.idEvent1.receipt.logs[0]);
+// console.log("===>", this.idEvent1);
+// console.log("====>", web3.utils.hexToBytes(this.idEvent1));
+// console.log(Object.getOwnPropertyNames(this.idEvent1.logs[0].args[0])
+//         .filter(function(property) {
+//             return typeof object[property] == 'function';
+//         })
+// );
                 const result = await this.betInstance.getEvent(
-                    this.idEvent1.valueOf(),
+                    web3.utils.hexToBytes(this.idEvent1),
                     { from: address1 } 
                 );
-                expect(result)
-                    .be.an('array')
-                    .with.lengthOf(2)
+                // expect(result)
+                //     .be.an('array')
+                //     .with.lengthOf(2)
 
                 expect(result[0])
                     .to.be.a('string')

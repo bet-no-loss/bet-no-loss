@@ -18,11 +18,6 @@
 - Finally at the end of week 3, 90% of accrued interests can be split between winners according to their share in the total deposit value. 
 Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
 
-## License
-
-*Bet-no-loss* is released under the terms of the MIT license.  
-See COPYING for more information or https://opensource.org/licenses/MIT .
-
 ## Links
 
 * [Open Application](https://bet-no-loss.herokuapp.com/)
@@ -307,7 +302,17 @@ It contains the environment specific parameters for the (test) network to deploy
     INFURA_PROJECT_ID = "TODO_infura_project_id_here"
     ```
 
-ℹ️ Keep in mind to surround each value with double quotes.
+ℹ️ Keep in mind to surround each value with double quotes.  
+
+In order to generate per function **gas consumption reports** (optional), simply append the following line to `.env`.
+```
+    COINMARKETCAP_API_KEY= "TODO_CMC_API_KEY_HERE"
+```
+You will need a **CoinMarketCap API Key**.  
+You can get one [here](https://coinmarketcap.com/api/pricing/).  
+Read more about the [eth-gas-reporter](https://github.com/cgewecke/eth-gas-reporter) package we use to generate gas reports.
+
+
 
 ## Heroku Configuration
 
@@ -369,11 +374,29 @@ npx truffle compile # --all
 
 # Test
 
+[This page](doc/tests_explication.md) explains **what we test and how**.
+
 ```
-npm run test
+# Run ganache on port 9545 beforehand
+npx truffle deploy --reset --network ganache
+
+npx truffle test # Run the unit and integration tests
 ```
 
-ℹ️ Read the **[tests_explication.md page](doc/tests_explication.md)** for more details about **what we test and how**.
+# Code Coverage
+
+Runs the tests then displays a report of the smart-contracts code coverage.
+
+```
+npm run coverage
+```
+
+# Gas Report
+
+To get a report of the gas consumed by the smart-contracts while running the tests.
+```
+npm run gas
+```
 
 # Deploy 
 
@@ -467,3 +490,19 @@ This generates a markdown file for each smart-contract in the `doc/contracts` fo
   As we focus only on having a running project with smart contract + front-office.
   This means in order to add events the owner calls the ad-hoc smart-contract's functions.
 
+[This document](doc/design_pattern_decisions.md) list other design decisions we made.
+
+# Credits
+
+Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
+
+# Contributors
+
+- [@Tantely](https://github.com/Tanteli)
+- [@Lebeil](https://github.com/Lebeil)
+- [@ebouchut](https://github.com/ebouchut)
+
+## License
+
+*[Bet-no-loss](https://github.com/bet-no-loss/bet-no-loss)* is released under the terms of the MIT license.  
+See COPYING for more information or https://opensource.org/licenses/MIT .
