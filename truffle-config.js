@@ -1,4 +1,4 @@
-npmp// Load config variables from .env file
+// Load config variables from .env file
 require('dotenv').config()
 
 const path             = require("path");
