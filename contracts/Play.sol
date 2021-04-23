@@ -12,7 +12,7 @@ contract Play {
      */
     mapping(address => uint256) public userBalance;
     
-    //SportEvent[] public sportEvents;
+    mapping(uint => string) public teamBetByPlayer;
 
     string temporary;
 
@@ -68,12 +68,18 @@ contract Play {
         sportEvents[eventCount] = SportEvent(eventCount, _fileHash, _teamA, _teamB, _description,_date, _teamA);
     }
 
-    function getWinner() public view returns (string memory) {
-        return sportEvents[0].winner;
+    function getWinner(uint _eventId) public view returns (string memory) {
+        return sportEvents[_eventId].winner;
     }
     
-    // TO DO: use DAI
-    function bet(string memory _winner, uint _amount) public view returns (bool) {
+    
+    function bet(string memory _winner, uint _amount) public returns (bool) {  
+        // Deposit Dai
+        Dai.transferFrom(msg.sender, address(this), _amount);
+        
+        // Get team bet by Player
+        teamBetByPlayer[eventCount] = _winner;
+        
         if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(sportEvents[0].winner))) {
             return true;
         } else {
