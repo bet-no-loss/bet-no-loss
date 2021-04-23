@@ -195,8 +195,10 @@ contract('Bet', function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it ("can getEvent", async function() {
+            it.skip ("can getEvent", async function() {
 console.log(pretty(this.idEvent1));
+console.log(this.idEvent1.logs[0].args[0]);
+
 // console.log("===>", typeof this.idEvent1.receipt.logs[0]);
 // console.log("===>", this.idEvent1);
 // console.log("====>", web3.utils.hexToBytes(this.idEvent1));
