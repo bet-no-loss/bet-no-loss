@@ -380,11 +380,12 @@ npm run test
 
 ℹ️ Read the **[tests_explication.md page](doc/tests_explication.md)** for more details about **what we test and how**.
 
-# Gas Report
+# Code Coverage
 
-To get a report of the gas consumed by the tests.
+Runs the tests then displays a report of the smart-contracts code coverage.
+
 ```
-npm run gas
+npm run coverage
 ```
 
 # Gas Report
