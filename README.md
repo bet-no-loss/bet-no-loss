@@ -281,7 +281,7 @@ We tried to make our smart-contracts as resistant as possible to common attacks 
     ```
 - Install the `npm` packages for the back-end and the front-end
     ```
-    // ~~ Update npm to its latest version
+    # ~~ Update npm to its latest version
     npm install -g npm
     
     # ~~~ Install the npm packages for the back-end
@@ -322,8 +322,8 @@ Read more about the [eth-gas-reporter](https://github.com/cgewecke/eth-gas-repor
 **This app is already configured on Heroku and Github to deploy the front-end (ReactJS)** each time someone pushes the `master` branch to Github.
 **Therefore you don't have to read this section**, lucky you are.
 
-The following steps explains the steps I took to the configure Heroku and Github.  
-This may prove useful for some of you with a smilar configuration that is a monorepo (**single** git **repository**) **containing both the back-end (smart-contracts) and the front-end application (DApp)**.  
+The following explains the steps we took to configure Heroku and Github.  
+This may prove useful for some of you with a similar configuration, that is a monorepo (**single** git **repository**) **containing both the back-end (smart-contracts) and the front-end application (DApp)**.  
 Conversely, if you have 2 distinct repositories, ie. one for the back-end and one for the front-ent, then things will be way easier for you, simply skip this section and follow the regular [Heroku documentation](https://devcenter.heroku.com) to deploy your front-end. 
 
 - [Download and install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).  
@@ -476,13 +476,13 @@ In order to run the Front-End application on your local machine:
 
 # Documentation
 
-[Read the smart-contracts' documentation ](doc/contracts).
+[Read the smart-contracts' documentation](doc/contracts).
 
 Should you need to update the documentation, simply run:
 ```
 npx run build-doc
 ```
-This generates a markdown file for each smart-contract in the `doc/contracts` folder.
+This generates a markdown file for each smart-contract in the [`doc/contracts`](doc/contracts) folder.
 
 
 # Decisions
