@@ -460,6 +460,15 @@ The DApp is **deployed automatically on [Heroku](https://heroku.com)** each time
 > We then configured **Heroku** to listen for changes on the Github repository so that each **push to the **`client`** branch on Github triggers a deploy to Heroku**.  
 > Heroku then pulls the `client` branch (not `master`) then deploys and starts the ReactJS app. 
 
+**Another option** (not the one we took though) would be to deploy to Heroku **on demand**, and do so using the heroku command line interface (`heroku` CLI), like so:
+```
+git checkout master
+
+# Pushes the commits related to the `client/` folder to the master branch on the remote git repository named heroku
+git subtree push --prefix client/ heroku master
+```
+In this case, Heroku needs to be configured to use the **Heroku CLI** deployment method and listen for changes on the `master` branch.
+
 # Run
 
 - Run the **local** DApp:  
