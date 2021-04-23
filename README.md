@@ -518,3 +518,32 @@ Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
 
 *[Bet-no-loss](https://github.com/bet-no-loss/bet-no-loss)* is released under the terms of the MIT license.  
 See COPYING for more information or https://opensource.org/licenses/MIT .
+
+# Sources
+Here are a few links to resources that we used during while building bet-no-loss.
+- Ethereum
+    - [Ethereum Developer's Tools](https://github.com/ConsenSys/ethereum-developer-tools-lis)
+- Solidity
+    - https://docs.soliditylang.org/en/v0.8.3
+    - [@openzeppelin/contracts](https://docs.openzeppelin.com/contracts)
+    - [Solidity Patterns](https://fravoll.github.io/solidity-patterns/)
+    - [Security Hacks](https://solidity-by-example.org/)
+- [Truffle](https://www.trufflesuite.com/docs/truffle) The Swiss Army Knife for smart-contracts creation, build and deployment.
+- [Ganache](https://www.trufflesuite.com/ganache) Local Dev/Test Blockchain
+- Test
+    - [@openzeppelin/test-helpers](https://docs.openzeppelin.com/test-helpers/)
+    - https://medium.com/coinmonks/testing-solidity-with-truffle-and-async-await-396e81c54f93
+    - https://dzone.com/articles/a-few-tips-for-unit-testing-ethereum-smart-contrac
+    - [Chai](https://www.chaijs.com/) TDD assertion library
+    - [Mocha](https://mochajs.org/) Test Framework
+- Web3
+    - https://web3js.readthedocs.io/
+- Git
+    - git **subtree**
+        - https://www.atlassian.com/git/tutorials/git-subtree
+        - https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/
+        - https://medium.com/@porteneuve/mastering-git-subtrees-943d29a798ec#.3qcvltsof        
+- Continous Integration:
+    - [gas report, code coverage](https://ethereum.org/it/developers/tutorials/solidity-and-truffle-continuous-integration-setup/)
+- Github
+    - [Badges](https://shields.io/) See the wall of badges at the top of this README. This site is such a great resource to build them and a source of inspiration to build custom ones ;-)
