@@ -374,11 +374,14 @@ npx truffle compile # --all
 
 # Test
 
-```
-npm run test
-```
+[This page](doc/tests_explication.md) explains **what we test and how**.
 
-ℹ️ Read the **[tests_explication.md page](doc/tests_explication.md)** for more details about **what we test and how**.
+```
+# Run ganache on port 9545 beforehand
+npx truffle deploy --reset --network ganache
+
+npx truffle test # Run the unit and integration tests
+```
 
 # Code Coverage
 

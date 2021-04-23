@@ -1,15 +1,14 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Test BetOracle smart-contract
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const { accounts, contract, web3 } = require('@openzeppelin/test-environment');
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const { expect }       = require('chai');
 const { DateTime }     = require('luxon');
 
-const BetOracle = contract.fromArtifact('BetOracle');
+const BetOracle = artifacts.require('BetOracle');
 
 
-describe('BetOracle', function() {
+contract('BetOracle', function(accounts) {
 
     const ownerAddress = accounts[0];
     const address1     = accounts[1];
