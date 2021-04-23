@@ -12,8 +12,17 @@ const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' 
 class App extends Component {
 
     async componentWillMount() {
-        await this.loadWeb3()
-        await this.loadBlockchainData()
+        await this.init()
+    }
+
+    async init() {
+        // Detect Metamask
+        const metamaskInstalled = typeof window.web3 !== 'undefined'
+        this.setState({ metamaskInstalled})
+        if(metamaskInstalled){
+            await this.loadWeb3()
+            await this.loadBlockchainData()
+        }
     }
 
     async loadWeb3() {
@@ -33,7 +42,8 @@ class App extends Component {
         const web3 = window.web3
         // Load account
         const accounts = await web3.eth.getAccounts()
-        this.setState({ account: accounts[0] })
+        this.setState({ currentAccount: accounts[0] })
+        console.log('account',accounts)
         // Network ID
         const networkId = await web3.eth.net.getId()
         const networkData = Play.networks[networkId]
@@ -55,6 +65,9 @@ class App extends Component {
             window.alert('DStorage contract not deployed to detected network.')
         }
     }
+
+
+
 
     // Get file from user
     captureFile = event => {
@@ -85,7 +98,7 @@ class App extends Component {
 
             this.setState({ loading: true })
 
-            this.state.play.methods.addSportEvent(result[0].hash, teamA, teamB, description, date).send({ from: this.state.account }).on('transactionHash', (hash) => {
+            this.state.play.methods.addSportEvent(result[0].hash, description, teamA, teamB,  date).send({ from: this.state.account }).on('transactionHash', (hash) => {
                 this.setState({
                     loading: false,
                 })
@@ -100,7 +113,8 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            account: '',
+            account: undefined,
+            currentAccount: undefined,
             play: null,
             sportEvents: [],
             loading: false,
@@ -109,10 +123,17 @@ class App extends Component {
         this.captureFile = this.captureFile.bind(this)
     }
 
+
     render() {
+        if(window.ethereum)
+            window.ethereum.on("accountsChanged", function () {
+            const accounts = window.ethereum.enable();
+            window.location.reload()
+            this.setState({currentAccount: accounts[0]})
+        })
         return (
             <div>
-                <Navbar account={this.state.account} />
+                <Navbar currentAccount={this.state.currentAccount} />
                 { this.state.loading
                     ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
                     : <Main

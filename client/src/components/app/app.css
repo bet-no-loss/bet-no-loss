@@ -84,6 +84,11 @@
   color: #088C12;
 }
 
+.texta:hover {
+  text-decoration: none;
+  color: darkgreen;
+}
+
 .textPool {
   color: white;
 }

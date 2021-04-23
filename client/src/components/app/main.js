@@ -74,8 +74,6 @@ class Main extends Component {
                                     <th scope="col" style={{ width: '90px'}}>team B</th>
                                     <th scope="col" style={{ width: '90px'}}>date</th>
                                     <th scope="col" style={{ width: '90px'}}>date de création</th>
-                                    <th scope="col" style={{ width: '120px'}}>uploader/view</th>
-                                    <th scope="col" style={{ width: '120px'}}>hash/view/get</th>
                                 </tr>
                                 </thead>
                                 { this.props.sportEvents.map((sportEvent, key) => {

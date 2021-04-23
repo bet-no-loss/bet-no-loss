@@ -4,6 +4,9 @@ import logo from "../../logo.svg";
 import { Jazzicon } from "@ukstv/jazzicon-react";
 
 class Navbar extends Component {
+  state = {
+    ownerAddress : '0xe087aa17adb5385ef7a0c9a7409689b14b4f911d'
+  }
 
   render() {
     return (
@@ -32,19 +35,19 @@ class Navbar extends Component {
 
                 </li>
                 <li className="nav-item">
-                  {this.props.account ? (
+                  {this.props.currentAccount ? (
                       <div className="nav-link">
                         <div className="buttonAddress">
                       <span className="jazzicon">
-                        <Jazzicon address={this.props.account}/>
+                        <Jazzicon address={this.props.currentAccount}/>
                       </span>
                           <span className="textAddress">
                             <strong id="account">
                               <a target="_blank"
                                  className="texta"
                                  rel="noopener noreferrer"
-                                 href={"https://etherscan.io/address/" + this.props.account}>
-                                {this.props.account.substring(0,6)}...{this.props.account.substring(38,42)}
+                                 href={"https://etherscan.io/address/" + this.props.currentAccount}>
+                                {this.props.currentAccount.substring(0,6)}...{this.props.currentAccount.substring(38,42)}
                               </a>
                             </strong>
                           </span>
