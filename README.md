@@ -5,9 +5,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master)](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master)
 ![GitHub Issues](https://img.shields.io/github/issues/bet-no-loss/bet-no-loss)
 ![License](https://img.shields.io/github/license/bet-no-loss/bet-no-loss)
- [![Read doc](https://img.shields.io/badge/read-doc-blue)](#documentation)
 [![Heroku](https://img.shields.io/badge/CD-heroku-blue)](https://dashboard.heroku.com/apps/bet-no-loss)
-[![Open DApp](https://img.shields.io/badge/open-DApp-blue)](https://bet-no-loss.herokuapp.com/)
+ [![Read doc](https://img.shields.io/badge/Doc-📖-blue)](#documentation)
+[![Open DApp](https://img.shields.io/badge/DApp-open-blue)](https://bet-no-loss.herokuapp.com/)
 ![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)
 
 # Bet-no-loss
