@@ -60,13 +60,13 @@ class Navbar extends Component {
                 </li>
 
                 {/*A compléter avec Web3 pour l'admin*/}
-                {/*<li className="nav-item">*/}
-                {/*  {this.state.ownerAddress === this.state.currentAccount && (*/}
-                {/*      <div className="nav-link">*/}
-                {/*        <span className="btn btn-outline-danger"><strong>Admin</strong></span>*/}
-                {/*      </div>*/}
-                {/*  )}*/}
-                {/*</li>*/}
+                {/*<li className="nav-item">
+                  {this.state.ownerAddress === this.state.currentAccount && (
+                      <div className="nav-link">
+                        <span className="btn btn-outline-danger"><strong>Admin</strong></span>
+                      </div>
+                  )}
+                </li>*/}
               </ul>
             </div>
           </div>

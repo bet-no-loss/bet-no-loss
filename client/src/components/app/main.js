@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import moment from 'moment'
 
 class Main extends Component {
+    state = {
+        show: false
+    };
+
+    showModal = e => {
+        this.setState({
+            show: true
+        });
+    };
+
+    onClose = e => {
+        this.setState({show: false});
+    };
+
 
 
     render() {
         const {addSportEvent, currentAccount, adminAddress} = this.props;
+
+
         console.log('admin',this.props.adminAddress)
         console.log('current', this.props.currentAccount)
         return (
@@ -72,48 +88,97 @@ class Main extends Component {
                             </div>)
                                 }
                             <p>&nbsp;</p>
-                            <table className="table-sm table-bordered text-monospace" style={{ width: '1000px', maxHeight: '450px'}}>
-                                <thead style={{ 'fontSize': '15px' }}>
-                                <tr className="bg-dark text-white">
-                                    <th scope="col" style={{ width: '10px'}}>id</th>
-                                    <th scope="col" style={{ width: '230px'}}>description</th>
-                                    <th scope="col" style={{ width: '120px'}}>team A</th>
-                                    <th scope="col" style={{ width: '90px'}}>team B</th>
-                                    <th scope="col" style={{ width: '90px'}}>date</th>
-                                    <th scope="col" style={{ width: '90px'}}>date de création</th>
-                                </tr>
-                                </thead>
-                                { this.props.sportEvents.map((sportEvent, key) => {
-                                    return(
-                                        <thead style={{ 'fontSize': '12px' }} key={key}>
-                                        <tr>
-                                            <td>{sportEvent.eventId}</td>
-                                            <td>{sportEvent.description}</td>
-                                            <td>{sportEvent.teamA}</td>
-                                            <td>{sportEvent.teamB}</td>
-                                            <td>{sportEvent.date}</td>
-                                            {/*<td>{moment.unix(sportEvent.uploadTime).format('h:mm:ss A M/D/Y')}</td>*/}
-                                            {/*<td>
-                                                <a
-                                                    href={"https://etherscan.io/address/" + sportEvent.uploader}
-                                                    rel="noopener noreferrer"
-                                                    target="_blank">
-                                                    {sportEvent.uploader.substring(0,10)}...
-                                                </a>
-                                            </td>*/}
-                                            <td>
-                                                <a
-                                                    href={"https://ipfs.infura.io/ipfs/" + sportEvent.fileHash}
-                                                    rel="noopener noreferrer"
-                                                    target="_blank">
-                                                    <img src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`} style={{ maxWidth: '120px'}}/>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        </thead>
-                                    )
-                                })}
-                            </table>
+
+                            {this.props.sportEvents.map((sportEvent, key) => {
+                                return (
+                                    <div className="container" key={key}>
+                                        <div className="cardy mb-3">
+                                            <div className="row no-gutters">
+                                                <div className="col-md-6 text-center">
+                                                    <div className="d-flex flex-column">
+                                                        <a>{sportEvent.teamA}</a>
+                                                        <div>
+                                                            <img
+                                                                src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
+                                                                style={{maxWidth: '120px'}}/>
+                                                        </div>
+                                                        <p>{sportEvent.teamB}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-6 text-center">
+                                                    <div className="d-flex flex-column">
+                                                        <div>
+                                                            <time>{sportEvent.date}</time>
+                                                        </div>
+                                                        <div>
+                                                            <div className="btn btn-default">
+                                                                {sportEvent.description}
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <button
+                                                                className="btn btn-primary btn-lg rounded-pill"
+                                                                style={{width: "170px"}}
+                                                                onClick={e => {this.showModal(e)}}
+                                                            >
+                                                                Bet
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {this.state.show &&
+                                        <div
+                                            className="position-absolute zmodal position-fixed">
+                                            <div className="card taille">
+                                                <div className="card-header">
+                                                    BET
+                                                </div>
+                                                <div className="card-body mt-5">
+                                                    <h5 className="card-title">3,500 <span>$</span></h5>
+                                                    <div className="card-text">
+                                                        <div className="d-flex flex-column mt-5">
+                                                            <a>{sportEvent.teamA}</a>
+                                                            <div>
+                                                                <img
+                                                                    src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
+                                                                    style={{maxWidth: '120px'}}/>
+                                                            </div>
+                                                            <p>{sportEvent.teamB}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <label htmlFor="basic-url" className="form-label labelAmount">Amount:</label>
+                                                        <div className="mb-3">
+                                                            <input
+                                                                type="text"
+                                                                className="form-control text-right"
+                                                                id="basic-url"
+                                                                aria-describedby="basic-addon3"
+                                                                placeholder="0,00 $"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <div className="mt-5">
+                                                        <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
+                                                        <button type='button' className="btn btn-lg btn-outline-danger"
+                                                                onClick={e => {
+                                                                    this.onClose(e)
+                                                                }}>Cancel
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                )
+                            })
+                            }
+
                         </div>
                     </main>
                 </div>
