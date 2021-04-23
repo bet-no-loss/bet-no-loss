@@ -95,14 +95,14 @@ class Main extends Component {
                                         <div className="cardy mb-3">
                                             <div className="row no-gutters">
                                                 <div className="col-md-6 text-center">
-                                                    <div className="d-flex flex-column">
-                                                        <a>{sportEvent.teamA}</a>
+                                                    <div className="d-flex flex-row">
+                                                        <div>{sportEvent.teamA}</div>
                                                         <div>
                                                             <img
                                                                 src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
                                                                 style={{maxWidth: '120px'}}/>
                                                         </div>
-                                                        <p>{sportEvent.teamB}</p>
+                                                        <div>{sportEvent.teamB}</div>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 text-center">
@@ -110,8 +110,11 @@ class Main extends Component {
                                                         <div>
                                                             <time>{sportEvent.date}</time>
                                                         </div>
-                                                        <div>
+                                                        <div className='d-flex flex-column'>
                                                             <div className="btn btn-default">
+                                                                {sportEvent.eventId}
+                                                            </div>
+                                                            <div className="pb-4">
                                                                 {sportEvent.description}
                                                             </div>
                                                         </div>
@@ -129,50 +132,50 @@ class Main extends Component {
                                             </div>
                                         </div>
 
+                                        {/*Modal*/}
                                         {this.state.show &&
-                                        <div
-                                            className="position-absolute zmodal position-fixed">
-                                            <div className="card taille">
-                                                <div className="card-header">
-                                                    BET
-                                                </div>
-                                                <div className="card-body mt-5">
-                                                    <h5 className="card-title">3,500 <span>$</span></h5>
-                                                    <div className="card-text">
-                                                        <div className="d-flex flex-column mt-5">
-                                                            <a>{sportEvent.teamA}</a>
-                                                            <div>
-                                                                <img
-                                                                    src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
-                                                                    style={{maxWidth: '120px'}}/>
+                                            <div className="position-absolute zmodal position-fixed ">
+                                                <div className="card taille">
+                                                    <div className="card-header">
+                                                        BET
+                                                    </div>
+                                                    <div className="card-body mt-5">
+                                                        <h5 className="card-title">3,500 <span>$</span></h5>
+                                                        <div className="card-text">
+                                                            <div className="d-flex flex-column mt-5">
+                                                                <a>{sportEvent.teamA}</a>
+                                                                <div>
+                                                                    <img
+                                                                        src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
+                                                                        style={{maxWidth: '120px'}}/>
+                                                                </div>
+                                                                <p>{sportEvent.teamB}</p>
                                                             </div>
-                                                            <p>{sportEvent.teamB}</p>
                                                         </div>
-                                                    </div>
-                                                    <div className="card-body">
-                                                        <label htmlFor="basic-url" className="form-label labelAmount">Amount:</label>
-                                                        <div className="mb-3">
-                                                            <input
-                                                                type="text"
-                                                                className="form-control text-right"
-                                                                id="basic-url"
-                                                                aria-describedby="basic-addon3"
-                                                                placeholder="0,00 $"
-                                                            />
+                                                        <div className="card-body">
+                                                            <label htmlFor="basic-url" className="form-label labelAmount">Amount:</label>
+                                                            <div className="mb-3">
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control text-right w-50"
+                                                                    id="basic-url"
+                                                                    aria-describedby="basic-addon3"
+                                                                    placeholder="0,00 $"
+                                                                />
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="mt-5">
-                                                        <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
-                                                        <button type='button' className="btn btn-lg btn-outline-danger"
-                                                                onClick={e => {
-                                                                    this.onClose(e)
-                                                                }}>Cancel
-                                                        </button>
-                                                    </div>
+                                                        <div className="mt-5">
+                                                            <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
+                                                            <button type='button' className="btn btn-lg btn-outline-danger"
+                                                                    onClick={e => {
+                                                                        this.onClose(e)
+                                                                    }}>Cancel
+                                                            </button>
+                                                        </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         }
                                     </div>
                                 )

@@ -98,7 +98,7 @@ class App extends Component {
 
             this.setState({ loading: true })
 
-            this.state.play.methods.addSportEvent(result[0].hash, description, teamA, teamB,  date).send({ from: this.state.account }).on('transactionHash', (hash) => {
+            this.state.play.methods.addSportEvent(result[0].hash, description, teamA, teamB,  date).send({ from: this.state.currentAccount }).on('transactionHash', (hash) => {
                 this.setState({
                     loading: false,
                 })
