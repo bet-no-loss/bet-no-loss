@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import Main from './main'
 import Web3 from 'web3';
 import './app.css';
+import Footer from "../Footer/Footer";
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
@@ -120,6 +121,7 @@ class App extends Component {
                         addSportEvent={this.addSportEvent}
                     />
                 }
+                <Footer/>
             </div>
         );
     }
