@@ -24,7 +24,7 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 ## Links
 
 * [Open Application](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
-* Whitepaper
+* [Whitepaper](https://docs.google.com/document/d/17pnu1nYqquXjo-jIGvSeHCeNQ9_gPBti0XnI7pAoGkw)
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
@@ -528,6 +528,7 @@ Here are a few links to resources that we used during while building bet-no-loss
     - [@openzeppelin/contracts](https://docs.openzeppelin.com/contracts)
     - [Solidity Patterns](https://fravoll.github.io/solidity-patterns/)
     - [Security Hacks](https://solidity-by-example.org/)
+    - [The Hitchhiker’s Guide to Smart Contracts in Ethereum](https://blog.openzeppelin.com/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05/)
 - [Truffle](https://www.trufflesuite.com/docs/truffle) The Swiss Army Knife for smart-contracts creation, build and deployment.
 - [Ganache](https://www.trufflesuite.com/ganache) Local Dev/Test Blockchain
 - Test
