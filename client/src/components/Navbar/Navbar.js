@@ -29,8 +29,15 @@ class Navbar extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
+                  <a href="/" className="nav-link faucet mx-2">
+                      FAUCET
+                  </a>
+                </li>
+                <li className="nav-item">
                   <div className="nav-link pool">
-                    <a href=""><span className="textPool">0 <span>ETH</span></span></a>
+                    <Link href="">
+                      <span className="textPool">0 <span>ETH</span></span>
+                    </Link>
                   </div>
 
                 </li>

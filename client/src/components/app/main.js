@@ -115,7 +115,9 @@ class Main extends Component {
                                                                 {sportEvent.eventId}
                                                             </div>
                                                             <div className="pb-4">
-                                                                {sportEvent.description}
+                                                                <strong>
+                                                                    {sportEvent.description}
+                                                                </strong>
                                                             </div>
                                                         </div>
                                                         <div>

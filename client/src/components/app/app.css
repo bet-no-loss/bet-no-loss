@@ -39,6 +39,7 @@
   box-shadow: 0 10px 20px rgba(0,0,0,.24), 0 4px 8px rgba(0,0,0,.12);
 }
 
+
 /*Navbar*/
 .bglogo{
   background: rgb(32,36,0);
@@ -58,6 +59,21 @@
   background: linear-gradient(90deg, rgba(32,36,0,0) 0%, rgba(10,121,9,1) 0%, rgba(4,223,60,1) 100%);
   line-height: 1;
   padding: 10px;
+}
+
+.textFaucet {
+  color: #088C12;
+}
+
+.faucet {
+  border: 1px solid #088C12;
+  padding: 10px;
+}
+
+.faucet:hover {
+  background-color: lightgreen;
+  text-decoration: none;
+  color: white;
 }
 
 
@@ -99,7 +115,9 @@
 /*Modal*/
 .zmodal {
   z-index: 99;
-  top: 94px;
+  top: 0;
+  bottom: 0;
+  right:0;
   left: 0;
 }
 
