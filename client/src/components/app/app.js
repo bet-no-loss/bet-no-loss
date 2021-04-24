@@ -176,7 +176,6 @@ class App extends Component {
                                     </div>
 
                                 </li>
-
                                 <li className="nav-item">
                                     {this.state.currentAccount ? (
                                         <div className="nav-link">
