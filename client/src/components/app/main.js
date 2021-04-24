@@ -82,7 +82,7 @@ class Main extends Component {
                                                 required />
                                         </div>
                                         <input type="file" onChange={this.props.captureFile} className="text-white text-monospace"/>
-                                        <button type="submit" className="btn-primary btn-block"><b>Enjoy!</b></button>
+                                        <button type="submit" className="btn-primary btn-block mt-5 "><b>Enjoy!</b></button>
                                     </form>
 
                             </div>)
@@ -94,15 +94,17 @@ class Main extends Component {
                                     <div className="container" key={key}>
                                         <div className="cardy mb-3">
                                             <div className="row no-gutters">
-                                                <div className="col-md-6 text-center">
-                                                    <div className="d-flex flex-row">
-                                                        <div>{sportEvent.teamA}</div>
-                                                        <div>
-                                                            <img
-                                                                src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
-                                                                style={{maxWidth: '120px'}}/>
-                                                        </div>
-                                                        <div>{sportEvent.teamB}</div>
+                                                <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
+                                                    <div className="col-4">
+                                                        <span className="fontTeam">{sportEvent.teamA}</span>
+                                                    </div>
+                                                    <div className="col-4">
+                                                        <img
+                                                            src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
+                                                            style={{maxWidth: '120px'}}/>
+                                                    </div>
+                                                    <div className="col-4">
+                                                        <span className="fontTeam">{sportEvent.teamB}</span>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 text-center">
@@ -112,12 +114,12 @@ class Main extends Component {
                                                         </div>
                                                         <div className='d-flex flex-column'>
                                                             <div className="btn btn-default">
-                                                                {sportEvent.eventId}
+                                                                <span>Pari - </span>{sportEvent.eventId}
                                                             </div>
                                                             <div className="pb-4">
-                                                                <strong>
+                                                                <span className="fontDescription">
                                                                     {sportEvent.description}
-                                                                </strong>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div>

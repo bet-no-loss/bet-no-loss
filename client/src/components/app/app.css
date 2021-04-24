@@ -39,6 +39,27 @@
   box-shadow: 0 10px 20px rgba(0,0,0,.24), 0 4px 8px rgba(0,0,0,.12);
 }
 
+.fontTeam {
+  font-size: larger;
+  font-weight: bolder;
+  color: #088C12;
+}
+
+.fontDescription {
+  font-size: large;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.btn-primary{
+  background-color: white;
+  color:  #088C12;
+  border-color: #088C12;
+}
+
+.btn-primary:hover {
+  background-color: #088C12;
+}
 
 /*Navbar*/
 .bglogo{
@@ -75,7 +96,6 @@
   text-decoration: none;
   color: white;
 }
-
 
 .buttonAddress{
   display: flex;
