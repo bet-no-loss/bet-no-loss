@@ -6,6 +6,9 @@ import Main from './main'
 import Web3 from 'web3';
 import './app.css';
 import Footer from "../Footer/Footer";
+import {Link} from "react-router-dom";
+import logo from "../../logo.svg";
+import {Jazzicon} from "@ukstv/jazzicon-react";
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
@@ -122,7 +125,7 @@ class App extends Component {
         this.state = {
             account: undefined,
             currentAccount: undefined,
-            adminAddress: '0xCcabbBE53596DE0db359E998587a6Bb226AA5481',
+            adminAddress: '0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d',
             play: null,
             dai: null,
             sportEvents: [],
@@ -142,7 +145,67 @@ class App extends Component {
         })
         return (
             <div>
-                <Navbar currentAccount={this.state.currentAccount} dai={this.state.dai} />
+                <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
+                    <div className="container">
+                        <Link className="navbar-brand p-0" to="/">
+                            <img src={logo} alt="logo" width="80" className="logo" />
+                        </Link>
+
+                        <div>
+                            <ul className="navbar-nav ml-auto d-flex align-items-center">
+                                <li className="nav-item">
+                                    <a className="nav-link" href="/">
+                                        <span className="primaryColor"><strong>Bets</strong></span>
+                                    </a>
+                                </li>
+                                <li className="nav-item pr-4">
+                                    <a className="nav-link" href="/account">
+                                        <span className="primaryColor"><strong>Compte</strong></span>
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <a href="/" className="nav-link faucet mx-2">
+                                        FAUCET
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <div className="nav-link pool">
+                                        <Link href="">
+                                            <span className="textPool">0 <span>ETH</span></span>
+                                        </Link>
+                                    </div>
+
+                                </li>
+
+                                <li className="nav-item">
+                                    {this.state.currentAccount ? (
+                                        <div className="nav-link">
+                                            <div className="buttonAddress">
+                      <span className="jazzicon">
+                        <Jazzicon address={this.state.currentAccount}/>
+                      </span>
+                                                <span className="textAddress">
+                            <strong id="account">
+                              <a target="_blank"
+                                 className="texta"
+                                 rel="noopener noreferrer"
+                                 href={"https://etherscan.io/address/" + this.state.currentAccount}>
+                                {this.state.currentAccount.substring(0,6)}...{this.state.currentAccount.substring(38,42)}
+                              </a>
+                            </strong>
+                          </span>
+                                            </div>
+                                        </div>
+
+                                    ) : (
+                                        <div className="badge badge-warning wallet" >Connect Wallet</div>
+                                    )}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
                 { this.state.loading
                     ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
                     : <Main

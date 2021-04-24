@@ -41,7 +41,7 @@ class Navbar extends Component {
                   </div>
 
                 </li>
-                <p>{this.props.dai.address}</p>
+                <li>{this.props.dai.address}</li>
                 <li className="nav-item">
                   {this.props.currentAccount ? (
                       <div className="nav-link">
