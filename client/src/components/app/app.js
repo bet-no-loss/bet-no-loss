@@ -1,4 +1,5 @@
 import Play from '../../contracts/Play.json'
+import DAI from '../../contracts/DAI.json'
 import React, { Component } from 'react';
 import Navbar from '../Navbar/Navbar'
 import Main from './main'
@@ -47,13 +48,19 @@ class App extends Component {
         // Network ID
         const networkId = await web3.eth.net.getId()
         const networkData = Play.networks[networkId]
+        const playNetworkData = DAI.networks[networkId]
         if(networkData) {
-            // Assign contract
+            // Assign contracts
             const play = new web3.eth.Contract(Play.abi, networkData.address)
             this.setState({ play })
+            const dai = new web3.eth.Contract(DAI.abi, playNetworkData.address)
+            this.setState({ dai })
             // Get files amount
             const eventsCount = await play.methods.eventCount().call()
             this.setState({ eventsCount })
+
+            console.log("DAI", this.state.dai)
+
             // Load files&sort by the newest
             for (let i = eventsCount; i >= 1; i--) {
                 const event = await play.methods.sportEvents(i).call()
@@ -115,8 +122,9 @@ class App extends Component {
         this.state = {
             account: undefined,
             currentAccount: undefined,
-            adminAddress: '0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d',
+            adminAddress: '0xCcabbBE53596DE0db359E998587a6Bb226AA5481',
             play: null,
+            dai: null,
             sportEvents: [],
             loading: false,
         }
@@ -134,7 +142,7 @@ class App extends Component {
         })
         return (
             <div>
-                <Navbar currentAccount={this.state.currentAccount} />
+                <Navbar currentAccount={this.state.currentAccount} dai={this.state.dai} />
                 { this.state.loading
                     ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
                     : <Main
