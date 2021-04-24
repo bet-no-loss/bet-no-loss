@@ -147,10 +147,21 @@
   padding:0;
 }
 
-.labelAmount {
-  position: absolute;
-  top: 350px;
-  left: 505px;
+.montantBet {
+  position: relative;
+  right:-160px;
+  top: 7px;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.inputTeam {
+  position: relative;
+  left: -50px;
+  top: -10px;
+  font-weight: bolder;
+  font-style: oblique;
+  font-size: xxx-large;
 }
 
 /*Admin page*/

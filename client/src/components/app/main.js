@@ -3,7 +3,10 @@ import moment from 'moment'
 
 class Main extends Component {
     state = {
-        show: false
+        show: false,
+        teamA: '',
+        teamB: '',
+        value: undefined
     };
 
     showModal = e => {
@@ -16,10 +19,20 @@ class Main extends Component {
         this.setState({show: false});
     };
 
+    handleChange = (e)=> {
+        e.preventDefault()
+        this.setState({value: e.target.value})
+    }
+
+    handleSubmit = (e)=> {
+        e.preventDefault()
+        console.log('')
+    }
 
 
     render() {
         const {addSportEvent, currentAccount, adminAddress} = this.props;
+        const {value, teamA, teamB} = this.state;
 
 
         console.log('admin',this.props.adminAddress)
@@ -108,7 +121,7 @@ class Main extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6 text-center">
-                                                    <div className="d-flex flex-column">
+                                                    <div className="d-flex flex-column align-items-center justify-content-center">
                                                         <div>
                                                             <time>{sportEvent.date}</time>
                                                         </div>
@@ -144,38 +157,65 @@ class Main extends Component {
                                                         BET
                                                     </div>
                                                     <div className="card-body mt-5">
-                                                        <h5 className="card-title">3,500 <span>$</span></h5>
-                                                        <div className="card-text">
-                                                            <div className="d-flex flex-column mt-5">
-                                                                <a>{sportEvent.teamA}</a>
-                                                                <div>
+                                                        <div className="card-title">
+                                                            <span className="pr-2">&#127942;</span> 3,500 <span>$</span>
+                                                        </div>
+                                                        <form onSubmit={this.handleSubmit}>
+                                                            <div className="card-text d-flex flex-row col-12 mt-5">
+                                                                <div className="col-4">
+                                                                    <div>Sélectionner cet équipe :</div>
+                                                                    <div className="fontTeam">{sportEvent.teamA}</div>
+                                                                    <input
+                                                                        type="radio"
+                                                                        value={sportEvent.teamA}
+                                                                        checked={value === sportEvent.teamA}
+                                                                        onChange={this.handleChange}
+                                                                    />
+                                                                </div>
+                                                                <div className="col-4">
                                                                     <img
                                                                         src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
                                                                         style={{maxWidth: '120px'}}/>
                                                                 </div>
-                                                                <p>{sportEvent.teamB}</p>
+                                                                <div className="col-4">
+                                                                    <div>Sélectionner cet équipe :</div>
+                                                                    <div className="fontTeam">{sportEvent.teamB}</div>
+                                                                    <input
+                                                                        type="radio"
+                                                                        value={sportEvent.teamB}
+                                                                        checked={value === sportEvent.teamB}
+                                                                        onChange={this.handleChange}
+                                                                    />
+                                                                </div>
+
                                                             </div>
-                                                        </div>
-                                                        <div className="card-body">
-                                                            <label htmlFor="basic-url" className="form-label labelAmount">Amount:</label>
-                                                            <div className="mb-3">
-                                                                <input
-                                                                    type="text"
-                                                                    className="form-control text-right w-50"
-                                                                    id="basic-url"
-                                                                    aria-describedby="basic-addon3"
-                                                                    placeholder="0,00 $"
-                                                                />
+                                                            <div className="card-body mt-5 col-12 d-flex flex-row align-items-center justify-content-center">
+                                                                <div className="mb-3 col-4">
+                                                                    <span className="montantBet">Montant à parier :</span>
+                                                                </div>
+                                                                <div className="col-4">
+
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control text-right"
+                                                                        id="basic-url"
+                                                                        aria-describedby="basic-addon3"
+                                                                        placeholder="0 Dai"
+                                                                    />
+                                                                </div>
+                                                                <div className="col-4 ">
+                                                                    <span className="inputTeam">pour {value}  &#128640;</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="mt-5">
-                                                            <a href="#" className="btn btn-lg btn-primary mr-4">Confirm</a>
-                                                            <button type='button' className="btn btn-lg btn-outline-danger"
-                                                                    onClick={e => {
-                                                                        this.onClose(e)
-                                                                    }}>Cancel
-                                                            </button>
-                                                        </div>
+                                                            <div className="mt-5">
+                                                                <button href="#" className="btn btn-lg btn-primary mr-4">Confirm</button>
+                                                                <button type='button' className="btn btn-lg btn-outline-danger"
+                                                                        onClick={e => {
+                                                                            this.onClose(e)
+                                                                        }}>Cancel
+                                                                </button>
+                                                            </div>
+                                                        </form>
 
                                                     </div>
                                                 </div>
