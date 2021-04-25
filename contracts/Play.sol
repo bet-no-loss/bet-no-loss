@@ -83,8 +83,13 @@ contract Play {
         chosenWinner[msg.sender][eventCount] = _winner;
     }
 
-    function checkEarnings(uint _eventId) public {
-
+     function checkEarnings(uint _eventId) public returns(uint) {
+        if (keccak256(abi.encodePacked(sportEvents[_eventId].winner)) == keccak256(abi.encodePacked(chosenWinner[msg.sender][_eventId]))) {
+            playerEarnings[msg.sender][_eventId] += 10;
+            return 10;
+        } else {
+            return 0;
+        }
     }
 
     function withdraw(address _user) public payable {        
