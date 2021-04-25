@@ -131,7 +131,21 @@ class App extends Component {
   };
 
   bet = (winner, amount) => {
-      
+    this.state.dai.methods
+    .bet()
+    .send({ from: this.state.currentAccount }); 
+  }
+
+  checkEarnings = async (eventId) => {
+    await this.state.dai.methods
+    .checkEarnings()
+    .call({ from: this.state.currentAccount });
+  }
+
+  withdraw = (playerAddress, eventId) => {
+    await this.state.dai.methods
+    .withdraw()
+    .call({ from: this.state.currentAccount });
   }
 
   constructor(props) {
