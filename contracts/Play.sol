@@ -79,14 +79,8 @@ contract Play {
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
         
-        // Get team bet by Player
-        chosenWinner[eventCount] = _winner;
-        
-        if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(sportEvents[0].winner))) {
-            return true;
-        } else {
-            return false;
-        }
+        // Add chosen winner per player per match
+        chosenWinner[msg.sender][eventCount] = _winner;
     }
 
     function checkEarnings(uint _eventId) public {
