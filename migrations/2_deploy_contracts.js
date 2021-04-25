@@ -9,7 +9,13 @@ const Play      = artifacts.require("./Play.sol")
 
 module.exports = async function(deployer) {
   await deployer.deploy(DAI,"Dai Stablecoin", "DAI");
-  const daiContractAddress = await DAI.address;
+  const daiContractAddress = await DAI.address; 
+
+  await deployer.deploy(Play, daiContractAddress);
+
+  dai = await DAI.deployed()
+  play = await Play.deployed()
+  dai.approve(play.address, 1000)
 
   await deployer.deploy(Bet, daiContractAddress);
 
@@ -17,6 +23,5 @@ module.exports = async function(deployer) {
   await deployer.deploy(DateLib);
   await deployer.deploy(DefiPool);
   await deployer.deploy(ipfsImage);
-  await deployer.deploy(Play, daiContractAddress);
 
 };
