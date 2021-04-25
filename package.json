@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "npx truffle compile",
-    "test": "npx truffle test",
+    "test": "npx truffle test --stacktrace --compile-none",
     "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/",
     "gas": "REPORT_GAS=true CI=true npm run test",
     "coverage": "npx truffle run coverage && (cat coverage/lcov.info | npx coveralls)",
