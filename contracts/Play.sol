@@ -7,16 +7,28 @@ contract Play {
     
     IERC20 Dai;
 
-    /**
-     * @dev Balance of each user address
+    /** 
+     * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
-    mapping(address => uint256) public userBalance;
+    mapping(address => bytes32[]) private betsPerPlayer;
     
-    mapping(uint => string) public teamBetByPlayer;
-
-    string temporary;
+    /** 
+     * @dev list of all chosenWinner per match per user
+     */
+    mapping(address => mapping(uint => string)) public chosenWinner;
+    
+     /** 
+     * @dev list of earnings per match per player
+     */
+    mapping(address => mapping(uint => uint)) public playerEarnings;
+    
+    /** 
+     * @dev Winner selected by player
+     */
+   // mapping(address => string) public chosenWinner;
 
     uint public eventCount = 0;
+    
     mapping(uint => SportEvent) public sportEvents;
     
     struct SportEvent {
@@ -26,22 +38,12 @@ contract Play {
         string       teamA;
         string       teamB;
         uint         date;
-        /*uint         uploadTime;*/
         string       winner;
-        /*address payable uploader;*/
     }
     
     constructor(address _tokenAddress) {
         Dai = IERC20(_tokenAddress);
     } 
-
-    function setString(string memory _world) public {
-        temporary = _world;
-    }
-
-    function getString() public view returns (string memory){
-        return temporary;
-    }
 
     function deposit(uint _amount, address _sender) public payable {
         require(_amount >= 10, "Error, deposit must be >= 10 DAI");
@@ -78,13 +80,17 @@ contract Play {
         Dai.transferFrom(msg.sender, address(this), _amount);
         
         // Get team bet by Player
-        teamBetByPlayer[eventCount] = _winner;
+        chosenWinner[eventCount] = _winner;
         
         if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(sportEvents[0].winner))) {
             return true;
         } else {
             return false;
         }
+    }
+
+    function checkEarnings(uint _eventId) public {
+
     }
 
     function withdraw(address _user) public payable {        
