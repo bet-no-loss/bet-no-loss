@@ -92,11 +92,12 @@ contract Play {
         }
     }
 
-    function withdraw(address _user) public payable {        
-        uint initialUserBalance = userBalance[_user];
-        userBalance[_user] = userBalance[_user] + 10;
-        Dai.transfer(_user, userBalance[_user]);
-        userBalance[_user] = userBalance[_user] - initialUserBalance;
+    function withdraw(address _player, uint _eventId) public {        
+        if (playerEarnings[msg.sender][_eventId] > 0) {
+            Dai.transfer(_player, playerEarnings[msg.sender][_eventId]);
+        }
+        
+        playerEarnings[msg.sender][_eventId] -= 10;
     }      
     
 }
