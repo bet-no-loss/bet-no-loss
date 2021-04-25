@@ -13,12 +13,11 @@ module.exports = async function(deployer) {
 
   await deployer.deploy(Play, daiContractAddress);
 
-  dai = await DAI.deployed()
-  play = await Play.deployed()
-  dai.approve(play.address, 1000)
+  const dai = await DAI.deployed()
+  const play = await Play.deployed()
+  await dai.approve(play.address, 1000)
 
   await deployer.deploy(Bet, daiContractAddress);
-
   await deployer.deploy(BetOracle);
   await deployer.deploy(DateLib);
   await deployer.deploy(DefiPool);
