@@ -23,11 +23,11 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 
 ## Links
 
-* [Open Application](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
 * Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
 * Whitepaper
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
+* [Doc](doc/)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
 
 ## Features
@@ -521,21 +521,24 @@ Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
 See COPYING for more information or https://opensource.org/licenses/MIT .
 
 # Sources
-Here are a few links to resources that we used during while building bet-no-loss.
+Here are a few links to resources that we used while building bet-no-loss.
 - Ethereum
     - [Ethereum Developer's Tools](https://github.com/ConsenSys/ethereum-developer-tools-lis)
 - Solidity
     - https://docs.soliditylang.org/en/v0.8.3
     - [@openzeppelin/contracts](https://docs.openzeppelin.com/contracts)
     - [Solidity Patterns](https://fravoll.github.io/solidity-patterns/)
-    - [Security Hacks](https://solidity-by-example.org/)
     - [The Hitchhiker’s Guide to Smart Contracts in Ethereum](https://blog.openzeppelin.com/the-hitchhikers-guide-to-smart-contracts-in-ethereum-848f08001f05/)
+- Security
+    - [Security Hacks](https://solidity-by-example.org/)
+    - [Solidity Best Practices for Smart Contract Security](https://consensys.net/blog/developers/solidity-best-practices-for-smart-contract-security/)
 - [Truffle](https://www.trufflesuite.com/docs/truffle) The Swiss Army Knife for smart-contracts creation, build and deployment.
 - [Ganache](https://www.trufflesuite.com/ganache) Local Dev/Test Blockchain
 - Test
-    - [@openzeppelin/test-helpers](https://docs.openzeppelin.com/test-helpers/)
+    - https://dzone.com/articles/a-few-tips-for-unit-testing-ethereum-smart-contrac ⭐️
     - https://medium.com/coinmonks/testing-solidity-with-truffle-and-async-await-396e81c54f93
     - https://dzone.com/articles/a-few-tips-for-unit-testing-ethereum-smart-contrac
+    - [@openzeppelin/test-helpers](https://docs.openzeppelin.com/test-helpers/)
     - [Chai](https://www.chaijs.com/) TDD assertion library
     - [Mocha](https://mochajs.org/) Test Framework
 - Web3
