@@ -24,7 +24,8 @@ Each winner can then withdraw the 90% accrued interests in DeFi proportionally t
 ## Links
 
 * [Open Application](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
-* [Whitepaper](https://docs.google.com/document/d/17pnu1nYqquXjo-jIGvSeHCeNQ9_gPBti0XnI7pAoGkw)
+* Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
+* Whitepaper
 * [Presentation](https://docs.google.com/presentation/d/1HCxnNpTpJYLMGsOCu0hRTsVv7Z5x4cg-bcDrq56NjBc)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
