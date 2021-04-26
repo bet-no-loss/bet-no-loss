@@ -40,12 +40,13 @@ contract BetOracle is Ownable, ReentrancyGuard {
 
     /**
      * @dev The possible outcomes for an event
+     * Keep in sync EventOutcome constant in betoracle.txt.js when updating this enum.
      */
     enum EventOutcome {
-        Pending,    // event has not been fought to decision
-        Underway,   // event has started & is underway
-        Draw,       // anything other than a clear winner (e.g. cancelled)
-        Decided     // index of participant who is the winner
+        Pending,    // Event has not been fought to decision
+        Underway,   // Event started and underway
+        Draw,       // Anything other than a clear winner (e.g. cancelled)
+        Decided     // We have a winner for his event
     }
 
     /**
@@ -247,7 +248,7 @@ contract BetOracle is Ownable, ReentrancyGuard {
     }
 
     /**
-     * @notice return the data of the most recent sport event or pending event
+     * @notice return the data of the most recent sport event
      * @param _pending if true, returns only the most recent pending sport event;
      *   otherwise, returns the most recent sport event either pending or completed
      * @return id   the id of the event
