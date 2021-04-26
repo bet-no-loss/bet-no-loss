@@ -3,7 +3,7 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants   = require('@openzeppelin/test-helpers/src/constants');
-const { expect }  = require('chai');
+const { expect, assert }  = require('chai');
 const { DateTime } = require('luxon');
 const pretty       = require('js-object-pretty-print').pretty;
 
@@ -11,8 +11,8 @@ const Dai       = artifacts.require('DAI');
 const Bet       = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
 
-
-contract('Bet', function(accounts) {
+contract('Bet', async function(accounts) {
+    "use strict";
 
     const [ownerAddress, address1, address2, address3] = accounts;
 
@@ -87,7 +87,7 @@ contract('Bet', function(accounts) {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Oracle Handling (Set and Get)
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    describe("Sport Event Oracle Handling", function() {
+    describe("Oracle Handling", function() {
 
         it ("can setOracleAddress if owner", async function () {
             const expectedOracleAddress = await this.betOracleInstance.getAddress();
@@ -132,10 +132,10 @@ contract('Bet', function(accounts) {
             );
         });
 
-        specify ("setOracleAddress to a non BetOracle address reverts", async function() {
-            const notOracleAddress = '0x1234567890123456789012345678901234567890';
+        specify.skip ("setOracleAddress to a non BetOracle address reverts", async function() {
+            const notOracleAddress = this.betInstance.address;
 
-            await expectRevert.unspecified( 
+            await expectRevert.unspecified(
                 this.betInstance.setOracleAddress(
                     notOracleAddress,
                     { from: ownerAddress }
@@ -143,7 +143,7 @@ contract('Bet', function(accounts) {
             );
         });
 
-        it ("can testOracleConnection", async function () {
+        specify ("testOracleConnection returns true when an BetOracle is connected", async function () {
             const oracleAddress = await this.betOracleInstance.getAddress();
 
             const result = await this.betInstance.setOracleAddress(
@@ -161,10 +161,22 @@ contract('Bet', function(accounts) {
 
             expect(Boolean(isOracleConnected)).to.be.true;
         });
+
+        specify ("testOracleConnection returns true when an BetOracle is connected", async function () {
+            // Bet does not know the address of BetOracle => 0
+            expect(await this.betInstance.getOracleAddress())
+                .to.equal(constants.ZERO_ADDRESS);
+
+            const isOracleConnected = await this.betInstance.testOracleConnection(
+                { from: ownerAddress }       
+            );
+
+            expect(Boolean(isOracleConnected)).to.be.false;
+        });
     })
 
 
-    describe("Bet on Sport Events", function() {
+    describe.skip("Bet on Sport Events", function() {
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Populate the Oracle with 2 default sport events
@@ -174,7 +186,7 @@ contract('Bet', function(accounts) {
             this.idEvent1   = await this.betOracleInstance.addSportEvent(
                 "Paris vs. Marseille",  
                 "PSG|OM",   
-                1, 
+                2, 
                 new BN(this.dateEvent1),
                 { from: ownerAddress } 
             );
@@ -195,26 +207,24 @@ contract('Bet', function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it.skip ("can getEvent", async function() {
-console.log(pretty(this.idEvent1));
-console.log(this.idEvent1.logs[0].args[0]);
+            it ("can getEvent", async function() {
+                console.log(this.idEvent1);
+                console.log(this.idEvent1.receipt.rawLogs[0][0]);
+                console.log(this.idEvent1.logs[0].args[0]);
+                console.log(this.idEvent1.logs[0]._eventId);
 
-// console.log("===>", typeof this.idEvent1.receipt.logs[0]);
-// console.log("===>", this.idEvent1);
-// console.log("====>", web3.utils.hexToBytes(this.idEvent1));
-// console.log(Object.getOwnPropertyNames(this.idEvent1.logs[0].args[0])
-//         .filter(function(property) {
-//             return typeof object[property] == 'function';
-//         })
-// );
+                this.idEvent1 = this.idEvent1.logs[0]._idEvent;
+
+                console.log(web3.utils.hexToNumber(this.idEvent1));
+                console.log(web3.utils.numberToHex(web3.utils.hexToNumber(this.idEvent1)));
+
                 const result = await this.betInstance.getEvent(
-                    web3.utils.hexToBytes(this.idEvent1),
+                    web3.utils.hexToNumber(this.idEvent1),
                     { from: address1 } 
                 );
-                // expect(result)
-                //     .be.an('array')
-                //     .with.lengthOf(2)
-
+                expect(result)
+                    .be.an('array')
+                ;
                 expect(result[0])
                     .to.be.a('string')
                     .equal(this.idEvent1, "Unexpected event id")
@@ -347,7 +357,7 @@ console.log(this.idEvent1.logs[0].args[0]);
 //     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //     // Sport Events Creation
 //     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//     xdescribe("Sport Events Creation", function() {
+//     describe("Sport Events Creation", function() {
 
 //         it ("can create a sport event if owner", async function() {
 //             const eventDate        = DateTime.now().plus({ days: 7, minutes: 1 });
