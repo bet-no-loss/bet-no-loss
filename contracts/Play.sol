@@ -76,6 +76,7 @@ contract Play {
     
     
     function bet(string memory _winner, uint _amount) public returns (bool) {  
+        require(_amount >= 10, "A minimum of 10DAI is required");
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
         
