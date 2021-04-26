@@ -127,26 +127,25 @@ class App extends Component {
   faucet = (address) => {
     this.state.dai.methods
       .transfer(address, 1000)
-      .send({ from: this.state.currentAccount });
+      .send({ from: this.state.adminAddress });
+      console.log("FAUCET")
   };
 
   bet = (winner, amount) => {
-    this.state.dai.methods
-    .bet()
-    .send({ from: this.state.currentAccount }); 
-  }
+    this.state.play.methods.bet().send({ from: this.state.currentAccount });
+  };
 
   checkEarnings = async (eventId) => {
     await this.state.dai.methods
-    .checkEarnings()
-    .call({ from: this.state.currentAccount });
-  }
+      .checkEarnings()
+      .call({ from: this.state.currentAccount });
+  };
 
-  withdraw = (playerAddress, eventId) => {
+  withdraw = async (playerAddress, eventId) => {
     await this.state.dai.methods
-    .withdraw()
-    .call({ from: this.state.currentAccount });
-  }
+      .withdraw()
+      .call({ from: this.state.currentAccount });
+  };
 
   constructor(props) {
     super(props);
@@ -198,13 +197,26 @@ class App extends Component {
                   <a href="/" className="nav-link faucet mx-2">
                     FAUCET
                   </a>
-                  <form onSubmit={this.faucet}>
+                  {/* <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const address = this.faucet.value;
+                      faucet(address);
+                    }}
+                  >
                     <label>
                       Address :
-                      <input type="text" name="name" />
+                      <input
+                        id="faucet"
+                        type="text"
+                        name="name"
+                        ref={(input) => {
+                          this.faucet = input;
+                        }}
+                      />
                     </label>
                     <input type="submit" value="Send" />
-                  </form>
+                  </form> */}
                 </li>
                 <li className="nav-item">
                   <div className="nav-link pool">
