@@ -93,7 +93,8 @@ contract Play {
         }
     }
 
-    function withdraw(address _player, uint _eventId) public {        
+    function withdraw(address _player, uint _eventId) public { 
+     require(_player != address(0), "Address 0 is not allowed");
         if (playerEarnings[msg.sender][_eventId] > 0) {
             Dai.transfer(_player, playerEarnings[msg.sender][_eventId]);
         }
