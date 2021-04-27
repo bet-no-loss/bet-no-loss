@@ -21,12 +21,7 @@ contract Play {
      /** 
      * @dev list of earnings per match per player
      */
-    mapping(address => mapping(uint => uint)) public playerEarnings;
-    
-    /** 
-     * @dev Winner selected by player
-     */
-   // mapping(address => string) public chosenWinner;
+    mapping(address => mapping(uint => uint)) public playerEarnings;    
 
     uint public eventCount = 0;
     
@@ -44,12 +39,6 @@ contract Play {
 
     constructor(address _tokenAddress) {
         Dai = IERC20(_tokenAddress);
-    }
-
-    function deposit(uint _amount, address _sender) public payable {
-        require(_amount >= 10, "Error, deposit must be >= 10 DAI");
-
-        Dai.transferFrom(_sender, address(this), _amount);
     }
 
     function addSportEvent(
@@ -75,8 +64,8 @@ contract Play {
         return sportEvents[_eventId].winner;
     }
     
-    
-    function bet(string memory _winner, uint _amount) public returns (bool) {  
+    // TO DO: throw an error if already played for an event
+    function bet(string memory _winner, uint _amount) public {  
         require(_amount >= 10, "A minimum of 10DAI is required");
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
@@ -101,6 +90,11 @@ contract Play {
         }
         
         playerEarnings[msg.sender][_eventId] -= 10;
-    }      
+    } 
+
+    function getBalance(address _balance) public view returns (uint) {
+        require(_balance != address(0), "Address 0 is not allowed");
+        return Dai.balanceOf(_balance);
+    }     
     
 }
