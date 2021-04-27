@@ -11,10 +11,4 @@
 
 
 
-### `transfer(address recipient, uint256 amount) → bool` (public)
-
-
-
-
-
 

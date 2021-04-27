@@ -19,7 +19,7 @@ Takes bets and handles payouts for sport events
 check that the passed in address is not 0.
 
 
-### `constructor(contract DAI _tokenAddress)` (public)
+### `constructor(address _tokenAddress)` (public)
 
 
 
@@ -27,6 +27,20 @@ check that the passed in address is not 0.
 
 ### `getContractDAIBalance() → uint256` (public)
 
+
+
+
+
+### `deposit(address _sender, uint256 _amount)` (external)
+
+Moves `_amount` tokens from `_sender` to this contract
+
+
+
+
+### `approve(address _spender, uint256 _amount)` (external)
+
+Sets `_amount` as the allowance of `_spender` over the caller's tokens.
 
 
 
@@ -81,7 +95,7 @@ places a bet on the given event
 
 ### `receive()` (external)
 
- @notice A fallback function that allows this smart-contract to accept DAI create DAI ERC20 token
+ @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
 
 
 

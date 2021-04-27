@@ -7,14 +7,14 @@ Collects and provides information on sport events and their outcomes
 
 ### `addSportEvent(string _name, string _participants, uint8 _participantCount, uint256 _date) → bytes32` (public)
 
-Add a new pending sport event into the blockchain 
+Add a new pending sport event into the blockchain
 
 
 
 
 ### `eventExists(bytes32 _eventId) → bool` (public)
 
-Determines whether a sport event exists with the given id 
+Determines whether a sport event exists with the given id
 
 
 
@@ -49,14 +49,14 @@ gets the specified sport event and return its data
 
 ### `getLatestEvent(bool _pending) → bytes32 id, string name, string participants, uint8 participantCount, uint256 date, enum BetOracle.EventOutcome outcome, int8 winner` (public)
 
-return the data of the most recent sport event or pending event
+return the data of the most recent sport event
 
 
 
 
 ### `getAddress() → address` (public)
 
-gets the address of this contract 
+gets the address of this contract
 
 
 
