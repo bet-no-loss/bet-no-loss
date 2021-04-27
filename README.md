@@ -51,7 +51,7 @@ This Github **repository** is a **monorepo** that entails **both** the **back-en
 
 ### Back-End
 
-The back-end is compoosed of the following Ethereum **smart-contracts**:
+The back-end is composed of the following Ethereum **smart-contracts**:
 
 - [`DAI`](contracts/DAI.sol) 
 - [`Bet`](contracts/Bet.sol) The betting contract in charge of:
