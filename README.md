@@ -376,7 +376,7 @@ You need to do this once only for the Heroku app owner only (as you use the free
 # Compile
 
 ```
-npx truffle compile # --all
+npx truffle compile
 ```
 
 # Test
@@ -385,7 +385,7 @@ npx truffle compile # --all
 
 ```
 # Run ganache on port 9545 beforehand
-npx truffle deploy --reset --network ganache
+npx truffle deploy --network ganache
 
 npx truffle test # Run the unit and integration tests
 ```
