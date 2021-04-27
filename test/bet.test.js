@@ -132,7 +132,7 @@ contract('Bet', async function(accounts) {
             );
         });
 
-        specify.skip ("setOracleAddress to a non BetOracle address reverts", async function() {
+        specify.skip ("setOracleAddress to a non BetOracle address should revert but halts instead", async function() {
             const notOracleAddress = this.betInstance.address;
 
             await expectRevert.unspecified(
@@ -163,7 +163,8 @@ contract('Bet', async function(accounts) {
         });
 
         specify ("testOracleConnection returns true when an BetOracle is connected", async function () {
-            // Bet does not know the address of BetOracle => 0
+            // BetOracle address not set 
+            // Bet.setOracleAddress not called
             expect(await this.betInstance.getOracleAddress())
                 .to.equal(constants.ZERO_ADDRESS);
 
@@ -176,30 +177,49 @@ contract('Bet', async function(accounts) {
     })
 
 
-    describe.skip("Bet on Sport Events", function() {
+    describe.only("Bet on Sport Events", function() {
 
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        // Populate the Oracle with 2 default sport events
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         beforeEach("Add Sport Events", async function() {
-            this.dateEvent1 = DateTime.now().plus({ days: 7, minutes: 1 }).toSeconds();
-            this.idEvent1   = await this.betOracleInstance.addSportEvent(
-                "Paris vs. Marseille",  
-                "PSG|OM",   
-                2, 
-                new BN(this.dateEvent1),
+            // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            // Add 2 events into the Oracle
+            // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            // Event1
+            this.dateEvent1       = new BN(DateTime.now().plus({ days: 7, minutes: 1 }).toSeconds());
+            this.nameEvent1       = "Paris vs. Marseille";
+            this.teamsEvent1      = "PSG|OM";
+            this.teamsCountEvent1 = new BN(2);
+            this.actualIdEvent1   = await this.betOracleInstance.addSportEvent(
+                this.nameEvent1,
+                this.teamsEvent1,   
+                this.teamsCountEvent1, 
+                this.dateEvent1,
                 { from: ownerAddress } 
             );
+            // Rebuild in JS the eventId (returned by BetOracle.addSportEvent, keccak256)
+            this.idEvent1 = web3.utils.soliditySha3(
+                {t: 'string',  v: this.nameEvent1},
+                {t: 'uint8',   v: this.teamsCountEvent1},
+                {t: 'uint256', v: this.dateEvent1}
+            ); // TODO: Refactor: Extract to function
 
-            this.dateEvent2 = DateTime.now().plus({ days: 14, minutes: 1 }).toSeconds();
-            this.idEvent2   = await this.betOracleInstance.addSportEvent(
-                "Spain vs. Portugal",  
-                "ES|PT",   
-                2, 
-                new BN(this.dateEvent2),
+            // Event2
+            this.dateEvent2          = new BN(DateTime.now().plus({ days: 14, minutes: 1 }).toSeconds());
+            this.nameEvent2          = "Spain vs. Portugal";
+            this.teamsEvent2         = "ES|PT";
+            this.teamsCountEvent2    = new BN(2);
+            this.actualIdEventEvent2 = await this.betOracleInstance.addSportEvent(
+                this.nameEvent2,
+                this.teamsEvent2,
+                this.teamsCountEvent2,
+                this.dateEvent2,
                 { from: ownerAddress }
             );
-
+            // Rebuild in JS the eventId (returned by BetOracle.addSportEvent, keccak256)
+            this.idEvent2 = web3.utils.soliditySha3(
+                {t: 'string',  v: this.nameEvent2},
+                {t: 'uint8',   v: this.teamsCountEvent2},
+                {t: 'uint256', v: this.dateEvent2}
+            );
         })
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,52 +227,21 @@ contract('Bet', async function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it ("can getEvent", async function() {
-                console.log(this.idEvent1);
-                console.log(this.idEvent1.receipt.rawLogs[0][0]);
-                console.log(this.idEvent1.logs[0].args[0]);
-                console.log(this.idEvent1.logs[0]._eventId);
-
-                this.idEvent1 = this.idEvent1.logs[0]._idEvent;
-
-                console.log(web3.utils.hexToNumber(this.idEvent1));
-                console.log(web3.utils.numberToHex(web3.utils.hexToNumber(this.idEvent1)));
-
-                const result = await this.betInstance.getEvent(
-                    web3.utils.hexToNumber(this.idEvent1),
-                    { from: address1 } 
+            it.only ("getEvent: can get an existing event using its id", async function() {
+console.log(this.idEvent1);
+                const tx = await this.betInstance.getEvent(
+                    this.idEvent1,
+                    { from: ownerAddress } 
                 );
-                expect(result)
-                    .be.an('array')
-                ;
-                expect(result[0])
-                    .to.be.a('string')
-                    .equal(this.idEvent1, "Unexpected event id")
-                ;
-                expect(proposal1[1])
-                    .to.be.a('string')
-                    .equal("Paris vs. Marseille", "Unexpected event name")
-                ;
-                expect(proposal1[2])
-                    .to.be.a('string')
-                    .equal("PSG|OM", "Unexpected event participants")
-                ;
-                expect(proposal1[3])
-                    .to.be.a.bignumber
-                    .equal(new BN(1), "Unexpected event participantCount")
-                ;
-                expect(proposal1[4])
-                    .to.be.a.bignumber
-                    .equal(new BN(this.dateEvent1), "Unexpected event date")
-                ;
-                expect(proposal1[5])
-                    .to.be.a.bignumber
-                    .equal(new BN(0), "Unexpected event outcome to be pending")
-                ;
-                expect(proposal1[6])
-                    .to.be.a.bignumber
-                    .equal(new BN(1), "Unexpected event winner")
-                ;
+console.log(tx);
+                // expect(tx.id).to.equal(this.idEvent1);
+    
+                // expect(tx.name).to.be.a('string').equal(this.nameEvent1);
+                // expect(tx.participants).to.be.a('string').equal(this.teamsEvent1);
+                // expect(tx.participantCount).to.be.a.bignumber.equal(this.teamsCountEvent1);
+                // expect(tx.date).to.be.a.bignumber.equal(this.dateEvent1);
+                // expect(tx.outcome).to.be.a.bignumber.equal(EventOutcome.Pending);
+                // expect(tx.winner).to.be.a.bignumber.equal(new BN(-1));
             });
 
             it ("can getLatestEvent");

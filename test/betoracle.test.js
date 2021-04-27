@@ -135,7 +135,7 @@ contract('BetOracle', function(accounts) {
                 this.dateEvent1,
                 { from: ownerAddress } 
             );
-            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event3
+            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event
             this.idEvent1 = web3.utils.soliditySha3(
                 {t: 'string',  v: this.nameEvent1},
                 {t: 'uint8',   v: this.teamsCountEvent1},
@@ -153,7 +153,7 @@ contract('BetOracle', function(accounts) {
                 this.dateEvent2,
                 { from: ownerAddress }
             );
-            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event3
+            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event
             this.idEvent2 = web3.utils.soliditySha3(
                 {t: 'string',  v: this.nameEvent2},
                 {t: 'uint8',   v: this.teamsCountEvent2},
@@ -171,7 +171,7 @@ contract('BetOracle', function(accounts) {
                 this.dateEvent3,
                 { from: ownerAddress }
             );
-            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event3
+            // Rebuild in JS the keccak256 returned by BetOracle.addSportEvent when adding event
             this.idEvent3 = web3.utils.soliditySha3(
                 {t: 'string',  v: this.nameEvent3},
                 {t: 'uint8',   v: this.teamsCountEvent3},
@@ -183,6 +183,7 @@ contract('BetOracle', function(accounts) {
             const tx = await this.betOracleInstance.getEvent(this.idEvent2);
 
             expect(tx.id).to.equal(this.idEvent2);
+
             expect(tx.name).to.be.a('string').equal(this.nameEvent2);
             expect(tx.participants).to.be.a('string').equal(this.teamsEvent2);
             expect(tx.participantCount).to.be.a.bignumber.equal(this.teamsCountEvent2);
@@ -200,6 +201,7 @@ contract('BetOracle', function(accounts) {
             const tx = await this.betOracleInstance.getEvent(idNonExistentEvent);
 
             expect(tx.id).to.equal(idNonExistentEvent);
+            
             expect(tx.name).to.be.a('string').empty;            // <==
             expect(tx.participants).to.be.a('string').empty;            // <==
             expect(tx.participantCount).to.be.a.bignumber.equal(new BN(0)); // <==
@@ -227,7 +229,7 @@ contract('BetOracle', function(accounts) {
         describe("getLatestEvent", function() {
             it.skip("getLatestEvent(true) returns the most recent Pending event if one", async function() {
                 const tx = await this.betOracleInstance.getLatestEvent(true);
-                //TODO
+                // TODO:
             });
             it("getLatestEvent(false) returns the most recent (pending or Decided) event if one");
             it("getLatestEvent returns a specially crafted not found event when there is NO event");
