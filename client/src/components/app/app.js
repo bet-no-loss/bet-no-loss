@@ -124,10 +124,10 @@ class App extends Component {
     });
   };
 
-  faucet = (address) => {
+  faucets1 = (address) => {
     this.state.dai.methods
       .transfer(address, 1000)
-      .send({ from: this.state.adminAddress });
+      .send({ from: this.state.adminAddress2 });
       console.log("FAUCET")
   };
 
@@ -198,11 +198,10 @@ class App extends Component {
                   <a href="/" className="nav-link faucet mx-2">
                     FAUCET
                   </a>
-                  {/* <form
-                    onSubmit={(e) => {
+                   <form onSubmit={(e) => {
                       e.preventDefault();
                       const address = this.faucet.value;
-                      faucet(address);
+                      this.faucets1(address);
                     }}
                   >
                     <label>
@@ -217,7 +216,7 @@ class App extends Component {
                       />
                     </label>
                     <input type="submit" value="Send" />
-                  </form> */}
+                  </form>
                 </li>
                 <li className="nav-item">
                   <div className="nav-link pool">
