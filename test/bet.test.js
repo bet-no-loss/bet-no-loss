@@ -177,7 +177,7 @@ contract('Bet', async function(accounts) {
     })
 
 
-    describe.only("Bet on Sport Events", function() {
+    describe("Bet on Sport Events", function() {
 
         beforeEach("Add Sport Events", async function() {
             // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,24 +227,38 @@ contract('Bet', async function(accounts) {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         describe("Sport Events", function() {
             
-            it.only ("getEvent: can get an existing event using its id", async function() {
-console.log(this.idEvent1);
+            it.skip ("getEvent: can get an existing event using its id", async function() {
                 const tx = await this.betInstance.getEvent(
                     this.idEvent1,
-                    { from: ownerAddress } 
+                    { from: address1 } 
                 );
-console.log(tx);
-                // expect(tx.id).to.equal(this.idEvent1);
+
+                expect(tx.id).to.equal(this.idEvent1);
     
-                // expect(tx.name).to.be.a('string').equal(this.nameEvent1);
-                // expect(tx.participants).to.be.a('string').equal(this.teamsEvent1);
-                // expect(tx.participantCount).to.be.a.bignumber.equal(this.teamsCountEvent1);
-                // expect(tx.date).to.be.a.bignumber.equal(this.dateEvent1);
-                // expect(tx.outcome).to.be.a.bignumber.equal(EventOutcome.Pending);
-                // expect(tx.winner).to.be.a.bignumber.equal(new BN(-1));
+                expect(tx.name).to.be.a('string').equal(this.nameEvent1);
+                expect(tx.participants).to.be.a('string').equal(this.teamsEvent1);
+                expect(tx.participantCount).to.be.a.bignumber.equal(this.teamsCountEvent1);
+                expect(tx.date).to.be.a.bignumber.equal(this.dateEvent1);
+                expect(tx.outcome).to.be.a.bignumber.equal(EventOutcome.Pending);
+                expect(tx.winner).to.be.a.bignumber.equal(new BN(-1));
             });
 
-            it ("can getLatestEvent");
+            it("getEvent: returns a specially crafted event when requresting a non existing event");
+            
+            it.skip ("can getLatestEvent", async function() {
+                const tx = await this.betInstance.getLatestEvent(
+                    { from: address1 } 
+                );
+                expect(tx.id).to.equal(this.idEvent2);
+    
+                expect(tx.name).to.be.a('string').equal(this.nameEvent2);
+                expect(tx.participants).to.be.a('string').equal(this.teamsEvent2);
+                expect(tx.participantCount).to.be.a.bignumber.equal(this.teamsCountEvent2);
+                expect(tx.date).to.be.a.bignumber.equal(this.dateEvent2);
+                expect(tx.outcome).to.be.a.bignumber.equal(EventOutcome.Pending);
+                expect(tx.winner).to.be.a.bignumber.equal(new BN(-1));
+            });
+
             it ("can getBettableEvents");
             it ("can test if a bet is valid");
             it ("can check if _eventOpenForBetting");
@@ -274,7 +288,7 @@ console.log(tx);
                 );
             });
 
-            it("cannot placeBet if event does not exist", async function() {
+            it.skip("cannot placeBet if event does not exist", async function() {
                 const nonExistentEventId = web3.utils.soliditySha3({});
                 const betAmount          = web3.utils.toWei("0.25", "ether");
 
@@ -336,6 +350,14 @@ console.log(tx);
         });
     });
 
+    describe("DAI", function() {
+        it("getContractDAIBalance()", async function() {
+            console.log(await this.betInstance.getContractDAIBalance());
+                // .to.equal()
+        });
+        it("deposit");
+        it("approve");
+    });
 });
 
 
