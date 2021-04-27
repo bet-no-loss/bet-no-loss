@@ -127,7 +127,7 @@ class App extends Component {
   faucets1 = (address) => {
     this.state.dai.methods
       .transfer(address, 1000)
-      .send({ from: this.state.adminAddress2 });
+      .send({ from: this.state.adminAddress2 }); //change adminAddress
       console.log("FAUCET")
   };
 

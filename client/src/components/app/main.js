@@ -43,7 +43,7 @@ class Main extends Component {
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
-                                {currentAccount === adminAddress || currentAccount === adminAddress2 &&
+                                {currentAccount === adminAddress2 && adminAddress ?
                                 (<div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
                                 <h2 className="text-white text-monospace bg-dark"><b><ins>Admin</ins></b></h2>
                                     <form onSubmit={(e) => {
@@ -98,13 +98,13 @@ class Main extends Component {
                                         <button type="submit" className="btn-primary btn-block mt-5 "><b>Enjoy!</b></button>
                                     </form>
 
-                            </div>)
+                            </div>) : ''
                                 }
                             <p>&nbsp;</p>
 
-                            {this.props.sportEvents.map((sportEvent) => {
+                            {this.props.sportEvents.map((sportEvent, index) => {
                                 return (
-                                    <div className="container">
+                                    <div key={index} className="container">
                                         <div className="cardy mb-3">
                                             <div className="row no-gutters">
                                                 <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
