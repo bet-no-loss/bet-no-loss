@@ -351,7 +351,7 @@ contract('Bet', async function(accounts) {
     });
 
     describe("DAI", function() {
-        it("getContractDAIBalance()", async function() {
+        it.skip("getContractDAIBalance()", async function() {
             console.log(await this.betInstance.getContractDAIBalance());
                 // .to.equal()
         });
