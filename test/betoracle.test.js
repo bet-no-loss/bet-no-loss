@@ -224,7 +224,7 @@ contract('BetOracle', function(accounts) {
                 .to.be.true;
         });
 
-        describe("getLatestEvent", async function() {
+        describe("getLatestEvent", function() {
             it.skip("getLatestEvent(true) returns the most recent Pending event if one", async function() {
                 const tx = await this.betOracleInstance.getLatestEvent(true);
                 //TODO
@@ -240,14 +240,14 @@ contract('BetOracle', function(accounts) {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Declaring an Event Outcome
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    describe("Event Outcome", async function(){
+    describe("Event Outcome", function(){
         it("declareOutcome");
     });
     
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // Helper Functions 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    describe("Helper functions", async function() {
+    describe("Helper functions", function() {
 
         it("getAddress() returns the address of this contract's instance", async function(){
             expect(await this.betOracleInstance.getAddress())
