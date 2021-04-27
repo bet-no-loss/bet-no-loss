@@ -7,24 +7,24 @@ contract Play {
 
     IERC20 Dai;
 
-    /** 
+    /**
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
 
     mapping(address => bytes32[]) private betsPerPlayer;
-    
-    /** 
+
+    /**
      * @dev list of all chosenWinner per match per user
      */
     mapping(address => mapping(uint => string)) public chosenWinner;
-    
-     /** 
-     * @dev list of earnings per match per player
-     */
-    mapping(address => mapping(uint => uint)) public playerEarnings;    
+
+    /**
+    * @dev list of earnings per match per player
+    */
+    mapping(address => mapping(uint => uint)) public playerEarnings;
 
     uint public eventCount = 0;
-    
+
     mapping(uint => SportEvent) public sportEvents;
 
     struct SportEvent {
@@ -63,18 +63,18 @@ contract Play {
     function getWinner(uint _eventId) public view returns (string memory) {
         return sportEvents[_eventId].winner;
     }
-    
+
     // TO DO: throw an error if already played for an event
-    function bet(string memory _winner, uint _amount) public {  
+    function bet(string memory _winner, uint _amount) public {
         require(_amount >= 10, "A minimum of 10DAI is required");
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
-        
+
         // Add chosen winner per player per match
         chosenWinner[msg.sender][eventCount] = _winner;
     }
 
-     function checkEarnings(uint _eventId) public returns(uint) {
+    function checkEarnings(uint _eventId) public returns(uint) {
         if (keccak256(abi.encodePacked(sportEvents[_eventId].winner)) == keccak256(abi.encodePacked(chosenWinner[msg.sender][_eventId]))) {
             playerEarnings[msg.sender][_eventId] += 10;
             return 10;
@@ -83,18 +83,21 @@ contract Play {
         }
     }
 
-    function withdraw(address _player, uint _eventId) public { 
-     require(_player != address(0), "Address 0 is not allowed");
+    function withdraw(address _player, uint _eventId) public {
+        require(_player != address(0), "Address 0 is not allowed");
         if (playerEarnings[msg.sender][_eventId] > 0) {
             Dai.transfer(_player, playerEarnings[msg.sender][_eventId]);
         }
-        
+
         playerEarnings[msg.sender][_eventId] -= 10;
-    } 
+    }
+
 
     function getBalance(address _balance) public view returns (uint) {
         require(_balance != address(0), "Address 0 is not allowed");
         return Dai.balanceOf(_balance);
-    }     
-    
+
+    }
+
 }
+
