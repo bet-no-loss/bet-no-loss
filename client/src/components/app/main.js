@@ -151,7 +151,7 @@ class Main extends Component {
 
                                         {/*Modal*/}
                                         {this.state.show &&
-                                            <div className="position-absolute zmodal position-fixed ">
+                                            <div key={index} className="position-absolute zmodal position-fixed ">
                                                 <div className="card taille">
                                                     <div className="card-header">
                                                         BET
