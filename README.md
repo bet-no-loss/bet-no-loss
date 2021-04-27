@@ -524,7 +524,7 @@ Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
     - [@Lebeil](https://github.com/Lebeil)
     - Eric Bouchut [Github](https://github.com/ebouchut) [LinkedIn](https://linkedin.com/in/ebouchut)
 
-## License
+# License
 
 *[Bet-no-loss](https://github.com/bet-no-loss/bet-no-loss)* is released under the terms of the MIT license.  
 See COPYING for more information or https://opensource.org/licenses/MIT .
@@ -553,7 +553,7 @@ Here are a few links to resources that we used while building bet-no-loss.
 - Web3
     - https://web3js.readthedocs.io/
 - Git
-    - git **subtree**
+    - git subtree
         - https://www.atlassian.com/git/tutorials/git-subtree
         - https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/
         - https://medium.com/@porteneuve/mastering-git-subtrees-943d29a798ec#.3qcvltsof        
