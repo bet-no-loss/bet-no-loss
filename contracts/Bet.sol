@@ -160,7 +160,7 @@ contract Bet is Ownable, ReentrancyGuard {
     function testOracleConnection() 
         public view returns (bool)
     {
-        return betOracle.testConnection(); 
+        return oracleAddress != address(0) && betOracle.testConnection(); 
     }
 
    /**
