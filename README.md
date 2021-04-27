@@ -16,10 +16,16 @@
  
 ## Description
 
-- Players bet on a sport event during week 1.  
-- The total amount of bets (all players included) is then staked in DeFi during week 2.  
-- Finally at the end of week 3, 90% of accrued interests can be split between winners according to their share in the total deposit value. 
-Each winner can then withdraw the 90% accrued interests in DeFi proportionally to his/her initial stake.
+- Week 1
+Players bet on a sport event during week 1.
+- Week 2
+The total amount of bets (all players included) is then staked in DeFi during week 2.  
+- Week 3
+    - The oracle makes the event outcome available.
+    - The contract withdraws the interests accrued in DeFi, substracts the platform fees.
+    - The remaining can be split between winners according to their share in the total deposit value.
+- Each winner can then withdraw his/her interests proportionally to his/her initial stake.  
+- Each player can also withdraw his/her stake.
 
 ## Links
 
