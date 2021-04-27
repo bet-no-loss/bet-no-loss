@@ -528,7 +528,7 @@ This generates a markdown file for each smart-contract in the [`doc/contracts`](
 
 Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
 
-# Contributors
+# Team
 
 - Project Managers
     - [Diane Paya-Monet](https://www.linkedin.com/in/diane-paya-monet/)
