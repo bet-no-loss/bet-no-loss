@@ -10,13 +10,13 @@ Your project must:
 - [x] use Truffle's `react` box
 - [x] contain a README that:
     - [x] introduces the projet and its concept(s)
-    - [ ] details its features
+    - [x] details its features
     - [x] describe how to install and launch it
 - have the following features: 
     - [x] display the current Ethereum account
     - [ ] sign transactions 
-    - [ ] interact with your contract's state
-    - [ ] display your contract's state
+    - [x] interact with your contract's state
+    - [x] display your contract's state
 - [x] be deployed on *Heroku* and you must be able to open a URL to interact with the application
 - [x] You must provide us with a link to your **Github** repository that must be **public**. 
 
