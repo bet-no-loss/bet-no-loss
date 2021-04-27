@@ -31,7 +31,7 @@ class Main extends Component {
 
 
     render() {
-        const {addSportEvent, currentAccount, adminAddress} = this.props;
+        const {addSportEvent, currentAccount, adminAddress, adminAddress2} = this.props;
         const {value, teamA, teamB} = this.state;
 
 
@@ -43,7 +43,7 @@ class Main extends Component {
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
-                                {currentAccount === adminAddress &&
+                                {currentAccount === adminAddress || currentAccount === adminAddress2 &&
                                 (<div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
                                 <h2 className="text-white text-monospace bg-dark"><b><ins>Admin</ins></b></h2>
                                     <form onSubmit={(e) => {

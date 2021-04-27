@@ -7,16 +7,29 @@ contract Play {
 
     IERC20 Dai;
 
-    /**
-     * @dev Balance of each user address
+    /** 
+     * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
-    mapping(address => uint256) public userBalance;
 
-    mapping(uint => string) public teamBetByPlayer;
-
-    string temporary;
+    mapping(address => bytes32[]) private betsPerPlayer;
+    
+    /** 
+     * @dev list of all chosenWinner per match per user
+     */
+    mapping(address => mapping(uint => string)) public chosenWinner;
+    
+     /** 
+     * @dev list of earnings per match per player
+     */
+    mapping(address => mapping(uint => uint)) public playerEarnings;
+    
+    /** 
+     * @dev Winner selected by player
+     */
+   // mapping(address => string) public chosenWinner;
 
     uint public eventCount = 0;
+    
     mapping(uint => SportEvent) public sportEvents;
 
     struct SportEvent {
@@ -26,21 +39,11 @@ contract Play {
         string       teamA;
         string       teamB;
         uint         date;
-        /*uint         uploadTime;*/
         string       winner;
-        /*address payable uploader;*/
     }
 
     constructor(address _tokenAddress) {
         Dai = IERC20(_tokenAddress);
-    }
-
-    function setString(string memory _world) public {
-        temporary = _world;
-    }
-
-    function getString() public view returns (string memory){
-        return temporary;
     }
 
     function deposit(uint _amount, address _sender) public payable {
@@ -71,27 +74,33 @@ contract Play {
     function getWinner(uint _eventId) public view returns (string memory) {
         return sportEvents[_eventId].winner;
     }
-
-
-    function bet(string memory _winner, uint _amount) public returns (bool) {
+    
+    
+    function bet(string memory _winner, uint _amount) public returns (bool) {  
+        require(_amount >= 10, "A minimum of 10DAI is required");
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
+        
+        // Add chosen winner per player per match
+        chosenWinner[msg.sender][eventCount] = _winner;
+    }
 
-        // Get team bet by Player
-        teamBetByPlayer[eventCount] = _winner;
-
-        if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(sportEvents[0].winner))) {
-            return true;
+     function checkEarnings(uint _eventId) public returns(uint) {
+        if (keccak256(abi.encodePacked(sportEvents[_eventId].winner)) == keccak256(abi.encodePacked(chosenWinner[msg.sender][_eventId]))) {
+            playerEarnings[msg.sender][_eventId] += 10;
+            return 10;
         } else {
-            return false;
+            return 0;
         }
     }
 
-    function withdraw(address _user) public payable {
-        uint initialUserBalance = userBalance[_user];
-        userBalance[_user] = userBalance[_user] + 10;
-        Dai.transfer(_user, userBalance[_user]);
-        userBalance[_user] = userBalance[_user] - initialUserBalance;
-    }
-
+    function withdraw(address _player, uint _eventId) public { 
+     require(_player != address(0), "Address 0 is not allowed");
+        if (playerEarnings[msg.sender][_eventId] > 0) {
+            Dai.transfer(_player, playerEarnings[msg.sender][_eventId]);
+        }
+        
+        playerEarnings[msg.sender][_eventId] -= 10;
+    }      
+    
 }
