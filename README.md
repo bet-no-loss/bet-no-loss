@@ -372,7 +372,8 @@ You need to do this once only for the Heroku app owner only (as you use the free
     #heroku config:set USE_NPM_INSTALL=true
     heroku config:set NPM_CONFIG_PRODUCTION=true 
     ```
-Next you can read [how to deploy the front-end (DApp/client) on Heroku](#deploy-front-end).
+
+You can then read ahead of time [how to deploy the front-end on Heroku](#deploy-front-end).
 
 # Compile
 
