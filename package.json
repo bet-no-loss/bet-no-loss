@@ -15,7 +15,7 @@
     "test": "npx truffle test --stacktrace --compile-none",
     "build-doc": "npx solidity-docgen --solc-module solc-0.8 -i contracts/ -o doc/contracts/",
     "gas": "REPORT_GAS=true CI=true npm run test",
-    "coverage": "npx truffle run coverage && (cat coverage/lcov.info | npx coveralls)",
+    "coverage": "npx truffle run coverage ; (cat coverage/lcov.info | npx coveralls)",
     "deploy": "npx truffle deploy --network=ropsten",
     "start": "cd client/ && npm start",
     "watch": "npm run watch-test",
