@@ -37,9 +37,6 @@ Players bet on a sport event during week 1.
 * [Doc](doc/)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
 
-## Features
-
-TODO
 
 ## Architecture
 
@@ -56,7 +53,7 @@ This Github **repository** is a **monorepo** that entails **both** the **back-en
 
 The back-end is compoosed of the following Ethereum **smart-contracts**:
 
-- [`DAI`](contracts/DAI.sol) TODO 
+- [`DAI`](contracts/DAI.sol) 
 - [`Bet`](contracts/Bet.sol) The betting contract in charge of:
     - handling the bets: deposit/withdrawal
     - getting the list of events from *Oracle*
@@ -509,13 +506,10 @@ This generates a markdown file for each smart-contract in the [`doc/contracts`](
 
 # Decisions
 
+[This document](doc/design_pattern_decisions.md) list other design decisions we made.
+
 - Crypto-currency used: DAI
 - DeFi Service used: For now none, due to time constraints we will stub them. Later on: Compound or AAVE ?
-- No Back-Office for now.  
-  As we focus only on having a running project with smart contract + front-office.
-  This means in order to add events the owner calls the ad-hoc smart-contract's functions.
-
-[This document](doc/design_pattern_decisions.md) list other design decisions we made.
 
 # Credits
 
