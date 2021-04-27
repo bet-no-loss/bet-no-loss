@@ -403,6 +403,17 @@ How does it work?
 Running the coverage report, first runs the tests and generate a coverage report file in the end.
 This file contains a breakdown of the contracts/functions/lines executed while running the tests. As this file is difficult to digest for human, we push it to an external service named [`coveralls.io`](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master) that digests it in one swoop and provides a User Interface to easily navigate the report.
 
+ℹ️ In order to be able to push the coverage file to coveralls.io, 
+you need to add the following to .coveralls.yml in the project's root folder.
+```
+repo_token: TODO_ENTER_THE_COVERALLS_TOKEN_OF_YOUR_REPO_HERE
+```
+You will find the repo_token on coveralls:
+- Open https://coveralls.io/repos
+- Select your repository
+- The token is located in top right corner
+`repo_token` is an clue for the coveralls plugin to know the target repository where to push the coverage file to.
+
 # Gas Report
 
 To get a report of the gas consumed by the smart-contracts while running the tests.
