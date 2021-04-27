@@ -516,9 +516,13 @@ Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
 
 # Contributors
 
-- [@Tantely](https://github.com/Tanteli)
-- [@Lebeil](https://github.com/Lebeil)
-- [@ebouchut](https://github.com/ebouchut)
+- Project Managers
+    - [Diane Paya-Monet](https://www.linkedin.com/in/diane-paya-monet/)
+    - Mohamed Frihat
+- Devs
+    - [@Tantely](https://github.com/Tanteli)
+    - [@Lebeil](https://github.com/Lebeil)
+    - Eric Bouchut [Github](https://github.com/ebouchut) [LinkedIn](https://linkedin.com/in/ebouchut)
 
 ## License
 
