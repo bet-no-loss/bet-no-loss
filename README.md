@@ -314,8 +314,7 @@ In order to generate per function **gas consumption reports** (optional), simply
 ```
 You will need a **CoinMarketCap API Key**.  
 You can get one [here](https://coinmarketcap.com/api/pricing/).  
-Read more about the [eth-gas-reporter](https://github.com/cgewecke/eth-gas-reporter) package we use to generate gas reports.
-
+Read more to know [how to generate the gas report](#gas-report)
 
 
 ## Heroku Configuration
@@ -389,11 +388,14 @@ npx truffle test # Run the unit and integration tests
 
 # Code Coverage
 
-Runs the tests then displays a report of the smart-contracts code coverage.
-
 ```
 npm run coverage
 ```
+Runs the tests then displays a report of the smart-contracts code coverage.
+
+How does it work?  
+Running the coverage report, first runs the tests and generate a coverage report file in the end.
+This file contains a breakdown of the contracts/functions/lines executed while running the tests. As this file is difficult to digest for human, we push it to an external service named [`coveralls.io`](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master) that digests it in one swoop and provides a User Interface to easily navigate the report.
 
 # Gas Report
 
@@ -401,6 +403,9 @@ To get a report of the gas consumed by the smart-contracts while running the tes
 ```
 npm run gas
 ```
+
+Read more about the [eth-gas-reporter](https://github.com/cgewecke/eth-gas-reporter) npm package we use to generate gas reports.
+
 
 # Deploy 
 
