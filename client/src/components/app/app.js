@@ -76,9 +76,6 @@ class App extends Component {
         }
     }
 
-
-
-
     // Get file from user
     captureFile = event => {
         event.preventDefault()

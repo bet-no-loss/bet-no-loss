@@ -4,21 +4,21 @@ pragma solidity 0.8.3;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract Play {
-    
+
     IERC20 Dai;
 
     /**
      * @dev Balance of each user address
      */
     mapping(address => uint256) public userBalance;
-    
+
     mapping(uint => string) public teamBetByPlayer;
 
     string temporary;
 
     uint public eventCount = 0;
     mapping(uint => SportEvent) public sportEvents;
-    
+
     struct SportEvent {
         uint         eventId;
         string       fileHash;
@@ -30,10 +30,10 @@ contract Play {
         string       winner;
         /*address payable uploader;*/
     }
-    
+
     constructor(address _tokenAddress) {
         Dai = IERC20(_tokenAddress);
-    } 
+    }
 
     function setString(string memory _world) public {
         temporary = _world;
@@ -71,15 +71,15 @@ contract Play {
     function getWinner(uint _eventId) public view returns (string memory) {
         return sportEvents[_eventId].winner;
     }
-    
-    
-    function bet(string memory _winner, uint _amount) public returns (bool) {  
+
+
+    function bet(string memory _winner, uint _amount) public returns (bool) {
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
-        
+
         // Get team bet by Player
         teamBetByPlayer[eventCount] = _winner;
-        
+
         if (keccak256(abi.encodePacked(_winner)) == keccak256(abi.encodePacked(sportEvents[0].winner))) {
             return true;
         } else {
@@ -87,11 +87,11 @@ contract Play {
         }
     }
 
-    function withdraw(address _user) public payable {        
+    function withdraw(address _user) public payable {
         uint initialUserBalance = userBalance[_user];
         userBalance[_user] = userBalance[_user] + 10;
         Dai.transfer(_user, userBalance[_user]);
         userBalance[_user] = userBalance[_user] - initialUserBalance;
-    }      
-    
+    }
+
 }

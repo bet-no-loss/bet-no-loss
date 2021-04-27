@@ -9,13 +9,13 @@ class Main extends Component {
         value: undefined
     };
 
-    showModal = e => {
+    showModal = () => {
         this.setState({
             show: true
         });
     };
 
-    onClose = e => {
+    onClose = () => {
         this.setState({show: false});
     };
 
@@ -102,9 +102,9 @@ class Main extends Component {
                                 }
                             <p>&nbsp;</p>
 
-                            {this.props.sportEvents.map((sportEvent, key) => {
+                            {this.props.sportEvents.map((sportEvent) => {
                                 return (
-                                    <div className="container" key={key}>
+                                    <div className="container">
                                         <div className="cardy mb-3">
                                             <div className="row no-gutters">
                                                 <div className="col-md-6 d-flex flex-row align-items-center justify-content-center">
