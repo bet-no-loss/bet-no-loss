@@ -499,7 +499,7 @@ In order to run the Front-End application on your local machine:
 
 Should you need to update the documentation, simply run:
 ```
-npx run build-doc
+npm run build-doc
 ```
 This generates a markdown file for each smart-contract in the [`doc/contracts`](doc/contracts) folder.
 
