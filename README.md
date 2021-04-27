@@ -403,8 +403,8 @@ How does it work?
 Running the coverage report, first runs the tests and generate a coverage report file in the end.
 This file contains a breakdown of the contracts/functions/lines executed while running the tests. As this file is difficult to digest for human, we push it to an external service named [`coveralls.io`](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master) that digests it in one swoop and provides a User Interface to easily navigate the report.
 
-ℹ️ In order to be able to push the coverage file to coveralls.io, 
-you need to add the following to .coveralls.yml in the project's root folder.
+ℹ️ In order to be able to push the coverage file to [`coveralls.io`](https://coveralls.io), 
+you need to add the following to the file `.coveralls.yml` in the project's root folder.
 ```
 repo_token: TODO_ENTER_THE_COVERALLS_TOKEN_OF_YOUR_REPO_HERE
 ```
