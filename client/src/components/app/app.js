@@ -70,6 +70,7 @@ class App extends Component {
       // Load files&sort by the newest
       for (let i = eventsCount; i >= 1; i--) {
         const event = await play.methods.sportEvents(i).call();
+        console.log('event number', event.eventId)
         this.setState({
           sportEvents: [...this.state.sportEvents, event],
         });

@@ -6,12 +6,16 @@ class Main extends Component {
         show: false,
         teamA: '',
         teamB: '',
-        value: undefined
+        value: undefined,
+        modalData: ''
     };
 
-    showModal = () => {
+    showModal = (data) => {
+        console.log('index',data)
+
         this.setState({
-            show: true
+            show: true,
+            modalData: data
         });
     };
 
@@ -32,7 +36,7 @@ class Main extends Component {
 
     render() {
         const {addSportEvent, currentAccount, adminAddress, adminAddress2} = this.props;
-        const {value, teamA, teamB} = this.state;
+        const {value, teamA, teamB, modalData} = this.state;
 
 
         console.log('admin',this.props.adminAddress)
@@ -139,7 +143,7 @@ class Main extends Component {
                                                             <button
                                                                 className="btn btn-primary btn-lg rounded-pill"
                                                                 style={{width: "170px"}}
-                                                                onClick={e => {this.showModal(e)}}
+                                                                onClick={()=>this.showModal(sportEvent)}
                                                             >
                                                                 Bet
                                                             </button>
@@ -151,39 +155,40 @@ class Main extends Component {
 
                                         {/*Modal*/}
                                         {this.state.show &&
-                                            <div key={index} className="position-absolute zmodal position-fixed ">
+                                            <div className="position-absolute zmodal position-fixed">
                                                 <div className="card taille">
                                                     <div className="card-header">
                                                         BET
                                                     </div>
                                                     <div className="card-body mt-5">
-                                                        <div className="card-title">
+                                                        <div className="card-title d-flex flex-column">
                                                             <span className="pr-2">&#127942;</span> 3,500 <span>$</span>
+                                                            <span>numéro : {modalData.eventId}</span>
                                                         </div>
                                                         <form onSubmit={this.handleSubmit}>
                                                             <div className="card-text d-flex flex-row col-12 mt-5">
                                                                 <div className="col-4">
                                                                     <div>Sélectionner cet équipe :</div>
-                                                                    <div className="fontTeam">{sportEvent.teamA}</div>
+                                                                    <div className="fontTeam">{modalData.teamA}</div>
                                                                     <input
                                                                         type="radio"
-                                                                        value={sportEvent.teamA}
-                                                                        checked={value === sportEvent.teamA}
+                                                                        value={modalData.teamA}
+                                                                        checked={value === modalData.teamA}
                                                                         onChange={this.handleChange}
                                                                     />
                                                                 </div>
                                                                 <div className="col-4">
                                                                     <img
-                                                                        src={`https://ipfs.infura.io/ipfs/${sportEvent.fileHash}`}
+                                                                        src={`https://ipfs.infura.io/ipfs/${modalData.fileHash}`}
                                                                         style={{maxWidth: '120px'}}/>
                                                                 </div>
                                                                 <div className="col-4">
                                                                     <div>Sélectionner cet équipe :</div>
-                                                                    <div className="fontTeam">{sportEvent.teamB}</div>
+                                                                    <div className="fontTeam">{modalData.teamB}</div>
                                                                     <input
                                                                         type="radio"
-                                                                        value={sportEvent.teamB}
-                                                                        checked={value === sportEvent.teamB}
+                                                                        value={modalData.teamB}
+                                                                        checked={value === modalData.teamB}
                                                                         onChange={this.handleChange}
                                                                     />
                                                                 </div>
