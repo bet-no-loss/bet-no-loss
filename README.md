@@ -29,6 +29,13 @@ Players bet on a sport event.
 Each winner can then withdraw his/her interests proportionally to his/her initial stake.  
 Each player can also withdraw his/her stake.
 
+## Features
+
+- Sport event betting game 
+- No-loss: Players can withdraw their bet whatever (whether they win or loose)
+- Winners rewards comes from part of the accrued interests invested in DeFi (pro-rated) 
+- Ethereum Blockchain based
+
 ## Links
 
 * [Whitepaper](https://docs.google.com/document/d/17pnu1nYqquXjo-jIGvSeHCeNQ9_gPBti0XnI7pAoGkw)
