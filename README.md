@@ -23,7 +23,7 @@
 
 ## Description
 
-- Period 1
+- Period 1  
 Players bet on a sport event.
 - Period 2
     - The total amount of bets (all players included) is then staked in DeFi.  
@@ -545,12 +545,10 @@ This generates a markdown file for each smart-contract in the [`doc/contracts`](
 
 [This document](doc/design_pattern_decisions.md) list other design decisions we made.
 
-- Crypto-currency used: DAI
-- DeFi Service used: For now none, due to time constraints we will stub them. Later on: Compound or AAVE ?
 
 # Credits
 
-Bet-no-loss is [@Tantely](https://github.com/Tanteli)'s idea.
+Bet-no-loss is based on [@Tantely](https://github.com/Tanteli)'s original idea.
 
 # Team
 

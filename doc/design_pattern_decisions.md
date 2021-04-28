@@ -39,9 +39,20 @@ For now, we **mock** an Oracle providing functions to:
 - declare an event outcome
 - get the outcome of an event
 
-After the MVP, we will interconnect with an existing Oracle that makes available on-chain the results of sport events.
+Next up, we will interconnect with an existing Oracle that makes available on-chain the results of sport events.
 
 [Reference](https://fravoll.github.io/solidity-patterns/oracle.html)
+
+## Crypto-Currency
+
+We use **DAI** as a crypto-currency.
+
+## DeFi
+
+In this POC, we do not use a real DeFi Service but stub one.  
+But next up, we plan to integrate with Compound, AAVE.
+This is one of the first topics on our roadmap.
+
 
 ## Security Patterns
 
@@ -65,7 +76,7 @@ We use *Pull over Push* so that players handle withdrawal (stake, gains) on thei
 
 [Reference](https://fravoll.github.io/solidity-patterns/pull_over_push.html)
 
-## Various
+## Tech
 
 ### Solidity version 0.8
 
