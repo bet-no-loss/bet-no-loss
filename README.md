@@ -14,6 +14,13 @@
 
 > Bet on a sport event without loosing your stake and get rewarded if you win.
  
+## Features
+
+- Sport event betting game 
+- No-loss: Players can choose to withdraw their stake whatever the outcome (whether they win or loose)
+- Winners rewards comes from part of the accrued interests invested in DeFi (pro-rated) 
+- Ethereum Blockchain based
+
 ## Description
 
 - Period 1
@@ -28,13 +35,6 @@ Players bet on a sport event.
 
 Each winner can then withdraw his/her interests proportionally to his/her initial stake.  
 Each player can also withdraw his/her stake.
-
-## Features
-
-- Sport event betting game 
-- No-loss: Players can withdraw their bet whatever (whether they win or loose)
-- Winners rewards comes from part of the accrued interests invested in DeFi (pro-rated) 
-- Ethereum Blockchain based
 
 ## Links
 
