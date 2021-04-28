@@ -34,7 +34,7 @@ Players bet on a sport event during week 1.
 * Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
 * [Presentation](https://docs.google.com/presentation/d/17AitCSlIVLVsMk5n-se5vEJtA7_i9MJC9PXkDil75a4)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
-* [Doc](doc/)
+* [Documentation](#documentation)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
 
 
