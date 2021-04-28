@@ -28,14 +28,10 @@ class Main extends Component {
         this.setState({value: e.target.value})
     }
 
-    handleSubmit = (e)=> {
-        e.preventDefault()
-        console.log('')
-    }
 
 
     render() {
-        const {addSportEvent, currentAccount, adminAddress, adminAddress2} = this.props;
+        const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet} = this.props;
         const {value, teamA, teamB, modalData} = this.state;
 
 
@@ -56,7 +52,7 @@ class Main extends Component {
                                         const teamA = this.fileTeamA.value
                                         const teamB = this.fileTeamB.value
                                         const date = this.date.value
-                                        addSportEvent(description, teamA, teamB, date)
+                                        bet(description, teamA, teamB, date)
                                     }} >
                                         <div className="form-group">
                                             <br></br>
@@ -165,7 +161,12 @@ class Main extends Component {
                                                             <span className="pr-2">&#127942;</span> 3,500 <span>$</span>
                                                             <span>numéro : {modalData.eventId}</span>
                                                         </div>
-                                                        <form onSubmit={this.handleSubmit}>
+                                                        <form onSubmit={(e) => {
+                                                            e.preventDefault()
+                                                            const winner = this.state.value
+                                                            const amount = this.daiInput.value
+                                                            bet(winner, amount)
+                                                        }}>
                                                             <div className="card-text d-flex flex-row col-12 mt-5">
                                                                 <div className="col-4">
                                                                     <div>Sélectionner cet équipe :</div>
@@ -206,6 +207,7 @@ class Main extends Component {
                                                                         id="basic-url"
                                                                         aria-describedby="basic-addon3"
                                                                         placeholder="0 Dai"
+                                                                        ref={(input) => { this.daiInput = input }}
                                                                     />
                                                                 </div>
                                                                 <div className="col-4 ">
@@ -213,7 +215,7 @@ class Main extends Component {
                                                                 </div>
                                                             </div>
                                                             <div className="mt-5">
-                                                                <button href="#" className="btn btn-lg btn-primary mr-4">Confirm</button>
+                                                                <button type='submit' className="btn btn-lg btn-primary mr-4">Confirm</button>
                                                                 <button type='button' className="btn btn-lg btn-outline-danger"
                                                                         onClick={e => {
                                                                             this.onClose(e)

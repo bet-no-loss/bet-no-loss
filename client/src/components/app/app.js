@@ -133,7 +133,7 @@ class App extends Component {
   };
 
   bet = (winner, amount) => {
-    this.state.play.methods.bet().send({ from: this.state.currentAccount });
+    this.state.play.methods.bet(winner, amount).send({ from: this.state.currentAccount });
   };
 
   checkEarnings = async (eventId) => {
@@ -282,6 +282,7 @@ class App extends Component {
             adminAddress={this.state.adminAddress}
             adminAddress2={this.state.adminAddress2}
             currentAccount={this.state.currentAccount}
+            bet={this.bet}
           />
         )}
         <Footer />
