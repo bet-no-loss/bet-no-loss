@@ -16,17 +16,18 @@
  
 ## Description
 
-- Week 1
-Players bet on a sport event during week 1.
-- Week 2
-    - The total amount of bets (all players included) is then staked in DeFi during week 2.  
+- Period 1
+Players bet on a sport event.
+- Period 2
+    - The total amount of bets (all players included) is then staked in DeFi.  
     - The sport event occurs
     - The oracle makes the event outcome available.
-- Week 3
+- Period 3
     - Bet-no-loss withdraws the interests accrued in DeFi, substracts the platform fees.
     - The remaining can be split between winners according to their share in the total deposit value.
-- Each winner can then withdraw his/her interests proportionally to his/her initial stake.  
-- Each player can also withdraw his/her stake.
+
+Each winner can then withdraw his/her interests proportionally to his/her initial stake.  
+Each player can also withdraw his/her stake.
 
 ## Links
 
