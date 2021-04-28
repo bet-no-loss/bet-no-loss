@@ -11,15 +11,15 @@ contract Play {
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
 
-    mapping(address => bytes32[]) private betsPerPlayer;
+    mapping(address => uint[]) public betsPerPlayer;
 
     /**
-     * @dev list of all chosenWinner per match per user
+     * @dev list of all chosenWinner per match per user, ie. a map composed (player address => (event id => chosen winner)) pairs
      */
     mapping(address => mapping(uint => string)) public chosenWinner;
 
     /**
-    * @dev list of earnings per match per player
+    * @dev list of earnings per match per player, ie. a map composed (player address => (event id => bet amount)) pairs
     */
     mapping(address => mapping(uint => uint)) public playerEarnings;
 
@@ -65,13 +65,16 @@ contract Play {
     }
 
     // TO DO: throw an error if already played for an event
-    function bet(string memory _winner, uint _amount) public {
+    function bet(string memory _winner, uint _amount, uint eventId) public {
         require(_amount >= 10, "A minimum of 10DAI is required");
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
 
         // Add chosen winner per player per match
         chosenWinner[msg.sender][eventCount] = _winner;
+
+        // TO DO: Check if works
+        betsPerPlayer[msg.sender].push(eventId);
     }
 
     function checkEarnings(uint _eventId) public returns(uint) {

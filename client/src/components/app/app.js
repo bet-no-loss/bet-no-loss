@@ -148,6 +148,12 @@ class App extends Component {
       .call({ from: this.state.currentAccount });
   };
 
+  getBalance = async (address) => {
+    await this.state.dai.methods
+      .balanceOf(address)
+      .call({ from: this.state.currentAccount });
+  };
+
   constructor(props) {
     super(props);
     this.state = {
