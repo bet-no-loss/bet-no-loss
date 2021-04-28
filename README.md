@@ -508,9 +508,26 @@ In order to run the Front-End application on your local machine:
 
 # Documentation
 
-[Read the smart-contracts' documentation](doc/contracts).
+## General
 
-Should you need to update the documentation, simply run:
+- [avoiding_common_atacks.md](doc/avoiding_common_atacks.md) describes the measures we have taken to make our smart-contracts as resistant as possible to common attacks and potential hacks
+- [deployed_addresses.md](doc/deployed_addresses.md) contains the addresses of smart-contracts deployed on the Ropsten test network
+- [design_pattern_decisions.md](doc/design_pattern_decisions.md) explains why we chose the design patterns we are using in the code. 
+- [REQUIREMENTS.md](doc/REQUIREMENTS.md) Alyra final project's requirements
+- [tests_explication.md](doc/tests_explication.md) explains for each test why we wrote it and  what it is aimed at.
+
+## Smart-Contracts
+
+The smart-contracts documentation is available in the folder [doc/contracts](doc/contracts):
+
+- [Bet.sol](doc/contracts/Bet.sol.md)
+- [BetOracle](doc/contracts/BetOracle.md)
+- [DAI.sol](doc/contracts/DAI.sol.md)
+- [DateLib.sol](doc/contracts/DateLib.md)
+- [DeFiPool](doc/contracts/DeFiPool.md)
+- [OracleInterface](doc/contracts/OracleInterface.md)
+
+Should you need to update the smart-contracts documentation, simply run:
 ```
 npm run build-doc
 ```
