@@ -16,6 +16,8 @@ module.exports = async function(deployer) {
   const dai = await DAI.deployed()
   const play = await Play.deployed()
   await dai.approve(play.address, 1000)
+  await dai.approve(0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d, 1000);
+  await dai.approve(0x06096bB100DA41C831fd30AfDf8489722C3743b9, 1000);
 
   await deployer.deploy(Bet, daiContractAddress);
   await deployer.deploy(BetOracle);
