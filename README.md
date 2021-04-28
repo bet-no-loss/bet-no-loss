@@ -529,10 +529,9 @@ The smart-contracts documentation is available in the folder [doc/contracts](doc
 
 Should you need to update the smart-contracts documentation, simply run:
 ```
-npm run build-doc
+npm run doc
 ```
 This generates a markdown file for each smart-contract in the [`doc/contracts`](doc/contracts) folder.
-
 
 # Decisions
 
