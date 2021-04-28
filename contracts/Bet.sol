@@ -96,15 +96,18 @@ contract Bet is Ownable, ReentrancyGuard {
     /**
      * @param _tokenAddress the address of the deployed ERC20 DAI token 
      */
-     constructor(address _tokenAddress) {
-        require(_tokenAddress != address(0), "Address 0 is not allowed");
+     constructor(address _tokenAddress)
+        notAddress0(_tokenAddress)
+     {
         Dai = IERC20(_tokenAddress);
     }
 
      /**
       * @return the DAI balance of the contract
       */
-      function getContractDAIBalance() public view returns (uint) {
+      function getContractDAIBalance()
+        public view returns (uint)
+      {
           return Dai.balanceOf(address(this));
       }
 
@@ -296,7 +299,7 @@ contract Bet is Ownable, ReentrancyGuard {
     }
 
     /**
-     *  @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
+     *  @notice This smart-contract accepts DAI ERC20 token
      */
     receive() external payable {
     }

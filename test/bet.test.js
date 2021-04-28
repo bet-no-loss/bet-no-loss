@@ -162,7 +162,7 @@ contract('Bet', async function(accounts) {
             expect(Boolean(isOracleConnected)).to.be.true;
         });
 
-        specify ("testOracleConnection returns true when an BetOracle is connected", async function () {
+        specify ("testOracleConnection returns false when an BetOracle is NOT connected", async function () {
             // BetOracle address not set 
             // Bet.setOracleAddress not called
             expect(await this.betInstance.getOracleAddress())

@@ -4,6 +4,7 @@ pragma solidity 0.8.3;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
+import "./OracleInterface.sol";
 import "./DateLib.sol";
 
 
@@ -11,7 +12,7 @@ import "./DateLib.sol";
  * @title An smart-contract Oracle that register sport events, retrieve their outcomes and communicate their results when asked for.
  * @notice Collects and provides information on sport events and their outcomes
  */
-contract BetOracle is Ownable, ReentrancyGuard {
+contract BetOracle is OracleInterface, Ownable, ReentrancyGuard {
 
     using DateLib  for DateLib.DateTime;
 
@@ -38,16 +39,7 @@ contract BetOracle is Ownable, ReentrancyGuard {
         int8         winner;
     }
 
-    /**
-     * @dev The possible outcomes for an event
-     * Keep in sync EventOutcome constant in betoracle.txt.js when updating this enum.
-     */
-    enum EventOutcome {
-        Pending,    // Event has not been fought to decision
-        Underway,   // Event started and underway
-        Draw,       // Anything other than a clear winner (e.g. cancelled)
-        Decided     // We have a winner for his event
-    }
+    // FYI: enum EventOutcome is defind in OracleInterface
 
     /**
      * @dev Triggered once an event has been added
@@ -75,8 +67,9 @@ contract BetOracle is Ownable, ReentrancyGuard {
         string memory _participants,
         uint8         _participantCount,
         uint          _date
-    ) public onlyOwner nonReentrant
-    returns (bytes32)
+    ) 
+        public onlyOwner nonReentrant
+        returns (bytes32)
     {
         bytes memory bytesName = bytes(_name);
         require(bytesName.length > 0, "_name cannot be empty");
@@ -117,7 +110,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return the array index of this event if it exists or else -1
      */
     function _getMatchIndex(bytes32 _eventId)
-    private view returns (uint)
+        private view
+        returns (uint)
     {
         return eventIdToIndex[_eventId] - 1;
     }
@@ -128,7 +122,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return true if sport event exists and its id is valid
      */
     function eventExists(bytes32 _eventId)
-    public view returns (bool)
+        public view override
+        returns (bool)
     {
         if (events.length == 0) {
             return false;
@@ -144,7 +139,7 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @param _winner 0-based id of the winnner
      */
     function declareOutcome(bytes32 _eventId, EventOutcome _outcome, int8 _winner)
-    onlyOwner external
+        onlyOwner external
     {
         // Require that it exists
         require(eventExists(_eventId));
@@ -169,7 +164,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return an array of unique pending events ids
      */
     function getPendingEvents()
-    public view returns (bytes32[] memory)
+        public view override
+        returns (bytes32[] memory)
     {
         uint count = 0;
 
@@ -200,7 +196,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return an array of unique match ids
      */
     function getAllSportEvents()
-    public view returns (bytes32[] memory)
+        public view override
+        returns (bytes32[] memory)
     {
         bytes32[] memory eventIds = new bytes32[](events.length);
 
@@ -227,15 +224,16 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return winner the index of the winner
      */
     function getEvent(bytes32 _eventId)
-    public view returns (
-        bytes32       id,
-        string memory name,
-        string memory participants,
-        uint8         participantCount,
-        uint          date,
-        EventOutcome  outcome,
-        int8          winner
-    )
+        public view override
+        returns (
+            bytes32       id,
+            string memory name,
+            string memory participants,
+            uint8         participantCount,
+            uint          date,
+            EventOutcome  outcome,
+            int8          winner
+        )
     {
         // Get the sport event
         if (eventExists(_eventId)) {
@@ -260,15 +258,16 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return winner the index of the winner
      */
     function getLatestEvent(bool _pending)
-    public view returns (
-        bytes32         id,
-        string memory   name,
-        string memory   participants,
-        uint8           participantCount,
-        uint            date,
-        EventOutcome    outcome,
-        int8            winner
-    )
+        public view override
+        returns (
+            bytes32         id,
+            string memory   name,
+            string memory   participants,
+            uint8           participantCount,
+            uint            date,
+            EventOutcome    outcome,
+            int8            winner
+        )
     {
         bytes32          eventId = 0;
         bytes32[] memory ids;
@@ -292,7 +291,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return the address of the BetOracle smart-contract
      */
     function getAddress()
-    public view returns (address)
+        public view
+        returns (address)
     {
         return address(this);
     }
@@ -302,7 +302,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * @return true, unconditionally
      */
     function testConnection()
-    public pure returns (bool)
+        public pure override
+        returns (bool)
     {
         return true;
     }
@@ -312,7 +313,8 @@ contract BetOracle is Ownable, ReentrancyGuard {
      * TODO: Remove me before going live
      */
     function addTestData()
-    public onlyOwner
+        external override
+        onlyOwner
     {
         addSportEvent("Paris vs. Marseille",  "PSG|OM",   2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
         addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
