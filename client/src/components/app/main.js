@@ -4,8 +4,6 @@ import moment from 'moment'
 class Main extends Component {
     state = {
         show: false,
-        teamA: '',
-        teamB: '',
         value: undefined,
         modalData: ''
     };
@@ -32,7 +30,7 @@ class Main extends Component {
 
     render() {
         const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet} = this.props;
-        const {value, teamA, teamB, modalData} = this.state;
+        const {value, modalData} = this.state;
 
 
         console.log('admin',this.props.adminAddress)
