@@ -95,7 +95,7 @@ places a bet on the given event
 
 ### `receive()` (external)
 
- @notice A fallback function that allows this smart-contract to accept DAI ERC20 token
+ @notice This smart-contract accepts DAI ERC20 token
 
 
 

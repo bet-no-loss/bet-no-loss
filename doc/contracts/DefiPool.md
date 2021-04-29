@@ -1,6 +1,6 @@
 ## `DefiPool`
 
-
+ @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn interests
 
 
 
