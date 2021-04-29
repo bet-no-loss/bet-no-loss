@@ -36,7 +36,7 @@ interface OracleInterface {
             bytes32       id,
             string memory name, 
             string memory participants,
-            uint          participantCount,
+            uint8          participantCount,
             uint          date, 
             EventOutcome  outcome, 
             int8          winner
