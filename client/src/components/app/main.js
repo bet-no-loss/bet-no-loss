@@ -43,7 +43,7 @@ class Main extends Component {
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
-                                {currentAccount === adminAddress2 || adminAddress ?
+                                {currentAccount === adminAddress2 || adminAddress === currentAccount ?
                                 (<div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
                                 <h2 className="text-white text-monospace bg-dark"><b><ins>Admin</ins></b></h2>
                                     <form onSubmit={(e) => {
@@ -52,7 +52,7 @@ class Main extends Component {
                                         const teamA = this.fileTeamA.value
                                         const teamB = this.fileTeamB.value
                                         const date = this.date.value
-                                        bet(description, teamA, teamB, date)
+                                        addSportEvent(description, teamA, teamB, date)
                                     }} >
                                         <div className="form-group">
                                             <br></br>
