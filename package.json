@@ -18,8 +18,7 @@
     "coverage": "npx truffle run coverage ; (cat coverage/lcov.info | npx coveralls)",
     "deploy": "npx truffle deploy --network=ropsten",
     "start": "cd client/ && npm start",
-    "watch": "npm run watch-test",
-    "watch-test": "watch 'npm run test' contracts test"
+    "watch": "watch 'npm run test' contracts test"
   },
   "repository": {
     "type": "git",
