@@ -3,11 +3,12 @@ pragma solidity 0.8.3;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
+import "./DefiInterface.sol";
+
 /**
-    @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn
-    interests
-    */
-contract DefiPool {
+  *  @title A smart-contract that plays the role of a DeFi protocol where users can deposit and earn interests
+  */
+contract DefiPool is DefiInterface {
 
     /**
      * @dev An instance of ERC20 DAI Token
@@ -51,7 +52,9 @@ contract DefiPool {
       * @param _sender the address who owns the tokens
       * @param _amount the amount to be deposited
       */
-    function deposit(uint _amount, address _sender) public payable {
+    function deposit(uint _amount, address _sender) 
+        public override payable
+    {
         require(_amount >= 10, "Error, deposit must be >= 10 DAI");
 
         Dai.transferFrom(_sender, address(this), _amount);
@@ -67,7 +70,9 @@ contract DefiPool {
      * @notice Withdraw all amount deposited by a user
      * @param _user address of the user
      */
-    function withdraw(address _user) public payable {
+    function withdraw(address _user)
+        public override payable
+    {
         // 31577600 = seconds in 365.25 days
 
         // time spent for user's deposit
@@ -89,7 +94,10 @@ contract DefiPool {
     /**
      * @return return the contract balance
      */
-    function getContractBalance() public view returns (uint256) {
+    function getContractBalance()
+        public view override
+        returns (uint256)
+    {
         return Dai.balanceOf(address(this));
     }
 }
