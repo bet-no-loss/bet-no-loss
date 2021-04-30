@@ -23,13 +23,13 @@
 
 ## Description
 
-- Period 1  
+- Period 1  (Bet)
 Players bet on a sport event.
-- Period 2
+- Period 2 (Earn)
     - The total amount of bets (all players included) is then staked in DeFi.  
     - The sport event occurs
     - The oracle makes the event outcome available.
-- Period 3
+- Period 3 (Distribution)
     - Bet-no-loss withdraws the interests accrued in DeFi, substracts the platform fees.
     - The remaining can be split between winners according to their share in the total deposit value.
 
