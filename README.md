@@ -38,7 +38,7 @@ Each player can also withdraw his/her stake.
 
 ## Links
 
-* [Whitepaper](https://docs.google.com/document/d/17pnu1nYqquXjo-jIGvSeHCeNQ9_gPBti0XnI7pAoGkw)
+* [Whitepaper](doc/bnl-whitepaper-bet_no_loss.pdf)
 * Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
 * [Presentation](https://docs.google.com/presentation/d/17AitCSlIVLVsMk5n-se5vEJtA7_i9MJC9PXkDil75a4)
 * [Wireframes](https://app.diagrams.net/#G1tXstsevdC_w0BXNJh9pAyF5CtaAM2az-)
@@ -523,6 +523,7 @@ In order to run the Front-End application on your local machine:
 - [design_pattern_decisions.md](doc/design_pattern_decisions.md) explains why we chose the design patterns we are using in the code. 
 - [REQUIREMENTS.md](doc/REQUIREMENTS.md) Alyra final project's requirements
 - [tests_explication.md](doc/tests_explication.md) explains for each test why we wrote it and  what it is aimed at.
+- [whitepaper](doc/bnl-whitepaper-bet_no_loss.pdf)
 
 ## Smart-Contracts
 
