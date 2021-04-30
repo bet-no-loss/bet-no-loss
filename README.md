@@ -75,7 +75,7 @@ The back-end is composed of the following Ethereum **smart-contracts**:
     - Get the outcome of registered events
     - provides the outcome of an event when asked for
 - [`DefiPool`](contracts/DefiPool.sol) A smart-contract in charge of simulating a DeFi protocol that accepts deposits and allow withdrawal with accrued interests.
-- [`DateUtil`](contracts/DateUtil.sol) denotes a contract providing helper date handling functions
+- [`DateLib`](contracts/DateLib.sol) denotes a contract providing helper date handling functions
 
 ### Front-End
 
