@@ -55,7 +55,8 @@ Test the `Bet.sol` smart-contract
     - [ ] `approve` Checks that allowance is working ok
 
 ## `test/betoracle.test.js`
-All tests in this suite benefit from a `beforeEach` that instantiates  `BetOracle`
+All tests in this suite benefit from a `beforeEach` that instantiates  `BetOracle` before each test run.
+
 - `Adding Events`
     - [x] `can addSportEvent if OWNER` makes sure only the contract's creator (aka. owner) can add a new event and when doing so emits a `SportEventAdded` event.
     - [x] `cannot addSportEvent if NOT owner` makes sure the transaction reverts when a non owner address attempts to add a new event (due to OpenZeppelin `Ownable` access protection). In this case the error is `Ownable: caller is not the owner`.
@@ -78,3 +79,13 @@ getAddress() returns the address of this contract's instance
     - [ ] `testConnection() always returns true`
     - [ ] `addTestData`
 
+## `test/dai.test.js`
+
+Test the `DAI` token.  
+All tests benefit from a `beforeEach` that instantiates  `DAI` before each test run.
+
+- [x] `has a name` test that `.name()` returns the name value passed in to the constructor when the DAI was instantiated.
+- [x] `has a symbol` checks that `.symbol()` returns the the same symbol passed in to the constructor when instantiating a DAI.
+- [x] `has 18 decimals` make sure that `decimal()` returns `18`, identical to what was set in the constructor.
+- [x] `has a totalSupply` test that `.totalSuply()` returns the total supply set in the DAI's constructor, ie. `100 * 10^18`.
+- [x] `allow the total supply to the owner` checks the total supply is allowed to the DAI contracts's owner (ie. the address which deployed `DAI`).
