@@ -4,9 +4,10 @@ pragma solidity 0.8.3;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 import "./OracleInterface.sol";
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 /** 
  * This Ethereum smart-contract takes bets placed on sport events.  
  * It then invests all bets deposits for a given event (pot) in DeFi.  
