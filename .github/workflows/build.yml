@@ -5,6 +5,12 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "truffle-config.js"
+      - "contracts/**"
+      - ".github/workflows/build.yml"
   pull_request: {}
 
 jobs:
