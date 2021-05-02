@@ -157,7 +157,7 @@
 
 .inputTeam {
   position: relative;
-  left: -50px;
+  left: -30px;
   top: -10px;
   font-weight: bolder;
   font-style: oblique;
@@ -209,3 +209,365 @@ h3 {
   font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
 }
 
+/*Home*/
+
+#home {
+  background-color: #088C12;
+}
+
+.btnApp {
+  position: absolute;
+  top: 50px;
+  left: 1300px;
+}
+
+.appStyle {
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* ------------------------------------------------------------------ */
+/* b. Header Styles
+/* ------------------------------------------------------------------ */
+
+header {
+  position: relative;
+  height: 800px;
+  min-height: 500px;
+  width: 100%;
+
+  text-align: center;
+  overflow: hidden;
+}
+
+
+/* vertically center banner section */
+header:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+header .banner {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 85%;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+header .banner-text { width: 100%;}
+header .banner-text h1 {
+  font: 120px/1.1em 'opensans-bold', sans-serif;
+  color: #fff;
+  letter-spacing: -2px;
+  margin: 0 auto 18px auto;
+}
+header .banner-text h3 {
+  font: 18px/1.9em 'librebaskerville-regular', serif;
+  color: #ddd;
+  margin: 0 auto;
+  width: 70%;
+}
+header .banner-text h3 span,
+header .banner-text h3 a {
+  color: #fff;
+}
+header .banner-text hr {
+  width: 60%;
+  margin: 18px auto 24px auto;
+  border-color: #2F2D2E;
+  border-color: rgba(150, 150, 150, .1);
+}
+
+/* header social links */
+header .social {
+  margin: 24px 0;
+  padding: 0;
+  font-size: 30px;
+}
+header .social li {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 0;
+}
+header .social li a { color: #fff; }
+header .social li a:hover { color: #0762f9; }
+
+/* scrolldown link */
+header .scrolldown a {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  margin-left: -29px;
+  color: #fff;
+  display: block;
+  height: 42px;
+  width: 42px;
+  font-size: 42px;
+  line-height: 42px;
+  color: #fff;
+  border-radius: 100%;
+
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+header .scrolldown a:hover { color: #0762f9; }
+
+/* primary navigation
+--------------------------------------------------------------------- */
+#nav-wrap ul, #nav-wrap li, #nav-wrap a {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+/* nav-wrap */
+#nav-wrap {
+  font: 12px 'opensans-bold', sans-serif;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin: 0 auto;
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.opaque { background-color: #333; }
+
+/* hide toggle button */
+#nav-wrap > a.mobile-btn { display: none; }
+
+ul#nav {
+  min-height: 48px;
+  width: auto;
+
+  /* center align the menu */
+  text-align: center;
+}
+ul#nav li {
+  position: relative;
+  list-style: none;
+  height: 48px;
+  display: inline-block;
+}
+
+/* Links */
+ul#nav li a {
+
+  /* 8px padding top + 8px padding bottom + 32px line-height = 48px */
+
+  display: inline-block;
+  padding: 8px 13px;
+  line-height: 32px;
+  text-decoration: none;
+  text-align: left;
+  color: #fff;
+
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  -ms-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+
+ul#nav li a:active { background-color: transparent !important; }
+ul#nav li.current a { color: #fe6928; }
+
+
+
+
+
+/*
+Timeline*/
+
+.main-timeline{
+  font-family: 'Sanchez', serif;
+  position: relative;
+}
+.main-timeline:before{
+  content: '';
+  height: 100%;
+  width: 2px;
+  border: 3px dashed #999;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+.main-timeline:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.main-timeline .timeline{
+  width: 50.05%;
+  display:inline-block;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+.main-timeline .timeline:before,
+.main-timeline .timeline:after{
+  content: '';
+  background-color: #088C12;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  right: -12px;
+}
+.main-timeline .timeline:after{
+  height: 17px;
+  width: 150px;
+  border-radius: 0;
+  right: 0;
+}
+.main-timeline .timeline-content{
+  text-align: right;
+  min-height: 155px;
+  padding: 20px 230px 15px 12px;
+  display:block;
+}
+.main-timeline .timeline-content:hover{ text-decoration: none; }
+.main-timeline .timeline-year{
+  color: #088C12;
+  background-color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  height: 120px;
+  width: 120px;
+  border: 10px solid #088C12;
+  transform: translateY(-50%);
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  z-index: 1;
+}
+.main-timeline .title{
+  color: #088C12;
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin: 0 0 5px;
+}
+.main-timeline .description{
+  color: #101010;
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.main-timeline .timeline:nth-child(even){ float: right; }
+.main-timeline .timeline:nth-child(even):before{
+  right: auto;
+  left: -12px;
+}
+.main-timeline .timeline:nth-child(even):after{
+  right: auto;
+  left: 0;
+}
+.main-timeline .timeline:nth-child(even) .timeline-content{
+  padding: 20px 12px 15px 230px;
+  text-align: left;
+}
+.main-timeline .timeline:nth-child(even) .timeline-year{
+  right: auto;
+  left: 100px;
+}
+.main-timeline .timeline:nth-child(5n+2):before,
+.main-timeline .timeline:nth-child(5n+2):after{
+  background-color: #E53E35;
+}
+.main-timeline .timeline:nth-child(5n+2) .timeline-year{
+  color: #E53E35;
+  border-color: #E53E35;
+}
+.main-timeline .timeline:nth-child(5n+2) .title{ color: #E53E35; }
+
+
+.main-timeline .timeline:nth-child(5n+3):before,
+.main-timeline .timeline:nth-child(5n+3):after{
+  background-color: #1CA685;
+}
+.main-timeline .timeline:nth-child(5n+3) .timeline-year{
+  color: #1CA685;
+  border-color: #1CA685;
+}
+.main-timeline .timeline:nth-child(5n+3) .title{ color: #1CA685; }
+.main-timeline .timeline:nth-child(5n+4):before,
+.main-timeline .timeline:nth-child(5n+4):after{
+  background-color: #F05386;
+}
+.main-timeline .timeline:nth-child(5n+4) .timeline-year{
+  color: #F05386;
+  border-color: #F05386;
+}
+.main-timeline .timeline:nth-child(5n+4) .title{ color: #F05386; }
+@media screen and (max-width:990px){
+  .main-timeline .timeline-year{ right: 30px; }
+  .main-timeline .timeline-content{ padding: 15px 160px 15px 15px; }
+  .main-timeline .timeline:nth-child(even) .timeline-year{ left: 30px; }
+  .main-timeline .timeline:nth-child(even) .timeline-content{ padding: 15px 15px 15px 160px; }
+}
+@media screen and (max-width:767px){
+  .main-timeline:before{
+    transform: translateX(0);
+    left: -3px;
+  }
+  .main-timeline .timeline{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .main-timeline .timeline:before,
+  .main-timeline .timeline:after,
+  .main-timeline .timeline:nth-child(even):before,
+  .main-timeline .timeline:nth-child(even):after{
+    transform: translateY(0);
+    top: 14px;
+  }
+
+  .main-timeline .timeline:before,
+  .main-timeline .timeline:after{
+    right: auto;
+    left: -12px;
+  }
+  .main-timeline .timeline:after{ left: 0; }
+  .main-timeline .timeline:after,
+  .main-timeline .timeline:nth-child(even):after{
+    width: 50px;
+    top: 17px;
+  }
+  .main-timeline .timeline .timeline-content,
+  .main-timeline .timeline:nth-child(even) .timeline-content{
+    text-align: left;
+    padding: 70px 10px 10px 20px;
+  }
+  .main-timeline .timeline .timeline-year,
+  .main-timeline .timeline:nth-child(even) .timeline-year{
+    line-height: 40px;
+    height: 50px;
+    width: 120px;
+    border-width: 5px;
+    transform: translateY(0);
+    top: 0;
+    left: 45px;
+  }
+}
+
+/*
+Team*/
+
+.TextTeam {
+  color: white;
+
+}
