@@ -5,6 +5,12 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "test/**"
+      - "contracts/**"
+      - ".github/workflows/test.yml"
   pull_request: {}
 
 jobs:
