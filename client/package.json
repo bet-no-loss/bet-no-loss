@@ -47,5 +47,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": [
+    "ethereum",
+    "smart-contract",
+    "blockchain",
+    "bet",
+    "DeFi",
+    "DApp",
+    "solidity"
+  ]
 }
