@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '**/*.md'
+      - ".github/workflows/mermaid.yml"
 
 jobs:
   build:
