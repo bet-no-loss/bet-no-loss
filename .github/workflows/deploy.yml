@@ -43,7 +43,7 @@ on:
       - front-test
     paths:
       - "client/**"
-      - ".github/workflows/heroku_deploy.yml"
+      - ".github/workflows/deploy.yml"
 
 # What does it do?
 jobs:
