@@ -60,7 +60,7 @@
     "ganache-cli": "^6.12.2",
     "js-object-pretty-print": "^0.3.0",
     "luxon": "^1.26.0",
-    "solc-0.8": "npm:solc@^0.8.3",
+    "solc-0.8": "npm:solc@^0.8.4",
     "solidity-coverage": "^0.7.16",
     "solidity-docgen": "^0.5.11",
     "truffle": "^5.3.4",
