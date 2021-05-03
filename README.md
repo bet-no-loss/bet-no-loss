@@ -370,6 +370,9 @@ You need to do this once only for the Heroku app owner only (as you use the free
     # git clone git@github.com:bet-no-loss/bet-no-loss.git
     cd bet-no-loss
 
+    # Login (once) to Heroku via CLI if you have not already done so
+    heroku login
+
     # Declare the heroku git remote repository
     heroku git:remote --ssh-git -a bet-no-loss
 
