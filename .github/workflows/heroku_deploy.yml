@@ -1,0 +1,87 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# What?
+#
+# This Github Workflow Action is triggered  
+#   each time the front-test branch is pushed.
+# It runs on Github servers and extracts all the commits 
+#   related to the folder client/ into the client branch 
+#   then pushes them to the master branch on the `heroku` remote repository 
+# 
+# # Why?
+#
+# We use Heroku to deploy the client (front-end) code.  
+# The Heroku buildpack (mars/create-react-app) we use to deploy
+# our React-JS application requires the client code 
+# to be located in the root folder. 
+# However this does not work out of the box as our folder 
+# structure is different.  
+# Our repository is a monorepo  (ie. it is a single repository 
+# containing 2 projects 
+#   - back-end (smart-contracts) located in the root folder
+#   - front-end (React-JS) located beneath the `/client` folder
+# 
+# This is why we **only** push to heroku 
+#   the commits containing **the front-end code** 
+#   located in the `client` folder without all the smart-contract stuff (back-end).  
+# Heroku is configured to deploy each time the **`master`** branch 
+# is pushed, it then takes it from there and does its magic.
+#
+# Sources:
+# - https://github.com/marketplace/actions/deploy-to-heroku
+# - https://github.com/mars/create-react-app-buildpack/blob/master/README.md
+# - https://kauri.io/#collections/Full%20Stack%20dApp%20Tutorial%20Series/deploying-your-dapp-frontend-to-heroku/
+# - https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl/comments
+# - https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+name: 'Heroku Deploy'
+
+# When is this workflow triggered?
+on:
+  push:
+    branches:
+      - front-test
+    paths:
+      - "client/**"
+      - ".github/workflows/heroku_deploy.yml"
+
+# What does it do?
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout all the repository (all branches)
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Only push to Heroku the front-end code (located in the `client/` folder 
+      - name: Deploy to Heroku
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key:  ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "bet-no-loss"
+          heroku_email:    "ebouchut@gmail.com"
+          appdir:          "client" # where the client/front-end code is located
+          buildpack:       "https://github.com/mars/create-react-app-buildpack.git"
+          healthcheck:     "https://bet-no-loss.herokuapp.com/health"
+          dontautocreate:  true
+
+      # - name: Add frontend remote origin
+      #   run: git remote add heroku-frontend https://heroku:${{ secrets.HEROKU_API_TOKEN }}@git.heroku.com/${{ secrets.HEROKU_FRONTEND_APP_NAME }}.git
+      #
+      # - name: 'Push only client commits to Heroku'
+      #   with:
+      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #   run: |
+      #    git config --local user.email "action@github.com"
+      #    git config --local user.name "GitHub Action"
+      #
+      #     # Push to the remote repository named heroku 
+      #     # **only** the commits related to the client/ folder
+      #     # as if they were in root folder instead of "/client".
+      #
+      #     git checkout front-test &&  git subtree push --prefix client heroku master
+
+

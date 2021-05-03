@@ -21,6 +21,8 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage/
 *.lcov
+.coveralls.yml
+coverage.json
 
 # nyc test coverage
 .nyc_output
@@ -132,4 +134,8 @@ dist
 /.pnp
 /client/.pnp
 
+# IntelliJ IDE (WebStorm...) configuration folder
 .idea/
+
+# eth-gas-reporter output file
+gasReporterOutput.json
