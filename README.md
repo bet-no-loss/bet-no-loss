@@ -516,6 +516,7 @@ We now have a **CI and CD** 🎉 that:
 - **[`mermaid`](blob/master/.github/workflows/mermaid.yml)**:  Convert each [Mermaid-JS](https://mermaid-js.github.io/mermaid/#/) textual description of a diagram (found in Makrdown files) to the corresponding SVG image. It then inserts the diagram image in the README above the diagram textual description. (works on all branches).
 - **[`test`](blob/master/.github/workflows/test.yml)**: run the tests of the smart-contracts on the `master` branch. It fails when at least one test fails.
 - **[`deploy`](blob/master/.github/workflows/deploy.yml)**: deploy on Heroku the client/front-end code from the `front-test` branch
+We use the awesome [`AkhileshNS/heroku-deploy`](https://github.com/AkhileshNS/heroku-deploy) Github action 🧠, culmination of a long research. This one surpasses hands down our [first 2 attempts to automate deployment to Herok](#deploy-front-end).
 
 # Run
 
