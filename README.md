@@ -513,7 +513,7 @@ In this case, Heroku needs to be configured to use the **Heroku CLI** deployment
 We built a set of [Github workflows (actions)](https://github.com/bet-no-loss/bet-no-loss/actions) to **automate** 🤖 the integration and the deployment of our project as much as possible.  
 We now have a **CI and CD** 🎉 that:
 - **[`build`](blob/master/.github/workflows/build.yml)**:  compile the smart-contracts on the `master` branch. It fails on compilation error.
-- **[`mermaid`](blob/master/.github/workflows/mermaid.yml)**:  Convert each [Mermaid-JS](https://mermaid-js.github.io/mermaid/#/) textual description of a diagram (found in Makrdown files) to the corresponding SVG image. It then inserts the diagram image in the README above the diagram textual description. (works on all branches).
+- **[`mermaid`](blob/master/.github/workflows/mermaid.yml)**:  Convert each [Mermaid-JS](https://mermaid-js.github.io/mermaid/#/) textual description of a diagram (found in Makrdown files) to the corresponding SVG image. It then inserts the diagram image in the README above the diagram textual description. (on the `master` branch).
 - **[`test`](blob/master/.github/workflows/test.yml)**: run the tests of the smart-contracts on the `master` branch. It fails when at least one test fails.
 - **[`deploy`](blob/master/.github/workflows/deploy.yml)**: deploy on Heroku the client/front-end code from the `front-test` branch
 We use the awesome [`AkhileshNS/heroku-deploy`](https://github.com/AkhileshNS/heroku-deploy) Github action 🧠, culmination of a long research. This one surpasses hands down our [first 2 attempts to automate deployment to Herok](#deploy-front-end).

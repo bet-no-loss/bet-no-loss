@@ -2,6 +2,8 @@ name: 'mermaid'
 
 on:
   push:
+    branches:
+      - master
     paths:
       - '**/*.md'
       - ".github/workflows/mermaid.yml"
