@@ -26,8 +26,6 @@ contract Bet is Ownable, ReentrancyGuard {
      */
      IERC20 Dai;
 
-     address private _owner;
-
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
      */
@@ -101,7 +99,6 @@ contract Bet is Ownable, ReentrancyGuard {
      constructor(address _tokenAddress) {
         require(_tokenAddress != address(0), "Address 0 is not allowed");
         Dai = IERC20(_tokenAddress);
-        _owner = msg.sender;
     }
 
      /**
