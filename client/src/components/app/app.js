@@ -12,6 +12,7 @@ import {Jazzicon} from "@ukstv/jazzicon-react";
 import Home from "../app/Home/home";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Sidebar from "../Sidebar/Sidebar";
 
 const ipfsClient = require("ipfs-http-client");
 const ipfs = ipfsClient({
@@ -277,6 +278,8 @@ class App extends Component {
                                     </div>
                                 </div>
                             </nav>
+
+                            <Sidebar/>
 
                             {this.state.loading ? (
                                 <div id="loader" className="text-center mt-5">

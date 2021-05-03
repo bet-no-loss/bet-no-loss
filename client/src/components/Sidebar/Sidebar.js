@@ -12,7 +12,6 @@ function Sidebar() {
             Il y a actuellement $162.05 million déposé et $217,896 de
             récompenses hebdomadaire !</strong>
           </h3>
-          <p className="card-text">Last updated 3 mins ago</p>
         </div>
       </div>
     </>
