@@ -34,7 +34,7 @@
 # - https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-name: 'Heroku Deploy'
+name: 'deploy'
 
 # When is this workflow triggered?
 on:

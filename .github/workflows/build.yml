@@ -1,5 +1,5 @@
 # A Github Workflow Action to build the project
-name: Build
+name: build
 
 on:
   push:

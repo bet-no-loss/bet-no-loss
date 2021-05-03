@@ -1,4 +1,4 @@
-name: 'Compile Mermaid'
+name: 'mermaid'
 
 on:
   push:

@@ -1,5 +1,5 @@
 # A Github Workflow Action to test the project
-name: Test
+name: test
 
 on:
   push:
