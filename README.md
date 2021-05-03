@@ -8,7 +8,7 @@
 [![Heroku Dashboard](https://img.shields.io/badge/heroku-dashboard-blue)](https://dashboard.heroku.com/apps/bet-no-loss)
  [![Read doc](https://img.shields.io/badge/Doc-📖-blue)](#documentation)
 [![Open DApp](https://img.shields.io/badge/DApp-open-blue)](https://bet-no-loss.herokuapp.com/)
-![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)
+[![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)](#team)
 
 # Bet-no-loss
 
