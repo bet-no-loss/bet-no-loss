@@ -29,7 +29,7 @@ class Main extends Component {
 
 
     render() {
-        const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet} = this.props;
+        const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet, faucets1} = this.props;
         const {value, modalData} = this.state;
 
 
@@ -41,9 +41,32 @@ class Main extends Component {
                     <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '1024px' }}>
                         <div className="content" style={{backgroundColor: 'white'}}>
                             <p>&nbsp;</p>
+
+                                {/*Dashboard Admin*/}
                                 {currentAccount === adminAddress2 || adminAddress === currentAccount ?
                                 (<div className="card mb-3 mx-auto bg-dark" style={{ maxWidth: '512px' }}>
                                 <h2 className="text-white text-monospace bg-dark"><b><ins>Admin</ins></b></h2>
+                                <div>
+                                    <form onSubmit={(e) => {
+                                        e.preventDefault();
+                                        const address = this.faucet.value;
+                                        faucets1(address);
+                                    }}
+                                    >
+                                        <label>
+                                            Address (faucet):
+                                            <input
+                                                id="faucet"
+                                                type="text"
+                                                name="name"
+                                                ref={(input) => {
+                                                    this.faucet = input;
+                                                }}
+                                            />
+                                        </label>
+                                        <input type="submit" value="Send"/>
+                                    </form>
+                                </div>
                                     <form onSubmit={(e) => {
                                         e.preventDefault()
                                         const description = this.fileDescription.value

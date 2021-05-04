@@ -15,7 +15,7 @@ class Header extends Component {
                             <h1 className="responsive-headline">Bet No Loss &#9971;</h1>
                         </Fade>
                         <Fade bottom duration={1200}>
-                            <h3>Pari sportif sans perte de la mise &#128176;</h3>
+                            <h3>Le pari sportif où l'on ne perd jamais &#128176;</h3>
                         </Fade>
                         <Fade bottom duration={2000}>
                             <ul className="social">

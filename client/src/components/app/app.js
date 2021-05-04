@@ -22,6 +22,27 @@ const ipfs = ipfsClient({
 }); // leaving out the arguments will default to these values
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            account: undefined,
+            currentAccount: undefined,
+            adminAddress: "0xCcabbBE53596DE0db359E998587a6Bb226AA5481",
+            adminAddress2: "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d",
+            play: null,
+            dai: null,
+            sportEvents: [],
+            daiTokenBalance: '0',
+            loading: false,
+
+            userContract: null,
+            userContractAddress: null,
+        };
+        this.addSportEvent = this.addSportEvent.bind(this);
+        this.captureFile = this.captureFile.bind(this);
+    }
+
     async componentWillMount() {
         await this.init();
     }
@@ -57,13 +78,16 @@ class App extends Component {
         console.log("account", accounts);
         // Network ID
         const networkId = await web3.eth.net.getId();
-        const networkData = Play.networks[networkId];
-        const playNetworkData = DAI.networks[networkId];
-        if (networkData) {
+        const playNetworkData = Play.networks[networkId];
+        const daiNetworkData = DAI.networks[networkId];
+
+        if (playNetworkData) {
             // Assign contracts
-            const play = new web3.eth.Contract(Play.abi, networkData.address);
+            const play = new web3.eth.Contract(Play.abi, playNetworkData.address);
             this.setState({play});
-            const dai = new web3.eth.Contract(DAI.abi, playNetworkData.address);
+            let daiTokenBalance = await play.methods.getBalance(this.state.currentAccount).call()
+            this.setState({ daiTokenBalance: daiTokenBalance.toString()})
+            const dai = new web3.eth.Contract(DAI.abi, daiNetworkData.address);
             this.setState({dai});
             // Get files amount
             const eventsCount = await play.methods.eventCount().call();
@@ -80,7 +104,7 @@ class App extends Component {
                 });
             }
         } else {
-            window.alert("DStorage contract not deployed to detected network.");
+            window.alert("Play contract not deployed to detected network.");
         }
     }
 
@@ -158,21 +182,6 @@ class App extends Component {
             .call({from: this.state.currentAccount});
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            account: undefined,
-            currentAccount: undefined,
-            adminAddress: "0xCcabbBE53596DE0db359E998587a6Bb226AA5481",
-            adminAddress2: "0xe087Aa17aDB5385ef7A0c9a7409689B14b4f911d",
-            play: null,
-            dai: null,
-            sportEvents: [],
-            loading: false,
-        };
-        this.addSportEvent = this.addSportEvent.bind(this);
-        this.captureFile = this.captureFile.bind(this);
-    }
 
     render() {
         if (window.ethereum)
@@ -191,6 +200,8 @@ class App extends Component {
                         </Route>
 
                         <Route path="/app" exact>
+
+                            {/*Navbar*/}
                             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow">
                                 <div className="container">
                                     <Link className="navbar-brand p-0" to="/">
@@ -214,31 +225,10 @@ class App extends Component {
                                                 </a>
                                             </li>
                                             <li className="nav-item">
-                                                <form onSubmit={(e) => {
-                                                    e.preventDefault();
-                                                    const address = this.faucet.value;
-                                                    this.faucets1(address);
-                                                }}
-                                                >
-                                                    <label>
-                                                        Address :
-                                                        <input
-                                                            id="faucet"
-                                                            type="text"
-                                                            name="name"
-                                                            ref={(input) => {
-                                                                this.faucet = input;
-                                                            }}
-                                                        />
-                                                    </label>
-                                                    <input type="submit" value="Send"/>
-                                                </form>
-                                            </li>
-                                            <li className="nav-item">
                                                 <div className="nav-link pool">
                                                     <Link href="">
                               <span className="textPool">
-                                0 <span>ETH</span>
+                                  {window.web3.utils.fromWei(this.state.daiTokenBalance, 'Ether')} <span>DAI</span>
                               </span>
                                                     </Link>
                                                 </div>
@@ -269,7 +259,7 @@ class App extends Component {
                                                         </div>
                                                     </div>
                                                 ) : (
-                                                    <div className="badge badge-warning wallet">
+                                                    <div className="btn btn-outline-success wallet">
                                                         Connect Wallet
                                                     </div>
                                                 )}
@@ -281,6 +271,7 @@ class App extends Component {
 
                             <Sidebar/>
 
+                            {/*Cards bet*/}
                             {this.state.loading ? (
                                 <div id="loader" className="text-center mt-5">
                                     <p>Loading...</p>
@@ -294,10 +285,11 @@ class App extends Component {
                                     adminAddress2={this.state.adminAddress2}
                                     currentAccount={this.state.currentAccount}
                                     bet={this.bet}
+                                    faucet={this.faucets1}
                                 />
                             )}
                         </Route>
-                    <Footer/>
+                        <Footer/>
                     </Switch>
                 </Router>
             </div>
