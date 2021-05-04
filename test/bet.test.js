@@ -5,7 +5,7 @@ const { expectEvent, expectRevert, BN } = require('@openzeppelin/test-helpers');
 const constants   = require('@openzeppelin/test-helpers/src/constants');
 const { expect, assert }  = require('chai');
 const { DateTime } = require('luxon');
-const pretty       = require('js-object-pretty-print').pretty;
+// const pretty       = require('js-object-pretty-print').pretty;
 
 const Dai       = artifacts.require('DAI');
 const Bet       = artifacts.require('Bet');

@@ -54,11 +54,37 @@ contract('DAI', async function(accounts) {
             .to.be.a.bignumber
             .equal(totalSupply);
 
-        expectEvent.inConstruction(this.daiInstance, 'IERC20.Transfer', {
-            address: constants.ZERO_ADDRESS,
-            to:      ownerAddress,
-            value:   web3.utils.toWei('100', 'ether')
-        });
+        expectEvent.inConstruction(this.daiInstance, 
+            'IERC20.Transfer', {
+                address: constants.ZERO_ADDRESS,
+                to:      ownerAddress,
+                value:   web3.utils.toWei('100', 'ether')
+            }
+        );
     });
+    
+    specify("balanceOf an account with no allowance is 0", async function(){
+        expect(await this.daiInstance.balanceOf(
+            address2, 
+            {address: ownerAddress})
+        ).to.be.a.bignumber
+            .equal(new BN(0)); 
+    });
+
+    describe("allowance", function(){
+
+        specify.only("allowance ", async function(){
+            // Allow address2 to spend at most 50 DAI on behalf of ownerAddress
+            await this.daiInstance.apporve(ownerAddress, address2, 50);
+
+            expect(await this.daiInstance.balanceOf(address2))
+                .to.be.a.bignumber
+                .equal(
+                    web3.utils.toWei('42', 'ether'),
+                ); 
+        });
+    })
+    
+    
 
 });

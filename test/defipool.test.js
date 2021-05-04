@@ -9,7 +9,7 @@ const { expect, assert }  = require('chai');
 const DAI      = artifacts.require('DAI');
 const DefiPool = artifacts.require('DefiPool');
 
-contract.only('DefiPool', function(accounts) {
+contract('DefiPool', function(accounts) {
     "use strict";
 
     const [ownerAddress, address1, address2, address3] = accounts;
@@ -35,7 +35,7 @@ contract.only('DefiPool', function(accounts) {
             .equal(new BN(0));
     });
 
-    it("cannot deposit if not alowed", async function() {
+    it("cannot deposit whithout any allowance", async function() {
         await expectRevert(
             this.defiPoolInstance.deposit(
                 web3.utils.toWei(new BN(11), "ether"),
@@ -47,6 +47,11 @@ contract.only('DefiPool', function(accounts) {
     });
 
     it.skip("cannot deposit less than 10 DAI", async function() {
+        const approved = await this.defiPoolInstance.approve(
+            address1,
+            web3.utils.toWei(new BN(15), 'ether')
+        );
+
         await expectRevert(
             this.defiPoolInstance.deposit(
                 web3.utils.toWei(new BN(9), "ether"),
@@ -57,7 +62,12 @@ contract.only('DefiPool', function(accounts) {
         );
     });
 
-    it("can deposit if owner", async function() {
+    it.only("can deposit if owner", async function() {
+        // const approved = await this.defiPoolInstance.approve(
+        //     ownerAddress,
+        //     web3.utils.toWei(new BN(15), 'ether')
+        // );
+
         const depositAmount = web3.utils.toWei('10', 'ether');
 
         const tx = await this.defiPoolInstance.deposit(
