@@ -36,9 +36,13 @@ contract DefiPool is DefiInterface {
     mapping(address => uint256) public interests; // temporary
 
     /**
-     * @dev Triggered once an event has been added
+     * @dev Event triggered once an address deposited in the contract
      */
-    event Deposit(address indexed user, uint256 amount, uint256 timeStart);
+    event Deposit(
+        address indexed user,
+        uint256         amount,
+        uint256         timeStart
+    );
 
     /**
      * @param _tokenAddress address of the DAI ERC20 token
@@ -50,7 +54,7 @@ contract DefiPool is DefiInterface {
     /**
       * @notice Moves `_amount` tokens from `_sender` to this contract
       * @param _sender the address who owns the tokens
-      * @param _amount the amount to be deposited
+      * @param _amount the amount (DAI) to be deposited
       */
     function deposit(uint _amount, address _sender) 
         public override payable
