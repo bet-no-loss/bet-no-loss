@@ -89,3 +89,12 @@ All tests benefit from a `beforeEach` that instantiates  `DAI` before each test 
 - [x] `has 18 decimals` make sure that `decimal()` returns `18`, identical to what was set in the constructor.
 - [x] `has a totalSupply` test that `.totalSuply()` returns the total supply set in the DAI's constructor, ie. `100 * 10^18`.
 - [x] `allow the total supply to the owner` checks the total supply is allowed to the DAI contracts's owner (ie. the address which deployed `DAI`).
+
+## `test/defipool.test.js`
+
+Check that we can deposit, withdraw and get the contact's balance.
+
+- [ ] `can deposit if owner`
+- [ ] `can deposit if NOT owner`
+- [ ] `can withdraw`
+- [ ] `can get contract's balance`
