@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import dai from '../../assets/image/dai.png'
 
 class Main extends Component {
     state = {
@@ -220,16 +220,21 @@ class Main extends Component {
                                                                 <div className="mb-3 col-4">
                                                                     <span className="montantBet">Montant à parier :</span>
                                                                 </div>
-                                                                <div className="col-4">
-
+                                                                <div className="col-4 input-group">
                                                                     <input
                                                                         type="text"
                                                                         className="form-control text-right"
                                                                         id="basic-url"
                                                                         aria-describedby="basic-addon3"
-                                                                        placeholder="0 Dai"
+                                                                        placeholder="0"
                                                                         ref={(input) => { this.daiInput = input }}
                                                                     />
+                                                                    <div className="input-group-append">
+                                                                        <div className="input-group-text">
+                                                                            DAI &nbsp;&nbsp;&nbsp;
+                                                                            <img src={dai} height='24' alt="dai"/>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div className="col-4 ">
                                                                     <span className="inputTeam">pour {value}  &#128640;</span>
