@@ -11,7 +11,7 @@ const Dai       = artifacts.require('DAI');
 const Bet       = artifacts.require('Bet');
 const BetOracle = artifacts.require('BetOracle');
 
-contract('Bet', async function(accounts) {
+contract('Bet', function(accounts) {
     "use strict";
 
     const [ownerAddress, address1, address2, address3] = accounts;
