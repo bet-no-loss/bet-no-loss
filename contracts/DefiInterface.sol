@@ -4,13 +4,13 @@ pragma solidity ^0.8.4;
 interface DefiInterface {
 
     function deposit(uint _amount, address _sender) 
-    external payable;
+        external payable;
 
     function withdraw(address _user)
-    external payable;
+        external payable;
 
     function getContractBalance()
-    external view
-    returns (uint256);
+        external view
+        returns (uint256);
  
 }
