@@ -40,7 +40,7 @@ Each player can also withdraw his/her stake.
 
 * [Whitepaper](doc/bnl-whitepaper-bet_no_loss.pdf)
 * Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
-* [Presentation](https://docs.google.com/presentation/d/1vL14RXJ9NNq4FuVHOCMWnyq3-BDLyv0sRtQ9Bhi3CYE)
+* [Presentation]https://drive.google.com/file/d/1WUFw0dUK2OV_WfrPqX0PR1l9iCLZHfRk/view)
 * [Documentation](#documentation)
 * [Github](https://github.com/bet-no-loss/bet-no-loss/) (this repository: code, issues, wiki)
 
