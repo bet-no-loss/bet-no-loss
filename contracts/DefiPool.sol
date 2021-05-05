@@ -13,7 +13,7 @@ contract DefiPool is DefiInterface {
     /**
      * @dev An instance of ERC20 DAI Token
      */
-     IERC20 Dai;
+     IERC20 private Dai;
 
     /**
      * @dev Balance of each user address

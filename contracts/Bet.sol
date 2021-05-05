@@ -25,7 +25,7 @@ contract Bet is Ownable, ReentrancyGuard {
     /**
      * @dev An instance of ERC20 DAI Token
      */
-     IERC20 Dai;
+     IERC20 private Dai;
 
     /** 
      * @dev list of all bets per player, ie. a map composed (player address => bet id) pairs
