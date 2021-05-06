@@ -52,7 +52,13 @@ module.exports = {
       network_id: "5777",       // Any network (default: none)
     },
     ropsten: {
-      provider: () => new HDWalletProvider(`${process.env.MNEMONIC}`, `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`),
+      provider: () => new HDWalletProvider({
+        mnemonic: {
+          phrase:      `${process.env.MNEMONIC}`
+        },
+        providerOrUrl: `https://ropsten.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+        chainId: 3
+      }),
       network_id:    3,       // Ropsten's id
       gas:           5500000, // Ropsten has a lower block limit than mainnet
       confirmations: 2,       // # of confs to wait between deployments. (default: 0)
@@ -60,7 +66,13 @@ module.exports = {
       skipDryRun:    true     // Skip dry run before migrations? (default: false for public nets )
     },
     rinkeby: {
-      provider: () => new HDWalletProvider(`${process.env.MNEMONIC}`, `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`),
+      provider: () => new HDWalletProvider({
+        mnemonic: {
+          phrase:      `${process.env.MNEMONIC}`
+        },
+        providerOrUrl: `https://rinkeby.infura.io/v3/${process.env.INFURA_PROJECT_ID}`,
+        chainId: 4
+      }),
       network_id:    4,       // Rinkeby's id
       gas:           5500000, // Q) Does Rinkeby has a lower block limit than mainnet?
       confirmations: 2,       // # of confs to wait between deployments. (default: 0)
