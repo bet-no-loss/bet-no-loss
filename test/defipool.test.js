@@ -62,7 +62,7 @@ contract('DefiPool', function(accounts) {
         );
     });
 
-    it.only("can deposit if owner", async function() {
+    it.skip("can deposit if owner", async function() {
         // const approved = await this.defiPoolInstance.approve(
         //     ownerAddress,
         //     web3.utils.toWei(new BN(15), 'ether')
