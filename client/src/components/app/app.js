@@ -11,6 +11,7 @@ import logo from "../../logo.svg";
 import {Jazzicon} from "@ukstv/jazzicon-react";
 import Home from "../app/Home/home";
 
+
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -34,6 +35,7 @@ class App extends Component {
             dai: null,
             sportEvents: [],
             daiTokenBalance: '0',
+            betsPlayer: undefined,
             loading: false,
 
             userContract: null,
@@ -155,24 +157,24 @@ class App extends Component {
 
     faucets1 = (address) => {
         this.state.dai.methods
-            .transfer(address, 1000)
+            .transfer(address, '1000')
             .send({from: this.state.adminAddress2}); //change adminAddress
         console.log("FAUCET")
     };
 
-    bet = (winner, amount) => {
-        this.state.play.methods.bet(winner, amount).send({from: this.state.currentAccount});
+    bet = (winner, amount, eventId) => {
+        this.state.play.methods.bet(winner, amount, eventId).send({from: this.state.currentAccount});
     };
 
     checkEarnings = async (eventId) => {
-        await this.state.dai.methods
-            .checkEarnings()
+        await this.state.play.methods
+            .checkEarnings(eventId)
             .call({from: this.state.currentAccount});
     };
 
     withdraw = async (playerAddress, eventId) => {
-        await this.state.dai.methods
-            .withdraw()
+        await this.state.play.methods
+            .withdraw(playerAddress, eventId)
             .call({from: this.state.currentAccount});
     };
 
@@ -182,6 +184,11 @@ class App extends Component {
             .call({from: this.state.currentAccount});
     };
 
+    betsPlayer = async (address) => {
+        const per = await this.state.play.methods.betsPerPlayer(address)
+        console.log('betsPerPlayer', per)
+        this.setState({betsPlayer: per})
+    }
 
     render() {
         if (window.ethereum)
@@ -285,7 +292,8 @@ class App extends Component {
                                     adminAddress2={this.state.adminAddress2}
                                     currentAccount={this.state.currentAccount}
                                     bet={this.bet}
-                                    faucet={this.faucets1}
+                                    faucets1={this.faucets1}
+                                    play={this.state.play}
                                 />
                             )}
                         </Route>

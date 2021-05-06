@@ -4,7 +4,8 @@
     {
       "inputs": [],
       "stateMutability": "payable",
-      "type": "constructor"
+      "type": "constructor",
+      "payable": true
     },
     {
       "anonymous": false,
@@ -48,7 +49,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -67,7 +69,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -86,7 +89,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -105,21 +109,24 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
       "name": "deposit",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [],
       "name": "withdraw",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [],
@@ -132,7 +139,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -145,7 +153,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"payable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timeStart\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"depositStart\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"depositTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getUserBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"interests\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"Deposit(address,uint256,uint256)\":{\"details\":\"Triggered once an event has been added\"}},\"kind\":\"dev\",\"methods\":{\"getContractBalance()\":{\"returns\":{\"_0\":\"return the contract balance\"}},\"getUserBalance()\":{\"returns\":{\"_0\":\"return msg.sender balance\"}}},\"stateVariables\":{\"depositStart\":{\"details\":\"Start date of each user deposit\"},\"depositTime\":{\"details\":\"Time spent in user deposit\"},\"interests\":{\"details\":\"Interests earn per user\"},\"userBalance\":{\"details\":\"Balance of each user address\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"deposit()\":{\"notice\":\"deposit ether to the contract\"},\"withdraw()\":{\"notice\":\"Withdraw all amount deposited by a user\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/Lidmi/Desktop/Alyra/ProjetFinal/BetNoLoss/bet-no-loss/contracts/DefiPool.sol\":\"DefiPool\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Lidmi/Desktop/Alyra/ProjetFinal/BetNoLoss/bet-no-loss/contracts/DefiPool.sol\":{\"keccak256\":\"0x5aedc466dd3d185a57b380da745232cf8b0dc7c0650d0c747c9a4c40e3e4fe85\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://46c32f443c45eefa881fb38fdc28dfdbffc49a6e0389f26541e41dc030ada590\",\"dweb:/ipfs/QmNhDvPnFeKZuSf9gjjzWGjJLvhTxKWGVY6gKT8KfqxEF7\"]}},\"version\":1}",
@@ -7198,12 +7207,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x9c22AAc69344eF1F22943769596aBAA061b29b9E",
-      "transactionHash": "0x13e886c55e46d1e4d3b41e262973ceaa47db69b2a4d7277f2c3236b392d69da2"
+      "address": "0x95459D4916107faedDf02d09E4Ed5eB15fC286CB",
+      "transactionHash": "0x81a166b9f9bd7de00d3346a9f50202ce565e47770eb137e6e535adbe52b44978"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-04T19:22:49.094Z",
+  "updatedAt": "2021-05-05T17:42:12.997Z",
+  "networkType": "ethereum",
   "devdoc": {
     "events": {
       "Deposit(address,uint256,uint256)": {

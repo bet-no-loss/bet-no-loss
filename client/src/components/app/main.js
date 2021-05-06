@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import dai from '../../assets/image/dai.png'
 
+
 class Main extends Component {
     state = {
         show: false,
         value: undefined,
-        modalData: ''
+        modalData: '',
     };
 
     showModal = (data) => {
@@ -29,7 +30,7 @@ class Main extends Component {
 
 
     render() {
-        const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet, faucets1} = this.props;
+        const {addSportEvent, currentAccount, adminAddress, adminAddress2, play, faucets1} = this.props;
         const {value, modalData} = this.state;
 
 
@@ -182,11 +183,19 @@ class Main extends Component {
                                                             <span className="pr-2">&#127942;</span> 3,500 <span>$</span>
                                                             <span>numéro : {modalData.eventId}</span>
                                                         </div>
-                                                        <form onSubmit={(e) => {
+                                                        <form onSubmit={async (e) => {
                                                             e.preventDefault()
+
                                                             const winner = this.state.value
-                                                            const amount = this.daiInput.value
-                                                            bet(winner, amount)
+                                                            const amount = this.daiInput.value.toString()
+                                                            const eventId = modalData.eventId
+                                                            console.log('id', eventId)
+
+                                                            await play.methods.bet(winner, amount,eventId).send({
+                                                                from: currentAccount,
+                                                                gas: 300000,
+                                                                value: window.web3.utils.toWei(amount, 'ether')
+                                                            })
                                                         }}>
                                                             <div className="card-text d-flex flex-row col-12 mt-5">
                                                                 <div className="col-4">
@@ -218,7 +227,7 @@ class Main extends Component {
                                                             </div>
                                                             <div className="card-body mt-5 col-12 d-flex flex-row align-items-center justify-content-center">
                                                                 <div className="mb-3 col-4">
-                                                                    <span className="montantBet">Montant à parier :</span>
+                                                                    <span className="montantBet">Montant à parier pour le pari n°{modalData.eventId} :</span>
                                                                 </div>
                                                                 <div className="col-4 input-group">
                                                                     <input

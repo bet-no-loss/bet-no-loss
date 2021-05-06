@@ -80,7 +80,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -153,7 +154,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -189,7 +191,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -202,7 +205,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -251,7 +255,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -300,7 +305,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -313,7 +319,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -326,7 +333,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -29194,12 +29202,13 @@
         }
       },
       "links": {},
-      "address": "0xfD9A342d729245312e35f99EF3E9d08742E24F09",
-      "transactionHash": "0x5d41592ddbb1aa53498791da81ce37974423de981444b10dcdc9a17bd5721f69"
+      "address": "0x078eb7F9D078BF725f661F84098317A1F567A90a",
+      "transactionHash": "0x7d85f48ca7885bdc72d1443783ab6b6eb70c1eef2ee2b8de1e634dfcb47c8091"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-04T19:22:48.949Z",
+  "updatedAt": "2021-05-05T17:42:12.906Z",
+  "networkType": "ethereum",
   "devdoc": {
     "events": {
       "SportEventAdded(bytes32,string,string,uint8,uint256,uint8,int8)": {

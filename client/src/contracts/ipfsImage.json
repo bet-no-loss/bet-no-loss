@@ -25,7 +25,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_iHash\",\"type\":\"string\"}],\"name\":\"set\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Lebeil\",\"kind\":\"dev\",\"methods\":{\"get()\":{\"returns\":{\"_0\":\"the IPFS hash of the image (as a string)\"}},\"set(string)\":{\"params\":{\"_iHash\":\"the IPFS hash of this image (as a string)\"}}},\"stateVariables\":{\"iHash\":{\"details\":\"The IPFS image Hash of this image\"}},\"title\":\"TODO TODO: description\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"get()\":{\"notice\":\"Read Function: Get the IPFS Hash of this image\"},\"set(string)\":{\"notice\":\"Write function: Set the passed in IPFS hash for this image\"}},\"notice\":\"TODO (one-liner short description)\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/Lidmi/Desktop/Alyra/ProjetFinal/BetNoLoss/bet-no-loss/contracts/ipfsImage.sol\":\"ipfsImage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/Lidmi/Desktop/Alyra/ProjetFinal/BetNoLoss/bet-no-loss/contracts/ipfsImage.sol\":{\"keccak256\":\"0x4449affef7b485f1ff6a6e8ec247c999e4c8b71ea0d49d0b71ba8fde183a896c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3316c5c717c8535c8597d99d316c3234282d78e7d3d102a0304e7a99873070bc\",\"dweb:/ipfs/Qmd2ifisDb1ajhB9bEZUEcQTiMFWxnaxcb4fybWZV4tByT\"]}},\"version\":1}",
@@ -3138,12 +3139,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xA9211Ca366Ae97e09b8Daee6F9De795E2866a633",
-      "transactionHash": "0x467ea90238cccf77ff3da32c90e87be07e8a3c577f8457b393f28be836c1168d"
+      "address": "0x82f9548e0121A9eBd6d98ECa77425e59F4193Ee6",
+      "transactionHash": "0x294e61021a2d67a1f2c0b30739c5e1c37a6dbf9ce6bea73f6944ab855886a652"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-04T19:22:49.166Z",
+  "updatedAt": "2021-05-05T17:42:13.030Z",
+  "networkType": "ethereum",
   "devdoc": {
     "author": "Lebeil",
     "kind": "dev",
