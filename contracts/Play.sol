@@ -66,7 +66,7 @@ contract Play {
 
     // TO DO: throw an error if already played for an event
     function bet(string memory _winner, uint _amount, uint eventId) public {
-        require(_amount >= 10, "A minimum of 10DAI is required");
+        /*require(_amount >= 10, "A minimum of 10DAI is required");*/
         // Deposit Dai
         Dai.transferFrom(msg.sender, address(this), _amount);
 

@@ -7,6 +7,7 @@ class Main extends Component {
         show: false,
         value: undefined,
         modalData: '',
+        message: ''
     };
 
     showModal = (data) => {
@@ -30,8 +31,8 @@ class Main extends Component {
 
 
     render() {
-        const {addSportEvent, currentAccount, adminAddress, adminAddress2, play, faucets1} = this.props;
-        const {value, modalData} = this.state;
+        const {addSportEvent, currentAccount, adminAddress, adminAddress2, bet, faucets1} = this.props;
+        const {value, modalData, message} = this.state;
 
 
         console.log('admin',this.props.adminAddress)
@@ -191,11 +192,15 @@ class Main extends Component {
                                                             const eventId = modalData.eventId
                                                             console.log('id', eventId)
 
-                                                            await play.methods.bet(winner, amount,eventId).send({
+                                                            this.setState({message: 'Transaction en attente...'})
+                                                            bet(winner,amount,eventId)
+                                                            /*await play.methods.bet(winner, amount, eventId).send({
                                                                 from: currentAccount,
                                                                 gas: 300000,
-                                                                value: window.web3.utils.toWei(amount, 'ether')
-                                                            })
+                                                                value: window.web3.utils.toWei(amount.toString(), 'ether')
+                                                            })*/
+
+                                                            this.setState({message: 'Transaction réussie !'})
                                                         }}>
                                                             <div className="card-text d-flex flex-row col-12 mt-5">
                                                                 <div className="col-4">
@@ -258,7 +263,7 @@ class Main extends Component {
                                                                 </button>
                                                             </div>
                                                         </form>
-
+                                                        <h3 className="pt-3">{message}</h3>
                                                     </div>
                                                 </div>
                                             </div>
