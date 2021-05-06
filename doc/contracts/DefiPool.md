@@ -36,5 +36,5 @@ Withdraw all amount deposited by a user
 
 
 
-Triggered once an event has been added
+Event triggered once an address deposited in the contract
 
