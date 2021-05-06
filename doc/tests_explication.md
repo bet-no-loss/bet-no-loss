@@ -9,6 +9,7 @@ We are using:
 - truffle test as a test runner engine
 - [chai](https://www.npmjs.com/package/chai) for our TDD assertions
 
+We use the **`expect`** variant in our tests.
 
 ## Test Struture
 
