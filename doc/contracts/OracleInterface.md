@@ -41,10 +41,4 @@ Declares the functions that the `BetOracle` contract exposes externally
 
 
 
-### `addTestData()` (external)
-
-
-
-
-
 

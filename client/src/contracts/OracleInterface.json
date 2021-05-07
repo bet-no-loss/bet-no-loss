@@ -156,16 +156,9 @@
       ],
       "stateMutability": "pure",
       "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "addTestData",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"addTestData\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"eventExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllSportEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"getEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_pending\",\"type\":\"bool\"}],\"name\":\"getLatestEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPendingEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"testConnection\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"The interface for the events Oracle (`BetOracle`)\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Declares the functions that the `BetOracle` contract exposes externally\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":\"OracleInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":{\"keccak256\":\"0xe22f61026902abeedbdebb2384db654a3ef00fbabdb0c90964973359886d39dc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://11755767186489402f6c50846cc9e42f87cb103b0f4d01d13adfe05589257bda\",\"dweb:/ipfs/QmWNcNTipu5ZDHLRQkC4QMUPHWQhqnfD2x3GxrX8u6fUAG\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"eventExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllSportEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"getEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_pending\",\"type\":\"bool\"}],\"name\":\"getLatestEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPendingEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"testConnection\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"The interface for the events Oracle (`BetOracle`)\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Declares the functions that the `BetOracle` contract exposes externally\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":\"OracleInterface\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":{\"keccak256\":\"0xcf382941097a7fbd668df4d01572d90222d00ac7f10c74e0d96275fb2b16b8f0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4d6841d2152df1703657e54bc264810df770fd87009538fdb7cbe01c4ecc3925\",\"dweb:/ipfs/QmPvWKe5jnAkZeqKV3Ffut1ssQGsSodJZ3AT7DDZZCL6XW\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -173,21 +166,21 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\n/**\n * @title The interface for the events Oracle (`BetOracle`)\n * @notice Declares the functions that the `BetOracle` contract exposes externally\n */\ninterface OracleInterface {\n\n    /**\n     * @dev The possible outcomes for an event\n     * Keep in sync the `EventOutcome` constant in `betoracle.txt.js` when updating this enum.\n     */\n    enum EventOutcome {\n        Pending,    //match has not been fought to decision\n        Underway,   //match has started & is underway\n        Draw,       //anything other than a clear winner (e.g. cancelled)\n        Decided     //index of participant who is the winner \n    }\n\n    function eventExists(bytes32 _eventId)\n        external view returns (bool);\n    \n    function getPendingEvents() \n        external view returns (bytes32[] memory);\n\n    function getAllSportEvents() \n        external view returns (bytes32[] memory);\n\n    function getEvent(bytes32 _eventId) \n        external view returns (\n            bytes32       id,\n            string memory name, \n            string memory participants,\n            uint8         participantCount,\n            uint          date, \n            EventOutcome  outcome, \n            int8          winner\n        );\n\n    function getLatestEvent(bool _pending) \n        external view returns (\n            bytes32       id,\n            string memory name, \n            string memory participants,\n            uint8          participantCount,\n            uint          date, \n            EventOutcome  outcome, \n            int8          winner\n        );\n\n    function testConnection() \n        external pure returns (bool);\n\n    function addTestData() \n        external; \n}",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.4;\n\n/**\n * @title The interface for the events Oracle (`BetOracle`)\n * @notice Declares the functions that the `BetOracle` contract exposes externally\n */\ninterface OracleInterface {\n\n    /**\n     * @dev The possible outcomes for an event\n     * Keep in sync the `EventOutcome` constant in `betoracle.txt.js` when updating this enum.\n     */\n    enum EventOutcome {\n        Pending,    //match has not been fought to decision\n        Underway,   //match has started & is underway\n        Draw,       //anything other than a clear winner (e.g. cancelled)\n        Decided     //index of participant who is the winner \n    }\n\n    function eventExists(bytes32 _eventId)\n        external view returns (bool);\n    \n    function getPendingEvents() \n        external view returns (bytes32[] memory);\n\n    function getAllSportEvents() \n        external view returns (bytes32[] memory);\n\n    function getEvent(bytes32 _eventId) \n        external view returns (\n            bytes32       id,\n            string memory name, \n            string memory participants,\n            uint8         participantCount,\n            uint          date, \n            EventOutcome  outcome, \n            int8          winner\n        );\n\n    function getLatestEvent(bool _pending) \n        external view returns (\n            bytes32       id,\n            string memory name, \n            string memory participants,\n            uint8          participantCount,\n            uint          date, \n            EventOutcome  outcome, \n            int8          winner\n        );\n\n    function testConnection() \n        external pure returns (bool);\n\n}",
   "sourcePath": "/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol",
   "ast": {
     "absolutePath": "/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol",
     "exportedSymbols": {
       "OracleInterface": [
-        2211
+        1105
       ]
     },
-    "id": 2212,
+    "id": 1106,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2137,
+        "id": 1034,
         "literals": [
           "solidity",
           "^",
@@ -195,7 +188,7 @@
           ".4"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:7"
+        "src": "32:23:2"
       },
       {
         "abstract": false,
@@ -203,80 +196,80 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 2138,
+          "id": 1035,
           "nodeType": "StructuredDocumentation",
-          "src": "57:150:7",
+          "src": "57:150:2",
           "text": " @title The interface for the events Oracle (`BetOracle`)\n @notice Declares the functions that the `BetOracle` contract exposes externally"
         },
         "fullyImplemented": false,
-        "id": 2211,
+        "id": 1105,
         "linearizedBaseContracts": [
-          2211
+          1105
         ],
         "name": "OracleInterface",
-        "nameLocation": "218:15:7",
+        "nameLocation": "218:15:2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "OracleInterface.EventOutcome",
-            "id": 2143,
+            "id": 1040,
             "members": [
               {
-                "id": 2139,
+                "id": 1036,
                 "name": "Pending",
-                "nameLocation": "427:7:7",
+                "nameLocation": "427:7:2",
                 "nodeType": "EnumValue",
-                "src": "427:7:7"
+                "src": "427:7:2"
               },
               {
-                "id": 2140,
+                "id": 1037,
                 "name": "Underway",
-                "nameLocation": "487:8:7",
+                "nameLocation": "487:8:2",
                 "nodeType": "EnumValue",
-                "src": "487:8:7"
+                "src": "487:8:2"
               },
               {
-                "id": 2141,
+                "id": 1038,
                 "name": "Draw",
-                "nameLocation": "541:4:7",
+                "nameLocation": "541:4:2",
                 "nodeType": "EnumValue",
-                "src": "541:4:7"
+                "src": "541:4:2"
               },
               {
-                "id": 2142,
+                "id": 1039,
                 "name": "Decided",
-                "nameLocation": "615:7:7",
+                "nameLocation": "615:7:2",
                 "nodeType": "EnumValue",
-                "src": "615:7:7"
+                "src": "615:7:2"
               }
             ],
             "name": "EventOutcome",
-            "nameLocation": "404:12:7",
+            "nameLocation": "404:12:2",
             "nodeType": "EnumDefinition",
-            "src": "399:275:7"
+            "src": "399:275:2"
           },
           {
             "functionSelector": "118e58bd",
-            "id": 2150,
+            "id": 1047,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "eventExists",
-            "nameLocation": "689:11:7",
+            "nameLocation": "689:11:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2146,
+              "id": 1043,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 1042,
                   "mutability": "mutable",
                   "name": "_eventId",
-                  "nameLocation": "709:8:7",
+                  "nameLocation": "709:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
-                  "src": "701:16:7",
+                  "scope": 1047,
+                  "src": "701:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -284,10 +277,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 1041,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "701:7:7",
+                    "src": "701:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -296,21 +289,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "700:18:7"
+              "src": "700:18:2"
             },
             "returnParameters": {
-              "id": 2149,
+              "id": 1046,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2148,
+                  "id": 1045,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
-                  "src": "750:4:7",
+                  "scope": 1047,
+                  "src": "750:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -318,10 +311,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2147,
+                    "id": 1044,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "750:4:7",
+                    "src": "750:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -330,42 +323,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "749:6:7"
+              "src": "749:6:2"
             },
-            "scope": 2211,
-            "src": "680:76:7",
+            "scope": 1105,
+            "src": "680:76:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "b4184e70",
-            "id": 2156,
+            "id": 1053,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPendingEvents",
-            "nameLocation": "775:16:7",
+            "nameLocation": "775:16:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2151,
+              "id": 1048,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "791:2:7"
+              "src": "791:2:2"
             },
             "returnParameters": {
-              "id": 2155,
+              "id": 1052,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2154,
+                  "id": 1051,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2156,
-                  "src": "826:16:7",
+                  "scope": 1053,
+                  "src": "826:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -374,18 +367,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2152,
+                      "id": 1049,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
-                      "src": "826:7:7",
+                      "src": "826:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 2153,
+                    "id": 1050,
                     "nodeType": "ArrayTypeName",
-                    "src": "826:9:7",
+                    "src": "826:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
                       "typeString": "bytes32[]"
@@ -394,42 +387,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "825:18:7"
+              "src": "825:18:2"
             },
-            "scope": 2211,
-            "src": "766:78:7",
+            "scope": 1105,
+            "src": "766:78:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "a717e89a",
-            "id": 2162,
+            "id": 1059,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAllSportEvents",
-            "nameLocation": "859:17:7",
+            "nameLocation": "859:17:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2157,
+              "id": 1054,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "876:2:7"
+              "src": "876:2:2"
             },
             "returnParameters": {
-              "id": 2161,
+              "id": 1058,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2160,
+                  "id": 1057,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2162,
-                  "src": "911:16:7",
+                  "scope": 1059,
+                  "src": "911:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -438,18 +431,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2158,
+                      "id": 1055,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
-                      "src": "911:7:7",
+                      "src": "911:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 2159,
+                    "id": 1056,
                     "nodeType": "ArrayTypeName",
-                    "src": "911:9:7",
+                    "src": "911:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
                       "typeString": "bytes32[]"
@@ -458,36 +451,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "910:18:7"
+              "src": "910:18:2"
             },
-            "scope": 2211,
-            "src": "850:79:7",
+            "scope": 1105,
+            "src": "850:79:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "8c172fa2",
-            "id": 2182,
+            "id": 1079,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getEvent",
-            "nameLocation": "944:8:7",
+            "nameLocation": "944:8:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2165,
+              "id": 1062,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2164,
+                  "id": 1061,
                   "mutability": "mutable",
                   "name": "_eventId",
-                  "nameLocation": "961:8:7",
+                  "nameLocation": "961:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "953:16:7",
+                  "scope": 1079,
+                  "src": "953:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -495,10 +488,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2163,
+                    "id": 1060,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "953:7:7",
+                    "src": "953:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -507,21 +500,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "952:18:7"
+              "src": "952:18:2"
             },
             "returnParameters": {
-              "id": 2181,
+              "id": 1078,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2167,
+                  "id": 1064,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1030:2:7",
+                  "nameLocation": "1030:2:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1016:16:7",
+                  "scope": 1079,
+                  "src": "1016:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -529,10 +522,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2166,
+                    "id": 1063,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1016:7:7",
+                    "src": "1016:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -542,13 +535,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2169,
+                  "id": 1066,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "1060:4:7",
+                  "nameLocation": "1060:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1046:18:7",
+                  "scope": 1079,
+                  "src": "1046:18:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -556,10 +549,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2168,
+                    "id": 1065,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1046:6:7",
+                    "src": "1046:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -569,13 +562,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2171,
+                  "id": 1068,
                   "mutability": "mutable",
                   "name": "participants",
-                  "nameLocation": "1093:12:7",
+                  "nameLocation": "1093:12:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1079:26:7",
+                  "scope": 1079,
+                  "src": "1079:26:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -583,10 +576,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2170,
+                    "id": 1067,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1079:6:7",
+                    "src": "1079:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -596,13 +589,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2173,
+                  "id": 1070,
                   "mutability": "mutable",
                   "name": "participantCount",
-                  "nameLocation": "1133:16:7",
+                  "nameLocation": "1133:16:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1119:30:7",
+                  "scope": 1079,
+                  "src": "1119:30:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -610,10 +603,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 2172,
+                    "id": 1069,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1119:5:7",
+                    "src": "1119:5:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -623,13 +616,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2175,
+                  "id": 1072,
                   "mutability": "mutable",
                   "name": "date",
-                  "nameLocation": "1177:4:7",
+                  "nameLocation": "1177:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1163:18:7",
+                  "scope": 1079,
+                  "src": "1163:18:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -637,10 +630,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2174,
+                    "id": 1071,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1163:4:7",
+                    "src": "1163:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -650,33 +643,33 @@
                 },
                 {
                   "constant": false,
-                  "id": 2178,
+                  "id": 1075,
                   "mutability": "mutable",
                   "name": "outcome",
-                  "nameLocation": "1210:7:7",
+                  "nameLocation": "1210:7:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1196:21:7",
+                  "scope": 1079,
+                  "src": "1196:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                    "typeIdentifier": "t_enum$_EventOutcome_$1040",
                     "typeString": "enum OracleInterface.EventOutcome"
                   },
                   "typeName": {
-                    "id": 2177,
+                    "id": 1074,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 2176,
+                      "id": 1073,
                       "name": "EventOutcome",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2143,
-                      "src": "1196:12:7"
+                      "referencedDeclaration": 1040,
+                      "src": "1196:12:2"
                     },
-                    "referencedDeclaration": 2143,
-                    "src": "1196:12:7",
+                    "referencedDeclaration": 1040,
+                    "src": "1196:12:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                      "typeIdentifier": "t_enum$_EventOutcome_$1040",
                       "typeString": "enum OracleInterface.EventOutcome"
                     }
                   },
@@ -684,13 +677,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2180,
+                  "id": 1077,
                   "mutability": "mutable",
                   "name": "winner",
-                  "nameLocation": "1246:6:7",
+                  "nameLocation": "1246:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1232:20:7",
+                  "scope": 1079,
+                  "src": "1232:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -698,10 +691,10 @@
                     "typeString": "int8"
                   },
                   "typeName": {
-                    "id": 2179,
+                    "id": 1076,
                     "name": "int8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1232:4:7",
+                    "src": "1232:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int8",
                       "typeString": "int8"
@@ -710,36 +703,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1002:260:7"
+              "src": "1002:260:2"
             },
-            "scope": 2211,
-            "src": "935:328:7",
+            "scope": 1105,
+            "src": "935:328:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "29e54269",
-            "id": 2202,
+            "id": 1099,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLatestEvent",
-            "nameLocation": "1278:14:7",
+            "nameLocation": "1278:14:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2185,
+              "id": 1082,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2184,
+                  "id": 1081,
                   "mutability": "mutable",
                   "name": "_pending",
-                  "nameLocation": "1298:8:7",
+                  "nameLocation": "1298:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1293:13:7",
+                  "scope": 1099,
+                  "src": "1293:13:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -747,10 +740,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2183,
+                    "id": 1080,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1293:4:7",
+                    "src": "1293:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -759,21 +752,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1292:15:7"
+              "src": "1292:15:2"
             },
             "returnParameters": {
-              "id": 2201,
+              "id": 1098,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2187,
+                  "id": 1084,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1367:2:7",
+                  "nameLocation": "1367:2:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1353:16:7",
+                  "scope": 1099,
+                  "src": "1353:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -781,10 +774,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2186,
+                    "id": 1083,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1353:7:7",
+                    "src": "1353:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -794,13 +787,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2189,
+                  "id": 1086,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "1397:4:7",
+                  "nameLocation": "1397:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1383:18:7",
+                  "scope": 1099,
+                  "src": "1383:18:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -808,10 +801,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2188,
+                    "id": 1085,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1383:6:7",
+                    "src": "1383:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -821,13 +814,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2191,
+                  "id": 1088,
                   "mutability": "mutable",
                   "name": "participants",
-                  "nameLocation": "1430:12:7",
+                  "nameLocation": "1430:12:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1416:26:7",
+                  "scope": 1099,
+                  "src": "1416:26:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -835,10 +828,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2190,
+                    "id": 1087,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1416:6:7",
+                    "src": "1416:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -848,13 +841,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2193,
+                  "id": 1090,
                   "mutability": "mutable",
                   "name": "participantCount",
-                  "nameLocation": "1471:16:7",
+                  "nameLocation": "1471:16:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1456:31:7",
+                  "scope": 1099,
+                  "src": "1456:31:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -862,10 +855,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 2192,
+                    "id": 1089,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1456:5:7",
+                    "src": "1456:5:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -875,13 +868,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2195,
+                  "id": 1092,
                   "mutability": "mutable",
                   "name": "date",
-                  "nameLocation": "1515:4:7",
+                  "nameLocation": "1515:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1501:18:7",
+                  "scope": 1099,
+                  "src": "1501:18:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -889,10 +882,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2194,
+                    "id": 1091,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1501:4:7",
+                    "src": "1501:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -902,33 +895,33 @@
                 },
                 {
                   "constant": false,
-                  "id": 2198,
+                  "id": 1095,
                   "mutability": "mutable",
                   "name": "outcome",
-                  "nameLocation": "1548:7:7",
+                  "nameLocation": "1548:7:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1534:21:7",
+                  "scope": 1099,
+                  "src": "1534:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                    "typeIdentifier": "t_enum$_EventOutcome_$1040",
                     "typeString": "enum OracleInterface.EventOutcome"
                   },
                   "typeName": {
-                    "id": 2197,
+                    "id": 1094,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 2196,
+                      "id": 1093,
                       "name": "EventOutcome",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2143,
-                      "src": "1534:12:7"
+                      "referencedDeclaration": 1040,
+                      "src": "1534:12:2"
                     },
-                    "referencedDeclaration": 2143,
-                    "src": "1534:12:7",
+                    "referencedDeclaration": 1040,
+                    "src": "1534:12:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                      "typeIdentifier": "t_enum$_EventOutcome_$1040",
                       "typeString": "enum OracleInterface.EventOutcome"
                     }
                   },
@@ -936,13 +929,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2200,
+                  "id": 1097,
                   "mutability": "mutable",
                   "name": "winner",
-                  "nameLocation": "1584:6:7",
+                  "nameLocation": "1584:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1570:20:7",
+                  "scope": 1099,
+                  "src": "1570:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -950,10 +943,10 @@
                     "typeString": "int8"
                   },
                   "typeName": {
-                    "id": 2199,
+                    "id": 1096,
                     "name": "int8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1570:4:7",
+                    "src": "1570:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int8",
                       "typeString": "int8"
@@ -962,42 +955,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1339:261:7"
+              "src": "1339:261:2"
             },
-            "scope": 2211,
-            "src": "1269:332:7",
+            "scope": 1105,
+            "src": "1269:332:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "3412a15c",
-            "id": 2207,
+            "id": 1104,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "testConnection",
-            "nameLocation": "1616:14:7",
+            "nameLocation": "1616:14:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2203,
+              "id": 1100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1630:2:7"
+              "src": "1630:2:2"
             },
             "returnParameters": {
-              "id": 2206,
+              "id": 1103,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2205,
+                  "id": 1102,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2207,
-                  "src": "1665:4:7",
+                  "scope": 1104,
+                  "src": "1665:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1005,10 +998,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2204,
+                    "id": 1101,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1665:4:7",
+                    "src": "1665:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1017,62 +1010,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1664:6:7"
+              "src": "1664:6:2"
             },
-            "scope": 2211,
-            "src": "1607:64:7",
+            "scope": 1105,
+            "src": "1607:64:2",
             "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "functionSelector": "a212b454",
-            "id": 2210,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "addTestData",
-            "nameLocation": "1686:11:7",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 2208,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1697:2:7"
-            },
-            "returnParameters": {
-              "id": 2209,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1717:0:7"
-            },
-            "scope": 2211,
-            "src": "1677:41:7",
-            "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2212,
-        "src": "208:1513:7",
+        "scope": 1106,
+        "src": "208:1466:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1689:7"
+    "src": "32:1642:2"
   },
   "legacyAST": {
     "absolutePath": "/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol",
     "exportedSymbols": {
       "OracleInterface": [
-        2211
+        1105
       ]
     },
-    "id": 2212,
+    "id": 1106,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2137,
+        "id": 1034,
         "literals": [
           "solidity",
           "^",
@@ -1080,7 +1046,7 @@
           ".4"
         ],
         "nodeType": "PragmaDirective",
-        "src": "32:23:7"
+        "src": "32:23:2"
       },
       {
         "abstract": false,
@@ -1088,80 +1054,80 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 2138,
+          "id": 1035,
           "nodeType": "StructuredDocumentation",
-          "src": "57:150:7",
+          "src": "57:150:2",
           "text": " @title The interface for the events Oracle (`BetOracle`)\n @notice Declares the functions that the `BetOracle` contract exposes externally"
         },
         "fullyImplemented": false,
-        "id": 2211,
+        "id": 1105,
         "linearizedBaseContracts": [
-          2211
+          1105
         ],
         "name": "OracleInterface",
-        "nameLocation": "218:15:7",
+        "nameLocation": "218:15:2",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "OracleInterface.EventOutcome",
-            "id": 2143,
+            "id": 1040,
             "members": [
               {
-                "id": 2139,
+                "id": 1036,
                 "name": "Pending",
-                "nameLocation": "427:7:7",
+                "nameLocation": "427:7:2",
                 "nodeType": "EnumValue",
-                "src": "427:7:7"
+                "src": "427:7:2"
               },
               {
-                "id": 2140,
+                "id": 1037,
                 "name": "Underway",
-                "nameLocation": "487:8:7",
+                "nameLocation": "487:8:2",
                 "nodeType": "EnumValue",
-                "src": "487:8:7"
+                "src": "487:8:2"
               },
               {
-                "id": 2141,
+                "id": 1038,
                 "name": "Draw",
-                "nameLocation": "541:4:7",
+                "nameLocation": "541:4:2",
                 "nodeType": "EnumValue",
-                "src": "541:4:7"
+                "src": "541:4:2"
               },
               {
-                "id": 2142,
+                "id": 1039,
                 "name": "Decided",
-                "nameLocation": "615:7:7",
+                "nameLocation": "615:7:2",
                 "nodeType": "EnumValue",
-                "src": "615:7:7"
+                "src": "615:7:2"
               }
             ],
             "name": "EventOutcome",
-            "nameLocation": "404:12:7",
+            "nameLocation": "404:12:2",
             "nodeType": "EnumDefinition",
-            "src": "399:275:7"
+            "src": "399:275:2"
           },
           {
             "functionSelector": "118e58bd",
-            "id": 2150,
+            "id": 1047,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "eventExists",
-            "nameLocation": "689:11:7",
+            "nameLocation": "689:11:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2146,
+              "id": 1043,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2145,
+                  "id": 1042,
                   "mutability": "mutable",
                   "name": "_eventId",
-                  "nameLocation": "709:8:7",
+                  "nameLocation": "709:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
-                  "src": "701:16:7",
+                  "scope": 1047,
+                  "src": "701:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1169,10 +1135,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2144,
+                    "id": 1041,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "701:7:7",
+                    "src": "701:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1181,21 +1147,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "700:18:7"
+              "src": "700:18:2"
             },
             "returnParameters": {
-              "id": 2149,
+              "id": 1046,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2148,
+                  "id": 1045,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2150,
-                  "src": "750:4:7",
+                  "scope": 1047,
+                  "src": "750:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1203,10 +1169,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2147,
+                    "id": 1044,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "750:4:7",
+                    "src": "750:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1215,42 +1181,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "749:6:7"
+              "src": "749:6:2"
             },
-            "scope": 2211,
-            "src": "680:76:7",
+            "scope": 1105,
+            "src": "680:76:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "b4184e70",
-            "id": 2156,
+            "id": 1053,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getPendingEvents",
-            "nameLocation": "775:16:7",
+            "nameLocation": "775:16:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2151,
+              "id": 1048,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "791:2:7"
+              "src": "791:2:2"
             },
             "returnParameters": {
-              "id": 2155,
+              "id": 1052,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2154,
+                  "id": 1051,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2156,
-                  "src": "826:16:7",
+                  "scope": 1053,
+                  "src": "826:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1259,18 +1225,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2152,
+                      "id": 1049,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
-                      "src": "826:7:7",
+                      "src": "826:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 2153,
+                    "id": 1050,
                     "nodeType": "ArrayTypeName",
-                    "src": "826:9:7",
+                    "src": "826:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
                       "typeString": "bytes32[]"
@@ -1279,42 +1245,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "825:18:7"
+              "src": "825:18:2"
             },
-            "scope": 2211,
-            "src": "766:78:7",
+            "scope": 1105,
+            "src": "766:78:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "a717e89a",
-            "id": 2162,
+            "id": 1059,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAllSportEvents",
-            "nameLocation": "859:17:7",
+            "nameLocation": "859:17:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2157,
+              "id": 1054,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "876:2:7"
+              "src": "876:2:2"
             },
             "returnParameters": {
-              "id": 2161,
+              "id": 1058,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2160,
+                  "id": 1057,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2162,
-                  "src": "911:16:7",
+                  "scope": 1059,
+                  "src": "911:16:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1323,18 +1289,18 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 2158,
+                      "id": 1055,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
-                      "src": "911:7:7",
+                      "src": "911:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bytes32",
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 2159,
+                    "id": 1056,
                     "nodeType": "ArrayTypeName",
-                    "src": "911:9:7",
+                    "src": "911:9:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
                       "typeString": "bytes32[]"
@@ -1343,36 +1309,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "910:18:7"
+              "src": "910:18:2"
             },
-            "scope": 2211,
-            "src": "850:79:7",
+            "scope": 1105,
+            "src": "850:79:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "8c172fa2",
-            "id": 2182,
+            "id": 1079,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getEvent",
-            "nameLocation": "944:8:7",
+            "nameLocation": "944:8:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2165,
+              "id": 1062,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2164,
+                  "id": 1061,
                   "mutability": "mutable",
                   "name": "_eventId",
-                  "nameLocation": "961:8:7",
+                  "nameLocation": "961:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "953:16:7",
+                  "scope": 1079,
+                  "src": "953:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1380,10 +1346,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2163,
+                    "id": 1060,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "953:7:7",
+                    "src": "953:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1392,21 +1358,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "952:18:7"
+              "src": "952:18:2"
             },
             "returnParameters": {
-              "id": 2181,
+              "id": 1078,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2167,
+                  "id": 1064,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1030:2:7",
+                  "nameLocation": "1030:2:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1016:16:7",
+                  "scope": 1079,
+                  "src": "1016:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1414,10 +1380,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2166,
+                    "id": 1063,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1016:7:7",
+                    "src": "1016:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1427,13 +1393,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2169,
+                  "id": 1066,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "1060:4:7",
+                  "nameLocation": "1060:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1046:18:7",
+                  "scope": 1079,
+                  "src": "1046:18:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1441,10 +1407,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2168,
+                    "id": 1065,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1046:6:7",
+                    "src": "1046:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1454,13 +1420,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2171,
+                  "id": 1068,
                   "mutability": "mutable",
                   "name": "participants",
-                  "nameLocation": "1093:12:7",
+                  "nameLocation": "1093:12:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1079:26:7",
+                  "scope": 1079,
+                  "src": "1079:26:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1468,10 +1434,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2170,
+                    "id": 1067,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1079:6:7",
+                    "src": "1079:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1481,13 +1447,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2173,
+                  "id": 1070,
                   "mutability": "mutable",
                   "name": "participantCount",
-                  "nameLocation": "1133:16:7",
+                  "nameLocation": "1133:16:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1119:30:7",
+                  "scope": 1079,
+                  "src": "1119:30:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1495,10 +1461,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 2172,
+                    "id": 1069,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1119:5:7",
+                    "src": "1119:5:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1508,13 +1474,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2175,
+                  "id": 1072,
                   "mutability": "mutable",
                   "name": "date",
-                  "nameLocation": "1177:4:7",
+                  "nameLocation": "1177:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1163:18:7",
+                  "scope": 1079,
+                  "src": "1163:18:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1522,10 +1488,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2174,
+                    "id": 1071,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1163:4:7",
+                    "src": "1163:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1535,33 +1501,33 @@
                 },
                 {
                   "constant": false,
-                  "id": 2178,
+                  "id": 1075,
                   "mutability": "mutable",
                   "name": "outcome",
-                  "nameLocation": "1210:7:7",
+                  "nameLocation": "1210:7:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1196:21:7",
+                  "scope": 1079,
+                  "src": "1196:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                    "typeIdentifier": "t_enum$_EventOutcome_$1040",
                     "typeString": "enum OracleInterface.EventOutcome"
                   },
                   "typeName": {
-                    "id": 2177,
+                    "id": 1074,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 2176,
+                      "id": 1073,
                       "name": "EventOutcome",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2143,
-                      "src": "1196:12:7"
+                      "referencedDeclaration": 1040,
+                      "src": "1196:12:2"
                     },
-                    "referencedDeclaration": 2143,
-                    "src": "1196:12:7",
+                    "referencedDeclaration": 1040,
+                    "src": "1196:12:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                      "typeIdentifier": "t_enum$_EventOutcome_$1040",
                       "typeString": "enum OracleInterface.EventOutcome"
                     }
                   },
@@ -1569,13 +1535,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2180,
+                  "id": 1077,
                   "mutability": "mutable",
                   "name": "winner",
-                  "nameLocation": "1246:6:7",
+                  "nameLocation": "1246:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2182,
-                  "src": "1232:20:7",
+                  "scope": 1079,
+                  "src": "1232:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1583,10 +1549,10 @@
                     "typeString": "int8"
                   },
                   "typeName": {
-                    "id": 2179,
+                    "id": 1076,
                     "name": "int8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1232:4:7",
+                    "src": "1232:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int8",
                       "typeString": "int8"
@@ -1595,36 +1561,36 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1002:260:7"
+              "src": "1002:260:2"
             },
-            "scope": 2211,
-            "src": "935:328:7",
+            "scope": 1105,
+            "src": "935:328:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "29e54269",
-            "id": 2202,
+            "id": 1099,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getLatestEvent",
-            "nameLocation": "1278:14:7",
+            "nameLocation": "1278:14:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2185,
+              "id": 1082,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2184,
+                  "id": 1081,
                   "mutability": "mutable",
                   "name": "_pending",
-                  "nameLocation": "1298:8:7",
+                  "nameLocation": "1298:8:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1293:13:7",
+                  "scope": 1099,
+                  "src": "1293:13:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1632,10 +1598,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2183,
+                    "id": 1080,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1293:4:7",
+                    "src": "1293:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1644,21 +1610,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1292:15:7"
+              "src": "1292:15:2"
             },
             "returnParameters": {
-              "id": 2201,
+              "id": 1098,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2187,
+                  "id": 1084,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "1367:2:7",
+                  "nameLocation": "1367:2:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1353:16:7",
+                  "scope": 1099,
+                  "src": "1353:16:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1666,10 +1632,10 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 2186,
+                    "id": 1083,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1353:7:7",
+                    "src": "1353:7:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes32",
                       "typeString": "bytes32"
@@ -1679,13 +1645,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2189,
+                  "id": 1086,
                   "mutability": "mutable",
                   "name": "name",
-                  "nameLocation": "1397:4:7",
+                  "nameLocation": "1397:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1383:18:7",
+                  "scope": 1099,
+                  "src": "1383:18:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1693,10 +1659,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2188,
+                    "id": 1085,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1383:6:7",
+                    "src": "1383:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1706,13 +1672,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2191,
+                  "id": 1088,
                   "mutability": "mutable",
                   "name": "participants",
-                  "nameLocation": "1430:12:7",
+                  "nameLocation": "1430:12:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1416:26:7",
+                  "scope": 1099,
+                  "src": "1416:26:2",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1720,10 +1686,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2190,
+                    "id": 1087,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1416:6:7",
+                    "src": "1416:6:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -1733,13 +1699,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2193,
+                  "id": 1090,
                   "mutability": "mutable",
                   "name": "participantCount",
-                  "nameLocation": "1471:16:7",
+                  "nameLocation": "1471:16:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1456:31:7",
+                  "scope": 1099,
+                  "src": "1456:31:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1747,10 +1713,10 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 2192,
+                    "id": 1089,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1456:5:7",
+                    "src": "1456:5:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint8",
                       "typeString": "uint8"
@@ -1760,13 +1726,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2195,
+                  "id": 1092,
                   "mutability": "mutable",
                   "name": "date",
-                  "nameLocation": "1515:4:7",
+                  "nameLocation": "1515:4:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1501:18:7",
+                  "scope": 1099,
+                  "src": "1501:18:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1774,10 +1740,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 2194,
+                    "id": 1091,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1501:4:7",
+                    "src": "1501:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1787,33 +1753,33 @@
                 },
                 {
                   "constant": false,
-                  "id": 2198,
+                  "id": 1095,
                   "mutability": "mutable",
                   "name": "outcome",
-                  "nameLocation": "1548:7:7",
+                  "nameLocation": "1548:7:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1534:21:7",
+                  "scope": 1099,
+                  "src": "1534:21:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                    "typeIdentifier": "t_enum$_EventOutcome_$1040",
                     "typeString": "enum OracleInterface.EventOutcome"
                   },
                   "typeName": {
-                    "id": 2197,
+                    "id": 1094,
                     "nodeType": "UserDefinedTypeName",
                     "pathNode": {
-                      "id": 2196,
+                      "id": 1093,
                       "name": "EventOutcome",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 2143,
-                      "src": "1534:12:7"
+                      "referencedDeclaration": 1040,
+                      "src": "1534:12:2"
                     },
-                    "referencedDeclaration": 2143,
-                    "src": "1534:12:7",
+                    "referencedDeclaration": 1040,
+                    "src": "1534:12:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EventOutcome_$2143",
+                      "typeIdentifier": "t_enum$_EventOutcome_$1040",
                       "typeString": "enum OracleInterface.EventOutcome"
                     }
                   },
@@ -1821,13 +1787,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 2200,
+                  "id": 1097,
                   "mutability": "mutable",
                   "name": "winner",
-                  "nameLocation": "1584:6:7",
+                  "nameLocation": "1584:6:2",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2202,
-                  "src": "1570:20:7",
+                  "scope": 1099,
+                  "src": "1570:20:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1835,10 +1801,10 @@
                     "typeString": "int8"
                   },
                   "typeName": {
-                    "id": 2199,
+                    "id": 1096,
                     "name": "int8",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1570:4:7",
+                    "src": "1570:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_int8",
                       "typeString": "int8"
@@ -1847,42 +1813,42 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1339:261:7"
+              "src": "1339:261:2"
             },
-            "scope": 2211,
-            "src": "1269:332:7",
+            "scope": 1105,
+            "src": "1269:332:2",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "functionSelector": "3412a15c",
-            "id": 2207,
+            "id": 1104,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "testConnection",
-            "nameLocation": "1616:14:7",
+            "nameLocation": "1616:14:2",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2203,
+              "id": 1100,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1630:2:7"
+              "src": "1630:2:2"
             },
             "returnParameters": {
-              "id": 2206,
+              "id": 1103,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2205,
+                  "id": 1102,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2207,
-                  "src": "1665:4:7",
+                  "scope": 1104,
+                  "src": "1665:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1890,10 +1856,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 2204,
+                    "id": 1101,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1665:4:7",
+                    "src": "1665:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1902,48 +1868,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1664:6:7"
+              "src": "1664:6:2"
             },
-            "scope": 2211,
-            "src": "1607:64:7",
+            "scope": 1105,
+            "src": "1607:64:2",
             "stateMutability": "pure",
-            "virtual": false,
-            "visibility": "external"
-          },
-          {
-            "functionSelector": "a212b454",
-            "id": 2210,
-            "implemented": false,
-            "kind": "function",
-            "modifiers": [],
-            "name": "addTestData",
-            "nameLocation": "1686:11:7",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 2208,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1697:2:7"
-            },
-            "returnParameters": {
-              "id": 2209,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "1717:0:7"
-            },
-            "scope": 2211,
-            "src": "1677:41:7",
-            "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 2212,
-        "src": "208:1513:7",
+        "scope": 1106,
+        "src": "208:1466:2",
         "usedErrors": []
       }
     ],
-    "src": "32:1689:7"
+    "src": "32:1642:2"
   },
   "compiler": {
     "name": "solc",
@@ -1951,7 +1890,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-05-06T14:14:48.273Z",
+  "updatedAt": "2021-05-07T09:51:08.535Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

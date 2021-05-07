@@ -74,7 +74,6 @@ The back-end is composed of the following Ethereum **smart-contracts**:
     - Get the outcome of registered events
     - provides the outcome of an event when asked for
 - [`DefiPool`](contracts/DefiPool.sol) A smart-contract in charge of simulating a DeFi protocol that accepts deposits and allow withdrawal with accrued interests.
-- [`DateLib`](contracts/DateLib.sol) denotes a contract providing helper date handling functions
 
 ### Front-End
 
@@ -448,8 +447,7 @@ The **smart-contracts** are deployed in the following order:
 1. `DAI`
 2. `Bet`
 3. `BetOracle`
-4. `DateLib`
-5. `DeFiPool`
+4. `DeFiPool`
 
 
 ### Deploy Dev
@@ -552,7 +550,6 @@ The smart-contracts documentation is available in the folder [doc/contracts](doc
 - [Bet.sol](doc/contracts/Bet.sol.md)
 - [BetOracle](doc/contracts/BetOracle.md)
 - [DAI.sol](doc/contracts/DAI.sol.md)
-- [DateLib.sol](doc/contracts/DateLib.md)
 - [DefiPool](doc/contracts/DefiPool.md)
 - [OracleInterface](doc/contracts/OracleInterface.md)
 

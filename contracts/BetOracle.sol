@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 import "./OracleInterface.sol";
-import "./DateLib.sol";
 
 
 /**
@@ -13,8 +12,6 @@ import "./DateLib.sol";
  * @notice Collects and provides information on sport events and their outcomes
  */
 contract BetOracle is OracleInterface, Ownable, ReentrancyGuard {
-
-    using DateLib  for DateLib.DateTime;
 
     /**
      * @dev all the sport events
@@ -308,15 +305,4 @@ contract BetOracle is OracleInterface, Ownable, ReentrancyGuard {
         return true;
     }
 
-    /**
-     * @notice for testing purposes only
-     * TODO: Remove me before going live
-     */
-    function addTestData()
-        external override
-        onlyOwner
-    {
-        addSportEvent("Paris vs. Marseille",  "PSG|OM",   2, DateLib.DateTime(2021, 5, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
-        addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 5, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
-    }
 }

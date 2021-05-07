@@ -78,7 +78,6 @@ All tests in this suite benefit from a `beforeEach` that instantiates  `BetOracl
 getAddress() returns the address of this contract's instance
     - [ ] `getAddress() returns the address of this contract's instance`
     - [ ] `testConnection() always returns true`
-    - [ ] `addTestData`
 
 ## `test/dai.test.js`
 

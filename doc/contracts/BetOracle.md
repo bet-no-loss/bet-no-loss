@@ -68,13 +68,6 @@ can be used by a client contract to ensure that they've connected to this contra
 
 
 
-### `addTestData()` (external)
-
-for testing purposes only
-TODO: Remove me before going live
-
-
-
 
 ### `SportEventAdded(bytes32 _eventId, string _name, string _participants, uint8 _participantCount, uint256 _date, enum OracleInterface.EventOutcome _eventOutcome, int8 _winner)`
 

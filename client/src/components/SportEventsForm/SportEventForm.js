@@ -100,10 +100,7 @@ function SportEventForm() {
   };
 
   const addData = async () => {
-    const add = await oracleContract.methods
-    .addTestData()
-    .send({gas: 900000, from: accounts[0]});
-    console.log('add', add)
+    console.log('add')
   }
 
   /*const addProposal = async (content) => {

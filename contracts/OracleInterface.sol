@@ -52,6 +52,4 @@ interface OracleInterface {
     function testConnection() 
         external pure returns (bool);
 
-    function addTestData() 
-        external; 
 }

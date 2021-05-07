@@ -93,9 +93,7 @@ module.exports = {
       enabled: process.env.GAS_REPORT ? true: false,
       coinmarketcap: `${process.env.COINMARKETCAP_API_KEY}`,
       excludeContracts: [
-        'DateLib', 
-        'Migrations', 
-        'Play'
+        'Migrations'
       ],
       src: "contracts"
     }
