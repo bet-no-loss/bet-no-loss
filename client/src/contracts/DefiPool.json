@@ -54,7 +54,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -73,7 +74,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -92,7 +94,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -111,7 +114,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -129,7 +133,8 @@
       "name": "deposit",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -142,7 +147,8 @@
       "name": "withdraw",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [],
@@ -155,7 +161,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_tokenAddress\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"timeStart\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_sender\",\"type\":\"address\"}],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"depositStart\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"depositTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"interests\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"userBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"Deposit(address,uint256,uint256)\":{\"details\":\"Event triggered once an address deposited in the contract\"}},\"kind\":\"dev\",\"methods\":{\"constructor\":{\"params\":{\"_tokenAddress\":\"address of the DAI ERC20 token\"}},\"deposit(uint256,address)\":{\"params\":{\"_amount\":\"the amount (DAI) to be deposited\",\"_sender\":\"the address who owns the tokens\"}},\"getContractBalance()\":{\"returns\":{\"_0\":\"return the contract balance\"}},\"withdraw(address)\":{\"params\":{\"_user\":\"address of the user\"}}},\"stateVariables\":{\"Dai\":{\"details\":\"An instance of ERC20 DAI Token\"},\"depositStart\":{\"details\":\"Start date of each user deposit\"},\"depositTime\":{\"details\":\"Time spent in user deposit\"},\"interests\":{\"details\":\"Interests earn per user\"},\"userBalance\":{\"details\":\"Balance of each user address\"}},\"title\":\"A smart-contract that plays the role of a DeFi protocol where users can deposit and earn interests\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"deposit(uint256,address)\":{\"notice\":\"Moves `_amount` tokens from `_sender` to this contract\"},\"withdraw(address)\":{\"notice\":\"Withdraw all amount deposited by a user\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/DefiPool.sol\":\"DefiPool\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/DefiInterface.sol\":{\"keccak256\":\"0x2a274c3a130e4165c9160e38648bf0456c978bdf7dbc34621f26ff37268897ae\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://206d4d0bd2f74b8ba3d097011ca074efdbdf1e95b13c9cb234a26bbd1232ea9c\",\"dweb:/ipfs/QmXJfuoRXNrvdAAzBoxA3gQRekXyCY8oyTrfMJyftkxh89\"]},\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/DefiPool.sol\":{\"keccak256\":\"0x722daeedcd79bdd00882062cf94f6b37df2a4e1d436d501e92c69b1cf882a4e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://30015fca1cf0833705be6712da21c2a6e670df6ebeea43a7ff5274a0824f8a76\",\"dweb:/ipfs/QmQQcT76VdtQfcS8VyqRNEsmuxdY141E73tW7kwvMtqZm9\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xf8e8d118a7a8b2e134181f7da655f6266aa3a0f9134b2605747139fcb0c5d835\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9ec48567e7ad06acb670980d5cdf3fd7f3949bf12894f02d68c3bb43e75aa84f\",\"dweb:/ipfs/QmaG3R2J9cz92YT77vFjYrjMNU2wHp4ypwYD62HqDUqS5U\"]}},\"version\":1}",
@@ -9820,18 +9827,19 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x71897C9e92A1Cfd6eaa564580a6e19DBaa3624AD",
-      "transactionHash": "0x2064cbb541d04c9bf9c0c62329fc98e144f90f4f80f8f77483db61410c5ffc8f"
+      "address": "0xd560baDc994e50494DAF8Dd264dfDBc91ae4afdB",
+      "transactionHash": "0x43f6ab9fce61a5ee0bc93ee32a6bfe55afb2ce422fbaebf96b65b6ebe03cb317"
     },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xD1E02512499C209A0d339115b342BBc80AedA6fB",
-      "transactionHash": "0x275a882b2f080350e678177505f039ef29500cb3066a946d79cf0a57b0dcca6b"
+      "address": "0x6472c4Ffb3658B964101008AB78D29D240D23B24",
+      "transactionHash": "0x3290ce468c0bc5a49ed0746bca75c420591d121e53adcf2f96d66e5b4445a27a"
     }
   },
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-05-06T14:14:48.265Z",
+  "updatedAt": "2021-05-07T07:45:28.569Z",
+  "networkType": "ethereum",
   "devdoc": {
     "events": {
       "Deposit(address,uint256,uint256)": {

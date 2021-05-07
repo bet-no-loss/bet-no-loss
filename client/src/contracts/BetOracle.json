@@ -80,7 +80,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -153,7 +154,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -189,7 +191,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -202,7 +205,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -251,7 +255,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -300,7 +305,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -313,7 +319,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -326,7 +333,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -29219,20 +29227,159 @@
   },
   "networks": {
     "3": {
-      "events": {},
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xf104b333d7adacd62c09966b46fcf5181fec631a91f176e3d9d72db88c109511": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_eventId",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_participants",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint8",
+              "name": "_participantCount",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_date",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum OracleInterface.EventOutcome",
+              "name": "_eventOutcome",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "int8",
+              "name": "_winner",
+              "type": "int8"
+            }
+          ],
+          "name": "SportEventAdded",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0x6C4f201F211B613549FAAA31a7e5518d31267779",
-      "transactionHash": "0xcd7556a6c9ebfc15f021078f9ad5650d6ba6ea292670bc2a1677c892ead6ef44"
+      "address": "0x1318a1036034300B7b0141b2da84b872439d6C7e",
+      "transactionHash": "0xdafd72164994387ba118307db46505762cf12be654d9ed4ffbd097cef0014379"
     },
     "5777": {
-      "events": {},
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xf104b333d7adacd62c09966b46fcf5181fec631a91f176e3d9d72db88c109511": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "_eventId",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_name",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_participants",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint8",
+              "name": "_participantCount",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_date",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "enum OracleInterface.EventOutcome",
+              "name": "_eventOutcome",
+              "type": "uint8"
+            },
+            {
+              "indexed": false,
+              "internalType": "int8",
+              "name": "_winner",
+              "type": "int8"
+            }
+          ],
+          "name": "SportEventAdded",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0x0786ABfb437173a83BA61525251e82A39C64CD71",
-      "transactionHash": "0x9712295b4a9c871a5e64162e030e887aeb5113e730a2828df21daee48d274ad9"
+      "address": "0x0Cc3128c23621d05EF369F3Ab81ab51B05f81A11",
+      "transactionHash": "0x928d8ba0c16794aeae402c2a491e9f5b25642eadd1fe37603ccbb1bbfac5f63e"
     }
   },
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-05-06T14:14:48.227Z",
+  "updatedAt": "2021-05-07T07:45:28.515Z",
+  "networkType": "ethereum",
   "devdoc": {
     "events": {
       "SportEventAdded(bytes32,string,string,uint8,uint256,uint8,int8)": {
