@@ -1,0 +1,48 @@
+# A Github Workflow Action that:
+# - runs the tests with code coverage enabled 
+# - send the generated code coverage report file to coveralls.io  
+#
+# Reports can be viewed on: https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master
+#
+# Sources: 
+#   - https://github.com/marketplace/actions/coveralls-github-action
+#   - https://github.com/coverallsapp/github-action
+
+name: coverage
+
+# When is this workflow triggered?
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "test/**"
+      - "contracts/**"
+      - ".github/workflows/coverage.yml"
+  pull_request: {}
+
+# What does it do?
+jobs:
+  test-coverage:
+    runs-on: ubuntu-latest
+
+    steps:    
+    - name: Checkout the last commit of the branch that triggered the workflow execution
+      uses: actions/checkout@v2 
+
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.x
+
+    - name: run the tests to get a coverage report file
+      run: |
+        npm i
+        npm run coverage
+    
+    - name: Send the coverage report file to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,6 +1,7 @@
 [![Build](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml)
 [![Test](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master)](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master)
+[![code coverage status]https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml)
+[![code coverage report](https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master)](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master)
 [![compile mermaid](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml)
 [![Heroku Deploy](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml/badge.svg?branch=front-test&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml)
 ![GitHub Issues](https://img.shields.io/github/issues/bet-no-loss/bet-no-loss)
