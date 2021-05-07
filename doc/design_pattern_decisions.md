@@ -91,6 +91,6 @@ It **entails both the front-end and back-end** source code.
 
 ### Deployment
 
-The ReactJS **front-end** (DApp) is automatically **[deployed on Heroku](../README.md#deploy-front-end)** each time the `master` branch is pushed.
+The ReactJS **front-end** (DApp) is automatically **[deployed on Heroku](../README.md#deploy-front-end)** each time the ~~`master`~~ `front-test` branch is pushed.
 
 
