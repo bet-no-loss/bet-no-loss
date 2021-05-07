@@ -5,13 +5,13 @@ This section contains the list of the deployed contract addresses on the Ethereu
 
 ### Ropsten TestNet
 
-| Contract Name | Address                                    |
-|---            |---                                         |
-| `Bet`         | 0x22f29451a713969ac07cF896e95586c2F0aD2416 |
-| `BetOracle`   | 0xD0C8Dec5218b0Fce010001E30E2ACf9767bEE6aE |
-| `DAI`         | 0x2351b44994BBA2F636561E15eE2563482dDBEF8B |
-| `DateLib`     | 0xd103A6Ec8f65c443B4Cc8e1fD672d2c22649eF8F |
-| `DeFiPool`    | 0x0aF14f3eE962C60461b82F95eCC2ed78C13023Ae |
-| `Migrations`  | 0xb275DD52D5B17f69374bD81A8ff0cf83D37E6597 |
+| Contract Name     | Address                                    |
+|---                |---                                         |
+| `Bet`             | 0xFDa660f59f1f5390d66F72e100aD9E4864D38731 |
+| `BetOracle`       | 0x1318a1036034300B7b0141b2da84b872439d6C7e |
+| `DAI`             | 0xE6C5EFe3499e758DaB102d0801de271b60C01678 |
+| `DateLib`         | 0x9105c3a59221C4900d1aF6613Ee16443c739020c |
+| `DeFiPool`        | 0xd560baDc994e50494DAF8Dd264dfDBc91ae4afdB |
+| `Migrations`      | 0x697F1b48317e670562B68bDCCe14BA1751163e8e |
 
 https://ropsten.etherscan.io/
