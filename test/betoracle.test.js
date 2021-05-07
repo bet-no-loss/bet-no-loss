@@ -261,7 +261,20 @@ contract('BetOracle', function(accounts) {
             expect((Boolean(isConnected))).to.be.true;
         });
 
-        it("addTestData");
+        it("addTestData", async function() {
+            await this.betOracleInstance.addTestData(
+                {from: ownerAddress}
+            );
+            const latestEvent = await this.betOracleInstance.getLatestEvent(
+                true,
+                {from: ownerAddress}
+            );
+
+            expect(latestEvent.date)
+                .to.be.a.bignumber
+                .equal(new BN(1621728000));
+
+        });
     });
         
 })

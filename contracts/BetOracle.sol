@@ -316,7 +316,7 @@ contract BetOracle is OracleInterface, Ownable, ReentrancyGuard {
         external override
         onlyOwner
     {
-        addSportEvent("Paris vs. Marseille",  "PSG|OM",   2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
-        addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 1, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
+        addSportEvent("Paris vs. Marseille",  "PSG|OM",   2, DateLib.DateTime(2021, 5, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
+        addSportEvent("Espagne vs. Portugal", "BARCA|OM", 2, DateLib.DateTime(2021, 5, 23, 0, 0, 0, 0, 0).toUnixTimestamp());
     }
 }
