@@ -40,7 +40,7 @@ jobs:
     - name: run the tests to get a coverage report file
       run: |
         npm i
-        npm run coverage
+        npx truffle run coverage 
     
     - name: Send the coverage report file to coveralls.io
       uses: coverallsapp/github-action@master
