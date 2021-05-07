@@ -80,9 +80,9 @@ We use *Pull over Push* so that players handle withdrawal (stake, gains) on thei
 
 ### Solidity version 0.8
 
-We have decided to switch to the latest Solidity version (0.8+) since OpenZeppelin supports it.
- **[Solidity version `0.8.3`**](https://github.com/ethereum/solidity/releases/tag/v0.8.3) as it is fixes an important bug in 0.8.2 
-> Optimizer: Fix bug on incorrect caching of Keccak-256 has been fixed
+We have decided to switch to the latest Solidity version (0.8+) since OpenZeppelin supports it.  
+This version brings in native handling of arithmetic overflow and underflow and reverts the transaction in this case. 
+We can forget about using Openzeppelin's `SaFeMath` library.
 
 ### Repository and Source Code
 
