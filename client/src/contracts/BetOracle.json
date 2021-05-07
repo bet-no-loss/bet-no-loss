@@ -80,7 +80,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -153,7 +154,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -189,7 +191,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -202,7 +205,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -251,7 +255,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -300,7 +305,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -313,7 +319,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -326,7 +333,8 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"_participants\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint8\",\"name\":\"_participantCount\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_date\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"_eventOutcome\",\"type\":\"uint8\"},{\"indexed\":false,\"internalType\":\"int8\",\"name\":\"_winner\",\"type\":\"int8\"}],\"name\":\"SportEventAdded\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"_participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"_participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_date\",\"type\":\"uint256\"}],\"name\":\"addSportEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"_outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"_winner\",\"type\":\"int8\"}],\"name\":\"declareOutcome\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"eventExists\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAllSportEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_eventId\",\"type\":\"bytes32\"}],\"name\":\"getEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bool\",\"name\":\"_pending\",\"type\":\"bool\"}],\"name\":\"getLatestEvent\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"participants\",\"type\":\"string\"},{\"internalType\":\"uint8\",\"name\":\"participantCount\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"date\",\"type\":\"uint256\"},{\"internalType\":\"enum OracleInterface.EventOutcome\",\"name\":\"outcome\",\"type\":\"uint8\"},{\"internalType\":\"int8\",\"name\":\"winner\",\"type\":\"int8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPendingEvents\",\"outputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"\",\"type\":\"bytes32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"testConnection\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"events\":{\"SportEventAdded(bytes32,string,string,uint8,uint256,uint8,int8)\":{\"details\":\"Triggered once an event has been added\"}},\"kind\":\"dev\",\"methods\":{\"addSportEvent(string,string,uint8,uint256)\":{\"params\":{\"_date\":\"date set for the sport event\",\"_name\":\"descriptive name for the sport event (e.g. Pac vs. Mayweather 2016)\",\"_participantCount\":\"number of participants\",\"_participants\":\"|-delimited string of participants names (e.g. \\\"Montpellier|Monaco\\\")\"},\"returns\":{\"_0\":\"the unique id of the newly created sport event\"}},\"declareOutcome(bytes32,uint8,int8)\":{\"params\":{\"_eventId\":\"unique id of the match to modify\",\"_outcome\":\"outcome of the match\",\"_winner\":\"0-based id of the winnner\"}},\"eventExists(bytes32)\":{\"params\":{\"_eventId\":\"the id of a sport event id\"},\"returns\":{\"_0\":\"true if sport event exists and its id is valid\"}},\"getAddress()\":{\"returns\":{\"_0\":\"the address of the BetOracle smart-contract\"}},\"getAllSportEvents()\":{\"returns\":{\"_0\":\"an array of unique match ids\"}},\"getEvent(bytes32)\":{\"params\":{\"_eventId\":\"the unique id of the desired event\"},\"returns\":{\"date\":\"when the event takes place\",\"id\":\"  the id of the event\",\"name\":\"the name of the event\",\"outcome\":\"an integer that represents the event outcome\",\"participantCount\":\"the number of the event's participants\",\"participants\":\"a string with the name of the event's participants separated with a pipe symbol ('|')\",\"winner\":\"the index of the winner\"}},\"getLatestEvent(bool)\":{\"params\":{\"_pending\":\"if true, returns only the most recent pending sport event;   otherwise, returns the most recent sport event either pending or completed\"},\"returns\":{\"date\":\"when the event takes place\",\"id\":\"  the id of the event\",\"name\":\"the name of the event\",\"outcome\":\"an integer that represents the event outcome\",\"participantCount\":\"the number of the event's participants\",\"participants\":\"a string with the name of the event's participants separated with a pipe symbol ('|')\",\"winner\":\"the index of the winner\"}},\"getPendingEvents()\":{\"returns\":{\"_0\":\"an array of unique pending events ids\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"testConnection()\":{\"returns\":{\"_0\":\"true, unconditionally\"}},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"stateVariables\":{\"events\":{\"details\":\"all the sport events\"}},\"title\":\"An smart-contract Oracle that register sport events, retrieve their outcomes and communicate their results when asked for.\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"addSportEvent(string,string,uint8,uint256)\":{\"notice\":\"Add a new pending sport event into the blockchain\"},\"declareOutcome(bytes32,uint8,int8)\":{\"notice\":\"Sets the outcome of a predefined match, permanently on the blockchain\"},\"eventExists(bytes32)\":{\"notice\":\"Determines whether a sport event exists with the given id\"},\"getAddress()\":{\"notice\":\"gets the address of this contract\"},\"getAllSportEvents()\":{\"notice\":\"gets the unique ids of events, pending and decided, in reverse chronological order\"},\"getEvent(bytes32)\":{\"notice\":\"gets the specified sport event and return its data\"},\"getLatestEvent(bool)\":{\"notice\":\"return the data of the most recent sport event\"},\"getPendingEvents()\":{\"notice\":\"gets the unique ids of all pending events, in reverse chronological order\"},\"testConnection()\":{\"notice\":\"can be used by a client contract to ensure that they've connected to this contract interface successfully\"}},\"notice\":\"Collects and provides information on sport events and their outcomes\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/BetOracle.sol\":\"BetOracle\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/BetOracle.sol\":{\"keccak256\":\"0xf0435d6b64088047a70fa6cc42ff41d896341b5f830bd5866e909b86a0f78d88\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0064ec20cb9612a412fddf90be9e3ae1c6eda6f3519031a7178fee2cdc04d361\",\"dweb:/ipfs/QmRKCKAoQH1posgpfVZqgCm4wMMfggEijLdBbbGJau6vKF\"]},\"/Users/eric/dev/alyra/project/bet-no-loss/contracts/OracleInterface.sol\":{\"keccak256\":\"0xcf382941097a7fbd668df4d01572d90222d00ac7f10c74e0d96275fb2b16b8f0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4d6841d2152df1703657e54bc264810df770fd87009538fdb7cbe01c4ecc3925\",\"dweb:/ipfs/QmPvWKe5jnAkZeqKV3Ffut1ssQGsSodJZ3AT7DDZZCL6XW\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/security/ReentrancyGuard.sol\":{\"keccak256\":\"0x1278c76b840063ff5e14a2d7c5707812c1eabc2342ed040bf862c2d7552102fe\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b9989233808b8f475395f71ea757e277fa167cdac8a24d10f9784783defd313c\",\"dweb:/ipfs/Qmdg6rbPsShpnzvqKmPVuFk7eYU53oXTPxqUJXd9WLD4vg\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]}},\"version\":1}",
@@ -26704,8 +26712,8 @@
         }
       },
       "links": {},
-      "address": "0x1318a1036034300B7b0141b2da84b872439d6C7e",
-      "transactionHash": "0xdafd72164994387ba118307db46505762cf12be654d9ed4ffbd097cef0014379"
+      "address": "0xEE2aFd8b918A6Db64eAA7327550DE4A02B46b15A",
+      "transactionHash": "0xca65b05292b5f66b7f450fd51632b3dece46e773bb7d187eb0827d3ee1e2e257"
     },
     "5777": {
       "events": {
@@ -26784,7 +26792,8 @@
     }
   },
   "schemaVersion": "3.4.0",
-  "updatedAt": "2021-05-07T10:02:38.834Z",
+  "updatedAt": "2021-05-07T12:33:36.918Z",
+  "networkType": "ethereum",
   "devdoc": {
     "events": {
       "SportEventAdded(bytes32,string,string,uint8,uint256,uint8,int8)": {

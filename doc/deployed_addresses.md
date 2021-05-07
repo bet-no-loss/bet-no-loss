@@ -7,11 +7,10 @@ This section contains the list of the deployed contract addresses on the Ethereu
 
 | Contract Name     | Address                                    |
 |---                |---                                         |
-| `Bet`             | 0xFDa660f59f1f5390d66F72e100aD9E4864D38731 |
-| `BetOracle`       | 0x1318a1036034300B7b0141b2da84b872439d6C7e |
-| `DAI`             | 0xE6C5EFe3499e758DaB102d0801de271b60C01678 |
-| `DateLib`         | 0x9105c3a59221C4900d1aF6613Ee16443c739020c |
-| `DeFiPool`        | 0xd560baDc994e50494DAF8Dd264dfDBc91ae4afdB |
-| `Migrations`      | 0x697F1b48317e670562B68bDCCe14BA1751163e8e |
+| `Bet`             | 0x68d1BB057100FC0c28441986F9BdfFB99d8089c2 |
+| `BetOracle`       | 0xEE2aFd8b918A6Db64eAA7327550DE4A02B46b15A |
+| `DAI`             | 0xee35a820e7eD18f515aD9eA433C10F9e5a304c18 |
+| `DeFiPool`        | 0xF700b10664Ad18206bA8f077632EaB6D4fE4657e |
+| `Migrations`      | 0x923f2Fd36571381469725d818b708d2B528ed56c |
 
 https://ropsten.etherscan.io/
