@@ -39,7 +39,7 @@ Each player can also withdraw his/her stake.
 
 ## Links
 
-* [Whitepaper](https://drive.google.com/file/d/1bBI5vD9V-M2p5tZ4heiz6gd4JlkQFTYU/view?usp=sharing)
+* [White Paper](https://drive.google.com/file/d/1bBI5vD9V-M2p5tZ4heiz6gd4JlkQFTYU/view?usp=sharing)
 * Open Application: [https://bet-no-loss.herokuapp.com/](https://bet-no-loss.herokuapp.com/) (for demo purposes only)
 * [Presentation](https://drive.google.com/file/d/1WUFw0dUK2OV_WfrPqX0PR1l9iCLZHfRk/view)
 * [Documentation](#documentation)
@@ -542,7 +542,7 @@ We tried to make our smart-contracts as resistant as possible to common attacks 
 - [design_pattern_decisions.md](doc/design_pattern_decisions.md) explains why we chose the design patterns we are using in the code. 
 - [REQUIREMENTS.md](doc/REQUIREMENTS.md) Alyra final project's requirements
 - [tests_explication.md](doc/tests_explication.md) explains for each test why we wrote it and  what it is aimed at.
-- [whitepaper](https://drive.google.com/file/d/1bBI5vD9V-M2p5tZ4heiz6gd4JlkQFTYU/view?usp=sharing)
+- [White Paper](https://drive.google.com/file/d/1bBI5vD9V-M2p5tZ4heiz6gd4JlkQFTYU/view?usp=sharing)
 
 ## Smart-Contracts
 
