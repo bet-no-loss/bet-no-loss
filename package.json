@@ -59,17 +59,17 @@
     "eth-gas-reporter": "^0.2.22",
     "ganache-cli": "^6.12.2",
     "js-object-pretty-print": "^0.3.0",
-    "luxon": "^1.26.0",
+    "luxon": "^1.27.0",
     "solc-0.8": "npm:solc@^0.8.4",
     "solidity-coverage": "^0.7.16",
     "solidity-docgen": "^0.5.13",
-    "truffle": "^5.3.4",
+    "truffle": "^5.3.5",
     "watch": "^1.0.2",
     "web3-eth": "^1.3.5"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
-    "@truffle/hdwallet-provider": "^1.2.6",
-    "dotenv": "^8.2.0"
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "dotenv": "^9.0.2"
   }
 }
