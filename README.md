@@ -4,12 +4,15 @@
 [![code coverage report](https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master)](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master)
 [![compile mermaid status](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml)
 [![heroku deploy](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml/badge.svg?branch=front-test&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml)
+[![dependencies status](https://david-dm.org/bet-no-loss/bet-no-loss/status.svg)](https://david-dm.org/bet-no-loss/bet-no-loss/)
+[![devDependencies status](https://david-dm.org/bet-no-loss/bet-no-loss/dev-status.svg)](https://david-dm.org/bet-no-loss/bet-no-loss?type=dev)
 ![github issues](https://img.shields.io/github/issues/bet-no-loss/bet-no-loss)
 ![license](https://img.shields.io/github/license/bet-no-loss/bet-no-loss)
 [![heroku dashboard](https://img.shields.io/badge/heroku-dashboard-blue)](https://dashboard.heroku.com/apps/bet-no-loss)
  [![read doc](https://img.shields.io/badge/doc-📖-blue)](#documentation)
 [![open app](https://img.shields.io/badge/app-open-blue)](https://bet-no-loss.herokuapp.com/)
 [![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)](#team)
+
 
 # Bet-no-loss
 
@@ -613,5 +616,6 @@ Here are a few links to resources that we used while building bet-no-loss.
         - https://medium.com/@porteneuve/mastering-git-subtrees-943d29a798ec#.3qcvltsof        
 - Continous Integration:
     - [gas report, code coverage](https://ethereum.org/it/developers/tutorials/solidity-and-truffle-continuous-integration-setup/)
-- Github
-    - [Badges](https://shields.io/) See the wall of badges at the top of this README. This site is such a great resource to build them and a source of inspiration to build custom ones ;-)
+- Github Badges
+    -  https://shields.io/ See the wall of badges at the top of this README. This site is such a great resource to build them and a source of inspiration to build custom ones ;-).
+    - https://david-dm.org/ (Github) badges to show the current status (out of or up to date) of your Node.js project's `dependencies` and/or `devDependencies` (`package.json`).
