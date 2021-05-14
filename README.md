@@ -1,3 +1,5 @@
+<!-- Badges -->
+
 [![build status][build-image]][build-url]
 [![test status][test-image]][test-url]
 [![code coverage status][coverage-status-image]][coverage-status-url]
@@ -6,12 +8,12 @@
 [![devDependencies status][dev-dependencies-image]][dev-dependencies-url]
 [![code coverage report][coverage-report-image]][coverage-report-url]
 [![heroku deploy][heroku-deploy-image]][heroku-deploy-url]
-![github issues][github-issues-image]
-![license][license-image]
+[![github issues][github-issues-image]][github-issues-url]
+[![license][license-image]][license-url]
 [![heroku dashboard][heroku-dashboard-image]][heroku-dashboard-url]
- [![read doc][read-doc-image]](#documentation)
+ [![documentation][doc-image]][doc-url]
 [![open app][open-app-image]][open-app-url]
-[![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)](#team)
+[![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)][team-url]
 
 
 # Bet-no-loss
@@ -637,9 +639,13 @@ Here are a few links to resources that we used while building bet-no-loss.
 [heroku-deploy-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml/badge.svg?branch=front-test&event=push
 [heroku-deploy-url]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml
 [github-issues-image]: https://img.shields.io/github/issues/bet-no-loss/bet-no-loss
+[github-issues-url]: https://github.com/bet-no-loss/bet-no-loss/issues
 [license-image]: https://img.shields.io/github/license/bet-no-loss/bet-no-loss
+[license-url]: https://en.wikipedia.org/wiki/MIT_License
 [heroku-dashboard-image]: https://img.shields.io/badge/heroku-dashboard-blue
 [heroku-dashboard-url]: https://dashboard.heroku.com/apps/bet-no-loss
-[read-doc-image]: https://img.shields.io/badge/doc-📖-blue
+[doc-image]: https://img.shields.io/badge/doc-📖-blue
+[doc-url]: #documentation
 [open-app-image]: https://img.shields.io/badge/app-open-blue
 [open-app-url]: https://bet-no-loss.herokuapp.com/
+[team-url]: #team
