@@ -1,16 +1,16 @@
-[![build status](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml)
-[![test status](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml)
-[![code coverage status](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml)
-[![compile mermaid status](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml/badge.svg?branch=master&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml)
-[![dependencies status](https://david-dm.org/bet-no-loss/bet-no-loss/status.svg)](https://david-dm.org/bet-no-loss/bet-no-loss/)
-[![devDependencies status](https://david-dm.org/bet-no-loss/bet-no-loss/dev-status.svg)](https://david-dm.org/bet-no-loss/bet-no-loss?type=dev)
-[![code coverage report](https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master)](https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master)
-[![heroku deploy](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml/badge.svg?branch=front-test&event=push)](https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml)
-![github issues](https://img.shields.io/github/issues/bet-no-loss/bet-no-loss)
-![license](https://img.shields.io/github/license/bet-no-loss/bet-no-loss)
-[![heroku dashboard](https://img.shields.io/badge/heroku-dashboard-blue)](https://dashboard.heroku.com/apps/bet-no-loss)
- [![read doc](https://img.shields.io/badge/doc-📖-blue)](#documentation)
-[![open app](https://img.shields.io/badge/app-open-blue)](https://bet-no-loss.herokuapp.com/)
+[![build status][build-image]][build-url]
+[![test status][test-image]][test-url]
+[![code coverage status][coverage-status-image]][coverage-status-url]
+[![compile mermaid status][mermaid-image]][mermaid-url]
+[![dependencies status][dependencies-image]][dependencies-url]
+[![devDependencies status][dev-dependencies-image]][dev-dependencies-url]
+[![code coverage report][coverage-report-image]][coverage-report-url]
+[![heroku deploy][heroku-deploy-image]][heroku-deploy-url]
+![github issues][github-issues-image]
+![license][license-image]
+[![heroku dashboard][heroku-dashboard-image]][heroku-dashboard-url]
+ [![read doc][read-doc-image]](#documentation)
+[![open app][open-app-image]][open-app-url]
 [![built with ♥︎, Solidity and ReactJS](https://img.shields.io/badge/built%20with-♥︎,%20Solidity%20and%20ReactJS-3677FF)](#team)
 
 
@@ -619,3 +619,27 @@ Here are a few links to resources that we used while building bet-no-loss.
 - Github Badges
     -  https://shields.io/ See the wall of badges at the top of this README. This site is such a great resource to build them and a source of inspiration to build custom ones ;-).
     - https://david-dm.org/ (Github) badges to show the current status (out of or up to date) of your Node.js project's `dependencies` and/or `devDependencies` (`package.json`).
+
+[build-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml/badge.svg?branch=master&event=push
+[build-url]:   https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml
+[test-image]:  https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml/badge.svg?branch=master&event=push
+[test-url]:    https://github.com/bet-no-loss/bet-no-loss/actions/workflows/test.yml
+[coverage-status-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml/badge.svg?branch=master&event=push
+[coverage-status-url]:   https://github.com/bet-no-loss/bet-no-loss/actions/workflows/coverage.yml
+[mermaid-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml/badge.svg?branch=master&event=push
+[mermaid-url]:  https://github.com/bet-no-loss/bet-no-loss/actions/workflows/mermaid.yml
+[dependencies-image]: https://david-dm.org/bet-no-loss/bet-no-loss/status.svg
+[dependencies-url]: https://david-dm.org/bet-no-loss/bet-no-loss/
+[dev-dependencies-image]: https://david-dm.org/bet-no-loss/bet-no-loss/dev-status.svg
+[dev-dependencies-url]: https://david-dm.org/bet-no-loss/bet-no-loss?type=dev
+[coverage-report-image]: https://coveralls.io/repos/github/bet-no-loss/bet-no-loss/badge.svg?branch=master
+[coverage-report-url]: https://coveralls.io/github/bet-no-loss/bet-no-loss?branch=master
+[heroku-deploy-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml/badge.svg?branch=front-test&event=push
+[heroku-deploy-url]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/deploy.yml
+[github-issues-image]: https://img.shields.io/github/issues/bet-no-loss/bet-no-loss
+[license-image]: https://img.shields.io/github/license/bet-no-loss/bet-no-loss
+[heroku-dashboard-image]: https://img.shields.io/badge/heroku-dashboard-blue
+[heroku-dashboard-url]: https://dashboard.heroku.com/apps/bet-no-loss
+[read-doc-image]: https://img.shields.io/badge/doc-📖-blue
+[open-app-image]: https://img.shields.io/badge/app-open-blue
+[open-app-url]: https://bet-no-loss.herokuapp.com/
