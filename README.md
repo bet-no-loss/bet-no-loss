@@ -1,4 +1,4 @@
-<!-- Badges -->
+<!-- Github Badges -->
 
 [![build status][build-image]][build-url]
 [![test status][test-image]][test-url]
@@ -621,6 +621,8 @@ Here are a few links to resources that we used while building bet-no-loss.
 - Github Badges
     -  https://shields.io/ See the wall of badges at the top of this README. This site is such a great resource to build them and a source of inspiration to build custom ones ;-).
     - https://david-dm.org/ (Github) badges to show the current status (out of or up to date) of your Node.js project's `dependencies` and/or `devDependencies` (`package.json`).
+
+<!-- Github Badges: Images and URLs -->
 
 [build-image]: https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml/badge.svg?branch=master&event=push
 [build-url]:   https://github.com/bet-no-loss/bet-no-loss/actions/workflows/build.yml
